@@ -1,0 +1,181 @@
+
+set nocompatible
+
+set t_Co=256
+syntax enable
+
+let g:molokai_original = 1
+colorscheme molokai
+
+" Status line
+augroup InsertHook
+autocmd!
+autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
+autocmd InsertLeave * highlight StatusLine guifg=#455354 guibg=fg 
+augroup END
+
+if has("win32")
+  source ~/vimfiles/pathogen/autoload/pathogen.vim
+else
+  source ~/.vim/pathogen/autoload/pathogen.vim
+endif
+call pathogen#runtime_append_all_bundles()
+
+filetype on
+filetype indent on
+filetype plugin on
+
+if &encoding !=# 'utf-8'
+  set encoding=japan
+  set fileencoding=japan
+endif
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = &fileencodings .','. s:fileencodings_default
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+if has('autocmd')
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
+endif
+set fileformats=unix,dos,mac
+
+if exists('&ambiwidth')
+  set ambiwidth=double
+endif
+
+set nobackup
+set nowritebackup
+if has("win32")
+  set directory=~/vimswap
+else
+  set directory=~/.vimswap
+endif
+set history=100
+
+set autoindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+noremap <Down> gj
+noremap <Up> gk
+
+set statusline=%<[%n]%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%8P
+
+set laststatus=2
+
+set showcmd
+
+set cursorline
+
+set whichwrap=b,s,h,l,<,>,[,]
+
+set virtualedit+=block
+
+set wildmenu
+
+set showmatch
+
+set showmode
+
+set number
+
+set hidden
+
+set list
+set listchars=tab:>\ ,extends:>,precedes:<
+
+let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_enable_smart_case=1
+let g:neocomplcache_enable_camel_case_completion=1
+let g:neocomplcache_enable_underbar_completion=1
+let g:neocomplcache_min_keyword_length=3
+let g:neocomplcache_same_filetype_lists={}
+let g:neocomplcache_same_filetype_lists['c']='cpp'
+let g:neocomplcache_same_filetype_lists['cpp']='c'
+
+nnoremap <C-w>n :bn<CR>
+nnoremap <C-w>p :bp<CR>
+nnoremap <C-w>d :bd<CR>
+
+set clipboard=unnamed
+nnoremap y "+y
+nnoremap p "+p
+
+imap <C-d> <Delete>
+imap <C-f> <Right>
+imap <C-b> <Left>
+
+" IME
+set iminsert=0
+set imsearch=0
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+
+" Command-window
+nnoremap <sid>(command-line-enter) q:
+xnoremap <sid>(command-line-enter) q:
+nnoremap <sid>(command-line-norange) q:<C-u>
+
+nmap :  <sid>(command-line-enter)
+xmap :  <sid>(command-line-enter)
+
+autocmd CmdwinEnter * call s:init_cmdwin()
+function! s:init_cmdwin()
+  nnoremap <buffer> q :<C-u>quit<CR>
+  nnoremap <buffer> <TAB> :<C-u>quit<CR>
+  inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+  inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+
+  " Completion.
+  inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+  startinsert!
+endfunction
+
+" Gtags
+map <C-g> :Gtags 
+map <C-i> :Gtags -f %<CR>
+map <C-j> :GtagsCursor<CR>
+
