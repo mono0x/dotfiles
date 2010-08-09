@@ -151,6 +151,8 @@ endfunction
 set clipboard=unnamed
 nnoremap y "+y
 nnoremap p "+p
+vnoremap y "+y
+vnoremap p "+p
 
 imap <C-d> <Delete>
 imap <C-f> <Right>
