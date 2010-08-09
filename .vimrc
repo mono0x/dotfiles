@@ -135,6 +135,7 @@ let g:neocomplcache_same_filetype_lists={}
 let g:neocomplcache_same_filetype_lists['c']='cpp'
 let g:neocomplcache_same_filetype_lists['cpp']='c'
 
+nnoremap <C-w><C-w> :FufBuffer<CR>
 nnoremap <C-w>n :bn<CR>
 nnoremap <C-w>p :bp<CR>
 nnoremap <C-w>d :bd<CR>

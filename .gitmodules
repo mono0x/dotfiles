@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/surround"]
 	path = .vim/bundle/surround
 	url = http://github.com/kana/vim-surround.git
+[submodule ".vim/bundle/fuzzyfinder"]
+	path = .vim/bundle/fuzzyfinder
+	url = http://github.com/vim-bundles/fuzzyfinder.git
