@@ -148,11 +148,13 @@ function! s:good_width()
   endif
 endfunction
 
-set clipboard=unnamed
-nnoremap y "+y
-nnoremap p "+p
-vnoremap y "+y
-vnoremap p "+p
+if has('clipboard')
+  set clipboard=unnamed
+  nnoremap y "+y
+  nnoremap p "+p
+  vnoremap y "+y
+  vnoremap p "+p
+endif
 
 imap <C-d> <Delete>
 imap <C-f> <Right>
