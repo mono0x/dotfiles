@@ -138,6 +138,15 @@ let g:neocomplcache_same_filetype_lists['cpp']='c'
 nnoremap <C-w>n :bn<CR>
 nnoremap <C-w>p :bp<CR>
 nnoremap <C-w>d :bd<CR>
+nnoremap <C-w>h <C-w>h:call <SID>good_width()<Cr>
+nnoremap <C-w>l <C-w>l:call <SID>good_width()<Cr>
+nnoremap <C-w>H <C-w>H:call <SID>good_width()<Cr>
+nnoremap <C-w>L <C-w>L:call <SID>good_width()<Cr>
+function! s:good_width()
+  if winwidth(0) < 84
+    vertical resize 84
+  endif
+endfunction
 
 set clipboard=unnamed
 nnoremap y "+y
