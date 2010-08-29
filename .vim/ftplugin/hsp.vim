@@ -16,12 +16,13 @@ setlocal cindent
 
 setlocal fo-=t fo+=croql
 
+compiler hsp
+
 if exists( "g:HspUseDoubleSlashIndent" )
   setlocal comments=sr:/*,mb:*,ex:*/,:;,://
 else
   setlocal comments=sr:/*,mb:*,ex:*/,:;
 endif
-
 
 if exists("&completefunc")
   setlocal completefunc=hspcomplete#Complete

@@ -14,6 +14,5 @@ if exists( ":CompilerSet" ) != 2
   command -nargs=* CompilerSet setlocal <args>
 endif
 
-
-CompilerSet makeprg=\"C:\\Users\\hiromu\\bin\\hsp32\\hscl\"\ %
+CompilerSet makeprg=\"%HOME%\\bin\\hsp32\\hscl\"\ %
 CompilerSet errorformat=%f\(%l)%*[^0-9]%n\ :\ %m
