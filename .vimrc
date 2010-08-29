@@ -166,33 +166,6 @@ set iminsert=0
 set imsearch=0
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
-" Command-window
-nnoremap <sid>(command-line-enter) q:
-xnoremap <sid>(command-line-enter) q:
-nnoremap <sid>(command-line-norange) q:<C-u>
-
-nmap :  <sid>(command-line-enter)
-xmap :  <sid>(command-line-enter)
-
-autocmd CmdwinEnter * call s:init_cmdwin()
-function! s:init_cmdwin()
-  nnoremap <buffer> q :<C-u>quit<CR>
-  nnoremap <buffer> <TAB> :<C-u>quit<CR>
-  inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-  inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-  inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-
-  " Completion.
-  inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-  startinsert!
-endfunction
-
-" Gtags
-map <C-g> :Gtags 
-map <C-i> :Gtags -f %<CR>
-map <C-j> :GtagsCursor<CR>
-
 " quickfix
 nnoremap Q q
 
@@ -215,3 +188,30 @@ nnoremap qM  :make<Space>
 nnoremap qg  :grep<Space>
 nnoremap q   <Nop>
 
+" Command-window
+nnoremap <sid>(command-line-enter) q:
+xnoremap <sid>(command-line-enter) q:
+nnoremap <sid>(command-line-norange) q:<C-u>
+
+nmap :  <sid>(command-line-enter)
+xmap :  <sid>(command-line-enter)
+
+autocmd CmdwinEnter * call s:init_cmdwin()
+function! s:init_cmdwin()
+  nnoremap <buffer> : <Nop>
+  nnoremap <buffer> q :<C-u>quit<CR>
+  nnoremap <buffer> <TAB> :<C-u>quit<CR>
+  inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+  inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+
+  " Completion.
+  inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+  startinsert!
+endfunction
+
+" Gtags
+map <C-g> :Gtags 
+map <C-i> :Gtags -f %<CR>
+map <C-j> :GtagsCursor<CR>
