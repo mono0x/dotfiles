@@ -7,7 +7,9 @@ syntax enable
 let g:molokai_original = 1
 "colorscheme molokai
 let g:guicolorscheme_color_table = {'bg' : 'Black', 'fg' : 'Grey'}
-au VimEnter * GuiColorScheme molokai
+if !has("gui_running")
+  au VimEnter * GuiColorScheme molokai
+endif
 
 " Status line
 augroup InsertHook
