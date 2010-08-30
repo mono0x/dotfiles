@@ -5,7 +5,9 @@ set t_Co=256
 syntax enable
 
 let g:molokai_original = 1
-colorscheme molokai
+"colorscheme molokai
+let g:guicolorscheme_color_table = {'bg' : 'Black', 'fg' : 'Grey'}
+au VimEnter * GuiColorScheme molokai
 
 " Status line
 augroup InsertHook

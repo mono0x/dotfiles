@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/yankring"]
 	path = .vim/bundle/yankring
 	url = http://github.com/chrismetcalf/vim-yankring.git
+[submodule ".vim/bundle/guicolorscheme"]
+	path = .vim/bundle/guicolorscheme
+	url = http://github.com/thinca/vim-guicolorscheme.git
