@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/guicolorscheme"]
 	path = .vim/bundle/guicolorscheme
 	url = http://github.com/thinca/vim-guicolorscheme.git
+[submodule ".vim/bundle/git-vim"]
+	path = .vim/bundle/git-vim
+	url = http://github.com/motemen/git-vim.git
