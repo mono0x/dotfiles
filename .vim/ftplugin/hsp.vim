@@ -16,7 +16,8 @@ setlocal cindent
 
 setlocal fo-=t fo+=croql
 
-compiler hsp
+setlocal makeprg=\"%HOME%\\bin\\hsp32\\hscl\"\ %
+setlocal errorformat=%f\(%l)%*[^0-9]%n\ :\ %m
 
 if exists( "g:HspUseDoubleSlashIndent" )
   setlocal comments=sr:/*,mb:*,ex:*/,:;,://
