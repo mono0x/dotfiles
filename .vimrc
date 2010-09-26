@@ -130,6 +130,7 @@ set hidden
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
 
+" neocomplcache
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_smart_case=1
 let g:neocomplcache_enable_camel_case_completion=1
@@ -138,6 +139,10 @@ let g:neocomplcache_min_keyword_length=3
 let g:neocomplcache_same_filetype_lists={}
 let g:neocomplcache_same_filetype_lists['c']='cpp'
 let g:neocomplcache_same_filetype_lists['cpp']='c'
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 nnoremap <C-w><C-w> :FufBuffer<CR>
 nnoremap <C-w>n :bn<CR>
