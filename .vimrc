@@ -170,28 +170,6 @@ set iminsert=0
 set imsearch=0
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
-" quickfix
-nnoremap Q q
-
-nnoremap qj  :cnext<Return>
-nnoremap qk  :cprevious<Return>
-nnoremap qr  :crewind<Return>
-nnoremap qK  :cfirst<Return>
-nnoremap qJ  :clast<Return>
-nnoremap qf  :cnfile<Return>
-nnoremap qF  :cpfile<Return>
-nnoremap ql  :clist<Return>
-nnoremap qq  :cc<Return>
-nnoremap qo  :copen<Return>
-nnoremap qc  :cclose<Return>
-nnoremap qw  :cwindow<Return>
-nnoremap qp  :colder<Return>
-nnoremap qn  :cnewer<Return>
-nnoremap qm  :make<Return>
-nnoremap qM  :make<Space>
-nnoremap qg  :grep<Space>
-nnoremap q   <Nop>
-
 " Command-window
 nnoremap <sid>(command-line-enter) q:
 xnoremap <sid>(command-line-enter) q:
@@ -202,7 +180,6 @@ xmap :  <sid>(command-line-enter)
 
 autocmd CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
-  nnoremap <buffer> : <Nop>
   nnoremap <buffer> q :<C-u>quit<CR>
   nnoremap <buffer> <TAB> :<C-u>quit<CR>
   inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
