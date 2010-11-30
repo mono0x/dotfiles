@@ -24,6 +24,7 @@ else
   source ~/.vim/pathogen/autoload/pathogen.vim
 endif
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 filetype on
 filetype indent on
