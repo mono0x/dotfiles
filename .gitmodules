@@ -1,21 +1,18 @@
-[submodule ".vim/pathogen"]
-	path = .vim/pathogen
-	url = http://github.com/tpope/vim-pathogen.git
-[submodule ".vim/bundle/neocomplcache"]
-	path = .vim/bundle/neocomplcache
-	url = http://github.com/Shougo/neocomplcache.git
-[submodule ".vim/bundle/surround"]
-	path = .vim/bundle/surround
-	url = http://github.com/kana/vim-surround.git
 [submodule ".vim/bundle/fuzzyfinder"]
 	path = .vim/bundle/fuzzyfinder
-	url = http://github.com/vim-bundles/fuzzyfinder.git
-[submodule ".vim/bundle/yankring"]
-	path = .vim/bundle/yankring
-	url = http://github.com/chrismetcalf/vim-yankring.git
+	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule ".vim/bundle/neocomplcache"]
+	path = .vim/bundle/neocomplcache
+	url = https://github.com/Shougo/neocomplcache.git
+[submodule ".vim/bundle/surround"]
+	path = .vim/bundle/surround
+	url = https://github.com/kana/vim-surround.git
 [submodule ".vim/bundle/guicolorscheme"]
 	path = .vim/bundle/guicolorscheme
-	url = http://github.com/thinca/vim-guicolorscheme.git
-[submodule ".vim/bundle/git-vim"]
-	path = .vim/bundle/git-vim
-	url = http://github.com/motemen/git-vim.git
+	url = https://github.com/thinca/vim-guicolorscheme.git
+[submodule ".vim/pathogen"]
+	path = .vim/pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/L9"]
+	path = .vim/bundle/L9
+	url = https://github.com/vim-scripts/L9.git
