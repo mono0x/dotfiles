@@ -19,10 +19,34 @@ compinit
 autoload colors
 colors
 
+autoload -Uz add-zsh-hook
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn hg
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+zstyle ':vcs_info:(svn):*' branchformat '%b:r%r'
+
+autoload -Uz is-at-least
+if is-at-least 4.3.10; then
+  zstyle ':vcs_info:git:*' check-for-changes true
+  zstyle ':vcs_info:git:*' stagedstr "+"
+  zstyle ':vcs_info:git:*' unstagedstr "-"
+  zstyle ':vcs_info:git:*' formats '(%s)-[%b] %c%u'
+  zstyle ':vcs_info:git:*' actionformats '(%s)-[%b|%a] %c%u'
+fi
+
+update_vcs_info_message() {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+add-zsh-hook precmd update_vcs_info_message
 case ${UID} in
 0)
 	PROMPT="
-%{${fg[blue]}%}%/%{${reset_color}%}
+%{${fg[blue]}%}%/%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
 [%{${fg[blue]}%}%n@%m%{${reset_color}%}] %{${fg[blue]}%}#%{${reset_color}%} "
 	PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
 	SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
@@ -30,7 +54,7 @@ case ${UID} in
 	;;
 *)
 	PROMPT="
-%{${fg[blue]}%}%/%{${reset_color}%}
+%{${fg[blue]}%}%/%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
 [%n@%m] %{${fg[blue]}%}#%{${reset_color}%} "
 	PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
 	SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
