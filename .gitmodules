@@ -16,3 +16,9 @@
 [submodule ".vim/bundle/L9"]
 	path = .vim/bundle/L9
 	url = https://github.com/vim-scripts/L9.git
+[submodule ".vim/bundle/vimshell"]
+	path = .vim/bundle/vimshell
+	url = https://github.com/Shougo/vimshell.git
+[submodule ".vim/bundle/vimproc"]
+	path = .vim/bundle/vimproc
+	url = https://github.com/Shougo/vimproc.git
