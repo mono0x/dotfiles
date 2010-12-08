@@ -19,3 +19,9 @@
 [submodule ".vim/bundle/unite"]
 	path = .vim/bundle/unite
 	url = https://github.com/Shougo/unite.vim.git
+[submodule ".vim/bundle/unite-outline"]
+	path = .vim/bundle/unite-outline
+	url = https://github.com/h1mesuke/unite-outline.git
+[submodule ".vim/bundle/unite-help"]
+	path = .vim/bundle/unite-help
+	url = https://github.com/tsukkee/unite-help.git

@@ -148,6 +148,10 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 " unite
 let g:unite_enable_start_insert=1
 nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files file_mru bookmark file<CR>
+nnoremap [unite] <Nop>
+nmap <C-u> [unite]
+nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
+nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
 
 nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <C-w>n :bn<CR>
