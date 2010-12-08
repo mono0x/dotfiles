@@ -145,7 +145,11 @@ inoremap <expr><C-l> neocomplcache#complete_common_string()
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
-nnoremap <C-w><C-w> :FufBuffer<CR>
+" unite
+let g:unite_enable_start_insert=1
+nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files file_mru bookmark file<CR>
+
+nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <C-w>n :bn<CR>
 nnoremap <C-w>p :bp<CR>
 nnoremap <C-w>d :bd<CR>

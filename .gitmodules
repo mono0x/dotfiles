@@ -1,6 +1,3 @@
-[submodule ".vim/bundle/fuzzyfinder"]
-	path = .vim/bundle/fuzzyfinder
-	url = https://github.com/vim-scripts/FuzzyFinder.git
 [submodule ".vim/bundle/neocomplcache"]
 	path = .vim/bundle/neocomplcache
 	url = https://github.com/Shougo/neocomplcache.git
@@ -13,12 +10,12 @@
 [submodule ".vim/pathogen"]
 	path = .vim/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule ".vim/bundle/L9"]
-	path = .vim/bundle/L9
-	url = https://github.com/vim-scripts/L9.git
 [submodule ".vim/bundle/vimshell"]
 	path = .vim/bundle/vimshell
 	url = https://github.com/Shougo/vimshell.git
 [submodule ".vim/bundle/vimproc"]
 	path = .vim/bundle/vimproc
 	url = https://github.com/Shougo/vimproc.git
+[submodule ".vim/bundle/unite"]
+	path = .vim/bundle/unite
+	url = https://github.com/Shougo/unite.vim.git
