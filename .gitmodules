@@ -28,3 +28,6 @@
 [submodule ".vim/bundle/yankring"]
 	path = .vim/bundle/yankring
 	url = https://github.com/chrismetcalf/vim-yankring.git
+[submodule ".vim/bundle/align"]
+	path = .vim/bundle/align
+	url = https://github.com/vim-scripts/Align.git
