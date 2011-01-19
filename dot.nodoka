@@ -15,11 +15,13 @@ keymap KeymapBase
   mod Windows += ひらがな
   key *ひらがな = *RightWindows
 
-  key IC-C-S-H = C-Backspace
+  # IMEの切り替え
+  key *IC-変換 = &SetImeStatus(on)
+  key *IC-無変換 = &SetImeStatus(off)
+  key IC-IL-無変換 = Escape &Sync &SetImeStatus(off)
+  key IC-IW-無変換 = Escape &Sync &SetImeStatus(off)
 
-  # 電子辞書
-  key IC-C-Space = End
-  key IC-C-S-Space = C-AtMark End
+  key IC-C-S-H = C-Backspace
 
   if (HHK)
     key *半角/全角 = *LeftWindows
@@ -36,14 +38,16 @@ keymap Global : KeymapBase
 
   key IC-C-S-H = C-Backspace
 
-  # 電子辞書
-  key IC-C-Space = End
-  key IC-C-S-Space = C-AtMark End
-
   # 削除
   key C-D = Delete
   key C-S-D = S-Delete
   key C-H = Backspace
+
+  # IMEの切り替え
+  key *IC-変換 = &SetImeStatus(on)
+  key *IC-無変換 = &SetImeStatus(off)
+  key IC-IL-無変換 = Escape &Sync &SetImeStatus(off)
+  key IC-IW-無変換 = Escape &Sync &SetImeStatus(off)
 
   # キャンセル
   key C-*IC-G = Escape &SetImeStatus(off)
