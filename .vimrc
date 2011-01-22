@@ -219,3 +219,11 @@ else
   au BufNewFile *.rb 0r ~/.vim/template/template.rb
   au BufNewFile *.html,*.rhtml 0r ~/.vim/template/template.html
 endif
+
+" Automatic `:!chmod +x %`.
+" https://gist.github.com/791189
+autocmd vimrc BufWritePost *
+\     if getline(1) =~# '^#!'
+\   |   !chmod +x %
+\   | endif
+
