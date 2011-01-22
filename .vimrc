@@ -222,7 +222,7 @@ endif
 
 " Automatic `:!chmod +x %`.
 " https://gist.github.com/791189
-autocmd vimrc BufWritePost *
+autocmd BufWritePost *
 \     if getline(1) =~# '^#!'
 \   |   !chmod +x %
 \   | endif
