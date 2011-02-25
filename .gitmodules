@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/align"]
 	path = .vim/bundle/align
 	url = https://github.com/vim-scripts/Align.git
+[submodule ".vim/bundle/quickrun"]
+	path = .vim/bundle/quickrun
+	url = https://github.com/ujihisa/quickrun.git
