@@ -220,3 +220,8 @@ else
   au BufNewFile *.html,*.rhtml 0r ~/.vim/template/template.html
 endif
 
+" Zencoding
+let g:user_zen_settings = {
+  \'indentation': '  ',
+  \}
+

@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/quickrun"]
 	path = .vim/bundle/quickrun
 	url = https://github.com/ujihisa/quickrun.git
+[submodule ".vim/bundle/zencoding"]
+	path = .vim/bundle/zencoding
+	url = https://github.com/mattn/zencoding-vim.git
