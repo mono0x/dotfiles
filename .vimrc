@@ -1,15 +1,33 @@
 
 set nocompatible
+filetype off
+
+if has("win32")
+  set rtp+=~/vimfiles/vundle.git/
+else
+  set rtp+=~/.vim/vundle.git/
+endif
+call vundle#rc()
+
+Bundle 'surround.vim'
+Bundle 'YankRing.vim'
+
+Bundle 'h1mesuke/vim-alignta'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/vimshell'
+Bundle 'ujihisa/quickrun'
+Bundle 'mattn/zencoding-vim'
+Bundle 'hail2u/vim-css3-syntax'
 
 set t_Co=256
 syntax enable
 
+filetype plugin indent on
+
 let g:molokai_original = 1
-"colorscheme molokai
-let g:guicolorscheme_color_table = {'bg' : 'Black', 'fg' : 'Grey'}
-if !has("gui_running")
-  au VimEnter * GuiColorScheme molokai
-endif
+colorscheme molokai
 
 " Status line
 augroup InsertHook
@@ -17,18 +35,6 @@ autocmd!
 autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
 autocmd InsertLeave * highlight StatusLine guifg=#455354 guibg=fg 
 augroup END
-
-if has("win32")
-  source ~/vimfiles/pathogen/autoload/pathogen.vim
-else
-  source ~/.vim/pathogen/autoload/pathogen.vim
-endif
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
-filetype on
-filetype indent on
-filetype plugin on
 
 if &encoding !=# 'utf-8'
   set encoding=japan
