@@ -11,6 +11,9 @@ call vundle#rc()
 
 Bundle 'surround.vim'
 Bundle 'YankRing.vim'
+Bundle 'css_color.vim'
+Bundle 'camelcasemotion'
+Bundle 'nginx.vim'
 
 Bundle 'h1mesuke/vim-alignta'
 Bundle 'Shougo/unite.vim'
@@ -20,6 +23,8 @@ Bundle 'Shougo/vimshell'
 Bundle 'ujihisa/quickrun'
 Bundle 'mattn/zencoding-vim'
 Bundle 'hail2u/vim-css3-syntax'
+Bundle 'othree/html5.vim'
+Bundle 'cakebaker/scss-syntax.vim'
 
 set t_Co=256
 syntax enable
