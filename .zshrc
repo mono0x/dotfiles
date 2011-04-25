@@ -93,7 +93,6 @@ bindkey "^N" history-beginning-search-forward-end
 
 setopt noflowcontrol
 
-bindkey -a 'h' run-help
 bindkey '^q' push-input
 
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=aunpack
