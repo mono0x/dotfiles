@@ -20,6 +20,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
+Bundle 'Shougo/echodoc'
 Bundle 'ujihisa/quickrun'
 Bundle 'mattn/zencoding-vim'
 Bundle 'hail2u/vim-css3-syntax'
@@ -235,4 +236,7 @@ endif
 let g:user_zen_settings = {
   \'indentation': '  ',
   \}
+
+" echodoc
+let g:echodoc_enable_at_startup = 1
 
