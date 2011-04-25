@@ -2,11 +2,11 @@
 set nocompatible
 filetype off
 
-if has("win32")
-  set rtp+=~/vimfiles/vundle.git/
-else
-  set rtp+=~/.vim/vundle.git/
+if has('win32')
+  set rtp+=$HOME/.vim,$HOME/.vim/after
 endif
+
+set rtp+=$HOME/.vim/vundle.git
 call vundle#rc()
 
 Bundle 'surround.vim'
