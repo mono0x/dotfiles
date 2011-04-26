@@ -224,13 +224,8 @@ map <C-i> :Gtags -f %<CR>
 map <C-j> :GtagsCursor<CR>
 
 " template
-if has("win32")
-  au BufNewFile *.rb 0r ~/vimfiles/template/template.rb
-  au BufNewFile *.html,*.rhtml 0r ~/vimfiles/template/template.html
-else
-  au BufNewFile *.rb 0r ~/.vim/template/template.rb
-  au BufNewFile *.html,*.rhtml 0r ~/.vim/template/template.html
-endif
+au BufNewFile *.rb 0r ~/.vim/template/template.rb
+au BufNewFile *.html,*.rhtml 0r ~/.vim/template/template.html
 
 " Zencoding
 let g:user_zen_settings = {
