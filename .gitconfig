@@ -1,0 +1,11 @@
+[user]
+  name = mono
+  email = mono@monoweb.info
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+[core]
+  editor = vi
