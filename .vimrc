@@ -26,6 +26,7 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'othree/html5.vim'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'hallettj/jslint.vim'
 
 set t_Co=256
 syntax enable
