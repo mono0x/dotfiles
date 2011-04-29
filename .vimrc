@@ -28,6 +28,8 @@ Bundle 'othree/html5.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'hallettj/jslint.vim'
 
+Bundle 'mono0x/molokai'
+
 set t_Co=256
 syntax enable
 
