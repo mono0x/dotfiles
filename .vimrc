@@ -26,7 +26,7 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'othree/html5.vim'
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'hallettj/jslint.vim'
+Bundle 'basyura/jslint.vim'
 
 Bundle 'mono0x/molokai'
 
@@ -237,4 +237,12 @@ let g:user_zen_settings = {
 
 " echodoc
 let g:echodoc_enable_at_startup = 1
+
+" jslint.vim
+function! s:javascript_filetype_settings()
+  autocmd BufLeave     <buffer> call jslint#clear()
+  autocmd BufWritePost <buffer> call jslint#check()
+  autocmd CursorMoved  <buffer> call jslint#message()
+endfunction
+autocmd FileType javascript call s:javascript_filetype_settings()
 
