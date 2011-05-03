@@ -41,18 +41,6 @@ keymap Global : KeymapBase
   key C-*IC-G = Escape &SetImeStatus(off)
   key C-*IC-LeftSquareBracket = Escape &SetImeStatus(off)
 
-  # 置換
-  key C-R = C-H
-  key C-S-R = C-S-H
-
-  # 改行
-  key C-M = Enter
-  key C-S-M = S-Enter
-
-  # タブ
-  #key C-T = Tab
-  #key C-S-T = S-Tab
-
   key BrowserBack = &Undefined
   key BrowserForward = &Undefined
 
