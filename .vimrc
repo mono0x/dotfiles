@@ -97,11 +97,7 @@ endif
 
 set nobackup
 set nowritebackup
-if has("win32")
-  set directory=~/vimswap
-else
-  set directory=~/.vimswap
-endif
+set directory=~/.vimswap//
 set history=100
 
 set autoindent
