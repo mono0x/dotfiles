@@ -6,7 +6,7 @@ if has('win32')
   set rtp+=$HOME/.vim,$HOME/.vim/after
 endif
 
-set rtp+=$HOME/.vim/vundle.git
+set rtp+=$HOME/.vim/vundle
 call vundle#rc()
 
 Bundle 'surround.vim'
