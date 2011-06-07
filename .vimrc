@@ -29,6 +29,7 @@ Bundle 'othree/html5.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'basyura/jslint.vim'
 Bundle 'bdd/vim-scala'
+Bundle 'hallison/vim-markdown'
 
 Bundle 'mono0x/molokai'
 
