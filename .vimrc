@@ -11,7 +11,6 @@ call vundle#rc()
 
 Bundle 'surround.vim'
 Bundle 'YankRing.vim'
-Bundle 'css_color.vim'
 Bundle 'camelcasemotion'
 Bundle 'nginx.vim'
 
