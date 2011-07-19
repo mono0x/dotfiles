@@ -84,6 +84,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 setopt complete_aliases
 alias sudo="sudo "
 alias ls="ls --color"
+alias ll='ls -l'
+alias la='ls -A'
+alias g='git'
 
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
