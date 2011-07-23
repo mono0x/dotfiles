@@ -81,13 +81,6 @@ setopt pushd_ignore_dups
 export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-setopt complete_aliases
-alias sudo="sudo "
-alias ls="ls --color"
-alias ll='ls -l'
-alias la='ls -A'
-alias g='git'
-
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -99,4 +92,18 @@ setopt noflowcontrol
 bindkey '^q' push-input
 
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=aunpack
+
+alias sudo="sudo "
+alias ls="ls --color"
+alias ll='ls -l'
+alias la='ls -A'
+
+alias g='git'
+alias ga='git add'
+alias gbr='git branch'
+alias gci='git commit'
+alias gco='git checkout'
+alias gd='git diff'
+alias gl='git log --graph'
+alias gs='git status'
 

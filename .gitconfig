@@ -9,3 +9,9 @@
   ui = auto
 [core]
   editor = vi
+[alias]
+  br = branch
+  ci = commit
+  co = checkout
+  di = diff
+  st = status
