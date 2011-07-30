@@ -94,7 +94,15 @@ bindkey '^q' push-input
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=aunpack
 
 alias sudo="sudo "
-alias ls="ls --color"
+
+case "${OSTYPE}" in
+linux*)
+  alias ls="ls --color"
+  ;;
+darwin*)
+  alias ls="ls -G"
+  ;;
+esac
 alias ll='ls -l'
 alias la='ls -A'
 
