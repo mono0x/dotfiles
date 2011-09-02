@@ -32,6 +32,9 @@ endif
 " set include path
 set include=^\\s*#\\s*\\(include\\\\|addition\\)
 
+" run
+nnoremap <F5> :update<CR>:make<CR>
+
 " set filter for file browser dialog
 if has( "gui_win32" ) 
   let b:browsefilter = "HSP3 Script File (*.hsp)\t*.hsp\n".
