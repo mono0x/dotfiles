@@ -3,7 +3,6 @@
 ln -s ~/dotfiles/.gitconfig  ~
 ln -s ~/dotfiles/.gvimrc     ~
 ln -s ~/dotfiles/.tmux.conf  ~
-ln -s ~/dotfiles/.uim        ~
 ln -s ~/dotfiles/.vim        ~
 ln -s ~/dotfiles/.vimrc      ~
 ln -s ~/dotfiles/.zshenv     ~
