@@ -8,7 +8,7 @@
   status = auto
   ui = auto
 [core]
-  editor = vi
+  editor = vim
 [alias]
   br = branch
   ci = commit
