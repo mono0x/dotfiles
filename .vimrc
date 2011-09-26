@@ -6,31 +6,31 @@ if has('win32')
   set rtp+=$HOME/.vim,$HOME/.vim/after
 endif
 
-set rtp+=$HOME/.vim/vundle
-call vundle#rc()
+set rtp+=$HOME/.vim/neobundle
+call neobundle#rc()
 
-Bundle 'surround.vim'
-Bundle 'YankRing.vim'
-Bundle 'camelcasemotion'
-Bundle 'nginx.vim'
+NeoBundle 'surround.vim'
+NeoBundle 'YankRing.vim'
+NeoBundle 'camelcasemotion'
+NeoBundle 'nginx.vim'
 
-Bundle 'h1mesuke/vim-alignta'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/vimshell'
-Bundle 'Shougo/echodoc'
-Bundle 'Shougo/git-vim'
-Bundle 'ujihisa/quickrun'
-Bundle 'mattn/zencoding-vim'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'othree/html5.vim'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'basyura/jslint.vim'
-Bundle 'bdd/vim-scala'
-Bundle 'hallison/vim-markdown'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/echodoc'
+NeoBundle 'Shougo/git-vim'
+NeoBundle 'ujihisa/quickrun'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'basyura/jslint.vim'
+NeoBundle 'bdd/vim-scala'
+NeoBundle 'hallison/vim-markdown'
 
-Bundle 'mono0x/molokai'
+NeoBundle 'mono0x/molokai'
 
 set t_Co=256
 syntax enable
