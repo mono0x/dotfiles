@@ -111,6 +111,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+noremap <ESC><ESC> :nohlsearch<CR>
 
 noremap j gj
 noremap k gk
