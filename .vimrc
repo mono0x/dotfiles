@@ -102,6 +102,8 @@ set nowritebackup
 set directory=~/.vimswap//
 set history=100
 
+set notagbsearch
+
 set autoindent
 set tabstop=2
 set shiftwidth=2
