@@ -225,11 +225,6 @@ function! s:init_cmdwin()
   startinsert!
 endfunction
 
-" Gtags
-map <C-g> :Gtags 
-map <C-i> :Gtags -f %<CR>
-map <C-j> :GtagsCursor<CR>
-
 " template
 au BufNewFile *.rb 0r ~/.vim/template/template.rb
 au BufNewFile *.html,*.rhtml 0r ~/.vim/template/template.html
