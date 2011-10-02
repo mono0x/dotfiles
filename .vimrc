@@ -171,8 +171,8 @@ nnoremap [unite] <Nop>
 nmap <C-u> [unite]
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
-nnoremap <silent> [unite]g :<C-u>Unite vcs_grep/git<CR>
-nnoremap <silent> [unite]G :<C-u>Unite grep<CR>
+nnoremap <silent> [unite]g :<C-u>Unite -no-quit vcs_grep/git<CR>
+nnoremap <silent> [unite]G :<C-u>Unite -no-quit grep<CR>
 nnoremap / :<C-u>Unite -buffer-name=line line<CR>
 
 nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
