@@ -13,6 +13,7 @@ NeoBundle 'surround.vim'
 NeoBundle 'YankRing.vim'
 NeoBundle 'camelcasemotion'
 NeoBundle 'nginx.vim'
+NeoBundle 'sudo.vim'
 
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'Shougo/unite.vim'
