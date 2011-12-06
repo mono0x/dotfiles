@@ -113,3 +113,7 @@ alias gd='git diff'
 alias gl='git log --graph'
 alias gs='git status'
 
+alias b='bundle'
+alias be='bundle exec'
+alias bet='bundle exec thor'
+alias ber='bundle exec rake'
