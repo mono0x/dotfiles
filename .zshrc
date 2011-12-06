@@ -117,3 +117,20 @@ alias b='bundle'
 alias be='bundle exec'
 alias bet='bundle exec thor'
 alias ber='bundle exec rake'
+
+sudo() {
+  local args
+  case $1 in
+    vi|vim)
+      args=()
+      for arg in $@[2,-1]
+      do
+        args[$(( 1+$#args ))]="sudo:$arg"
+      done
+      command vim $args
+      ;;
+    *)
+      command sudo $@
+      ;;
+  esac
+}
