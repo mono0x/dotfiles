@@ -125,7 +125,11 @@ sudo() {
       args=()
       for arg in $@[2,-1]
       do
-        args[$(( 1+$#args ))]="sudo:$arg"
+        if [ $arg[1] = '-' ]; then
+          args[$(( 1+$#args ))]=$arg
+        else
+          args[$(( 1+$#args ))]="sudo:$arg"
+        fi
       done
       command vim $args
       ;;
