@@ -33,6 +33,7 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'basyura/jslint.vim'
 NeoBundle 'bdd/vim-scala'
 NeoBundle 'hallison/vim-markdown'
+NeoBundle 'kchmck/vim-coffee-script'
 
 NeoBundle 'mono0x/molokai'
 
