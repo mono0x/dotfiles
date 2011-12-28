@@ -192,7 +192,7 @@ function! s:good_width()
 endfunction
 
 if has('clipboard')
-  set clipboard=unnamed
+  set clipboard=unnamedplus,unnamed
   nnoremap y "+y
   nnoremap p "+p
   vnoremap y "+y
