@@ -1,7 +1,9 @@
 
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=$HISTSIZE
+
+setopt interactive_comments
 
 bindkey -v
 
