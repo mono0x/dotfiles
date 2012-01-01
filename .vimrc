@@ -52,10 +52,7 @@ autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
 autocmd InsertLeave * highlight StatusLine guifg=#455354 guibg=fg 
 augroup END
 
-if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
-endif
+set encoding=utf-8
 if has('iconv')
   let s:enc_euc = 'euc-jp'
   let s:enc_jis = 'iso-2022-jp'
