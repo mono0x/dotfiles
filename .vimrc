@@ -34,6 +34,7 @@ NeoBundle 'basyura/jslint.vim'
 NeoBundle 'bdd/vim-scala'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'sophacles/vim-processing'
 
 NeoBundle 'mono0x/molokai'
 
