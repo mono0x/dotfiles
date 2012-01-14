@@ -10,12 +10,6 @@ endif
 let g:molokai_original = 1
 colorscheme molokai
 
-augroup InsertHook
-autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
-autocmd InsertLeave * highlight StatusLine guifg=#455354 guibg=fg 
-augroup END
-
 set lines=35
 set columns=100
 

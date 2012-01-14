@@ -35,6 +35,7 @@ NeoBundle 'bdd/vim-scala'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'sophacles/vim-processing'
+NeoBundle 'Lokaltog/vim-powerline'
 
 NeoBundle 'mono0x/molokai'
 
@@ -45,13 +46,6 @@ filetype plugin indent on
 
 let g:molokai_original = 1
 colorscheme molokai
-
-" Status line
-augroup InsertHook
-autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
-autocmd InsertLeave * highlight StatusLine guifg=#455354 guibg=fg 
-augroup END
 
 set encoding=utf-8
 if has('iconv')
