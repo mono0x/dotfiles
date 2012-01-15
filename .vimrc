@@ -36,6 +36,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'thinca/vim-template'
 
 NeoBundle 'mono0x/molokai'
 
@@ -221,10 +222,6 @@ function! s:init_cmdwin()
 
   startinsert!
 endfunction
-
-" template
-au BufNewFile *.rb 0r ~/.vim/template/template.rb
-au BufNewFile *.html,*.rhtml 0r ~/.vim/template/template.html
 
 " Zencoding
 let g:user_zen_settings = {
