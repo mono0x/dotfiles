@@ -1,3 +1,6 @@
 [submodule ".vim/neobundle"]
 	path = .vim/neobundle
 	url = https://github.com/Shougo/neobundle.vim.git
+[submodule ".zsh-completions"]
+	path = .zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git

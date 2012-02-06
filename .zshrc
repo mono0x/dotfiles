@@ -16,6 +16,8 @@ zle -A .backward-delete-char vi-backward-delete-char
 autoload -U compinit
 compinit
 
+fpath=(~/.zsh-completions $fpath)
+
 autoload colors
 colors
 
