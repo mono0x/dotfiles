@@ -37,6 +37,8 @@ NeoBundle 'sophacles/vim-processing'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-template'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/mkdpreview-vim'
 
 NeoBundle 'mono0x/molokai'
 
