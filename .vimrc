@@ -6,8 +6,11 @@ if has('win32')
   set rtp+=$HOME/.vim,$HOME/.vim/after
 endif
 
-set rtp+=$HOME/.vim/neobundle
-call neobundle#rc()
+if has('vim_starting')
+  set rtp+=$HOME/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+NeoBundle 'Shougo/neobundle.vim'
 
 NeoBundle 'surround.vim'
 NeoBundle 'YankRing.vim'
