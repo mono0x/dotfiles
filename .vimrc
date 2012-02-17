@@ -54,6 +54,9 @@ let g:molokai_original = 1
 colorscheme molokai
 
 set encoding=utf-8
+if has('win32')
+  set termencoding=cp932
+endif
 if has('iconv')
   let s:enc_euc = 'euc-jp'
   let s:enc_jis = 'iso-2022-jp'
