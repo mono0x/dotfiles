@@ -8,7 +8,6 @@ ln -s ~/dotfiles/.vimrc      ~
 ln -s ~/dotfiles/.zsh        ~
 ln -s ~/dotfiles/.zshenv     ~
 ln -s ~/dotfiles/.zshrc      ~
-ln -s ~/dotfiles/.zsh-completions ~
 
 mkdir ~/.vimswap
 
