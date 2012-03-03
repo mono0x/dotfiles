@@ -144,3 +144,9 @@ sudo() {
       ;;
   esac
 }
+
+_Z_CMD=j
+source ~/.zsh/z/z.sh
+precmd() {
+  _z --add "$(pwd -P)"
+}
