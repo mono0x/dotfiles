@@ -57,6 +57,11 @@ colorscheme molokai
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
 
+" Highlight trailing spaces
+highlight TrailingSpaces guibg=red ctermbg=red
+match TrailingSpaces /\s\+$/
+autocmd WinEnter * match TrailingSpaces /\s\+$/
+
 set encoding=utf-8
 if has('win32')
   set termencoding=cp932

@@ -10,6 +10,11 @@ endif
 let g:molokai_original = 1
 colorscheme molokai
 
+" Highlight trailing spaces
+highlight TrailingSpaces guibg=red ctermbg=red
+match TrailingSpaces /\s\+$/
+autocmd WinEnter * match TrailingSpaces /\s\+$/
+
 set lines=35
 set columns=100
 
