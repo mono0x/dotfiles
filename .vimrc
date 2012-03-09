@@ -42,6 +42,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/mkdpreview-vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'mono0x/molokai'
 
@@ -52,6 +53,9 @@ filetype plugin indent on
 
 let g:molokai_original = 1
 colorscheme molokai
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
 
 set encoding=utf-8
 if has('win32')
@@ -246,4 +250,3 @@ function! s:javascript_filetype_settings()
   autocmd CursorMoved  <buffer> call jslint#message()
 endfunction
 autocmd FileType javascript call s:javascript_filetype_settings()
-
