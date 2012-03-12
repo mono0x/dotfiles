@@ -208,6 +208,7 @@ if has('clipboard')
   vnoremap y "+y
   vnoremap p "+p
 endif
+let g:yankring_manual_clipboard_check = 0
 
 imap <C-d> <Delete>
 imap <C-f> <Right>
