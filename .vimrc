@@ -56,6 +56,11 @@ colorscheme molokai
 
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#34352D ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#43443A ctermbg=239
 
 " Highlight trailing spaces
 highlight TrailingSpaces guibg=red ctermbg=red
