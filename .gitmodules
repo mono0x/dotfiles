@@ -4,3 +4,6 @@
 [submodule ".zsh/z"]
 	path = .zsh/z
 	url = https://github.com/rupa/z
+[submodule ".zsh/cdd"]
+	path = .zsh/cdd
+	url = https://github.com/m4i/cdd
