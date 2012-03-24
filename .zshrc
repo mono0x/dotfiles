@@ -124,6 +124,13 @@ alias be='bundle exec'
 alias bet='bundle exec thor'
 alias ber='bundle exec rake'
 
+case "${OSTYPE}" in
+cygwin*)
+  alias vi=gvim
+  alias vim=gvim
+  ;;
+esac
+
 sudo() {
   local args
   case $1 in
