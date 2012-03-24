@@ -1,8 +1,5 @@
 include "109.nodoka"
 
-def key AWKBかな = 0x72
-def key AWKB英数 = 0x71
-
 def option KeyboardDelay = enable 150 15
 
 keymap KeymapBase
@@ -23,6 +20,8 @@ keymap KeymapBase
     key *LeftWindows = 半角/全角
     mod Windows -= LeftWindows
   endif
+
+  key ReverseSolidus = S-ReverseSolidus
 
 keymap Global : KeymapBase
 
@@ -56,7 +55,7 @@ window Word /winword.exe:/ : Global
   key C-G = &Default
 
 window Explorer /explorer.exe:.*SHELLDLL_DefView/ : Global
-  
+
   key C-E = Apps V Enter
   key C-S-E = Apps V V Enter
   key C-P = S-Apps W
