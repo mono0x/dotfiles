@@ -15,13 +15,6 @@ keymap KeymapBase
 
   key IC-C-S-H = C-Backspace
 
-  if (HHK)
-    key *半角/全角 = *LeftWindows
-    mod Windows += 半角/全角
-    key *LeftWindows = 半角/全角
-    mod Windows -= LeftWindows
-  endif
-
   key ReverseSolidus = S-ReverseSolidus
 
 keymap Global : KeymapBase
@@ -43,13 +36,6 @@ keymap Global : KeymapBase
 
   key BrowserBack = &Undefined
   key BrowserForward = &Undefined
-
-  if (HHK)
-    key *半角/全角 = *LeftWindows
-    mod Windows += 半角/全角
-    key *LeftWindows = 半角/全角
-    mod Windows -= LeftWindows
-  endif
 
 window Word /winword.exe:/ : Global
 
