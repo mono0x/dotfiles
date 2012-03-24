@@ -1,3 +1,4 @@
+# 〠 for encoding detection
 include "109.nodoka"
 
 def option KeyboardDelay = enable 150 15
