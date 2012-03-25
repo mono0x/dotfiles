@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "ＭＳ Ｐゴシック";
+  src: local("Meiryo"), local("メイリオ"), local("ＭＳ Ｐゴシック");
+}
+
+@font-face {
+  font-family: "MS PGothic";
+  src: local("Meiryo"), local("メイリオ"), local("ＭＳ Ｐゴシック");
+}
+
+/* Windows Vista+ */
+@font-face {
+  font-family: "MS UI Gothic";
+  src: local("Meiryo UI"), local("MS UI Gothic");
+}

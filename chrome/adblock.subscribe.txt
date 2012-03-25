@@ -1,0 +1,2 @@
+https://adblock-plus-japanese-filter.googlecode.com/hg/abp_jp.txt
+https://monzta.maltekraus.de/adblock_social.txt

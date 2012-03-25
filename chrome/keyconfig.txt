@@ -1,0 +1,152 @@
+{
+  "name": "Chrome Keyconfig",
+  "version": "1.11.0",
+  "normal_actions": {
+    "1": {
+      "name": "select left tab",
+      "args": []
+    },
+    "2": {
+      "name": "select right tab",
+      "args": []
+    },
+    "j": {
+      "name": "scroll down",
+      "args": []
+    },
+    "k": {
+      "name": "scroll up",
+      "args": []
+    },
+    "h": {
+      "name": "scroll left",
+      "args": []
+    },
+    "l": {
+      "name": "scroll right",
+      "args": []
+    },
+    "M-j": {
+      "name": "scroll down half page",
+      "args": []
+    },
+    "M-k": {
+      "name": "scroll up half page",
+      "args": []
+    },
+    "M-J": {
+      "name": "scroll to bottom",
+      "args": []
+    },
+    "M-K": {
+      "name": "scroll to top",
+      "args": []
+    },
+    "a": {
+      "name": "focus first text input",
+      "args": []
+    },
+    "C-d": {
+      "name": "navigate form elements forward",
+      "args": []
+    },
+    "C-u": {
+      "name": "navigate form elements backward",
+      "args": []
+    },
+    "C-z": {
+      "name": "re-open closed tab",
+      "args": []
+    },
+    "b": {
+      "name": "Taberareloo.link",
+      "args": []
+    },
+    "B": {
+      "name": "Taberareloo.quote",
+      "args": []
+    },
+    "C-q": {
+      "name": "limited mode",
+      "args": []
+    },
+    "z": {
+      "name": "back",
+      "args": []
+    },
+    "x": {
+      "name": "forward",
+      "args": []
+    }
+  },
+  "limited_actions": {
+    "1": {
+      "name": "select left tab",
+      "args": []
+    },
+    "2": {
+      "name": "select right tab",
+      "args": []
+    },
+    "Esc": {
+      "name": "normal mode",
+      "args": []
+    }
+  },
+  "useTabTitle": false,
+  "smooth_scroll": true,
+  "ldrize": false,
+  "chrome_vim": false,
+  "antiAutoFocus": true,
+  "vim_normal_actions": {
+    "j": {
+      "name": "Down",
+      "args": []
+    },
+    "k": {
+      "name": "Up",
+      "args": []
+    },
+    "h": {
+      "name": "Left",
+      "args": []
+    },
+    "l": {
+      "name": "Right",
+      "args": []
+    },
+    "^": {
+      "name": "Line head",
+      "args": []
+    },
+    "$": {
+      "name": "Line foot",
+      "args": []
+    },
+    "Esc": {
+      "name": "normal mode",
+      "args": []
+    },
+    "i": {
+      "name": "insert mode",
+      "args": []
+    }
+  },
+  "vim_insert_actions": {
+    "Esc": {
+      "name": "normal mode",
+      "args": []
+    }
+  },
+  "vim_default_mode": "insert",
+  "vim_color_config": {
+    "normal": {
+      "background": "gray",
+      "text": "black"
+    },
+    "insert": {
+      "background": "white",
+      "text": "black"
+    }
+  }
+}

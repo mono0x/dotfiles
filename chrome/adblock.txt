@@ -1,0 +1,10 @@
+@@http://perfume-headline.info/$document
+@@http://*.monoweb.info/$document
+@@http://*.dev/$document
+
+||b.st-hatena.com^domain=~b.hatena.ne.jp
+||widget.zenback.jp
+||d8rk54i4mohrb.cloudfront.net
+##.hatena-bookmark-button-frame
+d.hatena.ne.jp##.bookmark-icon
+d.hatena.ne.jp##.bookmark-count
