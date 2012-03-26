@@ -32,7 +32,6 @@ NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'basyura/jslint.vim'
 NeoBundle 'bdd/vim-scala'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -43,6 +42,7 @@ NeoBundle 'thinca/vim-template'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/mkdpreview-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'mono0x/molokai'
 
@@ -254,10 +254,6 @@ let g:user_zen_settings = {
 " echodoc
 let g:echodoc_enable_at_startup = 1
 
-" jslint.vim
-function! s:javascript_filetype_settings()
-  autocmd BufLeave     <buffer> call jslint#clear()
-  autocmd BufWritePost <buffer> call jslint#check()
-  autocmd CursorMoved  <buffer> call jslint#message()
-endfunction
-autocmd FileType javascript call s:javascript_filetype_settings()
+" syntastic
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 2
