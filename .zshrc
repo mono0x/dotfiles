@@ -123,6 +123,8 @@ alias b='bundle'
 alias be='bundle exec'
 alias bet='bundle exec thor'
 alias ber='bundle exec rake'
+alias frbe='foreman run bundle exec'
+alias frbet='foreman run bundle exec thor'
 
 case "${OSTYPE}" in
 cygwin*)
