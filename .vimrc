@@ -183,9 +183,10 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 " unite
 let g:unite_enable_start_insert=1
-nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files file_mru bookmark file_rec<CR>
+nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files buffer_tab file_mru bookmark file file/new<CR>
 nnoremap [unite] <Nop>
 nmap <C-u> [unite]
+nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
 nnoremap <silent> [unite]g :<C-u>Unite -no-quit vcs_grep/git<CR>
