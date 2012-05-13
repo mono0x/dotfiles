@@ -5,6 +5,7 @@ source ~/.rvm/scripts/rvm
 rvm install 1.9.3
 rvm install 1.8.7
 rvm 1.9.3 --default
+rvm docs generate
 
 gem install bundler
 
