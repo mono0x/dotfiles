@@ -262,3 +262,11 @@ let g:echodoc_enable_at_startup = 1
 " syntastic
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 2
+
+" vim-ref
+function! s:ref_ruby_settings()
+  nnoremap <silent><buffer> [unite]k :<C-u>Unite ref/ri<CR>
+  nnoremap <silent><buffer> K :<C-u>call ref#jump('normal', 'ri')<CR>
+  vnoremap <silent><buffer> K :<C-u>call ref#jump('visual', 'ri')<CR>
+endfunction
+autocmd FileType ruby call s:ref_ruby_settings()
