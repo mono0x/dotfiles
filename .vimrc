@@ -44,6 +44,7 @@ NeoBundle 'mattn/mkdpreview-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-tabpagecd'
+NeoBundle 'thinca/vim-ref'
 
 NeoBundle 'mono0x/molokai'
 
