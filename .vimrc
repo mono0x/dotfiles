@@ -194,6 +194,7 @@ nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
 nnoremap <silent> [unite]g :<C-u>Unite -no-quit vcs_grep/git<CR>
 nnoremap <silent> [unite]G :<C-u>Unite -no-quit grep<CR>
+nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
 
 nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
