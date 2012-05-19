@@ -15,4 +15,10 @@
   ci = commit -v
   co = checkout
   di = diff
+  wd = diff --word-diff
   st = status
+  pr = pull --rebase
+  gp = grep -n
+  fo = fetch origin
+  ro = rebase origin
+  rc = rebase --continue
