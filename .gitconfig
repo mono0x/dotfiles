@@ -10,6 +10,7 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore
+  autocrlf = false
 [alias]
   br = branch
   ci = commit -v
