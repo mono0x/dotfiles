@@ -98,6 +98,7 @@ bindkey '^q' push-input
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=aunpack
 
 alias sudo="sudo "
+alias vi='vim'
 
 case "${OSTYPE}" in
 linux*)
