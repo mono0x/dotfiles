@@ -2,14 +2,23 @@
 @@http://*.monoweb.info/$document
 @@http://*.dev/$document
 
+@@http://platform.twitter.com/bookmarklets/share.js
+
 ||b.st-hatena.com^domain=~b.hatena.ne.jp
 ||b.hatena.ne.jp/entry/image/
 ||widget.zenback.jp
 ||d8rk54i4mohrb.cloudfront.net
 ||blog.seesaa.jp/js
 ||static.mixi.jp/js
+||blogroll.livedoor.net
 ##.hatena-bookmark-button-frame
 d.hatena.ne.jp##.bookmark-icon
 d.hatena.ne.jp##.bookmark-count
-*.seesaa.net###trace-searcher
 news.nicovideo.jp###BL_TWITTER
+www.pixiv.net##.ad
+res.nimg.jp/swf/player/marqueeplayer.swf?*
+
+@@http://ads.nicovideo.jp/*.js
+
+www.evernote.com##div[class="popupContent"]
+reader.livedoor.com##DIV[id="header"]
