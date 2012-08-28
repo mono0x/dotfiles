@@ -46,6 +46,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'taka84u9/vim-ref-ri'
+NeoBundle 'thinca/vim-visualstar'
 
 NeoBundle 'mono0x/molokai'
 
