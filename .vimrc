@@ -12,9 +12,6 @@ if has('vim_starting')
 endif
 NeoBundle 'Shougo/neobundle.vim'
 
-NeoBundle 'surround.vim'
-NeoBundle 'camelcasemotion'
-NeoBundle 'nginx.vim'
 NeoBundle 'sudo.vim'
 
 NeoBundle 'h1mesuke/vim-alignta'
@@ -47,6 +44,9 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'taka84u9/vim-ref-ri'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'kana/vim-smartinput'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'bkad/CamelCaseMotion'
+NeoBundle 'evanmiller/nginx-vim-syntax'
 
 NeoBundle 'mono0x/molokai'
 
@@ -57,6 +57,12 @@ filetype plugin indent on
 
 let g:molokai_original = 1
 colorscheme molokai
+
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+endif
 
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
