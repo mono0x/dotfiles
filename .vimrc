@@ -13,7 +13,6 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 NeoBundle 'surround.vim'
-NeoBundle 'YankRing.vim'
 NeoBundle 'camelcasemotion'
 NeoBundle 'nginx.vim'
 NeoBundle 'sudo.vim'
@@ -188,16 +187,18 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 " unite
 let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
 nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files buffer_tab file_mru bookmark file file/new<CR>
 nnoremap [unite] <Nop>
 nmap <C-u> [unite]
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
-nnoremap <silent> [unite]g :<C-u>Unite -no-quit vcs_grep/git<CR>
+nnoremap <silent> [unite]g :<C-u>Unite -no-quit vcs_grep<CR>
 nnoremap <silent> [unite]G :<C-u>Unite -no-quit grep<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
+nnoremap <silent> [unite]p :<C-u>Unite history/yank<CR>
 
 nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <C-w>n :bn<CR>
@@ -215,12 +216,7 @@ endfunction
 
 if has('clipboard')
   set clipboard=unnamedplus,unnamed
-  nnoremap y "+y
-  nnoremap p "+p
-  vnoremap y "+y
-  vnoremap p "+p
 endif
-let g:yankring_manual_clipboard_check = 0
 
 imap <C-d> <Delete>
 imap <C-f> <Right>
