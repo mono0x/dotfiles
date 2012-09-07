@@ -274,3 +274,14 @@ function! s:ref_ruby_settings()
   vnoremap <silent><buffer> K :<C-u>call ref#jump('visual', 'ri')<CR>
 endfunction
 autocmd FileType ruby call s:ref_ruby_settings()
+
+" Alignta
+xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
+xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
+xnoremap <silent> <Leader>t= :Alignta << -e =<CR>
+xnoremap <silent> <Leader>t=> :Alignta << -e =><CR>
+
+xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
+xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
+xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
+xnoremap <silent> <Leader>T=> :Alignta >> -e =><CR>
