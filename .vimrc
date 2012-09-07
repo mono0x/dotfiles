@@ -198,7 +198,7 @@ let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable=1
 nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files buffer_tab file_mru bookmark file file/new<CR>
 nnoremap [unite] <Nop>
-nmap <C-u> [unite]
+nmap <Leader>u [unite]
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
@@ -281,9 +281,9 @@ autocmd FileType ruby call s:ref_ruby_settings()
 xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
 xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
 xnoremap <silent> <Leader>t= :Alignta << -e =<CR>
-xnoremap <silent> <Leader>t=> :Alignta << -e =><CR>
+xnoremap <silent> <Leader>t> :Alignta << -e =><CR>
 
 xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
 xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
 xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
-xnoremap <silent> <Leader>T=> :Alignta >> -e =><CR>
+xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
