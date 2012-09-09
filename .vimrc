@@ -46,6 +46,7 @@ NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'evanmiller/nginx-vim-syntax'
+NeoBundle 'thinca/vim-poslist'
 
 NeoBundle 'mono0x/molokai'
 
@@ -287,3 +288,7 @@ xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
 xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
 xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
 xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
+
+" poslist
+map <C-o> <Plug>(poslist-prev-pos)
+map <C-i> <Plug>(poslist-next-pos)
