@@ -19,7 +19,13 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+  \   'build': {
+  \     'windows': 'echo "Sorry, cannot update vimproc binary file in Windows."',
+  \     'mac': 'make -f make_mac.mak',
+  \     'unix': 'make -f make_unix.mak',
+  \   },
+  \ }
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/echodoc'
