@@ -186,12 +186,22 @@ set hidden
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
 
+" RSense
+let g:rsenseHome=$RSENSE_HOME
+let g:rsenseUseOmniFunc=1
+
 " neocomplcache
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_smart_case=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
 let g:neocomplcache_min_keyword_length=3
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns={}
+endif
+if !has('win32')
+  let g:neocomplcache_omni_patterns['ruby']='[^. *\t]\.\w*\|\h\w*::'
+endif
 let g:neocomplcache_same_filetype_lists={}
 let g:neocomplcache_same_filetype_lists['c']='cpp'
 let g:neocomplcache_same_filetype_lists['cpp']='c'

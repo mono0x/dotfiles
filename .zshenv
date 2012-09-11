@@ -5,3 +5,4 @@ export LC_ALL=en_US.UTF-8
 
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
+export RSENSE_HOME=$HOME/dotfiles/rsense

@@ -1,1 +1,3 @@
 .vim/bundle
+/rsense/
+/.vim/plugin/rsense.vim
