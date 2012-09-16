@@ -10,6 +10,10 @@ if exists( "b:did_ftplugin" )
 endif
 let b:did_ftplugin = 1
 
+" document library
+nnoremap <silent><buffer> K :<C-u>call system('%HOME%\bin\hsp3\hsphelp\helpman.exe ' . expand('<cword>'))<CR>
+vnoremap <silent><buffer> K :<C-u>call system('%HOME%\bin\hsp3\hsphelp\helpman.exe ' . expand('<cword>'))<CR>
+
 set cpo-=C
 
 setlocal cindent
