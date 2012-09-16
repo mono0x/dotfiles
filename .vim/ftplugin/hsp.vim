@@ -16,9 +16,6 @@ setlocal cindent
 
 setlocal fo-=t fo+=croql
 
-setlocal makeprg=\"%HOME%\\bin\\hsp3\\hscl\"\ %
-setlocal errorformat=%f\(%l)%*[^0-9]%n\ :\ %m
-
 if exists( "g:HspUseDoubleSlashIndent" )
   setlocal comments=sr:/*,mb:*,ex:*/,:;,://
 else
@@ -31,9 +28,6 @@ endif
 
 " set include path
 set include=^\\s*#\\s*\\(include\\\\|addition\\)
-
-" run
-nnoremap <F5> :update<CR>:make<CR>
 
 " set filter for file browser dialog
 if has( "gui_win32" ) 

@@ -314,3 +314,16 @@ xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
 " poslist
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
+
+" quickrun
+if !exists('g:quickrun_config')
+  let g:quickrun_config = {}
+endif
+let g:quickrun_config['hsp'] = {
+  \   'command': '%HOME%\bin\hsp3\hscl',
+  \   'exec': '%c %s',
+  \   'hook/output_encode/encoding': 'cp932',
+  \   'outputter': 'error',
+  \   'error': 'quickfix',
+  \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
+  \ }
