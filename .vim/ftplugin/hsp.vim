@@ -11,8 +11,8 @@ endif
 let b:did_ftplugin = 1
 
 " document library
-nnoremap <silent><buffer> K :<C-u>call system('%HOME%\bin\hsp3\hsphelp\helpman.exe ' . expand('<cword>'))<CR>
-vnoremap <silent><buffer> K :<C-u>call system('%HOME%\bin\hsp3\hsphelp\helpman.exe ' . expand('<cword>'))<CR>
+nnoremap <silent><buffer> K :<C-u>call vimproc#system('~/bin/hsp3/hdl.exe ' . expand('<cword>'))<CR>
+vnoremap <silent><buffer> K :<C-u>call vimproc#system('~/bin/hsp3/hdl.exe ' . expand('<cword>'))<CR>
 
 set cpo-=C
 
