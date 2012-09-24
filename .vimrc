@@ -55,6 +55,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundle 'thinca/vim-poslist'
+NeoBundle 'jceb/vim-hier'
 
 NeoBundle 'mono0x/molokai'
 
@@ -331,3 +332,7 @@ let g:quickrun_config['hsp'] = {
   \   'error': 'quickfix',
   \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
   \ }
+
+" vim-watchdogs
+let g:watchdogs_check_BufWritePost_enable = 1
+call watchdogs#setup(g:quickrun_config)
