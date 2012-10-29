@@ -1,8 +1,8 @@
 
 " font settings
 if has("win32")
-  set guifont=Consolas:h10
-  set guifont=MeiryoKe_Gothic:h10:cSHIFTJIS
+  set guifont=Consolas:h10:cSHIFTJIS
+  set guifontwide=MeiryoKe_Gothic:h10:cSHIFTJIS
 elseif has("mac")
   set guifont=Menlo:h13
 endif
