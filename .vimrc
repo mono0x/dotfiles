@@ -27,7 +27,7 @@ NeoBundle 'Shougo/vimproc', {
   \   },
   \ }
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Rip-Rip/clang_complete'
+NeoBundleLazy 'Rip-Rip/clang_complete'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'thinca/vim-quickrun'
@@ -194,6 +194,8 @@ let g:rsenseHome=$RSENSE_HOME
 let g:rsenseUseOmniFunc=1
 
 " clang_complete
+autocmd filetype c,cpp NeoBundleSource clang_complete
+
 let g:clang_complete_auto=0
 
 " neocomplcache
