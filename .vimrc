@@ -21,7 +21,6 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'Shougo/vimproc', {
   \   'build': {
-  \     'windows': '"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" amd64 && nmake make_msvc64.mak',
   \     'mac': 'make -f make_mac.mak',
   \     'unix': 'make -f make_unix.mak',
   \   },
