@@ -11,28 +11,44 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 NeoBundle 'Shougo/neobundle.vim'
-
-NeoBundle 'sudo.vim'
-
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'Shougo/vimproc', {
   \   'build': {
   \     'mac': 'make -f make_mac.mak',
   \     'unix': 'make -f make_unix.mak',
   \   },
   \ }
+
+NeoBundle 'sudo.vim'
+
 NeoBundle 'Shougo/neocomplcache'
 NeoBundleLazy 'Rip-Rip/clang_complete'
-NeoBundle 'Shougo/vimshell'
+NeoBundleLazy 'taichouchou2/vim-rsense'
+NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle 'mattn/zencoding-vim'
+NeoBundleLazy 'mattn/zencoding-vim'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'thinca/vim-template'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'kana/vim-tabpagecd'
+NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'bkad/CamelCaseMotion'
+NeoBundle 'thinca/vim-poslist'
+NeoBundle 'jceb/vim-hier'
+NeoBundle 'thinca/vim-ref'
+NeoBundleLazy 'taka84u9/vim-ref-ri'
+
+" unite
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'sgur/unite-git_grep'
+
+" syntax
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
@@ -40,22 +56,9 @@ NeoBundle 'tpope/vim-liquid'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'sophacles/vim-processing'
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'thinca/vim-template'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/mkdpreview-vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'taka84u9/vim-ref-ri'
-NeoBundle 'thinca/vim-visualstar'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'evanmiller/nginx-vim-syntax'
-NeoBundle 'thinca/vim-poslist'
-NeoBundle 'jceb/vim-hier'
 
+" colorscheme
 NeoBundle 'mono0x/molokai'
 
 set t_Co=256
@@ -191,6 +194,9 @@ set listchars=tab:>\ ,extends:>,precedes:<
 " RSense
 let g:rsenseHome=$RSENSE_HOME
 let g:rsenseUseOmniFunc=1
+if !has('win32')
+  autocmd filetype ruby NeoBundleSource vim-rsense
+endif
 
 " clang_complete
 autocmd filetype c,cpp NeoBundleSource clang_complete
@@ -287,6 +293,7 @@ endfunction
 let g:user_zen_settings = {
   \'indentation': '  ',
   \}
+autocmd filetype html NeoBundleSource zencoding-vim
 
 " echodoc
 let g:echodoc_enable_at_startup = 1
@@ -297,6 +304,7 @@ let g:syntastic_auto_loc_list = 2
 
 " vim-ref
 function! s:ref_ruby_settings()
+  NeoBundleSource vim-ref-ri
   nnoremap <silent><buffer> [unite]k :<C-u>Unite ref/ri<CR>
   nnoremap <silent><buffer> K :<C-u>call ref#jump('normal', 'ri')<CR>
   vnoremap <silent><buffer> K :<C-u>call ref#jump('visual', 'ri')<CR>
