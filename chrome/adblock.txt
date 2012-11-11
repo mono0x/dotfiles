@@ -1,6 +1,7 @@
 @@http://perfume-headline.info/$document
 @@http://*.monoweb.info/$document
 @@http://*.dev/$document
+@@http://*.xip.io/$document
 
 @@http://platform.twitter.com/bookmarklets/share.js
 
@@ -22,3 +23,4 @@ res.nimg.jp/swf/player/marqueeplayer.swf?*
 
 www.evernote.com##div[class="popupContent"]
 reader.livedoor.com##DIV[id="header"]
+www.youtube.com##div[id="default-language-box"]
