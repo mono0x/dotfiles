@@ -203,6 +203,45 @@ autocmd filetype c,cpp NeoBundleSource clang_complete
 
 let g:clang_complete_auto=0
 
+" msvc
+" http://d.hatena.ne.jp/osyo-manga/20121117/1353139064
+if has('win32')
+  let s:msvc_dirs = [
+  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 11.0",
+  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 10.0",
+  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 9.0",
+  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 8.0",
+  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 11.0",
+  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 10.0",
+  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 9.0",
+  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 8.0",
+  \]
+  function! s:set_msvc_path(msvc_path)
+    if has_key(s:, "msvc_path") || !isdirectory(a:msvc_path)
+      return
+    endif
+
+    let s:msvc_path = a:msvc_path
+    let path = a:msvc_path
+
+    let $VSINSTALLDIR=path
+    let $VCINSTALLDIR=$VSINSTALLDIR."/VC"
+
+    let $DevEnvDir=$VSINSTALLDIR."/Common7/IDE;"
+    let $PATH=$VSINSTALLDIR."Common7/Tools;".$PATH
+    let $PATH=$VCINSTALLDIR."/bin;".$PATH
+    let $PATH=$DevEnvDir.";".$PATH
+
+    let $INCLUDE=$VCINSTALLDIR."/include;".$INCLUDE
+    let $LIB=$VCINSTALLDIR."/LIB;".$LIB
+    let $LIBPATH=$VCINSTALLDIR."/LIB;".$LIBPATH
+  endfunction
+  function! s:setup_msvc_path()
+    call s:set_msvc_path(get(filter(copy(s:msvc_dirs), "isdirectory(v:val)"), 0, ""))
+  endfunction
+  call s:setup_msvc_path()
+endif
+
 " neocomplcache
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_smart_case=1
