@@ -111,6 +111,10 @@ esac
 alias ll='ls -l'
 alias la='ls -A'
 
+if which hub &> /dev/null; then
+  alias git='hub'
+  compdef hub=git
+fi
 alias g='git'
 alias ga='git add'
 alias gbr='git branch'
