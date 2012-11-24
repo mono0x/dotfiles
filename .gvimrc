@@ -6,8 +6,10 @@ elseif has("mac")
   set guifont=Menlo:h13
 endif
 
-let g:molokai_original = 1
-colorscheme molokai
+if neobundle#is_installed('molokai')
+  let g:molokai_original = 1
+  colorscheme molokai
+endif
 
 " Highlight trailing spaces
 highlight TrailingSpaces guibg=red ctermbg=red

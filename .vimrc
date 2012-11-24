@@ -66,8 +66,10 @@ syntax enable
 
 filetype plugin indent on
 
-let g:molokai_original = 1
-colorscheme molokai
+if neobundle#is_installed('molokai')
+  let g:molokai_original = 1
+  colorscheme molokai
+endif
 
 if neobundle#exists_not_installed_bundles()
   echomsg 'Not installed bundles : ' .
