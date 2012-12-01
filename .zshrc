@@ -4,6 +4,7 @@ HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 
 setopt interactive_comments
+setopt extended_glob
 
 bindkey -v
 
