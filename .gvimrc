@@ -1,7 +1,7 @@
 
 " font settings
 if has("win32")
-  set guifont=Consolas:h10
+  set guifont=Ricty:h12
 elseif has("mac")
   set guifont=Menlo:h13
 endif
