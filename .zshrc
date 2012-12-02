@@ -175,3 +175,5 @@ source ~/.zsh/cdd/cdd
 chpwd() {
   _cdd_chpwd
 }
+
+REPORTTIME=3
