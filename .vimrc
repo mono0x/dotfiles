@@ -93,6 +93,8 @@ highlight TrailingSpaces guibg=red ctermbg=red
 match TrailingSpaces /\s\+$/
 autocmd WinEnter * match TrailingSpaces /\s\+$/
 
+set textwidth=0
+
 set encoding=utf-8
 if has('win32')
   set termencoding=cp932
