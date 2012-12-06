@@ -388,3 +388,7 @@ let g:quickrun_config['hsp'] = {
 " vim-watchdogs
 let g:watchdogs_check_BufWritePost_enable = 1
 call watchdogs#setup(g:quickrun_config)
+
+if has('win32')
+  let $PATH=$PATH.';'.$HOME.'\.nvmw\v0.8.8'
+endif
