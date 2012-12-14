@@ -11,12 +11,14 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-  \   'build': {
-  \     'mac': 'make -f make_mac.mak',
-  \     'unix': 'make -f make_unix.mak',
-  \   },
-  \ }
+if !(has('win32') && has('kaoriya'))
+  NeoBundle 'Shougo/vimproc', {
+    \   'build': {
+    \     'mac': 'make -f make_mac.mak',
+    \     'unix': 'make -f make_unix.mak',
+    \   },
+    \ }
+endif
 
 NeoBundle 'sudo.vim'
 
