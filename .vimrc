@@ -8,9 +8,9 @@ endif
 
 if has('vim_starting')
   set rtp+=$HOME/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
-NeoBundle 'Shougo/neobundle.vim'
+call neobundle#rc(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 if !(has('win32') && has('kaoriya'))
   NeoBundle 'Shougo/vimproc', {
     \   'build': {
@@ -23,14 +23,20 @@ endif
 NeoBundle 'sudo.vim'
 
 NeoBundle 'Shougo/neocomplcache'
-NeoBundleLazy 'Rip-Rip/clang_complete'
-NeoBundleLazy 'taichouchou2/vim-rsense'
+NeoBundleLazy 'Rip-Rip/clang_complete', {
+  \   'autoload': { 'filetypes': [ 'c', 'cpp' ] },
+  \ }
+NeoBundleLazy 'taichouchou2/vim-rsense', {
+  \   'autoload': { 'filetypes': [ 'ruby' ] },
+  \ }
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundleLazy 'mattn/zencoding-vim'
+NeoBundleLazy 'mattn/zencoding-vim', {
+  \   'autoload': { 'filetypes': [ 'html' ] },
+  \ }
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-template'
@@ -42,7 +48,9 @@ NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'thinca/vim-poslist'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'thinca/vim-ref'
-NeoBundleLazy 'taka84u9/vim-ref-ri'
+NeoBundleLazy 'taka84u9/vim-ref-ri', {
+  \   'autoload': { 'filetypes': [ 'ruby' ] }
+  \ }
 
 " unite
 NeoBundle 'Shougo/unite.vim'
@@ -200,13 +208,8 @@ set listchars=tab:>\ ,extends:>,precedes:<
 " RSense
 let g:rsenseHome=$RSENSE_HOME
 let g:rsenseUseOmniFunc=1
-if !has('win32')
-  autocmd filetype ruby NeoBundleSource vim-rsense
-endif
 
 " clang_complete
-autocmd filetype c,cpp NeoBundleSource clang_complete
-
 let g:clang_complete_auto=0
 
 " msvc
@@ -338,7 +341,6 @@ endfunction
 let g:user_zen_settings = {
   \'indentation': '  ',
   \}
-autocmd filetype html NeoBundleSource zencoding-vim
 
 " echodoc
 let g:echodoc_enable_at_startup = 1
@@ -349,7 +351,6 @@ let g:syntastic_auto_loc_list = 2
 
 " vim-ref
 function! s:ref_ruby_settings()
-  NeoBundleSource vim-ref-ri
   nnoremap <silent><buffer> [unite]k :<C-u>Unite ref/ri<CR>
   nnoremap <silent><buffer> K :<C-u>call ref#jump('normal', 'ri')<CR>
   vnoremap <silent><buffer> K :<C-u>call ref#jump('visual', 'ri')<CR>
