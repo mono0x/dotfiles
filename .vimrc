@@ -24,7 +24,7 @@ NeoBundle 'sudo.vim'
 
 NeoBundle 'Shougo/neocomplcache'
 NeoBundleLazy 'Rip-Rip/clang_complete', {
-  \   'autoload': { 'filetypes': [ 'c', 'cpp' ] },
+  \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
   \ }
 NeoBundleLazy 'Shougo/neocomplcache-rsense', {
   \   'autoload': { 'filetypes': [ 'ruby' ] },
@@ -207,6 +207,7 @@ set listchars=tab:>\ ,extends:>,precedes:<
 
 " clang_complete
 let g:clang_complete_auto=0
+let g:clang_complete_include_current_directory_recursively=1
 
 " msvc
 " http://d.hatena.ne.jp/osyo-manga/20121117/1353139064
@@ -254,13 +255,13 @@ let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
 let g:neocomplcache_min_keyword_length=3
 let g:neocomplcache_force_overwrite_completefunc=1
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns={}
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns={}
 endif
-let g:neocomplcache_omni_patterns['cpp']='[^.[:digit:] *\t]\%(\.\|->\)\|::'
-let g:neocomplcache_same_filetype_lists={}
-let g:neocomplcache_same_filetype_lists['c']='cpp'
-let g:neocomplcache_same_filetype_lists['cpp']='c'
+let g:neocomplcache_force_omni_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 inoremap <expr><C-y> neocomplcache#close_popup()
