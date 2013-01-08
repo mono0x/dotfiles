@@ -26,7 +26,7 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundleLazy 'Rip-Rip/clang_complete', {
   \   'autoload': { 'filetypes': [ 'c', 'cpp' ] },
   \ }
-NeoBundleLazy 'taichouchou2/vim-rsense', {
+NeoBundleLazy 'Shougo/neocomplcache-rsense', {
   \   'autoload': { 'filetypes': [ 'ruby' ] },
   \ }
 NeoBundle 'h1mesuke/vim-alignta'
@@ -205,10 +205,6 @@ set hidden
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
 
-" RSense
-let g:rsenseHome=$RSENSE_HOME
-let g:rsenseUseOmniFunc=1
-
 " clang_complete
 let g:clang_complete_auto=0
 
@@ -260,9 +256,6 @@ let g:neocomplcache_min_keyword_length=3
 let g:neocomplcache_force_overwrite_completefunc=1
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns={}
-endif
-if !has('win32')
-  let g:neocomplcache_omni_patterns['ruby']='[^. *\t]\.\w*\|\h\w*::'
 endif
 let g:neocomplcache_omni_patterns['cpp']='[^.[:digit:] *\t]\%(\.\|->\)\|::'
 let g:neocomplcache_same_filetype_lists={}
