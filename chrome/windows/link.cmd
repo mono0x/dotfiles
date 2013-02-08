@@ -1,0 +1,2 @@
+del "%HOME%\AppData\Local\Google\Chrome\User Data\Default\User Stylesheets\Custom.css"
+mklink "%HOME%\AppData\Local\Google\Chrome\User Data\Default\User Stylesheets\Custom.css" "%HOME%\dotfiles\chrome\windows\User Data\Default\User Stylesheets\Custom.css"
