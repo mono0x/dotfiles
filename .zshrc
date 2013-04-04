@@ -14,10 +14,10 @@ setopt ignore_eof
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
 
+fpath=($HOME/.zsh/zsh-completions/src $fpath)
+
 autoload -U compinit
 compinit
-
-fpath=(~/.zsh/zsh-completions $fpath)
 
 autoload colors
 colors
