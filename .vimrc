@@ -35,7 +35,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundleLazy 'mattn/zencoding-vim', {
-  \   'autoload': { 'filetypes': [ 'html' ] },
+  \   'autoload': { 'filetypes': [ 'html', 'haml', 'css' ] },
   \ }
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'tpope/vim-fugitive'
@@ -59,14 +59,62 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 
 " syntax
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'tpope/vim-liquid'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'sophacles/vim-processing'
-NeoBundle 'evanmiller/nginx-vim-syntax'
+NeoBundleLazy 'hail2u/vim-css3-syntax', {
+  \   'autoload': { 'filetypes': [ 'css', 'sass', 'scss' ] }
+  \  }
+NeoBundleLazy 'othree/html5.vim', {
+  \   'autoload': { 'filetypes': 'html' }
+  \  }
+NeoBundleLazy 'cakebaker/scss-syntax.vim', {
+  \   'autoload': { 'filetypes': [ 'scss' ] }
+  \  }
+NeoBundle 'tpope/vim-liquid', {
+  \   'autoload': { 'filetypes': 'liquid' }
+  \  }
+NeoBundleLazy 'tpope/vim-markdown', {
+  \   'autoload': { 'filetypes': 'markdown' }
+  \  }
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+  \   'autoload': { 'filetypes': 'coffee' }
+  \  }
+NeoBundleLazy 'sophacles/vim-processing', {
+  \   'autoload': { 'filetypes': 'processing' }
+  \  }
+NeoBundleLazy 'evanmiller/nginx-vim-syntax', {
+  \   'autoload': { 'filetypes': 'nginx' }
+  \  }
+
+au BufRead,BufNewFile *.scss	set filetype=scss.css
+au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown
+au BufRead,BufNewFile *.pde setf processing
+
+au BufNewFile,BufRead *.liquid					set ft=liquid
+
+au BufNewFile,BufRead */_layouts/*.html,*/_includes/*.html	set ft=liquid
+au BufNewFile,BufRead *.html,*.xml,*.textile
+      \ if getline(1) == '---' | set ft=liquid | endif
+au BufNewFile,BufRead *.markdown,*.mkd,*.mkdn,*.md
+      \ if getline(1) == '---' |
+      \   let b:liquid_subtype = 'markdown' |
+      \   set ft=liquid |
+      \ endif
+
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
+autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
+autocmd BufNewFile,BufRead *._coffee set filetype=coffee
+
+function! s:DetectCoffee()
+    if getline(1) =~ '^#!.*\<coffee\>'
+        set filetype=coffee
+    endif
+endfunction
+
+autocmd BufNewFile,BufRead * call s:DetectCoffee()
+
+au BufRead,BufNewFile *.nginx set ft=nginx
+au BufRead,BufNewFile */etc/nginx/* set ft=nginx
+au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
 
 " colorscheme
 NeoBundle 'mono0x/molokai'
