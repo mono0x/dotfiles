@@ -11,6 +11,8 @@
   editor = vim
   excludesfile = ~/.gitignore
   autocrlf = false
+[grep]
+  lineNumber = true
 [alias]
   br = branch
   ci = commit -v
