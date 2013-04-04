@@ -14,3 +14,10 @@ if [[ -f ~/.nvm/nvm.sh ]]; then
   source ~/.nvm/nvm.sh
   nvm use v0.8.11 >/dev/null 2>&1
 fi
+
+# Heroku Toolbelt
+case "${OSTYPE}" in
+darwin*)
+  export PATH="/usr/local/heroku/bin:$PATH"
+  ;;
+esac
