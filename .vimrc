@@ -351,7 +351,11 @@ function! s:good_width()
 endfunction
 
 if has('clipboard')
-  set clipboard=unnamedplus,unnamed
+  if has('unnamedplus')
+    set clipboard=unnamedplus,unnamed
+  else
+    set clipboard=unnamed
+  endif
 endif
 
 imap <C-d> <Delete>
