@@ -123,6 +123,7 @@ alias gci='git commit'
 alias gco='git checkout'
 alias gd='git diff'
 alias gl='git log --graph'
+alias gg='git grep -H --heading --break'
 alias gs='git status'
 
 alias b='bundle'

@@ -277,11 +277,16 @@ nmap <Leader>u [unite]
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
-nnoremap <silent> [unite]g :<C-u>Unite -no-quit vcs_grep<CR>
-nnoremap <silent> [unite]G :<C-u>Unite -no-quit grep<CR>
+nnoremap <silent> <Leader>g :<C-u>Unite -no-quit vcs_grep<CR>
+nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
 nnoremap <silent> [unite]p :<C-u>Unite history/yank<CR>
+
+call unite#custom_source('file_rec/async', 'ignore_pattern',
+  \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
+  \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
+  \ '\|downloads/tmp\|templates_c')
 
 nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <C-w>n :bn<CR>
