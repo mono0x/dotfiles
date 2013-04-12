@@ -4,6 +4,8 @@ if has("win32")
   set guifont=Ricty:h12
 elseif has("mac")
   set guifont=Menlo:h13
+else
+  set guifont=Ricty\ 12
 endif
 
 if neobundle#is_installed('molokai')
