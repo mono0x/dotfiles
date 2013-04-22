@@ -15,9 +15,14 @@ if [[ -f ~/.nvm/nvm.sh ]]; then
   nvm use v0.8.11 >/dev/null 2>&1
 fi
 
-# Heroku Toolbelt
 case "${OSTYPE}" in
+linux*)
+  # TeX Live
+  export PATH="/usr/local/texlive/2012/bin/i386-linux:$PATH"
+  ;;
 darwin*)
+  # Heroku Toolbelt
   export PATH="/usr/local/heroku/bin:$PATH"
   ;;
 esac
+
