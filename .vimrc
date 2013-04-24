@@ -51,13 +51,13 @@ NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'taka84u9/vim-ref-ri', {
   \   'autoload': { 'filetypes': [ 'ruby' ] }
   \ }
-NeoBundle 'jcf/vim-latex'
 
 " unite
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
+NeoBundle 'Shougo/unite-build'
 
 " syntax
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
@@ -327,6 +327,7 @@ nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
 nnoremap <silent> <Leader>g :<C-u>Unite -no-quit vcs_grep<CR>
+nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
 nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
@@ -448,41 +449,3 @@ call watchdogs#setup(g:quickrun_config)
 if has('win32')
   let $PATH=$PATH.';'.$HOME.'\.nvmw\v0.8.18'
 endif
-
-" vim-latex
-let g:tex_flavor='latex'
-let g:Imap_UsePlaceHolders = 1
-let g:Imap_DeleteEmptyPlaceHolders = 1
-let g:Imap_StickyPlaceHolders = 0
-let g:Tex_DefaultTargetFormat = 'dvi'
-let g:Tex_FormatDependency_ps = 'dvi,ps'
-let g:Tex_FormatDependency_pdf = 'dvi,pdf'
-"let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
-"let g:Tex_FormatDependency_pdf = 'pdf'
-let g:Tex_CompileRule_dvi = 'platex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode $*'
-let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
-let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
-"let g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
-"let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'lualatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'luajitlatex -synctex=1 -interaction=nonstopmode $*'
-"let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
-let g:Tex_BibtexFlavor = 'pbibtex'
-"let g:Tex_BibtexFlavor = 'upbibtex'
-let g:Tex_MakeIndexFlavor = 'mendex $*.idx'
-let g:Tex_UseEditorSettingInDVIViewer = 1
-let g:Tex_ViewRule_dvi = 'pxdvi -watchfile 1'
-let g:Tex_ViewRule_ps = 'evince'
-"let g:Tex_ViewRule_ps = 'okular --unique'
-"let g:Tex_ViewRule_ps = 'zathura'
-"let g:Tex_ViewRule_ps = 'qpdfview --unique'
-"let g:Tex_ViewRule_ps = 'gv --watch'
-let g:Tex_ViewRule_pdf = 'evince'
-"let g:Tex_ViewRule_pdf = 'okular --unique'
-"let g:Tex_ViewRule_pdf = 'zathura -s -x "vim --servername synctex -n --remote-silent +\%{line} \%{input}"'
-"let g:Tex_ViewRule_pdf = 'qpdfview --unique'
-"let g:Tex_ViewRule_pdf = 'pdfviewer'
-"let g:Tex_ViewRule_pdf = 'texworks'
-"let g:Tex_ViewRule_pdf = 'acroread'
-"let g:Tex_ViewRule_pdf = 'pdfopen -viewer ar9-tab'
