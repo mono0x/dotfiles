@@ -5,7 +5,7 @@ export LC_ALL=en_US.UTF-8
 
 if [ -d ${HOME}/.rbenv  ] ; then
   export PATH=$HOME/.rbenv/bin:$PATH
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - zsh)"
 fi
 
 export RSENSE_HOME=$HOME/dotfiles/rsense
