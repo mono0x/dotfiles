@@ -133,6 +133,7 @@ alias ber='noglob bundle exec rake'
 alias rake='noglob rake'
 alias frbe='foreman run bundle exec'
 alias frbet='foreman run bundle exec thor'
+alias frber='foreman run bundle exec rake'
 
 # http://www.reddit.com/r/commandline/comments/12g76v/how_to_automatically_source_zshrc_in_all_open/
 trap "source ~/.zshrc" USR1
