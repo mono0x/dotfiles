@@ -174,3 +174,10 @@ source ~/.zsh/cdd/cdd
 chpwd() {
   _cdd_chpwd
 }
+
+# rbenv
+rbenvsudo() {
+  executable=$1
+  shift 1
+  command sudo PATH=$PATH $(rbenv which $executable) $*
+}
