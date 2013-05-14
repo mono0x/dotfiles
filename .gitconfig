@@ -25,3 +25,5 @@
   fo = fetch origin
   ro = rebase origin
   rc = rebase --continue
+[push]
+	default = simple
