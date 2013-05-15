@@ -1,0 +1,7 @@
+binding "gtk-mono-text-entry" {
+  bind "<ctrl>d" { "delete-from-cursor" (chars, 1) }
+  bind "<ctrl>h" { "delete-from-cursor" (chars, -1) }
+}
+
+class "GtkEntry" binding "gtk-mono-text-entry"
+class "GtkTextView" binding "gtk-mono-text-entry"
