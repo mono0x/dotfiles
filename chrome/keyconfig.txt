@@ -1,6 +1,6 @@
 {
   "name": "Chrome Keyconfig",
-  "version": "1.11.0",
+  "version": "1.14.0",
   "normal_actions": {
     "1": {
       "name": "select left tab",
