@@ -23,9 +23,11 @@ endif
 NeoBundle 'sudo.vim'
 
 NeoBundle 'Shougo/neocomplcache'
-NeoBundleLazy 'Rip-Rip/clang_complete', {
-  \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
-  \ }
+if has('python')
+  NeoBundleLazy 'Rip-Rip/clang_complete', {
+    \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
+    \ }
+endif
 NeoBundleLazy 'Shougo/neocomplcache-rsense', {
   \   'autoload': { 'filetypes': [ 'ruby' ] },
   \ }
