@@ -58,6 +58,7 @@ NeoBundle 'tsukkee/unite-help'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'Shougo/unite-build'
+NeoBundle 'hewes/unite-gtags'
 
 " syntax
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
@@ -333,6 +334,9 @@ nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
 nnoremap <silent> [unite]p :<C-u>Unite history/yank<CR>
+nnoremap <silent> [unite]t :<C-u>Unite gtags/grep<CR>
+
+noremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
 
 call unite#custom_source('file_rec/async', 'ignore_pattern',
   \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
