@@ -40,6 +40,7 @@ NeoBundleLazy 'mattn/zencoding-vim', {
   \   'autoload': { 'filetypes': [ 'html', 'haml', 'css' ] },
   \ }
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'osyo-manga/vim-powerline-unite-theme'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -149,6 +150,10 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#34352D ctermbg=236
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#43443A ctermbg=239
+
+" Powerline
+let g:Powerline_theme="unite_status"
+let g:Powerline_colorscheme="unite_status"
 
 " Highlight trailing spaces
 highlight TrailingSpaces guibg=red ctermbg=red
@@ -340,7 +345,7 @@ nnoremap <silent> [unite]t :<C-u>Unite gtags/grep<CR>
 
 noremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
 
-call unite#custom_source('file_rec/async', 'ignore_pattern',
+call unite#custom#source('file_rec/async', 'ignore_pattern',
   \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
   \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
   \ '\|downloads/tmp\|templates_c')
