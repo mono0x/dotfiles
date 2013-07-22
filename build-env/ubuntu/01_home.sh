@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ln -s ~/dotfiles/.gdbinit    ~
 ln -s ~/dotfiles/.gitconfig  ~
 ln -s ~/dotfiles/.gvimrc     ~
 ln -s ~/dotfiles/.tmux.conf  ~
