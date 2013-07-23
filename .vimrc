@@ -39,8 +39,7 @@ NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundleLazy 'mattn/zencoding-vim', {
   \   'autoload': { 'filetypes': [ 'html', 'haml', 'css' ] },
   \ }
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'osyo-manga/vim-powerline-unite-theme'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -151,9 +150,9 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#34352D ctermbg=236
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#43443A ctermbg=239
 
-" Powerline
-let g:Powerline_theme="unite_status"
-let g:Powerline_colorscheme="unite_status"
+" airline
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 " Highlight trailing spaces
 highlight TrailingSpaces guibg=red ctermbg=red
