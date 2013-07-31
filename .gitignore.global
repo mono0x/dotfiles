@@ -18,3 +18,14 @@ Thumbs.db
 
 # Folder config file
 Desktop.ini
+
+#
+# General
+#
+# global
+GPATH
+GRTAGS
+GTAGS
+
+# trace-cmd
+trace.dat
