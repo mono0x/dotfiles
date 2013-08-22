@@ -151,7 +151,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#34352D ctermbg=236
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#43443A ctermbg=239
 
 " airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'molokai'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
