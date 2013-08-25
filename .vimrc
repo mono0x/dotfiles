@@ -39,7 +39,7 @@ NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundleLazy 'mattn/zencoding-vim', {
   \   'autoload': { 'filetypes': [ 'html', 'haml', 'css' ] },
   \ }
-NeoBundle 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -150,10 +150,22 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#34352D ctermbg=236
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#43443A ctermbg=239
 
-" airline
-let g:airline_theme = 'molokai'
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" lightline
+let g:lightline = {
+  \   'active': {
+  \     'left': [
+  \       [ 'mode', 'paste', ],
+  \       [ 'fugitive', 'filename', ],
+  \     ]
+  \   },
+  \   'component_function': {
+  \     'fugitive': 'MyFugitive',
+  \   },
+  \ }
+
+function! MyFugitive()
+  return exists('*fugitive#head') && strlen(fugitive#head()) ? fugitive#head() : ''
+endfunction
 
 " Highlight trailing spaces
 highlight TrailingSpaces guibg=red ctermbg=red
