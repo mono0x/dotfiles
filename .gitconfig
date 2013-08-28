@@ -27,3 +27,9 @@
   rc = rebase --continue
 [push]
   default = simple
+[url "git@github.com:"]
+  pushinsteadof = "git://github.com/"
+  pushinsteadof = "https://github.com/"
+[url "git@bitbucket.org:"]
+  pushinsteadof = "git://bitbucket.org/"
+  pushinsteadof = "https://bitbucket.org/"
