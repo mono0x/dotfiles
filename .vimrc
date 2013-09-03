@@ -87,6 +87,9 @@ NeoBundleLazy 'sophacles/vim-processing', {
 NeoBundleLazy 'evanmiller/nginx-vim-syntax', {
   \   'autoload': { 'filetypes': 'nginx' }
   \  }
+NeoBundleLazy 'gnuplot.vim', {
+  \   'autoload': { 'filetypes': 'gnuplot' }
+  \  }
 
 au BufRead,BufNewFile *.scss	set filetype=scss.css
 au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown
@@ -119,6 +122,8 @@ autocmd BufNewFile,BufRead * call s:DetectCoffee()
 au BufRead,BufNewFile *.nginx set ft=nginx
 au BufRead,BufNewFile */etc/nginx/* set ft=nginx
 au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
+
+au BufRead,BufNewFile *.plt set ft=gnuplot
 
 " colorscheme
 NeoBundle 'mono0x/molokai'
