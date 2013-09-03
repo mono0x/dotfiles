@@ -36,7 +36,7 @@ NeoBundle 'Shougo/echodoc'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundleLazy 'mattn/zencoding-vim', {
+NeoBundleLazy 'mattn/emmet-vim', {
   \   'autoload': { 'filetypes': [ 'html', 'haml', 'css' ] },
   \ }
 NeoBundle 'itchyny/lightline.vim'
