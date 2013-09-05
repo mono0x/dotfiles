@@ -49,6 +49,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'thinca/vim-poslist'
 NeoBundle 'jceb/vim-hier'
+NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'taka84u9/vim-ref-ri', {
   \   'autoload': { 'filetypes': [ 'ruby' ] }
@@ -160,17 +161,31 @@ let g:lightline = {
   \   'active': {
   \     'left': [
   \       [ 'mode', 'paste', ],
-  \       [ 'fugitive', 'filename', ],
+  \       [ 'fugitive', 'filename', 'anzu', ],
   \     ]
   \   },
   \   'component_function': {
   \     'fugitive': 'MyFugitive',
+  \     'anzu': 'anzu#search_status',
   \   },
   \ }
 
 function! MyFugitive()
   return exists('*fugitive#head') && strlen(fugitive#head()) ? fugitive#head() : ''
 endfunction
+
+" vim-anzu
+" http://qiita.com/shiena/items/f53959d62085b7980cb5
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+augroup vim-anzu
+    autocmd!
+    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+augroup END
+
+nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>:AnzuClearSearchStatus<CR>
 
 " Highlight trailing spaces
 highlight TrailingSpaces guibg=red ctermbg=red
@@ -247,7 +262,6 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-noremap <ESC><ESC> :nohlsearch<CR>
 
 noremap j gj
 noremap k gk
