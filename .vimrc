@@ -493,7 +493,7 @@ let g:quickrun_config['_'] = {
   \   'runner': 'vimproc',
   \ }
 let g:quickrun_config['hsp'] = {
-  \   'command': 'D:/tools/hsp3/hscl',
+  \   'command': 'D:/Documents/tools/hsp3/hscl',
   \   'exec': '%c %s',
   \   'hook/output_encode/encoding': 'cp932',
   \   'outputter': 'error',
