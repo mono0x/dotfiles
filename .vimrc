@@ -22,15 +22,23 @@ endif
 
 NeoBundle 'sudo.vim'
 
-NeoBundle 'Shougo/neocomplcache'
+function! s:meet_neocomplete_requirements()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction
+if s:meet_neocomplete_requirements()
+  NeoBundle 'Shougo/neocomplete'
+else
+  NeoBundle 'Shougo/neocomplcache'
+  NeoBundleLazy 'Shougo/neocomplcache-rsense', {
+    \   'autoload': { 'filetypes': [ 'ruby' ] },
+    \ }
+endif
+
 if has('python')
   NeoBundleLazy 'Rip-Rip/clang_complete', {
     \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
     \ }
 endif
-NeoBundleLazy 'Shougo/neocomplcache-rsense', {
-  \   'autoload': { 'filetypes': [ 'ruby' ] },
-  \ }
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'thinca/vim-quickrun'
@@ -348,24 +356,36 @@ if has('win32')
   call s:setup_msvc_path()
 endif
 
-" neocomplcache
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_smart_case=1
-let g:neocomplcache_enable_camel_case_completion=1
-let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_min_keyword_length=3
-let g:neocomplcache_force_overwrite_completefunc=1
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns={}
+if s:meet_neocomplete_requirements()
+  let g:neocomplete#enable_at_startup=1
+  let g:neocomplete#enable_smart_case=1
+  let g:neocomplete#sources#syntax#min_keyword_length=3
+  inoremap <expr><C-g> neocomplete#undo_completion()
+  inoremap <expr><C-l> neocomplete#complete_common_string()
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+else
+  let g:neocomplcache_enable_at_startup=1
+  let g:neocomplcache_enable_smart_case=1
+  let g:neocomplcache_enable_camel_case_completion=1
+  let g:neocomplcache_enable_underbar_completion=1
+  let g:neocomplcache_min_keyword_length=3
+  let g:neocomplcache_force_overwrite_completefunc=1
+  if !exists('g:neocomplcache_force_omni_patterns')
+    let g:neocomplcache_force_omni_patterns={}
+  endif
+  let g:neocomplcache_force_omni_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplcache_force_omni_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplcache_force_omni_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  inoremap <expr><C-g> neocomplcache#undo_completion()
+  inoremap <expr><C-l> neocomplcache#complete_common_string()
+  inoremap <expr><C-y> neocomplcache#close_popup()
+  inoremap <expr><C-e> neocomplcache#cancel_popup()
 endif
-let g:neocomplcache_force_omni_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-inoremap <expr><C-g> neocomplcache#undo_completion()
-inoremap <expr><C-l> neocomplcache#complete_common_string()
-inoremap <expr><C-y> neocomplcache#close_popup()
-inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 " unite
 let g:unite_enable_start_insert=1
