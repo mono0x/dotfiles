@@ -33,3 +33,5 @@
 [url "git@bitbucket.org:"]
   pushinsteadof = "git://bitbucket.org/"
   pushinsteadof = "https://bitbucket.org/"
+[hub]
+  protocol = https
