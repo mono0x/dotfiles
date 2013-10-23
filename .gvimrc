@@ -8,9 +8,9 @@ else
   set guifont=Ricty\ 12
 endif
 
-if neobundle#is_installed('molokai')
-  let g:molokai_original = 1
-  colorscheme molokai
+if neobundle#is_installed('vim-colors-solarized')
+  set background=light
+  colorscheme solarized
 endif
 
 " Highlight trailing spaces

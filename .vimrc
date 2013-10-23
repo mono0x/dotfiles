@@ -135,16 +135,16 @@ au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
 au BufRead,BufNewFile *.plt set ft=gnuplot
 
 " colorscheme
-NeoBundle 'mono0x/molokai'
+NeoBundle 'altercation/vim-colors-solarized'
 
 set t_Co=256
 syntax enable
 
 filetype plugin indent on
 
-if neobundle#is_installed('molokai')
-  let g:molokai_original = 1
-  colorscheme molokai
+if neobundle#is_installed('vim-colors-solarized')
+  set background=light
+  colorscheme solarized
 endif
 
 if neobundle#exists_not_installed_bundles()
@@ -166,6 +166,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#43443A ctermbg=239
 
 " lightline
 let g:lightline = {
+  \   'colorscheme': 'solarized',
   \   'active': {
   \     'left': [
   \       [ 'mode', 'paste', ],
