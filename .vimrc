@@ -144,6 +144,9 @@ filetype plugin indent on
 
 if neobundle#is_installed('vim-colors-solarized')
   set background=light
+  let g:solarized_termcolors=16
+  let g:solarized_termtrans=1
+  let g:solarized_italic=0
   colorscheme solarized
 endif
 
@@ -161,8 +164,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#34352D ctermbg=236
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#43443A ctermbg=239
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
 
 " lightline
 let g:lightline = {
