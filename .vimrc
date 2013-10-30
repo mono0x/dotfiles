@@ -404,6 +404,7 @@ nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
 nnoremap <silent> [unite]p :<C-u>Unite history/yank<CR>
 nnoremap <silent> [unite]t :<C-u>Unite gtags/grep<CR>
+nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
 
 noremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
 
