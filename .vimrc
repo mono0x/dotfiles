@@ -156,6 +156,10 @@ if neobundle#exists_not_installed_bundles()
   echomsg 'Please execute ":NeoBundleInstall" command.'
 endif
 
+" terminal
+set lazyredraw
+set ttyfast
+
 " leader
 let mapleader = ' '
 
