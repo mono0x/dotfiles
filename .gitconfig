@@ -29,6 +29,10 @@
   rc = rebase --continue
 [push]
   default = simple
+[merge]
+  ff = false
+[pull]
+  rebase = true
 [url "git@github.com:"]
   pushinsteadof = "git://github.com/"
   pushinsteadof = "https://github.com/"
