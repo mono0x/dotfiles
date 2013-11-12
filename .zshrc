@@ -107,6 +107,9 @@ linux*)
   ;;
 darwin*)
   alias ls="ls -G"
+  if [[ -f /Applications/MacVim.app/Contents/MacOS/Vim ]]; then
+    alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
+  fi
   ;;
 esac
 alias ll='ls -l'
