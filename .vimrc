@@ -440,7 +440,7 @@ function! s:good_width()
   endif
 endfunction
 
-if has('clipboard')
+if has('gui_running') && has('clipboard')
   if has('unnamedplus')
     set clipboard=unnamedplus,unnamed
   else
