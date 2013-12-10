@@ -162,7 +162,7 @@ sudo() {
           args[$(( 1+$#args ))]="sudo:$arg"
         fi
       done
-      command vim $args
+      vim $args
       ;;
     *)
       command sudo $@
