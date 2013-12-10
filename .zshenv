@@ -25,6 +25,8 @@ linux*)
 darwin*)
   # Heroku Toolbelt
   export PATH="/usr/local/heroku/bin:$PATH"
+  # sbin
+  export PATH="/sbin:$PATH"
   ;;
 esac
 
