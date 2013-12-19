@@ -58,6 +58,7 @@ NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'thinca/vim-poslist'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'taka84u9/vim-ref-ri', {
   \   'autoload': { 'filetypes': [ 'ruby' ] }
