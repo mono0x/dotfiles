@@ -14,8 +14,7 @@ setopt ignore_eof
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
 
-fpath=($HOME/.zsh/zsh-completions/src $fpath)
-fpath=($HOME/.zsh/cd-gitroot(N-/) $fpath)
+fpath=($HOME/.zsh/*(N-/) $fpath)
 
 autoload -U compinit
 compinit
@@ -171,13 +170,7 @@ sudo() {
   esac
 }
 
-_Z_CMD=j
-source ~/.zsh/z/z.sh
-
-source ~/.zsh/cdd/cdd
-chpwd() {
-  _cdd_chpwd
-}
+_Z_CMD=j source ~/.zsh/z/z.sh
 
 autoload -Uz cd-gitroot
 alias u=cd-gitroot
