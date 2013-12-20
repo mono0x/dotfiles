@@ -15,6 +15,7 @@ zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
 
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
+fpath=($HOME/.zsh/cd-gitroot(N-/) $fpath)
 
 autoload -U compinit
 compinit
@@ -177,6 +178,9 @@ source ~/.zsh/cdd/cdd
 chpwd() {
   _cdd_chpwd
 }
+
+autoload -Uz cd-gitroot
+alias u=cd-gitroot
 
 # rbenv
 rbenvsudo() {
