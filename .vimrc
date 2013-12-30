@@ -59,6 +59,8 @@ NeoBundle 'thinca/vim-poslist'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'LeafCage/yankround.vim'
+
 NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'taka84u9/vim-ref-ri', {
   \   'autoload': { 'filetypes': [ 'ruby' ] }
@@ -398,7 +400,6 @@ endif
 
 " unite
 let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable=1
 nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files buffer_tab file_mru bookmark file file/new<CR>
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
@@ -410,7 +411,7 @@ nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
 nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
-nnoremap <silent> [unite]p :<C-u>Unite history/yank<CR>
+nnoremap <silent> [unite]p :<C-u>Unite yankround<CR>
 nnoremap <silent> [unite]t :<C-u>Unite gtags/grep<CR>
 nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
 
@@ -439,6 +440,26 @@ function! s:good_width()
   if winwidth(0) < 84
     vertical resize 84
   endif
+endfunction
+
+" yankround
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+
+let g:yankround_use_region_hl = 1
+let g:yankround_region_hl_groupname = 'YankRoundRegion'
+
+autocmd ColorScheme *   call s:define_region_hl()
+function! s:define_region_hl()
+  if &bg=='dark'
+    highlight default YankRoundRegion   guibg=Brown ctermbg=Brown term=reverse
+  else
+    highlight default YankRoundRegion   guibg=LightRed ctermbg=LightRed term=reverse
+  end
 endfunction
 
 if has('gui_running') && has('clipboard')
