@@ -10,7 +10,6 @@
   status = auto
   ui = auto
 [core]
-  editor = vim
   excludesfile = ~/.gitignore
   autocrlf = false
 [grep]

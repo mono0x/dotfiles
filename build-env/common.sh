@@ -4,6 +4,14 @@ git submodule update --init
 
 ln -s  $PWD/.gdbinit    ~
 ln -fs $PWD/.gitconfig  ~
+case "${OSTYPE}" in
+linux*)
+  ln -fs $PWD/.gitconfig.linux ~/.gitconfig.local
+  ;;
+darwin*)
+  ln -fs $PWD/.gitconfig.osx ~/.gitconfig.local
+  ;;
+esac
 ln -s  $PWD/.gitignore.global ~/.gitignore
 ln -s  $PWD/.gvimrc     ~
 ln -s  $PWD/.tmux.conf  ~

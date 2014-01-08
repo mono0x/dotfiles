@@ -27,6 +27,10 @@ darwin*)
   export PATH="/usr/local/heroku/bin:$PATH"
   # sbin
   export PATH="/sbin:$PATH"
+  # MacVim
+  if [[ -f /Applications/MacVim.app/Contents/MacOS/Vim ]]; then
+    alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
+  fi
   ;;
 esac
 
