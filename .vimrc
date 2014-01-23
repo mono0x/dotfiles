@@ -181,12 +181,18 @@ let g:lightline = {
   \     'left': [
   \       [ 'mode', 'paste', ],
   \       [ 'fugitive', 'readonly', 'filename', 'anzu', ],
-  \     ]
+  \     ],
+  \     'right': [
+  \        [ 'lineinfo', 'char_counter' ],
+  \        [ 'percent' ],
+  \        [ 'fileformat', 'fileencoding', 'filetype' ]
+  \     ],
   \   },
   \   'component_function': {
   \     'fugitive': 'MyFugitive',
   \     'filename': 'MyFilename',
   \     'anzu': 'anzu#search_status',
+  \     'char_counter': 'MyCharCounter',
   \   },
   \ }
 
@@ -201,6 +207,15 @@ endfunction
 
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyCharCounter()
+  let result = 0
+  for linenum in range(0, line('$'))
+    let line = getline(linenum)
+    let result += strlen(substitute(line, '.', 'x', 'g'))
+  endfor
+  return result
 endfunction
 
 " vim-anzu
