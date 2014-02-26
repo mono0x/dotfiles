@@ -4,7 +4,9 @@
 // 特殊キー, キーバインド定義, フック, ブラックリスト以外のコードは, この中に書くようにして下さい
 // ========================================================================= //
 //{{%PRESERVE%
+
 // ここにコードを入力して下さい
+
 //}}%PRESERVE%
 // ========================================================================= //
 
@@ -23,6 +25,8 @@ key.suspendKey           = "undefined";
 
 // ================================= Hooks ================================= //
 
+
+
 // ============================= Key bindings ============================== //
 
 key.setViewKey('1', function (ev) {
@@ -40,3 +44,11 @@ key.setViewKey('z', function (ev) {
 key.setViewKey('x', function (ev) {
     BrowserForward();
 }, '進む');
+
+key.setViewKey('j', function (ev) {
+    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_DOWN, true);
+}, '一行スクロールダウン');
+
+key.setViewKey('k', function (ev) {
+    key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_UP, true);
+}, '一行スクロールアップ');
