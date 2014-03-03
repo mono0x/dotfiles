@@ -7,7 +7,30 @@ fi
 
 if [ -d ${HOME}/.rbenv  ] ; then
   export PATH=$HOME/.rbenv/bin:$PATH
-  eval "$(rbenv init - zsh)"
+  # http://blog.uu59.org/2014-01-06-fast-rbenv.html
+  rbenv_init() {
+    # eval "$(rbenv init - --no-rehash)" is crazy slow (it takes arround 100ms)
+    # below style took ~2ms
+    export RBENV_SHELL=zsh
+    source "$HOME/.rbenv/completions/rbenv.zsh"
+    rbenv() {
+      local command
+      command="$1"
+      if [ "$#" -gt 0 ]; then
+        shift
+      fi
+
+      case "$command" in
+      rehash|shell)
+        eval "`rbenv "sh-$command" "$@"`";;
+      *)
+        command rbenv "$command" "$@";;
+      esac
+    }
+    path=($HOME/.rbenv/shims $path)
+  }
+  rbenv_init
+  unfunction rbenv_init
 fi
 
 export RSENSE_HOME=$HOME/dotfiles/rsense
