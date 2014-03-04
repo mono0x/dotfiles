@@ -464,6 +464,8 @@ nmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
+xmap p <Plug>(yankround-p)
+xmap gp <Plug>(yankround-gp)
 
 let g:yankround_use_region_hl = 1
 let g:yankround_region_hl_groupname = 'YankRoundRegion'
