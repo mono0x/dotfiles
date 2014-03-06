@@ -73,6 +73,7 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'Shougo/unite-build'
 NeoBundle 'hewes/unite-gtags'
+NeoBundle 'Shougo/neomru.vim'
 
 " syntax
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
