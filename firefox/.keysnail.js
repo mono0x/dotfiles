@@ -4,6 +4,23 @@
 // 特殊キー, キーバインド定義, フック, ブラックリスト以外のコードは, この中に書くようにして下さい
 // ========================================================================= //
 //{{%PRESERVE%
+var local = {};
+plugins.options["site_local_keymap.local_keymap"] = local;
+
+function fake(k, i) function () { key.feed(k, i); };
+function pass(k, i) [k, fake(k, i)];
+function ignore(k, i) [k, null];
+
+local["^http://reader.livedoor.com/reader/"] = [
+    pass('a'),
+    pass('s'),
+    pass('j'),
+    pass('k'),
+    pass('o'),
+    pass('p'),
+    pass('v'),
+    pass('z')
+];
 //}}%PRESERVE%
 // ========================================================================= //
 
@@ -21,8 +38,6 @@ key.negativeArgument3Key = "Not defined";
 key.suspendKey           = "Not defined";
 
 // ================================= Hooks ================================= //
-
-
 
 
 // ============================= Key bindings ============================== //
@@ -62,3 +77,15 @@ key.setViewKey('a', function (ev) {
 key.setViewKey('b', function (ev, arg) {
     loadURI("javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://pinboard.in/add?next=same&url='+encodeURIComponent(location.href)+'&description='+encodeURIComponent(s)+'&title='+encodeURIComponent(document.title)");
 }, 'ブックマーク', true);
+
+key.setViewKey('e', function (ev, arg) {
+    ext.exec('hok-start-foreground-mode', arg, ev);
+}, 'HoK - リンクをフォアグラウンドで開く', true);
+
+key.setViewKey('E', function (ev, arg) {
+    ext.exec('hok-start-background-mode', arg, ev);
+}, 'HoK - リンクをバックグラウンドで開く', true);
+
+key.setViewKey('/', function (ev) {
+    command.iSearchForward();
+}, 'インクリメンタル検索', true);
