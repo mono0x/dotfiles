@@ -4,26 +4,24 @@
 // 特殊キー, キーバインド定義, フック, ブラックリスト以外のコードは, この中に書くようにして下さい
 // ========================================================================= //
 //{{%PRESERVE%
-
-// ここにコードを入力して下さい
-
 //}}%PRESERVE%
 // ========================================================================= //
 
 // ========================= Special key settings ========================== //
 
-key.quitKey              = "undefined";
-key.helpKey              = "undefined";
-key.escapeKey            = "undefined";
-key.macroStartKey        = "undefined";
-key.macroEndKey          = "undefined";
-key.universalArgumentKey = "undefined";
-key.negativeArgument1Key = "undefined";
-key.negativeArgument2Key = "undefined";
-key.negativeArgument3Key = "undefined";
-key.suspendKey           = "undefined";
+key.quitKey              = "Not defined";
+key.helpKey              = "Not defined";
+key.escapeKey            = "Not defined";
+key.macroStartKey        = "Not defined";
+key.macroEndKey          = "Not defined";
+key.universalArgumentKey = "Not defined";
+key.negativeArgument1Key = "Not defined";
+key.negativeArgument2Key = "Not defined";
+key.negativeArgument3Key = "Not defined";
+key.suspendKey           = "Not defined";
 
 // ================================= Hooks ================================= //
+
 
 
 
@@ -52,3 +50,15 @@ key.setViewKey('j', function (ev) {
 key.setViewKey('k', function (ev) {
     key.generateKey(ev.originalTarget, KeyEvent.DOM_VK_UP, true);
 }, '一行スクロールアップ');
+
+key.setViewKey('W', function (ev, arg) {
+    TreeStyleTabService.removeTabSubTree(gBrowser.selectedTab);
+}, 'このツリーを閉じる');
+
+key.setViewKey('a', function (ev) {
+    command.focusElement(command.elementsRetrieverTextarea, 0);
+}, '最初のインプットエリアへフォーカス', true);
+
+key.setViewKey('b', function (ev, arg) {
+    loadURI("javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://pinboard.in/add?next=same&url='+encodeURIComponent(location.href)+'&description='+encodeURIComponent(s)+'&title='+encodeURIComponent(document.title)");
+}, 'ブックマーク', true);
