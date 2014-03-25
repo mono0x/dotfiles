@@ -46,24 +46,28 @@ update_vcs_info_message() {
 }
 
 add-zsh-hook precmd update_vcs_info_message
+
+# http://absolute-area.com/post/6664864690/zsh
+local HOSTNAME=`hostname`
+local HOST_COLOR=$'%{[38;5;'"$(printf "%d\n" 0x$(echo $HOSTNAME | openssl md5 | cut -c1-2))"'m%}'
+[ -f ~/.zshrc.color ] && source ~/.zshrc.color
+
 case ${UID} in
 0)
-	PROMPT="
-%{${fg[blue]}%}%/%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
-[%{${fg[blue]}%}%n@%m%{${reset_color}%}] %{${fg[blue]}%}%#%{${reset_color}%} "
-	PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
-	SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-	#RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
-	;;
+  local USER_COLOR='%{${fg[red]}%}'
+  local MARK_COLOR='%{${fg[red]}%}'
+  ;;
 *)
-	PROMPT="
-%{${fg[blue]}%}%/%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
-[%n@%m] %{${fg[blue]}%}%#%{${reset_color}%} "
-	PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
-	SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-	#RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
-	;;
+  local USER_COLOR='%{${reset_color}%}'
+  local MARK_COLOR='%{${fg[blue]}%}'
 esac
+
+PROMPT="
+%{${fg[blue]}%}%/%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
+[${USER_COLOR}%n%{${reset_color}%}@${HOST_COLOR}%m%{${reset_color}%}] %{${MARK_COLOR}%}%#%{${reset_color}%} "
+PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
+SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+#RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
 
 zstyle ':completion:*:default' menu select=1
 
