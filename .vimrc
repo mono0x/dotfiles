@@ -507,6 +507,8 @@ xmap :  <sid>(command-line-enter)
 
 autocmd CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
+  setlocal nonumber
+
   nnoremap <buffer> q :<C-u>quit<CR>
   nnoremap <buffer> <TAB> :<C-u>quit<CR>
   inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
