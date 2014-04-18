@@ -47,9 +47,7 @@ update_vcs_info_message() {
 
 add-zsh-hook precmd update_vcs_info_message
 
-# http://absolute-area.com/post/6664864690/zsh
-local HOSTNAME=`hostname`
-local HOST_COLOR=$'%{[38;5;'"$(printf "%d\n" 0x$(echo $HOSTNAME | openssl md5 | cut -c1-2))"'m%}'
+local HOST_COLOR='%{${reset_color}%}'
 [ -f ~/.zshrc.color ] && source ~/.zshrc.color
 
 case ${UID} in
@@ -69,6 +67,7 @@ PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
 SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 #RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
 
+zstyle ':completion:*' use-cache true
 zstyle ':completion:*:default' menu select=1
 
 setopt auto_list
