@@ -34,11 +34,9 @@ else
     \ }
 endif
 
-if has('python')
-  NeoBundleLazy 'Rip-Rip/clang_complete', {
-    \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
-    \ }
-endif
+NeoBundleLazy 'osyo-manga/vim-marching', {
+  \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
+  \ }
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'thinca/vim-quickrun'
@@ -340,9 +338,9 @@ set hidden
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
 
-" clang_complete
-let g:clang_complete_auto=0
-let g:clang_complete_include_current_directory_recursively=1
+" vim-marching
+let g:marching_backend = 'sync_clang_command'
+let g:marching_enable_neocomplete = 1
 
 " msvc
 " http://d.hatena.ne.jp/osyo-manga/20121117/1353139064
@@ -394,6 +392,13 @@ if s:meet_neocomplete_requirements()
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns={}
+  endif
+  let g:neocomplete#force_omni_input_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#force_omni_input_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#force_omni_input_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 else
   let g:neocomplcache_enable_at_startup=1
   let g:neocomplcache_enable_smart_case=1
