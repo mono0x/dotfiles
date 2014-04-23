@@ -198,3 +198,5 @@ update_tmux_environment() {
 }
 
 add-zsh-hook precmd update_tmux_environment
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
