@@ -14,7 +14,9 @@ setopt ignore_eof
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
 
-fpath=($HOME/.zsh/*(N-/) $fpath)
+dotzsh=$HOME/.zsh
+fpath=($dotzsh/cd-gitroot $dotzsh/z $dotzsh/zsh-completions/src $fpath)
+unset dotzsh
 
 autoload -U compinit
 compinit
