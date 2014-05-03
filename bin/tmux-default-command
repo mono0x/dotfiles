@@ -1,0 +1,6 @@
+#!/bin/sh
+if type reattach-to-user-space > /dev/null 2>&1; then
+  reattach-to-user-namespace -l $SHELL
+else
+  exec -l $SHELL
+fi

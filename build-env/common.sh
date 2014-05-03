@@ -22,7 +22,8 @@ ln -s  $PWD/.zshenv     ~
 ln -s  $PWD/.zshrc      ~
 ln -s  $PWD/.tigrc      ~
 
-mkdir ~/bin
+ln -s  $PWD/bin         ~
+
 mkdir ~/.vimswap
 mkdir ~/.vim/bundle
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim

@@ -1,0 +1,8 @@
+#!/bin/sh
+if type pbcopy >/dev/null 2>&1; then
+  reattach-to-user-namespace pbcopy
+elif type xclip >/dev/null 2>&1; then
+  xclip -sel c
+elif type xsel >/dev/null 2>&1; then
+  xsel -ib
+fi
