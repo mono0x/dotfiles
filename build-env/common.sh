@@ -20,6 +20,7 @@ ln -s  $PWD/.vimrc      ~
 ln -s  $PWD/.zsh        ~
 ln -s  $PWD/.zshenv     ~
 ln -s  $PWD/.zshrc      ~
+ln -s  $PWD/.tigrc      ~
 
 mkdir ~/bin
 mkdir ~/.vimswap
