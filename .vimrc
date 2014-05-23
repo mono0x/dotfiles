@@ -584,3 +584,19 @@ call watchdogs#setup(g:quickrun_config)
 if has('win32')
   let $PATH=$PATH.';'.$HOME.'\.nvmw\v0.8.18'
 endif
+
+" markdown
+let g:markdown_fenced_languages = [
+  \   'c',
+  \   'coffee',
+  \   'cpp',
+  \   'css',
+  \   'html',
+  \   'javascript',
+  \   'json=javascript',
+  \   'make',
+  \   'ruby',
+  \   'sass',
+  \   'sh',
+  \   'xml',
+  \ ]
