@@ -289,6 +289,7 @@ if exists('&ambiwidth')
 endif
 
 set nobackup
+set noundofile
 set nowritebackup
 set directory=~/.vimswap//
 set history=100
