@@ -427,7 +427,7 @@ nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
-nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
+nnoremap <silent> [unite]o :<C-u>Unite -no-quit -no-start-insert -vertical -winwidth=32 -buffer-name=outline outline<CR>
 nnoremap <silent> <Leader>g :<C-u>Unite -no-quit vcs_grep<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
 nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
@@ -459,6 +459,9 @@ nnoremap <C-w>l <C-w>l:call <SID>good_width()<Cr>
 nnoremap <C-w>H <C-w>H:call <SID>good_width()<Cr>
 nnoremap <C-w>L <C-w>L:call <SID>good_width()<Cr>
 function! s:good_width()
+  if &filetype == 'unite'
+    return
+  endif
   if winwidth(0) < 84
     vertical resize 84
   endif
