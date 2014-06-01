@@ -249,6 +249,9 @@ function! s:highlight_trailing_spaces(insert)
   if &filetype ==# 'unite'
     return
   endif
+  if expand('%:t') ==# '[Command Line]'
+    return
+  endif
   if a:insert
     match TrailingSpaces /\S\zs\s\+$/
   else
