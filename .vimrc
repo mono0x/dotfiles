@@ -102,25 +102,31 @@ NeoBundleLazy 'gnuplot.vim', {
   \   'autoload': { 'filetypes': 'gnuplot' }
   \  }
 
-au BufRead,BufNewFile *.scss	set filetype=scss.css
-au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown
-au BufRead,BufNewFile *.pde setf processing
+augroup vimrc_loading
+  autocmd!
+augroup END
 
-au BufNewFile,BufRead *.liquid					set ft=liquid
+augroup vimrc_loading
+  au BufRead,BufNewFile *.scss	set filetype=scss.css
+  au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown
+  au BufRead,BufNewFile *.pde setf processing
 
-au BufNewFile,BufRead */_layouts/*.html,*/_includes/*.html	set ft=liquid
-au BufNewFile,BufRead *.html,*.xml,*.textile
-      \ if getline(1) == '---' | set ft=liquid | endif
-au BufNewFile,BufRead *.markdown,*.mkd,*.mkdn,*.md
-      \ if getline(1) == '---' |
-      \   let b:liquid_subtype = 'markdown' |
-      \   set ft=liquid |
-      \ endif
+  au BufNewFile,BufRead *.liquid					set ft=liquid
 
-autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
-autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
-autocmd BufNewFile,BufRead *._coffee set filetype=coffee
+  au BufNewFile,BufRead */_layouts/*.html,*/_includes/*.html	set ft=liquid
+  au BufNewFile,BufRead *.html,*.xml,*.textile
+        \ if getline(1) == '---' | set ft=liquid | endif
+  au BufNewFile,BufRead *.markdown,*.mkd,*.mkdn,*.md
+        \ if getline(1) == '---' |
+        \   let b:liquid_subtype = 'markdown' |
+        \   set ft=liquid |
+        \ endif
+
+  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+  autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
+  autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
+  autocmd BufNewFile,BufRead *._coffee set filetype=coffee
+augroup END
 
 function! s:DetectCoffee()
     if getline(1) =~ '^#!.*\<coffee\>'
@@ -128,13 +134,15 @@ function! s:DetectCoffee()
     endif
 endfunction
 
-autocmd BufNewFile,BufRead * call s:DetectCoffee()
+augroup vimrc_loading
+  autocmd BufNewFile,BufRead * call s:DetectCoffee()
 
-au BufRead,BufNewFile *.nginx set ft=nginx
-au BufRead,BufNewFile */etc/nginx/* set ft=nginx
-au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
+  au BufRead,BufNewFile *.nginx set ft=nginx
+  au BufRead,BufNewFile */etc/nginx/* set ft=nginx
+  au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
 
-au BufRead,BufNewFile *.plt set ft=gnuplot
+  au BufRead,BufNewFile *.plt set ft=gnuplot
+augroup END
 
 " colorscheme
 NeoBundle 'altercation/vim-colors-solarized'
@@ -170,30 +178,35 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
+autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
+autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
 
 " lightline
-let g:lightline = {
-  \   'colorscheme': 'solarized',
-  \   'active': {
-  \     'left': [
-  \       [ 'mode', 'paste', ],
-  \       [ 'fugitive', 'readonly', 'filename', 'anzu', ],
-  \     ],
-  \     'right': [
-  \        [ 'lineinfo', 'char_counter' ],
-  \        [ 'percent' ],
-  \        [ 'fileformat', 'fileencoding', 'filetype' ]
-  \     ],
-  \   },
-  \   'component_function': {
-  \     'fugitive': 'MyFugitive',
-  \     'filename': 'MyFilename',
-  \     'anzu': 'anzu#search_status',
-  \     'char_counter': 'MyCharCounter',
-  \   },
-  \ }
+set laststatus=2
+if neobundle#is_installed('lightline.vim')
+  let g:lightline = {
+    \   'colorscheme': 'solarized',
+    \   'active': {
+    \     'left': [
+    \       [ 'mode', 'paste', ],
+    \       [ 'fugitive', 'readonly', 'filename', 'anzu', ],
+    \     ],
+    \     'right': [
+    \        [ 'lineinfo', 'char_counter' ],
+    \        [ 'percent' ],
+    \        [ 'fileformat', 'fileencoding', 'filetype' ]
+    \     ],
+    \   },
+    \   'component_function': {
+    \     'fugitive': 'MyFugitive',
+    \     'filename': 'MyFilename',
+    \     'anzu': 'anzu#search_status',
+    \     'char_counter': 'MyCharCounter',
+    \   },
+    \ }
+else
+  set statusline=%<[%n]%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%8P
+endif
 
 function! MyFugitive()
   return exists('*fugitive#head') && strlen(fugitive#head()) ? fugitive#head() : ''
@@ -250,7 +263,7 @@ augroup TrailingSpaces
 augroup END
 
 set textwidth=0
-autocmd FileType text setlocal textwidth=0
+autocmd vimrc_loading FileType text setlocal textwidth=0
 
 set encoding=utf-8
 if has('win32')
@@ -288,14 +301,12 @@ if has('iconv')
   unlet s:enc_euc
   unlet s:enc_jis
 endif
-if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding=&encoding
-    endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
-endif
+function! s:au_recheck_fenc()
+  if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+    let &fileencoding=&encoding
+  endif
+endfunction
+autocmd vimrc_loading BufReadPost * call s:au_recheck_fenc()
 set fileformats=unix,dos,mac
 
 if exists('&ambiwidth')
@@ -327,10 +338,6 @@ noremap gj j
 noremap gk k
 noremap <Down> gj
 noremap <Up> gk
-
-set statusline=%<[%n]%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%8P
-
-set laststatus=2
 
 set showcmd
 
@@ -402,11 +409,13 @@ if s:meet_neocomplete_requirements()
   let g:neocomplete#sources#syntax#min_keyword_length=3
   inoremap <expr><C-g> neocomplete#undo_completion()
   inoremap <expr><C-l> neocomplete#complete_common_string()
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  augroup vimrc_loading
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  augroup END
   if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns={}
   endif
@@ -494,7 +503,7 @@ xmap gp <Plug>(yankround-gp)
 let g:yankround_use_region_hl = 1
 let g:yankround_region_hl_groupname = 'YankRoundRegion'
 
-autocmd ColorScheme *   call s:define_region_hl()
+autocmd vimrc_loading ColorScheme *   call s:define_region_hl()
 function! s:define_region_hl()
   if &bg=='dark'
     highlight default YankRoundRegion   guibg=Brown ctermbg=Brown term=reverse
@@ -528,7 +537,7 @@ nnoremap <sid>(command-line-norange) q:<C-u>
 nmap :  <sid>(command-line-enter)
 xmap :  <sid>(command-line-enter)
 
-autocmd CmdwinEnter * call s:init_cmdwin()
+autocmd vimrc_loading CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
   setlocal nonumber
 
@@ -562,7 +571,7 @@ function! s:ref_ruby_settings()
   nnoremap <silent><buffer> K :<C-u>call ref#jump('normal', 'ri')<CR>
   vnoremap <silent><buffer> K :<C-u>call ref#jump('visual', 'ri')<CR>
 endfunction
-autocmd FileType ruby call s:ref_ruby_settings()
+autocmd vimrc_loading FileType ruby call s:ref_ruby_settings()
 
 " Alignta
 xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
