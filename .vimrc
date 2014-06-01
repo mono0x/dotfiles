@@ -615,7 +615,6 @@ endif
 " markdown
 let g:markdown_fenced_languages = [
   \   'c',
-  \   'coffee',
   \   'cpp',
   \   'css',
   \   'html',
