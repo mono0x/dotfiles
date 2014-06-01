@@ -231,9 +231,23 @@ augroup END
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>:AnzuClearSearchStatus<CR>
 
 " Highlight trailing spaces
-highlight TrailingSpaces guibg=red ctermbg=red
-match TrailingSpaces /\s\+$/
-autocmd WinEnter * match TrailingSpaces /\s\+$/
+highlight TrailingSpaces ctermbg=1 guibg=red
+function! s:highlight_trailing_spaces(insert)
+  if &filetype ==# 'unite'
+    return
+  endif
+  if a:insert
+    match TrailingSpaces /\S\zs\s\+$/
+  else
+    match TrailingSpaces /\s\+$/
+  endif
+endf
+augroup TrailingSpaces
+  autocmd!
+  autocmd BufNew,BufRead * call s:highlight_trailing_spaces(0)
+  autocmd InsertEnter * call s:highlight_trailing_spaces(1)
+  autocmd InsertLeave * call s:highlight_trailing_spaces(0)
+augroup END
 
 set textwidth=0
 autocmd FileType text setlocal textwidth=0
