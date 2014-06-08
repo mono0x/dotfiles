@@ -75,8 +75,12 @@ key.setViewKey('a', function (ev) {
 }, '最初のインプットエリアへフォーカス', true);
 
 key.setViewKey('b', function (ev, arg) {
-    loadURI("javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='https://pinboard.in/add?next=same&url='+encodeURIComponent(location.href)+'&description='+encodeURIComponent(s)+'&title='+encodeURIComponent(document.title)");
+    loadURI("javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://pinboard.in/add?url='+encodeURIComponent(q)+'&description='+encodeURIComponent(d)+'&title='+encodeURIComponent(p),'Pinboard','toolbar=no,width=700,height=350'));");
 }, 'ブックマーク', true);
+
+key.setViewKey('B', function (ev, arg) {
+    loadURI("javascript:q=location.href;p=document.title;void(t=open('https://pinboard.in/add?later=yes&noui=yes&jump=close&url='+encodeURIComponent(q)+'&title='+encodeURIComponent(p),'Pinboard','toolbar=no,width=100,height=100'));t.blur();");
+}, 'Read Later');
 
 key.setViewKey('e', function (ev, arg) {
     ext.exec('hok-start-foreground-mode', arg, ev);
