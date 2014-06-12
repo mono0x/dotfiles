@@ -101,6 +101,9 @@ NeoBundleLazy 'evanmiller/nginx-vim-syntax', {
 NeoBundleLazy 'gnuplot.vim', {
   \   'autoload': { 'filetypes': 'gnuplot' }
   \  }
+NeoBundleLazy 'honza/dockerfile.vim', {
+  \   'autoload': { 'filetypes': 'dockerfile' }
+  \  }
 
 augroup vimrc_loading
   autocmd!
@@ -112,6 +115,7 @@ augroup vimrc_loading
   au BufRead,BufNewFile *.pde setf processing
 
   au BufNewFile,BufRead *.liquid					set ft=liquid
+  au BufNewFile,BufRead Dockerfile set filetype=dockerfile
 
   au BufNewFile,BufRead */_layouts/*.html,*/_includes/*.html	set ft=liquid
   au BufNewFile,BufRead *.html,*.xml,*.textile
