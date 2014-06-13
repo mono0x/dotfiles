@@ -248,7 +248,7 @@ augroup END
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>:AnzuClearSearchStatus<CR>
 
 " Highlight trailing spaces
-highlight TrailingSpaces ctermbg=1 guibg=red
+highlight TrailingSpaces ctermbg=1
 function! s:highlight_trailing_spaces(insert)
   if &filetype ==# 'unite'
     return

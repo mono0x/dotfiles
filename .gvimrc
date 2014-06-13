@@ -14,9 +14,7 @@ if neobundle#is_installed('vim-colors-solarized')
 endif
 
 " Highlight trailing spaces
-highlight TrailingSpaces guibg=red ctermbg=red
-match TrailingSpaces /\s\+$/
-autocmd WinEnter * match TrailingSpaces /\s\+$/
+highlight TrailingSpaces guibg=red
 
 set lines=35
 set columns=100
