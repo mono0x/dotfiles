@@ -29,6 +29,5 @@ set guitablabel=[%n]%t\ %m
 " window transparency
 if has('win32') || has('win64') || has('mac')
   autocmd gvimrc_loading FocusLost * set transparency=192
-  autocmd gvimrc_loading FocusGained * set transparency=240
-  autocmd gvimrc_loading GuiEnter * set transparency=240
+  autocmd gvimrc_loading FocusGained * set transparency=255
 endif
