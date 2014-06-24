@@ -5,6 +5,7 @@ install ansible
 install git
 install htop-osx
 install openssl
+install pow
 install rbenv
 install readline
 install ruby-build
@@ -27,6 +28,7 @@ cask install onepassword
 cask install skype
 cask install vagrant
 cask install virtualbox
+#cask install vmware-fusion
 
 cask cleanup
 cleanup
