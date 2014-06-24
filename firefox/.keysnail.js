@@ -80,7 +80,7 @@ key.setViewKey('b', function (ev, arg) {
 
 key.setViewKey('B', function (ev, arg) {
     loadURI("javascript:q=location.href;p=document.title;void(t=open('https://pinboard.in/add?later=yes&noui=yes&jump=close&url='+encodeURIComponent(q)+'&title='+encodeURIComponent(p),'Pinboard','toolbar=no,width=100,height=100'));t.blur();");
-}, 'Read Later');
+}, 'Read Later', true);
 
 key.setViewKey('e', function (ev, arg) {
     ext.exec('hok-start-foreground-mode', arg, ev);
