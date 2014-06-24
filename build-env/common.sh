@@ -2,27 +2,29 @@
 
 git submodule update --init
 
-ln -s  $PWD/.gdbinit    ~
-ln -fs $PWD/.gitconfig  ~
+dir=$(cd $(dirname $0)/.. && pwd)
+
+ln -s  $dir/.gdbinit    ~
+ln -fs $dir/.gitconfig  ~
 case "${OSTYPE}" in
 linux*)
-  ln -fs $PWD/.gitconfig.linux ~/.gitconfig.local
+  ln -fs $dir/.gitconfig.linux ~/.gitconfig.local
   ;;
 darwin*)
-  ln -fs $PWD/.gitconfig.osx ~/.gitconfig.local
+  ln -fs $dir/.gitconfig.osx ~/.gitconfig.local
   ;;
 esac
-ln -s  $PWD/.gitignore.global ~/.gitignore
-ln -s  $PWD/.gvimrc     ~
-ln -s  $PWD/.tmux.conf  ~
-ln -s  $PWD/.vim        ~
-ln -s  $PWD/.vimrc      ~
-ln -s  $PWD/.zsh        ~
-ln -s  $PWD/.zshenv     ~
-ln -s  $PWD/.zshrc      ~
-ln -s  $PWD/.tigrc      ~
+ln -s  $dir/.gitignore.global ~/.gitignore
+ln -s  $dir/.gvimrc     ~
+ln -s  $dir/.tmux.conf  ~
+ln -s  $dir/.vim        ~
+ln -s  $dir/.vimrc      ~
+ln -s  $dir/.zsh        ~
+ln -s  $dir/.zshenv     ~
+ln -s  $dir/.zshrc      ~
+ln -s  $dir/.tigrc      ~
 
-ln -s  $PWD/bin         ~
+ln -s  $dir/bin         ~
 
 mkdir ~/.vimswap
 mkdir ~/.vim/bundle
