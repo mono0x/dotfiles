@@ -1,0 +1,32 @@
+update
+upgrade
+
+install ansible
+install git
+install htop-osx
+install openssl
+install rbenv
+install readline
+install ruby-build
+install tmux
+install wget
+install zsh
+
+install caskroom/cask/brew-cask
+tap caskroom/versions
+
+cask install appcleaner
+cask install bittorrent-sync
+cask install boot2docker
+cask install dropbox
+cask install firefox-ja
+cask install google-chrome
+cask install google-japanese-ime
+#cask install macvim-kaoriya
+cask install onepassword
+cask install skype
+cask install vagrant
+cask install virtualbox
+
+cask cleanup
+cleanup
