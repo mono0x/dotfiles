@@ -12,7 +12,11 @@ if [ -d ${HOME}/.rbenv  ] ; then
     # eval "$(rbenv init - --no-rehash)" is crazy slow (it takes arround 100ms)
     # below style took ~2ms
     export RBENV_SHELL=zsh
-    source "$HOME/.rbenv/completions/rbenv.zsh"
+    if [[ -f /usr/local/opt/rbenv/completions/rbenv.zsh ]]; then
+      source /usr/local/opt/rbenv/completions/rbenv.zsh
+    else
+      source "$HOME/.rbenv/completions/rbenv.zsh"
+    fi
     rbenv() {
       local command
       command="$1"
