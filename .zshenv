@@ -58,7 +58,3 @@ darwin*)
   export PATH="/Library/Developer/CommandLineTools/usr/bin:$PATH"
   ;;
 esac
-
-# Boxen
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
