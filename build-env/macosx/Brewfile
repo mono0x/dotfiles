@@ -24,6 +24,7 @@ cask install firefox-ja
 cask install google-chrome
 cask install google-japanese-ime
 #cask install macvim-kaoriya
+cask install mendeley-desktop
 cask install onepassword
 cask install skype
 cask install vagrant
