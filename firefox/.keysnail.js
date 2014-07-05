@@ -21,6 +21,8 @@ local["^http://reader.livedoor.com/reader/"] = [
     pass('v'),
     pass('z')
 ];
+local["^https://cp.conoha.jp/"] = Array.prototype.map.call(
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", function(c) { return pass(c); });
 //}}%PRESERVE%
 // ========================================================================= //
 
