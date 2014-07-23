@@ -1,4 +1,4 @@
 [credential]
-  helper = /opt/boxen/homebrew/bin/git-credential-osxkeychain
+  helper = /usr/local/bin/git-credential-osxkeychain
 [core]
   editor = /Applications/MacVim.app/Contents/MacOS/Vim
