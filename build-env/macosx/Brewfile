@@ -27,6 +27,7 @@ cask install dropbox
 cask install firefox-ja
 cask install google-chrome
 cask install google-japanese-ime
+cask install heroku-toolbelt
 #cask install macvim-kaoriya
 cask install mendeley-desktop
 cask install onepassword
