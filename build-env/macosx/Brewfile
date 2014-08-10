@@ -3,6 +3,7 @@ upgrade
 
 install ansible
 install git
+install gzip
 install htop-osx
 install openssl
 install peco/peco/peco
