@@ -3,7 +3,7 @@ set nocompatible
 filetype off
 
 if has('win32')
-  set rtp+=$HOME/.vim,$HOME/.vim/after
+  set rtp^=$HOME/.vim,$HOME/.vim/after
 endif
 
 if has('vim_starting')
