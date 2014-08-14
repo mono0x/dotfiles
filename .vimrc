@@ -247,6 +247,10 @@ augroup END
 
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>:AnzuClearSearchStatus<CR>
 
+" spell checker
+set spelllang=en,cjk
+nnoremap <silent> <Leader>s :<C-u>setlocal spell!<CR>
+
 " Highlight trailing spaces
 highlight TrailingSpaces ctermbg=1
 function! s:highlight_trailing_spaces(insert)
