@@ -196,7 +196,7 @@ if neobundle#is_installed('lightline.vim')
     \       [ 'fugitive', 'readonly', 'filename', 'anzu', ],
     \     ],
     \     'right': [
-    \        [ 'lineinfo', 'char_counter' ],
+    \        [ 'lineinfo' ],
     \        [ 'percent' ],
     \        [ 'fileformat', 'fileencoding', 'filetype' ]
     \     ],
@@ -205,7 +205,6 @@ if neobundle#is_installed('lightline.vim')
     \     'fugitive': 'MyFugitive',
     \     'filename': 'MyFilename',
     \     'anzu': 'anzu#search_status',
-    \     'char_counter': 'MyCharCounter',
     \   },
     \ }
 else
@@ -223,15 +222,6 @@ endfunction
 
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyCharCounter()
-  let result = 0
-  for linenum in range(0, line('$'))
-    let line = getline(linenum)
-    let result += strlen(substitute(line, '.', 'x', 'g'))
-  endfor
-  return result
 endfunction
 
 " vim-anzu
