@@ -12,6 +12,7 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = false
+  pager = LESS=-R less
 [grep]
   lineNumber = true
 [alias]
