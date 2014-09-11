@@ -9,7 +9,7 @@ endif
 if has('vim_starting')
   set rtp+=$HOME/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 if !(has('win32') && has('kaoriya'))
   NeoBundle 'Shougo/vimproc', {
@@ -151,6 +151,8 @@ augroup END
 " colorscheme
 NeoBundle 'altercation/vim-colors-solarized'
 
+call neobundle#end()
+
 set t_Co=256
 syntax enable
 
@@ -164,11 +166,7 @@ if neobundle#is_installed('vim-colors-solarized')
   colorscheme solarized
 endif
 
-if neobundle#exists_not_installed_bundles()
-  echomsg 'Not installed bundles : ' .
-        \ string(neobundle#get_not_installed_bundle_names())
-  echomsg 'Please execute ":NeoBundleInstall" command.'
-endif
+NeoBundleCheck
 
 " terminal
 set lazyredraw
