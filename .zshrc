@@ -128,7 +128,7 @@ alias gci='git commit'
 alias gco='git checkout'
 alias gd='git diff'
 alias gl='git log --graph'
-alias gg='git grep -H --heading --break'
+alias gg='git grep -H --no-index --heading -I --line-number --break'
 alias gs='git status'
 
 alias b='bundle'
@@ -170,6 +170,13 @@ sudo() {
       command sudo $@
       ;;
   esac
+}
+
+tn() {
+  local dt
+  dt=`date '+%m/%d %H:%M:%S'`
+  $*
+  t update "done: $* => $? ($dt)" > /dev/null 2>&1
 }
 
 _Z_CMD=j source ~/.zsh/z/z.sh
