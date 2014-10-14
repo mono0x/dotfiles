@@ -468,6 +468,19 @@ call unite#custom#source('file_rec/async', 'ignore_pattern',
   \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
   \ '\|downloads/tmp\|templates_c')
 
+call unite#custom#source(
+  \ 'buffer,file,file_rec,file_rec/async,file_rec/git', 'matchers',
+  \ ['converter_relative_word', 'matcher_fuzzy',
+  \  'matcher_project_ignore_files'])
+
+call unite#custom#source(
+  \ 'file_mru', 'matchers',
+  \ ['matcher_project_files', 'matcher_fuzzy', 'matcher_hide_hidden_files'])
+
+call unite#custom#source(
+  \ 'file,file_rec,file_rec/async,file_rec/git,file_mru', 'converters',
+  \ ['converter_file_directory'])
+
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
