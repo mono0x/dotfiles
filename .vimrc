@@ -352,7 +352,8 @@ set wildmenu
 
 set showmatch
 
-set showmode
+set cmdheight=1
+set noshowmode
 
 set number
 
