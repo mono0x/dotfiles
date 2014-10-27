@@ -1,5 +1,5 @@
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/dotfiles/bin:$PATH
 if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
@@ -62,3 +62,5 @@ darwin*)
   export PATH="/Library/Developer/CommandLineTools/usr/bin:$PATH"
   ;;
 esac
+
+export GOPATH=$HOME

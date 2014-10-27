@@ -41,3 +41,5 @@
   pushinsteadof = "https://bitbucket.org/"
 [hub]
   protocol = https
+[ghq]
+  root = ~/src
