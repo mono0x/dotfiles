@@ -95,27 +95,8 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
-
-if which peco > /dev/null; then
-  peco-history() {
-      local tac
-      if which tac > /dev/null; then
-          tac="tac"
-      else
-          tac="tail -r"
-      fi
-      BUFFER=$(\history -n 1 | \
-          eval $tac | \
-          peco --query "$LBUFFER")
-      CURSOR=$#BUFFER
-      zle clear-screen
-  }
-  zle -N peco-history
-  bindkey "^R" peco-history
-else
-  bindkey "^R" history-incremental-pattern-search-backward
-  bindkey "^S" history-incremental-pattern-search-forward
-fi
+bindkey "^R" history-incremental-pattern-search-backward
+bindkey "^S" history-incremental-pattern-search-forward
 
 setopt noflowcontrol
 
