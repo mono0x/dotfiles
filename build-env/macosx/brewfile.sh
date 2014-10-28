@@ -14,6 +14,7 @@ brew install rbenv
 brew install readline
 brew install ruby-build
 brew install the_silver_searcher
+brew install tig
 brew install tmux
 brew install wget
 brew install xz
