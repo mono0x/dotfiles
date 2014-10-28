@@ -103,8 +103,8 @@ bindkey -e
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
 # }}}
 
 # Aliases {{{
@@ -137,8 +137,8 @@ alias gco='git checkout'
 alias gd='git diff'
 alias gl='git log --graph'
 alias gg='git grep -H --heading -I --line-number --break'
-alias gr='git grep --no-index -H --heading -I --line-number --break'
 alias gs='git status'
+alias gf='cd $(ghq list -p | peco --null)'
 
 alias b='bundle'
 alias be='bundle exec'
