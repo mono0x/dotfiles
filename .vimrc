@@ -67,6 +67,7 @@ NeoBundleLazy 'taka84u9/vim-ref-ri', {
   \ }
 
 " unite
+NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'h1mesuke/unite-outline'
