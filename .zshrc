@@ -23,9 +23,7 @@ zshaddhistory() {
   ]]
 }
 
-bindkey -v
-bindkey "^D" delete-char
-setopt ignore_eof
+bindkey -e
 
 zle -A .backward-kill-word vi-backward-kill-word
 zle -A .backward-delete-char vi-backward-delete-char
@@ -106,12 +104,8 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
-bindkey "^R" history-incremental-pattern-search-backward
-bindkey "^S" history-incremental-pattern-search-forward
 
 setopt noflowcontrol
-
-bindkey '^q' push-input
 
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=aunpack
 
@@ -220,13 +214,5 @@ update_tmux_environment() {
 }
 
 add-zsh-hook precmd update_tmux_environment
-
-change-repository() {
-  cd $(ghq list -p | peco)
-  zle accept-line
-  zle clear-screen
-}
-zle -N change-repository
-bindkey "^F" change-repository
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
