@@ -1,13 +1,29 @@
+# .zshrc
 
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=1000000
+HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
-setopt interactive_comments
 setopt extended_glob
+setopt extended_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt interactive_comments
+setopt share_history
+
+# http://mollifier.hatenablog.com/entry/20090728/p1
+zshaddhistory() {
+  local line=${1%%$'\n'}
+  local cmd=${line%% *}
+
+  [[ ${#line} -ge 5
+    && ${cmd} != (l|l[sal])
+    && ${cmd} != (c|cd)
+    && ${cmd} != (m|man)
+  ]]
+}
 
 bindkey -v
-
 bindkey "^D" delete-char
 setopt ignore_eof
 
@@ -77,11 +93,6 @@ setopt auto_list
 setopt print_eight_bit
 
 setopt prompt_subst
-
-setopt share_history
-
-setopt hist_ignore_all_dups
-setopt hist_ignore_dups
 
 setopt auto_pushd
 setopt pushd_ignore_dups
