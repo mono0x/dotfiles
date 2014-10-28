@@ -37,7 +37,7 @@ zshaddhistory() {
 
 # Completions {{{
 dotzsh=$HOME/.zsh
-fpath=($dotzsh/cd-gitroot $dotzsh/z $dotzsh/zsh-completions/src $fpath)
+fpath=($dotzsh/cd-gitroot $dotzsh/z $dotzsh/zsh-completions/src $GOPATH/src/github.com/motemen/ghq/zsh $fpath)
 unset dotzsh
 
 autoload -U compinit
