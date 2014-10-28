@@ -1,5 +1,16 @@
 # .zshrc
+# vim: foldmethod=marker
 
+# Options {{{
+setopt auto_list
+setopt auto_pushd
+setopt noflowcontrol
+setopt print_eight_bit
+setopt prompt_subst
+setopt pushd_ignore_dups
+# }}}
+
+# History {{{
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
@@ -22,19 +33,18 @@ zshaddhistory() {
     && ${cmd} != (m|man)
   ]]
 }
+# }}}
 
-bindkey -e
-
-zle -A .backward-kill-word vi-backward-kill-word
-zle -A .backward-delete-char vi-backward-delete-char
-
+# Completions {{{
 dotzsh=$HOME/.zsh
 fpath=($dotzsh/cd-gitroot $dotzsh/z $dotzsh/zsh-completions/src $fpath)
 unset dotzsh
 
 autoload -U compinit
 compinit
+# }}}
 
+# Prompt {{{
 autoload colors
 colors
 
@@ -85,33 +95,23 @@ SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
 
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*:default' menu select=1
+# }}}
 
-setopt auto_list
-
-setopt print_eight_bit
-
-setopt prompt_subst
-
-setopt auto_pushd
-setopt pushd_ignore_dups
-
-#eval 'dircolors'
-export ZLS_COLORS=$LS_COLORS
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# Key {{{
+bindkey -e
 
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
+# }}}
 
-setopt noflowcontrol
-
-alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=aunpack
-
+# Aliases {{{
 alias sudo="sudo "
 alias tmux='TERM=screen-256color tmux'
 alias vi='vim'
+alias v='vim'
 
 case "${OSTYPE}" in
 linux*)
@@ -123,6 +123,7 @@ darwin*)
 esac
 alias ll='ls -l'
 alias la='ls -A'
+alias lla='ls -Al'
 
 if which hub &> /dev/null; then
   alias git='hub'
@@ -135,7 +136,8 @@ alias gci='git commit'
 alias gco='git checkout'
 alias gd='git diff'
 alias gl='git log --graph'
-alias gg='git grep -H --no-index --heading -I --line-number --break'
+alias gg='git grep -H --heading -I --line-number --break'
+alias gr='git grep --no-index -H --heading -I --line-number --break'
 alias gs='git status'
 
 alias b='bundle'
@@ -179,30 +181,31 @@ sudo() {
   esac
 }
 
-tn() {
-  local dt
-  dt=`date '+%m/%d %H:%M:%S'`
-  $*
-  t update "done: $* => $? ($dt)" > /dev/null 2>&1
-}
-
 _Z_CMD=j source ~/.zsh/z/z.sh
 
 autoload -Uz cd-gitroot
 alias u=cd-gitroot
+# }}}
 
-# rbenv
+# Functions {{{
+# sudo with rbenv
 rbenvsudo() {
-  executable=$1
+  local executable=$1
   shift 1
   command sudo PATH=$PATH $(rbenv which $executable) $*
 }
 
-# tmux
+# Notify to Twitter
+n() {
+  local dt=`date '+%m/%d %H:%M:%S'`
+  $*
+  t update "done: $* => $? ($dt)" > /dev/null 2>&1
+}
+
+# update environment variables
 update_tmux_environment() {
   if [ -n "${TMUX}" ]; then
-    local _tmux_env
-    _tmux_env=$( tmux show-environment )
+    local _tmux_env=$( tmux show-environment )
     if [ "${_tmux_env}" != "${_expected_tmux_env}" ]; then
       eval $( echo "${_tmux_env}" | \
         sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
@@ -212,7 +215,12 @@ update_tmux_environment() {
     fi
   fi
 }
-
 add-zsh-hook precmd update_tmux_environment
+# }}}
 
+#eval 'dircolors'
+export ZLS_COLORS=$LS_COLORS
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# Load local zshrc
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
