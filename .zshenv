@@ -5,37 +5,40 @@ if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
   export LC_ALL=en_US.UTF-8
 fi
 
-if [ -d ${HOME}/.rbenv  ] ; then
-  export PATH=$HOME/.rbenv/bin:$PATH
-  # http://blog.uu59.org/2014-01-06-fast-rbenv.html
-  rbenv_init() {
-    # eval "$(rbenv init - --no-rehash)" is crazy slow (it takes arround 100ms)
-    # below style took ~2ms
-    export RBENV_SHELL=zsh
-    if [[ -f /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh ]]; then
-      source /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh
-    else
-      source "$HOME/.rbenv/completions/rbenv.zsh"
+# http://blog.uu59.org/2014-01-06-fast-rbenv.html
+rbenv_init() {
+  # eval "$(rbenv init - --no-rehash)" is crazy slow (it takes arround 100ms)
+  # below style took ~2ms
+  export RBENV_SHELL=zsh
+  if [[ -f /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh ]]; then
+    source /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh
+  elif [[ -f /opt/rbenv/completions/rbenv.zsh ]]; then
+    export RBENV_ROOT=/opt/rbenv
+    source /opt/rbenv/completions/rbenv.zsh
+  elif [[ -f $HOME/.rbenv/completions/rbenv.zsh ]]; then
+    source "$HOME/.rbenv/completions/rbenv.zsh"
+  else
+    return
+  fi
+  rbenv() {
+    local command
+    command="$1"
+    if [ "$#" -gt 0 ]; then
+      shift
     fi
-    rbenv() {
-      local command
-      command="$1"
-      if [ "$#" -gt 0 ]; then
-        shift
-      fi
 
-      case "$command" in
-      rehash|shell)
-        eval "`rbenv "sh-$command" "$@"`";;
-      *)
-        command rbenv "$command" "$@";;
-      esac
-    }
-    path=($HOME/.rbenv/shims $path)
+    case "$command" in
+    rehash|shell)
+      eval "`rbenv "sh-$command" "$@"`";;
+    *)
+      command rbenv "$command" "$@";;
+    esac
   }
-  rbenv_init
-  unfunction rbenv_init
-fi
+  export PATH=$RBENV_ROOT/bin:$PATH
+  path=($RBENV_ROOT/shims $path)
+}
+rbenv_init
+unfunction rbenv_init
 
 export RSENSE_HOME=$HOME/dotfiles/rsense
 
