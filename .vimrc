@@ -107,6 +107,9 @@ NeoBundleLazy 'gnuplot.vim', {
 NeoBundleLazy 'honza/dockerfile.vim', {
   \   'autoload': { 'filetypes': 'dockerfile' }
   \  }
+NeoBundleLazy 'pangloss/vim-javascript', {
+  \   'autoload': { 'filetypes': 'javascript' }
+  \  }
 
 augroup vimrc_loading
   autocmd!
