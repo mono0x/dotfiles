@@ -10,6 +10,7 @@ rbenv_init() {
   # eval "$(rbenv init - --no-rehash)" is crazy slow (it takes arround 100ms)
   # below style took ~2ms
   export RBENV_SHELL=zsh
+  export RBENV_ROOT=$HOME/.rbenv
   if [[ -f /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh ]]; then
     source /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh
   elif [[ -f /opt/rbenv/completions/rbenv.zsh ]]; then
