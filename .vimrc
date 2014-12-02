@@ -1,15 +1,210 @@
 " .vimrc
 " vim: foldmethod=marker
-
-" Note: Skip initialization for vim-tiny or vim-small.
-if !1 | finish | endif
+set nocompatible
 
 augroup vimrc_loading
   autocmd!
 augroup END
 
+" terminal {{{
+set lazyredraw
+set ttyfast
+" }}}
+
+" leader {{{
+let mapleader = ' '
+" }}}
+
+" spell checker {{{
+set spelllang=en,cjk
+nnoremap <silent> <Leader>s :<C-u>setlocal spell!<CR>
+" }}}
+
+" Highlight trailing spaces {{{
+highlight TrailingSpaces ctermbg=1
+function! s:highlight_trailing_spaces(insert)
+  if &filetype ==# 'unite'
+    return
+  endif
+  if expand('%:t') ==# '[Command Line]'
+    return
+  endif
+  if a:insert
+    match TrailingSpaces /\S\zs\s\+$/
+  else
+    match TrailingSpaces /\s\+$/
+  endif
+endf
+augroup TrailingSpaces
+  autocmd!
+  autocmd BufNew,BufRead * call s:highlight_trailing_spaces(0)
+  autocmd InsertEnter * call s:highlight_trailing_spaces(1)
+  autocmd InsertLeave * call s:highlight_trailing_spaces(0)
+augroup END
+" }}}
+
+" Disable wrapping {{{
+set textwidth=0
+autocmd vimrc_loading FileType text setlocal textwidth=0
+" }}}
+
+" Encoding {{{
+set encoding=utf-8
+if has('win32')
+  set termencoding=cp932
+endif
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = &fileencodings .','. s:fileencodings_default
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+function! s:au_recheck_fenc()
+  if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+    let &fileencoding=&encoding
+  endif
+endfunction
+autocmd vimrc_loading BufReadPost * call s:au_recheck_fenc()
+set fileformats=unix,dos,mac
+" }}}
+
+" Backup and history {{{
+set nobackup
+set noundofile
+set nowritebackup
+set directory=~/.vimswap//
+set history=100
+" }}}
+
+" Help {{{
+set notagbsearch
+" }}}
+
+" Indent {{{
+set autoindent
+set tabstop=8
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+" }}}
+
+" Movements {{{
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+noremap <Down> gj
+noremap <Up> gk
+set whichwrap=b,s,h,l,<,>,[,]
+set virtualedit+=block
+
+imap <C-d> <Delete>
+imap <C-f> <Right>
+imap <C-b> <Left>
+" }}}
+
+" Appearances {{{
+set cursorline
+set wildmenu
+set showmatch
+set number
+set hidden
+set list
+set listchars=tab:>\ ,extends:>,precedes:<
+
+syntax enable
+set t_Co=256
+
+if exists('&ambiwidth')
+  set ambiwidth=double
+endif
+" }}}
+
+" Window {{{
+nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
+nnoremap <C-w>n :bn<CR>
+nnoremap <C-w>p :bp<CR>
+nnoremap <C-w>d :bd<CR>
+nnoremap <C-w>h <C-w>h:call <SID>good_width()<Cr>
+nnoremap <C-w>l <C-w>l:call <SID>good_width()<Cr>
+nnoremap <C-w>H <C-w>H:call <SID>good_width()<Cr>
+nnoremap <C-w>L <C-w>L:call <SID>good_width()<Cr>
+function! s:good_width()
+  if &filetype == 'unite'
+    return
+  endif
+  if winwidth(0) < 84
+    vertical resize 84
+  endif
+endfunction
+" }}}
+
+" IME {{{
+set iminsert=0
+set imsearch=0
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+" }}}
+
+" Command-window {{{
+nnoremap <sid>(command-line-enter) q:
+xnoremap <sid>(command-line-enter) q:
+nnoremap <sid>(command-line-norange) q:<C-u>
+
+nmap :  <sid>(command-line-enter)
+xmap :  <sid>(command-line-enter)
+
+autocmd vimrc_loading CmdwinEnter * call s:init_cmdwin()
+function! s:init_cmdwin()
+  setlocal nonumber
+
+  nnoremap <buffer> q :<C-u>quit<CR>
+  nnoremap <buffer> <TAB> :<C-u>quit<CR>
+  inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+  inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+
+  " Completion.
+  inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+  startinsert!
+endfunction
+" }}}
+
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
 " NeoBundle {{{
-set nocompatible
 filetype off
 
 if has('win32')
@@ -155,9 +350,6 @@ NeoBundle 'altercation/vim-colors-solarized'
 
 call neobundle#end()
 
-set t_Co=256
-syntax enable
-
 filetype plugin indent on
 
 NeoBundleCheck
@@ -171,15 +363,6 @@ if neobundle#is_installed('vim-colors-solarized')
   let g:solarized_italic=0
   colorscheme solarized
 endif
-" }}}
-
-" terminal {{{
-set lazyredraw
-set ttyfast
-" }}}
-
-" leader {{{
-let mapleader = ' '
 " }}}
 
 " vim-indent-guides {{{
@@ -247,137 +430,6 @@ augroup vim-anzu
 augroup END
 
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>:AnzuClearSearchStatus<CR>
-" }}}
-
-" spell checker {{{
-set spelllang=en,cjk
-nnoremap <silent> <Leader>s :<C-u>setlocal spell!<CR>
-" }}}
-
-" Highlight trailing spaces {{{
-highlight TrailingSpaces ctermbg=1
-function! s:highlight_trailing_spaces(insert)
-  if &filetype ==# 'unite'
-    return
-  endif
-  if expand('%:t') ==# '[Command Line]'
-    return
-  endif
-  if a:insert
-    match TrailingSpaces /\S\zs\s\+$/
-  else
-    match TrailingSpaces /\s\+$/
-  endif
-endf
-augroup TrailingSpaces
-  autocmd!
-  autocmd BufNew,BufRead * call s:highlight_trailing_spaces(0)
-  autocmd InsertEnter * call s:highlight_trailing_spaces(1)
-  autocmd InsertLeave * call s:highlight_trailing_spaces(0)
-augroup END
-" }}}
-
-" Disable wrapping {{{
-set textwidth=0
-autocmd vimrc_loading FileType text setlocal textwidth=0
-" }}}
-
-" Encoding {{{
-set encoding=utf-8
-if has('win32')
-  set termencoding=cp932
-endif
-if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  if &encoding ==# 'utf-8'
-    let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    let &fileencodings = &fileencodings .','. s:fileencodings_default
-    unlet s:fileencodings_default
-  else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
-    endif
-  endif
-  unlet s:enc_euc
-  unlet s:enc_jis
-endif
-function! s:au_recheck_fenc()
-  if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-    let &fileencoding=&encoding
-  endif
-endfunction
-autocmd vimrc_loading BufReadPost * call s:au_recheck_fenc()
-set fileformats=unix,dos,mac
-" }}}
-
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
-
-" Backup and history {{{
-set nobackup
-set noundofile
-set nowritebackup
-set directory=~/.vimswap//
-set history=100
-" }}}
-
-set notagbsearch
-
-" Indent {{{
-set autoindent
-set tabstop=8
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
-" }}}
-
-" Movements {{{
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-noremap <Down> gj
-noremap <Up> gk
-set whichwrap=b,s,h,l,<,>,[,]
-set virtualedit+=block
-
-imap <C-d> <Delete>
-imap <C-f> <Right>
-imap <C-b> <Left>
-" }}}
-
-" Appearances {{{
-set cursorline
-set wildmenu
-set showmatch
-set number
-set hidden
-set list
-set listchars=tab:>\ ,extends:>,precedes:<
 " }}}
 
 " vim-marching {{{
@@ -480,25 +532,6 @@ if executable('ag')
 endif
 " }}}
 
-" Window {{{
-nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
-nnoremap <C-w>n :bn<CR>
-nnoremap <C-w>p :bp<CR>
-nnoremap <C-w>d :bd<CR>
-nnoremap <C-w>h <C-w>h:call <SID>good_width()<Cr>
-nnoremap <C-w>l <C-w>l:call <SID>good_width()<Cr>
-nnoremap <C-w>H <C-w>H:call <SID>good_width()<Cr>
-nnoremap <C-w>L <C-w>L:call <SID>good_width()<Cr>
-function! s:good_width()
-  if &filetype == 'unite'
-    return
-  endif
-  if winwidth(0) < 84
-    vertical resize 84
-  endif
-endfunction
-" }}}
-
 " yankround {{{
 nmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
@@ -528,37 +561,6 @@ if has('gui_running') && has('clipboard')
     set clipboard=unnamed
   endif
 endif
-" }}}
-
-" IME {{{
-set iminsert=0
-set imsearch=0
-inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-" }}}
-
-" Command-window {{{
-nnoremap <sid>(command-line-enter) q:
-xnoremap <sid>(command-line-enter) q:
-nnoremap <sid>(command-line-norange) q:<C-u>
-
-nmap :  <sid>(command-line-enter)
-xmap :  <sid>(command-line-enter)
-
-autocmd vimrc_loading CmdwinEnter * call s:init_cmdwin()
-function! s:init_cmdwin()
-  setlocal nonumber
-
-  nnoremap <buffer> q :<C-u>quit<CR>
-  nnoremap <buffer> <TAB> :<C-u>quit<CR>
-  inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-  inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-  inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-
-  " Completion.
-  inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-  startinsert!
-endfunction
 " }}}
 
 " Zencoding {{{
