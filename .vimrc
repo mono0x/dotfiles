@@ -40,9 +40,6 @@ if s:meet_neocomplete_requirements()
   NeoBundle 'Shougo/neocomplete'
 else
   NeoBundle 'Shougo/neocomplcache'
-  NeoBundleLazy 'Shougo/neocomplcache-rsense', {
-    \   'autoload': { 'filetypes': [ 'ruby' ] },
-    \ }
 endif
 " }}}
 
@@ -61,25 +58,15 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'anyakichi/vim-surround'
-NeoBundle 'bkad/CamelCaseMotion'
-NeoBundle 'thinca/vim-poslist'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'LeafCage/yankround.vim'
 
-NeoBundle 'thinca/vim-ref'
-NeoBundleLazy 'taka84u9/vim-ref-ri', {
-  \   'autoload': { 'filetypes': [ 'ruby' ] }
-  \ }
-
 " Unite {{{2
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'tsukkee/unite-help'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'Shougo/unite-build'
 NeoBundle 'hewes/unite-gtags'
@@ -584,20 +571,6 @@ let g:user_zen_settings = {
 let g:echodoc_enable_at_startup = 1
 " }}}
 
-" syntastic {{{
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 2
-" }}}
-
-" vim-ref {{{
-function! s:ref_ruby_settings()
-  nnoremap <silent><buffer> [unite]k :<C-u>Unite ref/ri<CR>
-  nnoremap <silent><buffer> K :<C-u>call ref#jump('normal', 'ri')<CR>
-  vnoremap <silent><buffer> K :<C-u>call ref#jump('visual', 'ri')<CR>
-endfunction
-autocmd vimrc_loading FileType ruby call s:ref_ruby_settings()
-" }}}
-
 " Alignta {{{
 xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
 xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
@@ -608,11 +581,6 @@ xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
 xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
 xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
 xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
-" }}}
-
-" poslist {{{
-map <C-o> <Plug>(poslist-prev-pos)
-map <C-i> <Plug>(poslist-next-pos)
 " }}}
 
 " quickrun {{{
