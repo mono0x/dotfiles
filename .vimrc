@@ -227,17 +227,7 @@ endif
 
 NeoBundle 'sudo.vim'
 
-" Neocomplete {{{2
-function! s:meet_neocomplete_requirements()
-    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-endfunction
-if s:meet_neocomplete_requirements()
-  NeoBundle 'Shougo/neocomplete'
-else
-  NeoBundle 'Shougo/neocomplcache'
-endif
-" }}}
-
+NeoBundle 'Shougo/neocomplete'
 NeoBundleLazy 'osyo-manga/vim-marching', {
   \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
   \ }
@@ -437,8 +427,8 @@ let g:marching_backend = 'sync_clang_command'
 let g:marching_enable_neocomplete = 1
 " }}}
 
-" Neocomplete and Neocomplcache {{{
-if s:meet_neocomplete_requirements()
+" Neocomplete {{{
+if neobundle#is_installed('neocomplete')
   let g:neocomplete#enable_at_startup=1
   let g:neocomplete#enable_smart_case=1
   let g:neocomplete#sources#syntax#min_keyword_length=3
@@ -458,24 +448,6 @@ if s:meet_neocomplete_requirements()
   let g:neocomplete#force_omni_input_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplete#force_omni_input_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplete#force_omni_input_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-else
-  let g:neocomplcache_enable_at_startup=1
-  let g:neocomplcache_enable_smart_case=1
-  let g:neocomplcache_enable_camel_case_completion=1
-  let g:neocomplcache_enable_underbar_completion=1
-  let g:neocomplcache_min_keyword_length=3
-  let g:neocomplcache_force_overwrite_completefunc=1
-  if !exists('g:neocomplcache_force_omni_patterns')
-    let g:neocomplcache_force_omni_patterns={}
-  endif
-  let g:neocomplcache_force_omni_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplcache_force_omni_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplcache_force_omni_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  inoremap <expr><C-g> neocomplcache#undo_completion()
-  inoremap <expr><C-l> neocomplcache#complete_common_string()
-  inoremap <expr><C-y> neocomplcache#close_popup()
-  inoremap <expr><C-e> neocomplcache#cancel_popup()
 endif
 " }}}
 
