@@ -440,6 +440,7 @@ if neobundle#is_installed('neocomplete')
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   augroup END
   if !exists('g:neocomplete#force_omni_input_patterns')
@@ -449,6 +450,7 @@ if neobundle#is_installed('neocomplete')
   let g:neocomplete#force_omni_input_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplete#force_omni_input_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplete#force_omni_input_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 endif
 " }}}
 
