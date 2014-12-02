@@ -4,6 +4,10 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
+augroup vimrc_loading
+  autocmd!
+augroup END
+
 " NeoBundle {{{
 set nocompatible
 filetype off
@@ -28,6 +32,7 @@ endif
 
 NeoBundle 'sudo.vim'
 
+" Neocomplete {{{2
 function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
@@ -39,6 +44,7 @@ else
     \   'autoload': { 'filetypes': [ 'ruby' ] },
     \ }
 endif
+" }}}
 
 NeoBundleLazy 'osyo-manga/vim-marching', {
   \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
@@ -70,7 +76,7 @@ NeoBundleLazy 'taka84u9/vim-ref-ri', {
   \   'autoload': { 'filetypes': [ 'ruby' ] }
   \ }
 
-" unite
+" Unite {{{2
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-help'
@@ -79,8 +85,9 @@ NeoBundle 'Shougo/unite-build'
 NeoBundle 'hewes/unite-gtags'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'lambdalisue/unite-grep-vcs'
+" }}}
 
-" syntax
+" Syntax {{{2
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
   \   'autoload': { 'filetypes': [ 'css', 'sass', 'scss' ] }
   \  }
@@ -114,11 +121,9 @@ NeoBundleLazy 'honza/dockerfile.vim', {
 NeoBundleLazy 'pangloss/vim-javascript', {
   \   'autoload': { 'filetypes': 'javascript' }
   \  }
+" }}}
 
-augroup vimrc_loading
-  autocmd!
-augroup END
-
+" ftdetect {{{2
 augroup vimrc_loading
   au BufRead,BufNewFile *.scss	set filetype=scss.css
   au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown
@@ -140,15 +145,7 @@ augroup vimrc_loading
   autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
   autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
   autocmd BufNewFile,BufRead *._coffee set filetype=coffee
-augroup END
 
-function! s:DetectCoffee()
-    if getline(1) =~ '^#!.*\<coffee\>'
-        set filetype=coffee
-    endif
-endfunction
-
-augroup vimrc_loading
   autocmd BufNewFile,BufRead * call s:DetectCoffee()
 
   au BufRead,BufNewFile *.nginx set ft=nginx
@@ -158,8 +155,16 @@ augroup vimrc_loading
   au BufRead,BufNewFile *.plt set ft=gnuplot
 augroup END
 
-" colorscheme
+function! s:DetectCoffee()
+    if getline(1) =~ '^#!.*\<coffee\>'
+        set filetype=coffee
+    endif
+endfunction
+" }}}
+
+" colorscheme {{{2
 NeoBundle 'altercation/vim-colors-solarized'
+" }}}
 
 call neobundle#end()
 
