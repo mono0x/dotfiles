@@ -71,10 +71,10 @@ NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'Shougo/unite-build'
 NeoBundle 'hewes/unite-gtags'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'lambdalisue/unite-grep-vcs'
 
 " syntax
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
@@ -457,14 +457,23 @@ nmap <Leader>u [unite]
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -no-quit -no-start-insert -vertical -winwidth=32 -buffer-name=outline outline<CR>
-nnoremap <silent> <Leader>g :<C-u>Unite -no-quit vcs_grep<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
-nnoremap <silent> [unite]g :<C-u>Unite -no-quit grep<CR>
+nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
 nnoremap <silent> [unite]p :<C-u>Unite yankround<CR>
 nnoremap <silent> [unite]t :<C-u>Unite gtags/grep<CR>
 nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
+
+function! s:unite_smart_grep()
+  if unite#sources#grep_git#is_available()
+    Unite grep/git:. -buffer-name=search-buffer -no-start-insert -no-quit
+  elseif unite#sources#grep_hg#is_available()
+    Unite grep/hg:. -buffer-name=search-buffer -no-start-insert -no-quit
+  else
+    Unite grep:. -buffer-name=search-buffer -no-start-insert -no-quit
+  endif
+endfunction
 
 noremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
 
