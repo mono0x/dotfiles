@@ -1,6 +1,10 @@
+" .vimrc
+" vim: foldmethod=marker
+
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
+" NeoBundle {{{
 set nocompatible
 filetype off
 
@@ -164,6 +168,10 @@ syntax enable
 
 filetype plugin indent on
 
+NeoBundleCheck
+" }}}
+
+" Solarized {{{
 if neobundle#is_installed('vim-colors-solarized')
   set background=light
   let g:solarized_termcolors=16
@@ -171,26 +179,32 @@ if neobundle#is_installed('vim-colors-solarized')
   let g:solarized_italic=0
   colorscheme solarized
 endif
+" }}}
 
-NeoBundleCheck
-
-" terminal
+" terminal {{{
 set lazyredraw
 set ttyfast
+" }}}
 
-" leader
+" leader {{{
 let mapleader = ' '
+" }}}
 
-" vim-indent-guides
+" vim-indent-guides {{{
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
 autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
 autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
+" }}}
 
-" lightline
+" Lightline {{{
+set showcmd
+set cmdheight=1
+set noshowmode
 set laststatus=2
+
 if neobundle#is_installed('lightline.vim')
   let g:lightline = {
     \   'colorscheme': 'solarized',
@@ -227,8 +241,9 @@ endfunction
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
+" }}}
 
-" vim-anzu
+" vim-anzu {{{
 " http://qiita.com/shiena/items/f53959d62085b7980cb5
 nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
@@ -240,12 +255,14 @@ augroup vim-anzu
 augroup END
 
 nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>:AnzuClearSearchStatus<CR>
+" }}}
 
-" spell checker
+" spell checker {{{
 set spelllang=en,cjk
 nnoremap <silent> <Leader>s :<C-u>setlocal spell!<CR>
+" }}}
 
-" Highlight trailing spaces
+" Highlight trailing spaces {{{
 highlight TrailingSpaces ctermbg=1
 function! s:highlight_trailing_spaces(insert)
   if &filetype ==# 'unite'
@@ -266,10 +283,14 @@ augroup TrailingSpaces
   autocmd InsertEnter * call s:highlight_trailing_spaces(1)
   autocmd InsertLeave * call s:highlight_trailing_spaces(0)
 augroup END
+" }}}
 
+" Disable wrapping {{{
 set textwidth=0
 autocmd vimrc_loading FileType text setlocal textwidth=0
+" }}}
 
+" Encoding {{{
 set encoding=utf-8
 if has('win32')
   set termencoding=cp932
@@ -313,19 +334,23 @@ function! s:au_recheck_fenc()
 endfunction
 autocmd vimrc_loading BufReadPost * call s:au_recheck_fenc()
 set fileformats=unix,dos,mac
+" }}}
 
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
+" Backup and history {{{
 set nobackup
 set noundofile
 set nowritebackup
 set directory=~/.vimswap//
 set history=100
+" }}}
 
 set notagbsearch
 
+" Indent {{{
 set autoindent
 set tabstop=8
 set softtabstop=2
@@ -336,79 +361,39 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+" }}}
 
+" Movements {{{
 noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
 noremap <Down> gj
 noremap <Up> gk
-
-set showcmd
-
-set cursorline
-
 set whichwrap=b,s,h,l,<,>,[,]
-
 set virtualedit+=block
 
+imap <C-d> <Delete>
+imap <C-f> <Right>
+imap <C-b> <Left>
+" }}}
+
+" Appearances {{{
+set cursorline
 set wildmenu
-
 set showmatch
-
-set cmdheight=1
-set noshowmode
-
 set number
-
 set hidden
-
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
+" }}}
 
-" vim-marching
+" vim-marching {{{
 let g:marching_backend = 'sync_clang_command'
 let g:marching_enable_neocomplete = 1
+" }}}
 
-" msvc
-" http://d.hatena.ne.jp/osyo-manga/20121117/1353139064
-if has('win32')
-  let s:msvc_dirs = [
-  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 11.0",
-  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 10.0",
-  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 9.0",
-  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 8.0",
-  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 11.0",
-  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 10.0",
-  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 9.0",
-  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 8.0",
-  \]
-  function! s:set_msvc_path(msvc_path)
-    if has_key(s:, "msvc_path") || !isdirectory(a:msvc_path)
-      return
-    endif
-
-    let s:msvc_path = a:msvc_path
-    let path = a:msvc_path
-
-    let $VSINSTALLDIR=path
-    let $VCINSTALLDIR=$VSINSTALLDIR."/VC"
-
-    let $DevEnvDir=$VSINSTALLDIR."/Common7/IDE;"
-    let $PATH=$VSINSTALLDIR."Common7/Tools;".$PATH
-    let $PATH=$VCINSTALLDIR."/bin;".$PATH
-    let $PATH=$DevEnvDir.";".$PATH
-
-    let $INCLUDE=$VCINSTALLDIR."/include;".$INCLUDE
-    let $LIB=$VCINSTALLDIR."/LIB;".$LIB
-    let $LIBPATH=$VCINSTALLDIR."/LIB;".$LIBPATH
-  endfunction
-  function! s:setup_msvc_path()
-    call s:set_msvc_path(get(filter(copy(s:msvc_dirs), "isdirectory(v:val)"), 0, ""))
-  endfunction
-  call s:setup_msvc_path()
-endif
-
+" Neocomplete and Neocomplcache {{{
 if s:meet_neocomplete_requirements()
   let g:neocomplete#enable_at_startup=1
   let g:neocomplete#enable_smart_case=1
@@ -448,8 +433,9 @@ else
   inoremap <expr><C-y> neocomplcache#close_popup()
   inoremap <expr><C-e> neocomplcache#cancel_popup()
 endif
+" }}}
 
-" unite
+" Unite {{{
 let g:unite_enable_start_insert=1
 nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files buffer_tab file_mru bookmark file file/new<CR>
 nnoremap [unite] <Nop>
@@ -500,7 +486,9 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
   let g:unite_source_grep_recursive_opt = ''
 endif
+" }}}
 
+" Window {{{
 nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <C-w>n :bn<CR>
 nnoremap <C-w>p :bp<CR>
@@ -517,8 +505,9 @@ function! s:good_width()
     vertical resize 84
   endif
 endfunction
+" }}}
 
-" yankround
+" yankround {{{
 nmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
 nmap gp <Plug>(yankround-gp)
@@ -547,17 +536,15 @@ if has('gui_running') && has('clipboard')
     set clipboard=unnamed
   endif
 endif
+" }}}
 
-imap <C-d> <Delete>
-imap <C-f> <Right>
-imap <C-b> <Left>
-
-" IME
+" IME {{{
 set iminsert=0
 set imsearch=0
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+" }}}
 
-" Command-window
+" Command-window {{{
 nnoremap <sid>(command-line-enter) q:
 xnoremap <sid>(command-line-enter) q:
 nnoremap <sid>(command-line-norange) q:<C-u>
@@ -580,28 +567,33 @@ function! s:init_cmdwin()
 
   startinsert!
 endfunction
+" }}}
 
-" Zencoding
+" Zencoding {{{
 let g:user_zen_settings = {
   \'indentation': '  ',
   \}
+" }}}
 
-" echodoc
+" echodoc {{{
 let g:echodoc_enable_at_startup = 1
+" }}}
 
-" syntastic
+" syntastic {{{
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 2
+" }}}
 
-" vim-ref
+" vim-ref {{{
 function! s:ref_ruby_settings()
   nnoremap <silent><buffer> [unite]k :<C-u>Unite ref/ri<CR>
   nnoremap <silent><buffer> K :<C-u>call ref#jump('normal', 'ri')<CR>
   vnoremap <silent><buffer> K :<C-u>call ref#jump('visual', 'ri')<CR>
 endfunction
 autocmd vimrc_loading FileType ruby call s:ref_ruby_settings()
+" }}}
 
-" Alignta
+" Alignta {{{
 xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
 xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
 xnoremap <silent> <Leader>t= :Alignta << -e =<CR>
@@ -611,12 +603,14 @@ xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
 xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
 xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
 xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
+" }}}
 
-" poslist
+" poslist {{{
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
+" }}}
 
-" quickrun
+" quickrun {{{
 if !exists('g:quickrun_config')
   let g:quickrun_config = {}
 endif
@@ -631,16 +625,14 @@ let g:quickrun_config['hsp'] = {
   \   'error': 'quickfix',
   \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
   \ }
+" }}}
 
-" vim-watchdogs
+" vim-watchdogs {{{
 let g:watchdogs_check_BufWritePost_enable = 1
 call watchdogs#setup(g:quickrun_config)
+" }}}
 
-if has('win32')
-  let $PATH=$PATH.';'.$HOME.'\.nvmw\v0.8.18'
-endif
-
-" markdown
+" markdown {{{
 let g:markdown_fenced_languages = [
   \   'c',
   \   'cpp',
@@ -654,3 +646,52 @@ let g:markdown_fenced_languages = [
   \   'sh',
   \   'xml',
   \ ]
+" }}}
+
+" Win32 specific {{{
+" nvm {{{2
+if has('win32')
+  let $PATH=$PATH.';'.$HOME.'\.nvmw\v0.8.18'
+endif
+" }}}
+
+" msvc {{{2
+" http://d.hatena.ne.jp/osyo-manga/20121117/1353139064
+if has('win32')
+  let s:msvc_dirs = [
+  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 11.0",
+  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 10.0",
+  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 9.0",
+  \  "C:/Program\ Files (x86)/Microsoft\ Visual\ Studio\ 8.0",
+  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 11.0",
+  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 10.0",
+  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 9.0",
+  \  "C:/Program\ Files/Microsoft\ Visual\ Studio\ 8.0",
+  \]
+  function! s:set_msvc_path(msvc_path)
+    if has_key(s:, "msvc_path") || !isdirectory(a:msvc_path)
+      return
+    endif
+
+    let s:msvc_path = a:msvc_path
+    let path = a:msvc_path
+
+    let $VSINSTALLDIR=path
+    let $VCINSTALLDIR=$VSINSTALLDIR."/VC"
+
+    let $DevEnvDir=$VSINSTALLDIR."/Common7/IDE;"
+    let $PATH=$VSINSTALLDIR."Common7/Tools;".$PATH
+    let $PATH=$VCINSTALLDIR."/bin;".$PATH
+    let $PATH=$DevEnvDir.";".$PATH
+
+    let $INCLUDE=$VCINSTALLDIR."/include;".$INCLUDE
+    let $LIB=$VCINSTALLDIR."/LIB;".$LIB
+    let $LIBPATH=$VCINSTALLDIR."/LIB;".$LIBPATH
+  endfunction
+  function! s:setup_msvc_path()
+    call s:set_msvc_path(get(filter(copy(s:msvc_dirs), "isdirectory(v:val)"), 0, ""))
+  endfunction
+  call s:setup_msvc_path()
+endif
+" }}}
+" }}}
