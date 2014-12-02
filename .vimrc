@@ -434,6 +434,7 @@ if neobundle#is_installed('neocomplete')
   let g:neocomplete#sources#syntax#min_keyword_length=3
   inoremap <expr><C-g> neocomplete#undo_completion()
   inoremap <expr><C-l> neocomplete#complete_common_string()
+  inoremap <expr><C-x><C-f> neocomplete#start_manual_complete('file')
   augroup vimrc_loading
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
