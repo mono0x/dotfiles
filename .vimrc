@@ -1,6 +1,5 @@
 " .vimrc
 " vim: foldmethod=marker
-set nocompatible
 
 augroup vimrc_loading
   autocmd!
@@ -12,7 +11,7 @@ set ttyfast
 " }}}
 
 " leader {{{
-let mapleader = ' '
+let g:mapleader = ' '
 " }}}
 
 " spell checker {{{
@@ -117,6 +116,8 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+
+let g:vim_indent_cont=2
 " }}}
 
 " Movements {{{
@@ -143,7 +144,6 @@ set hidden
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
 
-syntax enable
 set t_Co=256
 
 if exists('&ambiwidth')
@@ -341,6 +341,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 call neobundle#end()
 
 filetype plugin indent on
+syntax on
 
 NeoBundleCheck
 " }}}
