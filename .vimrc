@@ -248,6 +248,7 @@ NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'tyru/caw.vim'
 
 " Unite {{{2
 NeoBundle 'Shougo/tabpagebuffer.vim'
