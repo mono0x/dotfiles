@@ -456,8 +456,9 @@ endif
 " }}}
 
 " Unite {{{
-let g:unite_enable_start_insert=1
-nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files buffer_tab file_mru bookmark file file/new<CR>
+call unite#custom#profile('default', 'context', {
+  \   'start_insert': 1,
+  \ })
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
