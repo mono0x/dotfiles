@@ -461,7 +461,7 @@ call unite#custom#profile('default', 'context', {
   \ })
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
-nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<CR>
+nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]o :<C-u>Unite -no-quit -no-start-insert -vertical -winwidth=32 -buffer-name=outline outline<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
@@ -471,6 +471,14 @@ nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
 nnoremap <silent> [unite]p :<C-u>Unite yankround<CR>
 nnoremap <silent> [unite]t :<C-u>Unite gtags/grep<CR>
 nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
+
+function! s:unite_smart_file_rec()
+  if isdirectory(getcwd() . "/.git")
+    Unite -buffer-name=files file_rec/git
+  else
+    Unite -buffer-name=files file_rec/async
+  endif
+endfunction
 
 function! s:unite_smart_grep()
   if unite#sources#grep_git#is_available()
