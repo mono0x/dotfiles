@@ -253,7 +253,7 @@ NeoBundle 'tyru/caw.vim'
 " Unite {{{2
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite-build'
 NeoBundle 'hewes/unite-gtags'
 NeoBundle 'Shougo/neomru.vim'
@@ -464,7 +464,7 @@ nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
-nnoremap <silent> [unite]o :<C-u>Unite -no-quit -no-start-insert -vertical -winwidth=32 -buffer-name=outline outline<CR>
+nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
 nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
@@ -510,6 +510,14 @@ call unite#custom#source(
 call unite#custom#source(
   \ 'file,file_rec,file_rec/async,file_rec/git,file_mru', 'converters',
   \ ['converter_file_directory'])
+
+call unite#custom#profile('outline', 'context', {
+  \   'start_insert': 0,
+  \   'quit': 0,
+  \   'winwidth': 32,
+  \   'direction': 'botright',
+  \   'vertical': 1,
+  \ })
 
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
