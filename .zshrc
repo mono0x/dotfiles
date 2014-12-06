@@ -188,14 +188,16 @@ alias u=cd-gitroot
 # Functions {{{
 # sudo with rbenv
 rbenvsudo() {
-  local executable=$1
+  local executable
+  executable=$1
   shift 1
   command sudo PATH=$PATH $(rbenv which $executable) $*
 }
 
 # Notify to Twitter
 n() {
-  local dt=`date '+%m/%d %H:%M:%S'`
+  local dt
+  dt=`date '+%m/%d %H:%M:%S'`
   $*
   t update "done: $* => $? ($dt)" > /dev/null 2>&1
 }
