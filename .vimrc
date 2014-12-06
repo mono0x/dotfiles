@@ -460,18 +460,14 @@ endif
 call unite#custom#profile('default', 'context', {
   \   'start_insert': 1,
   \ })
-nnoremap [unite] <Nop>
-nmap <Leader>u [unite]
+nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files file_mru file -hide-source-names<CR>
 nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
-nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
-nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<CR>
+nnoremap <silent> <Leader>o :<C-u>Unite -buffer-name=outline outline<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
 nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
-nnoremap <silent> [unite]t :<C-u>Unite tab:no-current<CR>
-nnoremap <silent> [unite]r :<C-u>UniteResume<CR>
-nnoremap <silent> [unite]p :<C-u>Unite yankround<CR>
-nnoremap <silent> [unite]t :<C-u>Unite gtags/grep<CR>
+nnoremap <silent> <Leader>t :<C-u>Unite gtags/grep<CR>
 nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
+nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
 
 function! s:unite_smart_file_rec()
   if isdirectory(getcwd() . "/.git")
@@ -491,24 +487,25 @@ function! s:unite_smart_grep()
   endif
 endfunction
 
-noremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
-
 call unite#custom#source('file_rec/async', 'ignore_pattern',
   \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
   \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
   \ '\|downloads/tmp\|templates_c')
 
 call unite#custom#source(
-  \ 'buffer,file,file_rec,file_rec/async,file_rec/git', 'matchers',
-  \ ['converter_relative_word', 'matcher_fuzzy',
-  \  'matcher_project_ignore_files'])
+  \ 'buffer,file_mru', 'matchers',
+  \ ['matcher_fuzzy'])
 
 call unite#custom#source(
-  \ 'file_mru', 'matchers',
-  \ ['matcher_project_files', 'matcher_fuzzy', 'matcher_hide_hidden_files'])
+  \ 'file,file_rec/async,file_rec/git', 'matchers',
+  \ ['matcher_glob'])
 
 call unite#custom#source(
-  \ 'file,file_rec,file_rec/async,file_rec/git,file_mru', 'converters',
+  \ 'file_rec/async,file_rec/git', 'matchers',
+  \ ['matcher_glob'])
+
+call unite#custom#source(
+  \ 'file_rec/async,file_rec/git', 'converters',
   \ ['converter_file_directory'])
 
 call unite#custom#profile('outline', 'context', {
@@ -524,6 +521,14 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
   let g:unite_source_grep_recursive_opt = ''
 endif
+
+function! s:unite_my_settings()
+  imap <buffer><expr> j unite#smart_map('j', '')
+
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+endfunction
+autocmd vimrc_loading FileType unite call s:unite_my_settings()
+
 " }}}
 
 " yankround {{{
