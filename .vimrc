@@ -461,33 +461,31 @@ endif
 " }}}
 
 " Unite {{{
-call unite#custom#profile('default', 'context', {
-  \   'start_insert': 1,
-  \ })
-nnoremap <silent> <C-f> :<C-u>UniteWithCurrentDir -buffer-name=files file_mru file -hide-source-names<CR>
+nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
+nnoremap <silent> <Leader>F :<C-u>Unite file_mru -hide-source-names<CR>
 nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
-nnoremap <silent> <Leader>o :<C-u>Unite -buffer-name=outline outline<CR>
+nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
-nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
+nnoremap <silent> <Leader>g :<C-u>call <SID>unite_smart_grep()<CR>
 nnoremap <silent> <Leader>t :<C-u>Unite gtags/grep<CR>
 nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
 nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
 
 function! s:unite_smart_file_rec()
   if isdirectory(getcwd() . "/.git")
-    Unite -buffer-name=files file_rec/git
+    Unite file_rec/git
   else
-    Unite -buffer-name=files file_rec/async
+    Unite file_rec/async
   endif
 endfunction
 
 function! s:unite_smart_grep()
   if unite#sources#grep_git#is_available()
-    Unite grep/git:. -buffer-name=search-buffer -no-start-insert -no-quit
+    Unite grep/git:.
   elseif unite#sources#grep_hg#is_available()
-    Unite grep/hg:. -buffer-name=search-buffer -no-start-insert -no-quit
+    Unite grep/hg:.
   else
-    Unite grep:. -buffer-name=search-buffer -no-start-insert -no-quit
+    Unite grep:.
   endif
 endfunction
 
@@ -497,27 +495,38 @@ call unite#custom#source('file_rec/async', 'ignore_pattern',
   \ '\|downloads/tmp\|templates_c')
 
 call unite#custom#source(
-  \ 'buffer,file_mru', 'matchers',
-  \ ['matcher_fuzzy'])
-
-call unite#custom#source(
-  \ 'file,file_rec/async,file_rec/git', 'matchers',
-  \ ['matcher_glob'])
+  \ 'file,buffer,file_mru', 'matchers',
+  \ ['matcher_context'])
 
 call unite#custom#source(
   \ 'file_rec/async,file_rec/git', 'matchers',
-  \ ['matcher_glob'])
+  \ ['matcher_context'])
 
 call unite#custom#source(
-  \ 'file_rec/async,file_rec/git', 'converters',
-  \ ['converter_file_directory'])
+  \ 'file,file_mru,file_rec/async,file_rec/git', 'converters',
+  \ ['converter_smart_path', 'converter_file_directory'])
+
+call unite#custom#profile('default', 'context', {
+  \ 'start_insert': 1,
+  \ })
+
+call unite#custom#profile('file,file_mru,file_rec/async,file_rec/git', 'context', {
+  \ 'buffer_name': 'files',
+  \ })
+
+call unite#custom#profile('grep,grep/git,grep/hg', 'context', {
+  \ 'buffer_name': 'search-buffer',
+  \ 'start_insert': 0,
+  \ 'quit': 0,
+  \ })
 
 call unite#custom#profile('outline', 'context', {
-  \   'start_insert': 0,
-  \   'quit': 0,
-  \   'winwidth': 32,
-  \   'direction': 'botright',
-  \   'vertical': 1,
+  \ 'buffer_name': 'outline',
+  \ 'start_insert': 0,
+  \ 'quit': 0,
+  \ 'winwidth': 32,
+  \ 'direction': 'botright',
+  \ 'vertical': 1,
   \ })
 
 if executable('ag')
