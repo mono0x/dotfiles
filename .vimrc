@@ -249,10 +249,10 @@ NeoBundle 'thinca/vim-template'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'anyakichi/vim-surround'
 NeoBundle 'jceb/vim-hier'
-NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'tyru/caw.vim'
+NeoBundle 'haya14busa/incsearch.vim'
 
 " Unite {{{2
 NeoBundle 'Shougo/tabpagebuffer.vim'
@@ -382,7 +382,7 @@ if neobundle#is_installed('lightline.vim')
     \   'active': {
     \     'left': [
     \       [ 'mode', 'paste', ],
-    \       [ 'fugitive', 'readonly', 'filename', 'anzu', ],
+    \       [ 'fugitive', 'readonly', 'filename', ],
     \     ],
     \     'right': [
     \        [ 'lineinfo' ],
@@ -393,7 +393,6 @@ if neobundle#is_installed('lightline.vim')
     \   'component_function': {
     \     'fugitive': 'MyFugitive',
     \     'filename': 'MyFilename',
-    \     'anzu': 'anzu#search_status',
     \   },
     \ }
 else
@@ -414,18 +413,18 @@ function! MyModified()
 endfunction
 " }}}
 
-" vim-anzu {{{
-" http://qiita.com/shiena/items/f53959d62085b7980cb5
-nmap n <Plug>(anzu-n)
-nmap N <Plug>(anzu-N)
-nmap * <Plug>(anzu-star)
-nmap # <Plug>(anzu-sharp)
-augroup vim-anzu
-    autocmd!
-    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
-augroup END
+" incsearch {{{
+let g:incsearch#auto_nohlsearch = 1
 
-nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>:AnzuClearSearchStatus<CR>
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 " }}}
 
 " vim-marching {{{
