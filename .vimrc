@@ -253,6 +253,9 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'haya14busa/incsearch.vim'
+NeoBundleLazy 'godlygeek/tabular', {
+  \   'autoload': { 'commands': 'Tabularize' }
+  \  }
 
 " Unite {{{2
 NeoBundle 'Shougo/tabpagebuffer.vim'
@@ -266,22 +269,25 @@ NeoBundle 'lambdalisue/unite-grep-vcs'
 
 " Syntax {{{2
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
-  \   'autoload': { 'filetypes': [ 'css', 'sass', 'scss' ] }
+  \   'autoload': { 'filetypes': [ 'css', 'sass', 'scss', 'markdown' ] }
   \  }
 NeoBundleLazy 'othree/html5.vim', {
-  \   'autoload': { 'filetypes': 'html' }
+  \   'autoload': { 'filetypes': [ 'html', 'markdown' ] }
   \  }
 NeoBundleLazy 'cakebaker/scss-syntax.vim', {
-  \   'autoload': { 'filetypes': [ 'scss' ] }
+  \   'autoload': { 'filetypes': [ 'scss', 'markdown' ] }
   \  }
 NeoBundle 'tpope/vim-liquid', {
   \   'autoload': { 'filetypes': 'liquid' }
   \  }
-NeoBundleLazy 'tpope/vim-markdown', {
+NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
+  \   'autoload': { 'filetypes': 'markdown' }
+  \  }
+NeoBundleLazy 'rcmdnk/vim-markdown', {
   \   'autoload': { 'filetypes': 'markdown' }
   \  }
 NeoBundleLazy 'kchmck/vim-coffee-script', {
-  \   'autoload': { 'filetypes': 'coffee' }
+  \   'autoload': { 'filetypes': [ 'coffee', 'markdown' ] }
   \  }
 NeoBundleLazy 'sophacles/vim-processing', {
   \   'autoload': { 'filetypes': 'processing' }
@@ -296,14 +302,14 @@ NeoBundleLazy 'honza/dockerfile.vim', {
   \   'autoload': { 'filetypes': 'dockerfile' }
   \  }
 NeoBundleLazy 'pangloss/vim-javascript', {
-  \   'autoload': { 'filetypes': 'javascript' }
+  \   'autoload': { 'filetypes': [ 'javascript', 'markdown' ] }
   \  }
 " }}}
 
 " ftdetect {{{2
 augroup vimrc_loading
   au BufRead,BufNewFile *.scss	set filetype=scss.css
-  au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown
+  au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
   au BufRead,BufNewFile *.pde setf processing
 
   au BufNewFile,BufRead *.liquid					set ft=liquid
@@ -312,7 +318,7 @@ augroup vimrc_loading
   au BufNewFile,BufRead */_layouts/*.html,*/_includes/*.html	set ft=liquid
   au BufNewFile,BufRead *.html,*.xml,*.textile
         \ if getline(1) == '---' | set ft=liquid | endif
-  au BufNewFile,BufRead *.markdown,*.mkd,*.mkdn,*.md
+  au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn}
         \ if getline(1) == '---' |
         \   let b:liquid_subtype = 'markdown' |
         \   set ft=liquid |
@@ -619,19 +625,16 @@ call watchdogs#setup(g:quickrun_config)
 " }}}
 
 " markdown {{{
-let g:markdown_fenced_languages = [
-  \   'c',
-  \   'cpp',
-  \   'css',
-  \   'html',
-  \   'javascript',
-  \   'json=javascript',
-  \   'make',
-  \   'ruby',
-  \   'sass',
-  \   'sh',
-  \   'xml',
-  \ ]
+let g:vim_markdown_folding_disabled=1
+let g:markdown_quote_syntax_filetypes = {
+  \ "coffee": { "start": "coffee" },
+  \ "cpp": { "start": "cpp" },
+  \ "css": { "start": "css" },
+  \ "javascript": { "start": "javascript" },
+  \ "ruby": { "start": "ruby" },
+  \ "scss": { "start": "scss" },
+  \ "sh": { "start": "sh" },
+  \}
 " }}}
 
 " Win32 specific {{{
