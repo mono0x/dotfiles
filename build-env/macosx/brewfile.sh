@@ -7,10 +7,10 @@ brew install git
 brew install go --cross-compile-common
 brew install gzip
 brew install htop-osx
+brew install nginx
 brew install openssl
 brew install peco/peco/peco
 brew install postgresql
-brew install pow
 brew install rbenv
 brew install readline
 brew install ruby-build
