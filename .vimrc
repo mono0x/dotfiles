@@ -215,136 +215,104 @@ if has('vim_starting')
   set rtp+=$HOME/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-if !(has('win32') && has('kaoriya'))
-  NeoBundle 'Shougo/vimproc', {
-    \   'build': {
-    \     'mac': 'make -f make_mac.mak',
-    \     'unix': 'make -f make_unix.mak',
-    \   },
-    \ }
-endif
 
-NeoBundle 'sudo.vim'
-
-if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-  NeoBundle 'Shougo/neocomplete'
+if neobundle#has_fresh_cache('$MYVIMRC')
+  NeoBundleLoadCache
 else
-  NeoBundleFetch 'Shougo/neocomplete'
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  if !(has('win32') && has('kaoriya'))
+    NeoBundle 'Shougo/vimproc', {
+      \   'build': {
+      \     'mac': 'make -f make_mac.mak',
+      \     'unix': 'make -f make_unix.mak',
+      \   },
+      \ }
+  endif
+
+  NeoBundle 'sudo.vim'
+
+  if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+    NeoBundle 'Shougo/neocomplete'
+  else
+    NeoBundleFetch 'Shougo/neocomplete'
+  endif
+  NeoBundleLazy 'osyo-manga/vim-marching', {
+    \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
+    \ }
+  NeoBundle 'h1mesuke/vim-alignta'
+  NeoBundle 'Shougo/echodoc'
+  NeoBundle 'thinca/vim-quickrun'
+  NeoBundle 'osyo-manga/shabadou.vim'
+  NeoBundle 'osyo-manga/vim-watchdogs'
+  NeoBundleLazy 'mattn/emmet-vim', {
+    \   'autoload': { 'filetypes': [ 'html', 'haml', 'css' ] },
+    \ }
+  NeoBundle 'itchyny/lightline.vim'
+  NeoBundle 'tpope/vim-fugitive'
+  NeoBundle 'thinca/vim-template'
+  NeoBundle 'nathanaelkane/vim-indent-guides'
+  NeoBundle 'anyakichi/vim-surround'
+  NeoBundle 'jceb/vim-hier'
+  NeoBundle 'editorconfig/editorconfig-vim'
+  NeoBundle 'LeafCage/yankround.vim'
+  NeoBundle 'tyru/caw.vim'
+  NeoBundle 'haya14busa/incsearch.vim'
+  NeoBundleLazy 'godlygeek/tabular', {
+    \   'autoload': { 'commands': 'Tabularize' }
+    \  }
+
+  " Unite {{{2
+  NeoBundle 'Shougo/tabpagebuffer.vim'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/unite-outline'
+  NeoBundle 'Shougo/unite-build'
+  NeoBundle 'hewes/unite-gtags'
+  NeoBundle 'Shougo/neomru.vim'
+  NeoBundle 'lambdalisue/unite-grep-vcs'
+  " }}}
+
+  " Syntax {{{2
+  NeoBundleLazy 'hail2u/vim-css3-syntax', {
+    \   'autoload': { 'filetypes': [ 'css', 'sass', 'scss', 'markdown' ] }
+    \  }
+  NeoBundleLazy 'othree/html5.vim', {
+    \   'autoload': { 'filetypes': [ 'html', 'markdown' ] }
+    \  }
+  NeoBundleLazy 'cakebaker/scss-syntax.vim', {
+    \   'autoload': { 'filetypes': [ 'scss', 'markdown' ] }
+    \  }
+  NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
+    \   'autoload': { 'filetypes': 'markdown' }
+    \  }
+  NeoBundleLazy 'rcmdnk/vim-markdown', {
+    \   'autoload': { 'filetypes': 'markdown' }
+    \  }
+  NeoBundleLazy 'kchmck/vim-coffee-script', {
+    \   'autoload': { 'filetypes': [ 'coffee', 'markdown' ] }
+    \  }
+  NeoBundleLazy 'sophacles/vim-processing', {
+    \   'autoload': { 'filetypes': 'processing' }
+    \  }
+  NeoBundleLazy 'evanmiller/nginx-vim-syntax', {
+    \   'autoload': { 'filetypes': 'nginx' }
+    \  }
+  NeoBundleLazy 'gnuplot.vim', {
+    \   'autoload': { 'filetypes': 'gnuplot' }
+    \  }
+  NeoBundleLazy 'honza/dockerfile.vim', {
+    \   'autoload': { 'filetypes': 'dockerfile' }
+    \  }
+  NeoBundleLazy 'pangloss/vim-javascript', {
+    \   'autoload': { 'filetypes': [ 'javascript', 'markdown' ] }
+    \  }
+  " }}}
+
+  " colorscheme {{{2
+  NeoBundle 'altercation/vim-colors-solarized'
+  " }}}
+
+  NeoBundleSaveCache
 endif
-NeoBundleLazy 'osyo-manga/vim-marching', {
-  \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
-  \ }
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'Shougo/echodoc'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'osyo-manga/shabadou.vim'
-NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundleLazy 'mattn/emmet-vim', {
-  \   'autoload': { 'filetypes': [ 'html', 'haml', 'css' ] },
-  \ }
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'thinca/vim-template'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'anyakichi/vim-surround'
-NeoBundle 'jceb/vim-hier'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'tyru/caw.vim'
-NeoBundle 'haya14busa/incsearch.vim'
-NeoBundleLazy 'godlygeek/tabular', {
-  \   'autoload': { 'commands': 'Tabularize' }
-  \  }
-
-" Unite {{{2
-NeoBundle 'Shougo/tabpagebuffer.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite-build'
-NeoBundle 'hewes/unite-gtags'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'lambdalisue/unite-grep-vcs'
-" }}}
-
-" Syntax {{{2
-NeoBundleLazy 'hail2u/vim-css3-syntax', {
-  \   'autoload': { 'filetypes': [ 'css', 'sass', 'scss', 'markdown' ] }
-  \  }
-NeoBundleLazy 'othree/html5.vim', {
-  \   'autoload': { 'filetypes': [ 'html', 'markdown' ] }
-  \  }
-NeoBundleLazy 'cakebaker/scss-syntax.vim', {
-  \   'autoload': { 'filetypes': [ 'scss', 'markdown' ] }
-  \  }
-NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
-  \   'autoload': { 'filetypes': 'markdown' }
-  \  }
-NeoBundleLazy 'rcmdnk/vim-markdown', {
-  \   'autoload': { 'filetypes': 'markdown' }
-  \  }
-NeoBundleLazy 'kchmck/vim-coffee-script', {
-  \   'autoload': { 'filetypes': [ 'coffee', 'markdown' ] }
-  \  }
-NeoBundleLazy 'sophacles/vim-processing', {
-  \   'autoload': { 'filetypes': 'processing' }
-  \  }
-NeoBundleLazy 'evanmiller/nginx-vim-syntax', {
-  \   'autoload': { 'filetypes': 'nginx' }
-  \  }
-NeoBundleLazy 'gnuplot.vim', {
-  \   'autoload': { 'filetypes': 'gnuplot' }
-  \  }
-NeoBundleLazy 'honza/dockerfile.vim', {
-  \   'autoload': { 'filetypes': 'dockerfile' }
-  \  }
-NeoBundleLazy 'pangloss/vim-javascript', {
-  \   'autoload': { 'filetypes': [ 'javascript', 'markdown' ] }
-  \  }
-" }}}
-
-" ftdetect {{{2
-augroup vimrc_loading
-  au BufRead,BufNewFile *.scss	set filetype=scss.css
-  au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
-  au BufRead,BufNewFile *.pde setf processing
-
-  au BufNewFile,BufRead *.liquid					set ft=liquid
-  au BufNewFile,BufRead Dockerfile set filetype=dockerfile
-
-  au BufNewFile,BufRead */_layouts/*.html,*/_includes/*.html	set ft=liquid
-  au BufNewFile,BufRead *.html,*.xml,*.textile
-        \ if getline(1) == '---' | set ft=liquid | endif
-  au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn}
-        \ if getline(1) == '---' |
-        \   let b:liquid_subtype = 'markdown' |
-        \   set ft=liquid |
-        \ endif
-
-  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-  autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
-  autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
-  autocmd BufNewFile,BufRead *._coffee set filetype=coffee
-
-  autocmd BufNewFile,BufRead * call s:DetectCoffee()
-
-  au BufRead,BufNewFile *.nginx set ft=nginx
-  au BufRead,BufNewFile */etc/nginx/* set ft=nginx
-  au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
-
-  au BufRead,BufNewFile *.plt set ft=gnuplot
-augroup END
-
-function! s:DetectCoffee()
-    if getline(1) =~ '^#!.*\<coffee\>'
-        set filetype=coffee
-    endif
-endfunction
-" }}}
-
-" colorscheme {{{2
-NeoBundle 'altercation/vim-colors-solarized'
-" }}}
 
 call neobundle#end()
 
