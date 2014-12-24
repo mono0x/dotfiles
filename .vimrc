@@ -277,9 +277,6 @@ NeoBundleLazy 'othree/html5.vim', {
 NeoBundleLazy 'cakebaker/scss-syntax.vim', {
   \   'autoload': { 'filetypes': [ 'scss', 'markdown' ] }
   \  }
-NeoBundle 'tpope/vim-liquid', {
-  \   'autoload': { 'filetypes': 'liquid' }
-  \  }
 NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
   \   'autoload': { 'filetypes': 'markdown' }
   \  }
@@ -625,6 +622,8 @@ call watchdogs#setup(g:quickrun_config)
 " }}}
 
 " markdown {{{
+let g:vim_markdown_liquid=1
+let g:vim_markdown_frontmatter=1
 let g:vim_markdown_folding_disabled=1
 let g:markdown_quote_syntax_filetypes = {
   \ "coffee": { "start": "coffee" },
