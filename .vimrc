@@ -130,6 +130,8 @@ noremap <Up> gk
 set whichwrap=b,s,h,l,<,>,[,]
 set virtualedit+=block
 
+nnoremap Y y$
+
 imap <C-d> <Delete>
 imap <C-f> <Right>
 imap <C-b> <Left>
@@ -139,10 +141,13 @@ imap <C-b> <Left>
 set cursorline
 set wildmenu
 set showmatch
+set matchtime=1
 set number
 set hidden
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
+set display=lastline
+set pumheight=10
 
 set t_Co=256
 
