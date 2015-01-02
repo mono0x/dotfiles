@@ -3,6 +3,8 @@ include "109.nodoka"
 
 def option KeyboardDelay = enable 150 15
 
+def key E0RightShift = E0-0x36
+
 keymap KeymapBase
 
   # Caps -> Ctrl
@@ -13,6 +15,10 @@ keymap KeymapBase
   mod Windows += ひらがな
   key *ひらがな = *RightWindows
 
+  # RShift (RDP)
+  mod Shift += E0RightShift
+  key *E0RightShift = *LShift
+
   key IC-C-S-H = C-Backspace
 
   key ReverseSolidus = S-ReverseSolidus
@@ -22,6 +28,14 @@ keymap Global : KeymapBase
   # Caps -> Ctrl
   mod Control += 英数
   key *英数 = *LCtrl
+
+  # ひらがな -> Windows
+  mod Windows += ひらがな
+  key *ひらがな = *RightWindows
+
+  # RShift (RDP)
+  mod Shift += E0RightShift
+  key *E0RightShift = *LShift
 
   key IC-C-S-H = C-Backspace
 
