@@ -149,6 +149,11 @@ set listchars=tab:>\ ,extends:>,precedes:<
 set display=lastline
 set pumheight=10
 
+set showcmd
+set cmdheight=1
+set laststatus=2
+set statusline=%<[%n]%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%8P
+
 set t_Co=256
 
 if exists('&ambiwidth')
@@ -327,32 +332,30 @@ syntax on
 NeoBundleCheck
 " }}}
 
-" Solarized {{{
-if neobundle#is_installed('vim-colors-solarized')
+if neobundle#tap('vim-colors-solarized') " {{{
   set background=light
   let g:solarized_termcolors=16
   let g:solarized_termtrans=1
   let g:solarized_italic=0
   colorscheme solarized
-endif
-" }}}
 
-" vim-indent-guides {{{
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_auto_colors = 0
-autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
-autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
-" }}}
+  call neobundle#untap()
+endif " }}}
 
-" Lightline {{{
-set showcmd
-set cmdheight=1
-set noshowmode
-set laststatus=2
+if neobundle#tap('vim-indent-guides') " {{{
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_auto_colors = 0
+  autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
+  autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
 
-if neobundle#is_installed('lightline.vim')
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('lightline.vim') " {{{
+  set noshowmode
+
   let g:lightline = {
     \   'colorscheme': 'solarized',
     \   'active': {
@@ -371,45 +374,47 @@ if neobundle#is_installed('lightline.vim')
     \     'filename': 'MyFilename',
     \   },
     \ }
-else
-  set statusline=%<[%n]%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%8P
-endif
 
-function! MyFugitive()
-  return exists('*fugitive#head') && strlen(fugitive#head()) ? fugitive#head() : ''
-endfunction
+  function! MyFugitive()
+    return exists('*fugitive#head') && strlen(fugitive#head()) ? fugitive#head() : ''
+  endfunction
 
-function! MyFilename()
-  return ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-    \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
+  function! MyFilename()
+    return ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+      \ ('' != MyModified() ? ' ' . MyModified() : '')
+  endfunction
 
-function! MyModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-" }}}
+  function! MyModified()
+    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  endfunction
 
-" incsearch {{{
-let g:incsearch#auto_nohlsearch = 1
+  call neobundle#untap()
+endif " }}}
 
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-" }}}
+if neobundle#tap('incsearch.vim') " {{{
+  let g:incsearch#auto_nohlsearch = 1
 
-" vim-marching {{{
-let g:marching_backend = 'sync_clang_command'
-let g:marching_enable_neocomplete = 1
-" }}}
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  map *  <Plug>(incsearch-nohl-*)
+  map #  <Plug>(incsearch-nohl-#)
+  map g* <Plug>(incsearch-nohl-g*)
+  map g# <Plug>(incsearch-nohl-g#)
 
-" Neocomplete {{{
-if neobundle#is_installed('neocomplete')
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('vim-marching') " {{{
+  let g:marching_backend = 'sync_clang_command'
+  let g:marching_enable_neocomplete = 1
+
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('neocomplete') " {{{
   let g:neocomplete#enable_at_startup=1
   let g:neocomplete#enable_smart_case=1
   let g:neocomplete#sources#syntax#min_keyword_length=3
@@ -432,182 +437,198 @@ if neobundle#is_installed('neocomplete')
   let g:neocomplete#force_omni_input_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplete#force_omni_input_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-endif
-" }}}
 
-" Unite {{{
-nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
-nnoremap <silent> <Leader>F :<C-u>Unite file_mru -hide-source-names<CR>
-nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
-nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
-nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
-nnoremap <silent> <Leader>g :<C-u>call <SID>unite_smart_grep()<CR>
-nnoremap <silent> <Leader>t :<C-u>Unite gtags/grep<CR>
-nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
-nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
+  call neobundle#untap()
+endif " }}}
 
-function! s:unite_smart_file_rec()
-  if isdirectory(getcwd() . "/.git")
-    Unite file_rec/git
-  else
-    Unite file_rec/async
+if neobundle#tap('unite.vim') " {{{
+  nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
+  nnoremap <silent> <Leader>F :<C-u>Unite file_mru -hide-source-names<CR>
+  nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
+  nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
+  nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
+  nnoremap <silent> <Leader>g :<C-u>call <SID>unite_smart_grep()<CR>
+  nnoremap <silent> <Leader>t :<C-u>Unite gtags/grep<CR>
+  nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
+  nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
+
+  function! s:unite_smart_file_rec()
+    if isdirectory(getcwd() . "/.git")
+      Unite file_rec/git
+    else
+      Unite file_rec/async
+    endif
+  endfunction
+
+  function! s:unite_smart_grep()
+    if unite#sources#grep_git#is_available()
+      Unite grep/git:.
+    elseif unite#sources#grep_hg#is_available()
+      Unite grep/hg:.
+    else
+      Unite grep:.
+    endif
+  endfunction
+
+  call unite#custom#source('file_rec/async', 'ignore_pattern',
+    \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
+    \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
+    \ '\|downloads/tmp\|templates_c')
+
+  call unite#custom#source(
+    \ 'file,buffer,file_mru', 'matchers',
+    \ ['matcher_context'])
+
+  call unite#custom#source(
+    \ 'file_rec/async,file_rec/git', 'matchers',
+    \ ['matcher_context'])
+
+  call unite#custom#source(
+    \ 'file,file_mru,file_rec/async,file_rec/git', 'converters',
+    \ ['converter_smart_path', 'converter_file_directory'])
+
+  call unite#custom#profile('default', 'context', {
+    \ 'start_insert': 1,
+    \ })
+
+  call unite#custom#profile('file,file_mru,file_rec/async,file_rec/git', 'context', {
+    \ 'buffer_name': 'files',
+    \ })
+
+  call unite#custom#profile('grep,grep/git,grep/hg', 'context', {
+    \ 'buffer_name': 'search-buffer',
+    \ 'start_insert': 0,
+    \ 'quit': 0,
+    \ })
+
+  call unite#custom#profile('outline', 'context', {
+    \ 'buffer_name': 'outline',
+    \ 'start_insert': 0,
+    \ 'quit': 0,
+    \ 'winwidth': 32,
+    \ 'direction': 'botright',
+    \ 'vertical': 1,
+    \ })
+
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+    let g:unite_source_grep_recursive_opt = ''
   endif
-endfunction
 
-function! s:unite_smart_grep()
-  if unite#sources#grep_git#is_available()
-    Unite grep/git:.
-  elseif unite#sources#grep_hg#is_available()
-    Unite grep/hg:.
-  else
-    Unite grep:.
+  function! s:unite_my_settings()
+    imap <buffer><expr> j unite#smart_map('j', '')
+
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  endfunction
+  autocmd vimrc_loading FileType unite call s:unite_my_settings()
+
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('yankround.vim') " {{{
+  nmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap gp <Plug>(yankround-gp)
+  nmap gP <Plug>(yankround-gP)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+  xmap p <Plug>(yankround-p)
+  xmap gp <Plug>(yankround-gp)
+
+  let g:yankround_use_region_hl = 1
+  let g:yankround_region_hl_groupname = 'YankRoundRegion'
+
+  autocmd vimrc_loading ColorScheme *   call s:define_region_hl()
+  function! s:define_region_hl()
+    if &bg=='dark'
+      highlight default YankRoundRegion   guibg=Brown ctermbg=Brown term=reverse
+    else
+      highlight default YankRoundRegion   guibg=LightRed ctermbg=LightRed term=reverse
+    end
+  endfunction
+
+  if has('gui_running') && has('clipboard')
+    if has('unnamedplus')
+      set clipboard=unnamedplus,unnamed
+    else
+      set clipboard=unnamed
+    endif
   endif
-endfunction
 
-call unite#custom#source('file_rec/async', 'ignore_pattern',
-  \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
-  \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
-  \ '\|downloads/tmp\|templates_c')
+  call neobundle#untap()
+endif " }}}
 
-call unite#custom#source(
-  \ 'file,buffer,file_mru', 'matchers',
-  \ ['matcher_context'])
-
-call unite#custom#source(
-  \ 'file_rec/async,file_rec/git', 'matchers',
-  \ ['matcher_context'])
-
-call unite#custom#source(
-  \ 'file,file_mru,file_rec/async,file_rec/git', 'converters',
-  \ ['converter_smart_path', 'converter_file_directory'])
-
-call unite#custom#profile('default', 'context', {
-  \ 'start_insert': 1,
-  \ })
-
-call unite#custom#profile('file,file_mru,file_rec/async,file_rec/git', 'context', {
-  \ 'buffer_name': 'files',
-  \ })
-
-call unite#custom#profile('grep,grep/git,grep/hg', 'context', {
-  \ 'buffer_name': 'search-buffer',
-  \ 'start_insert': 0,
-  \ 'quit': 0,
-  \ })
-
-call unite#custom#profile('outline', 'context', {
-  \ 'buffer_name': 'outline',
-  \ 'start_insert': 0,
-  \ 'quit': 0,
-  \ 'winwidth': 32,
-  \ 'direction': 'botright',
-  \ 'vertical': 1,
-  \ })
-
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-
-function! s:unite_my_settings()
-  imap <buffer><expr> j unite#smart_map('j', '')
-
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-endfunction
-autocmd vimrc_loading FileType unite call s:unite_my_settings()
-
-" }}}
-
-" yankround {{{
-nmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap gp <Plug>(yankround-gp)
-nmap gP <Plug>(yankround-gP)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
-xmap p <Plug>(yankround-p)
-xmap gp <Plug>(yankround-gp)
-
-let g:yankround_use_region_hl = 1
-let g:yankround_region_hl_groupname = 'YankRoundRegion'
-
-autocmd vimrc_loading ColorScheme *   call s:define_region_hl()
-function! s:define_region_hl()
-  if &bg=='dark'
-    highlight default YankRoundRegion   guibg=Brown ctermbg=Brown term=reverse
-  else
-    highlight default YankRoundRegion   guibg=LightRed ctermbg=LightRed term=reverse
-  end
-endfunction
-
-if has('gui_running') && has('clipboard')
-  if has('unnamedplus')
-    set clipboard=unnamedplus,unnamed
-  else
-    set clipboard=unnamed
-  endif
-endif
-" }}}
-
-" Zencoding {{{
-let g:user_zen_settings = {
-  \'indentation': '  ',
-  \}
-" }}}
-
-" echodoc {{{
-let g:echodoc_enable_at_startup = 1
-" }}}
-
-" Alignta {{{
-xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
-xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
-xnoremap <silent> <Leader>t= :Alignta << -e =<CR>
-xnoremap <silent> <Leader>t> :Alignta << -e =><CR>
-
-xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
-xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
-xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
-xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
-" }}}
-
-" quickrun {{{
-if !exists('g:quickrun_config')
-  let g:quickrun_config = {}
-endif
-let g:quickrun_config['_'] = {
-  \   'runner': 'vimproc',
+if neobundle#tap('emmet-vim') " {{{
+  let g:user_zen_settings = {
+  \ 'indentation': '  ',
   \ }
-let g:quickrun_config['hsp'] = {
-  \   'command': 'D:/Documents/tools/hsp3/hscl',
-  \   'exec': '%c %s',
-  \   'hook/output_encode/encoding': 'cp932',
-  \   'outputter': 'error',
-  \   'error': 'quickfix',
-  \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
-  \ }
-" }}}
 
-" vim-watchdogs {{{
-let g:watchdogs_check_BufWritePost_enable = 1
-call watchdogs#setup(g:quickrun_config)
-" }}}
+  call neobundle#untap()
+endif " }}}
 
-" markdown {{{
-let g:vim_markdown_liquid=1
-let g:vim_markdown_frontmatter=1
-let g:vim_markdown_folding_disabled=1
-let g:markdown_quote_syntax_filetypes = {
-  \ "coffee": { "start": "coffee" },
-  \ "cpp": { "start": "cpp" },
-  \ "css": { "start": "css" },
-  \ "javascript": { "start": "javascript" },
-  \ "ruby": { "start": "ruby" },
-  \ "scss": { "start": "scss" },
-  \ "sh": { "start": "sh" },
-  \}
-" }}}
+if neobundle#tap('echodoc') " {{{
+  let g:echodoc_enable_at_startup = 1
+
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('vim-alignta') " {{{
+  xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
+  xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
+  xnoremap <silent> <Leader>t= :Alignta << -e =<CR>
+  xnoremap <silent> <Leader>t> :Alignta << -e =><CR>
+
+  xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
+  xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
+  xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
+  xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
+
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('vim-quickrun') " {{{
+  if !exists('g:quickrun_config')
+    let g:quickrun_config = {}
+  endif
+  let g:quickrun_config['_'] = {
+    \   'runner': 'vimproc',
+    \ }
+  let g:quickrun_config['hsp'] = {
+    \   'command': 'D:/Documents/tools/hsp3/hscl',
+    \   'exec': '%c %s',
+    \   'hook/output_encode/encoding': 'cp932',
+    \   'outputter': 'error',
+    \   'error': 'quickfix',
+    \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
+    \ }
+
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('vim-watchdogs') " {{{
+  let g:watchdogs_check_BufWritePost_enable = 1
+  call watchdogs#setup(g:quickrun_config)
+
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('vim-markdown') " {{{
+  let g:vim_markdown_liquid=1
+  let g:vim_markdown_frontmatter=1
+  let g:vim_markdown_folding_disabled=1
+  let g:markdown_quote_syntax_filetypes = {
+    \ "coffee": { "start": "coffee" },
+    \ "cpp": { "start": "cpp" },
+    \ "css": { "start": "css" },
+    \ "javascript": { "start": "javascript" },
+    \ "ruby": { "start": "ruby" },
+    \ "scss": { "start": "scss" },
+    \ "sh": { "start": "sh" },
+    \}
+
+  call neobundle#untap()
+endif " }}}
 
 " Win32 specific {{{
 " nvm {{{2
