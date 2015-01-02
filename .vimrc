@@ -356,7 +356,6 @@ if neobundle#tap('incsearch.vim') " {{{
 endif " }}}
 
 if neobundle#tap('vim-marching') " {{{
-  let g:marching_backend = 'sync_clang_command'
   let g:marching_enable_neocomplete = 1
 
   call neobundle#untap()
