@@ -178,7 +178,6 @@ autocmd vimrc_loading InsertLeave * if &paste | set nopaste mouse=a | echo 'nopa
 " }}}
 
 " Window {{{
-nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
 nnoremap <C-w>n :bn<CR>
 nnoremap <C-w>p :bp<CR>
 nnoremap <C-w>d :bd<CR>
@@ -389,13 +388,13 @@ if neobundle#tap('neocomplete') " {{{
 endif " }}}
 
 if neobundle#tap('unite.vim') " {{{
+  nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
   nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
-  nnoremap <silent> <Leader>F :<C-u>Unite file_mru -hide-source-names<CR>
+  nnoremap <silent> <Leader>m :<C-u>Unite file_mru -hide-source-names<CR>
   nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
   nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
   nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
   nnoremap <silent> <Leader>g :<C-u>call <SID>unite_smart_grep()<CR>
-  nnoremap <silent> <Leader>t :<C-u>Unite gtags/grep<CR>
   nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
   nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
 
@@ -417,7 +416,7 @@ if neobundle#tap('unite.vim') " {{{
     endif
   endfunction
 
-  call unite#custom#source('file_rec/async', 'ignore_pattern',
+  call unite#custom#source('file,file_rec/git,file_rec/async', 'ignore_pattern',
     \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
     \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
     \ '\|downloads/tmp\|templates_c')
