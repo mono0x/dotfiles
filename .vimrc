@@ -102,22 +102,28 @@ set history=100
 " }}}
 
 " Help {{{
-set notagbsearch
+if v:version < 703 || (v:version == 7.3 && !has('patch336'))
+  set notagbsearch
+endif
 " }}}
 
 " Indent {{{
 set autoindent
-set tabstop=8
-set softtabstop=2
-set shiftwidth=2
 set expandtab
-
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
+set shiftround
+set shiftwidth=2
+set smarttab
+set softtabstop=2
+set tabstop=8
 
 let g:vim_indent_cont=2
+" }}}
+"
+" Search {{{
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
 " }}}
 
 " Movements {{{
@@ -132,26 +138,26 @@ set virtualedit+=block
 
 nnoremap Y y$
 
-imap <C-d> <Delete>
-imap <C-f> <Right>
 imap <C-b> <Left>
+imap <C-f> <Right>
+imap <C-d> <Delete>
 " }}}
 
 " Appearances {{{
 set cursorline
-set wildmenu
-set showmatch
-set matchtime=1
-set number
+set display=lastline
 set hidden
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
-set display=lastline
+set matchtime=1
+set number
 set pumheight=10
+set showmatch
+set wildmenu
 
-set showcmd
 set cmdheight=1
 set laststatus=2
+set showcmd
 set statusline=%<[%n]%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%8P
 
 set t_Co=256
@@ -159,6 +165,16 @@ set t_Co=256
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
+" }}}
+
+" Edit {{{
+set backspace=indent,eol,start
+set infercase
+set updatetime=1000
+
+" Automatic nopaste
+autocmd vimrc_loading InsertLeave * if &paste | set nopaste mouse=a | echo 'nopaste' | endif
+
 " }}}
 
 " Window {{{
