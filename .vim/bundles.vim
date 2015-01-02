@@ -93,9 +93,6 @@ NeoBundleLazy 'hail2u/vim-css3-syntax', {
 NeoBundleLazy 'othree/html5.vim', {
   \ 'filetypes': [ 'html', 'markdown' ],
   \ }
-NeoBundleLazy 'cakebaker/scss-syntax.vim', {
-  \ 'filetypes': [ 'scss', 'markdown' ],
-  \ }
 NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
   \ 'filetypes': 'markdown',
   \ }

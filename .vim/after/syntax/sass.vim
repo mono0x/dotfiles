@@ -19,3 +19,5 @@ runtime! syntax/css/css3-transforms.vim
 runtime! syntax/css/css3-transitions.vim
 runtime! syntax/css/css3-ui.vim
 runtime! syntax/css/css3-writing-modes.vim
+
+setlocal iskeyword+=-
