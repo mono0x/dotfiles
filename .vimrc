@@ -242,101 +242,10 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
-if neobundle#has_fresh_cache('$MYVIMRC')
+if neobundle#has_fresh_cache(expand('~/.vim/bundles.vim'))
   NeoBundleLoadCache
 else
-  NeoBundleFetch 'Shougo/neobundle.vim'
-  if !(has('win32') && has('kaoriya'))
-    NeoBundle 'Shougo/vimproc', {
-      \   'build': {
-      \     'mac': 'make -f make_mac.mak',
-      \     'unix': 'make -f make_unix.mak',
-      \   },
-      \ }
-  endif
-
-  NeoBundle 'sudo.vim'
-
-  if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-    NeoBundle 'Shougo/neocomplete'
-  else
-    NeoBundleFetch 'Shougo/neocomplete'
-  endif
-  NeoBundleLazy 'osyo-manga/vim-marching', {
-    \   'autoload': { 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ] },
-    \ }
-  NeoBundle 'h1mesuke/vim-alignta'
-  NeoBundle 'Shougo/echodoc'
-  NeoBundle 'thinca/vim-quickrun'
-  NeoBundle 'osyo-manga/shabadou.vim'
-  NeoBundle 'osyo-manga/vim-watchdogs'
-  NeoBundleLazy 'mattn/emmet-vim', {
-    \   'autoload': { 'filetypes': [ 'html', 'haml', 'css' ] },
-    \ }
-  NeoBundle 'itchyny/lightline.vim'
-  NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'thinca/vim-template'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
-  NeoBundle 'anyakichi/vim-surround'
-  NeoBundle 'jceb/vim-hier'
-  NeoBundle 'editorconfig/editorconfig-vim'
-  NeoBundle 'LeafCage/yankround.vim'
-  NeoBundle 'tyru/caw.vim'
-  NeoBundle 'haya14busa/incsearch.vim'
-  NeoBundleLazy 'godlygeek/tabular', {
-    \   'autoload': { 'commands': 'Tabularize' }
-    \  }
-
-  " Unite {{{2
-  NeoBundle 'Shougo/tabpagebuffer.vim'
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/unite-outline'
-  NeoBundle 'Shougo/unite-build'
-  NeoBundle 'hewes/unite-gtags'
-  NeoBundle 'Shougo/neomru.vim'
-  NeoBundle 'lambdalisue/unite-grep-vcs'
-  " }}}
-
-  " Syntax {{{2
-  NeoBundleLazy 'hail2u/vim-css3-syntax', {
-    \   'autoload': { 'filetypes': [ 'css', 'sass', 'scss', 'markdown' ] }
-    \  }
-  NeoBundleLazy 'othree/html5.vim', {
-    \   'autoload': { 'filetypes': [ 'html', 'markdown' ] }
-    \  }
-  NeoBundleLazy 'cakebaker/scss-syntax.vim', {
-    \   'autoload': { 'filetypes': [ 'scss', 'markdown' ] }
-    \  }
-  NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
-    \   'autoload': { 'filetypes': 'markdown' }
-    \  }
-  NeoBundleLazy 'rcmdnk/vim-markdown', {
-    \   'autoload': { 'filetypes': 'markdown' }
-    \  }
-  NeoBundleLazy 'kchmck/vim-coffee-script', {
-    \   'autoload': { 'filetypes': [ 'coffee', 'markdown' ] }
-    \  }
-  NeoBundleLazy 'sophacles/vim-processing', {
-    \   'autoload': { 'filetypes': 'processing' }
-    \  }
-  NeoBundleLazy 'evanmiller/nginx-vim-syntax', {
-    \   'autoload': { 'filetypes': 'nginx' }
-    \  }
-  NeoBundleLazy 'gnuplot.vim', {
-    \   'autoload': { 'filetypes': 'gnuplot' }
-    \  }
-  NeoBundleLazy 'honza/dockerfile.vim', {
-    \   'autoload': { 'filetypes': 'dockerfile' }
-    \  }
-  NeoBundleLazy 'pangloss/vim-javascript', {
-    \   'autoload': { 'filetypes': [ 'javascript', 'markdown' ] }
-    \  }
-  " }}}
-
-  " colorscheme {{{2
-  NeoBundle 'altercation/vim-colors-solarized'
-  " }}}
-
+  source ~/.vim/bundles.vim
   NeoBundleSaveCache
 endif
 
@@ -403,6 +312,29 @@ if neobundle#tap('lightline.vim') " {{{
   function! MyModified()
     return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
   endfunction
+
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('vim-surround') " {{{
+  let g:surround_no_mappings = 1
+
+  nmap <unique> ds     <Plug>Dsurround
+  nmap <unique> cs     <Plug>Csurround
+  nmap <unique> ys     <Plug>Ysurround
+  nmap <unique> yS     <Plug>Ysurround$
+  nmap <unique> yss    <Plug>Yssurround
+  nmap <unique> ygs    <Plug>Ygsurround
+  nmap <unique> ygS    <Plug>Ygsurround$
+  nmap <unique> ygss   <Plug>Ygssurround
+  nmap <unique> ygsgs  <Plug>Ygssurround
+  xmap <unique> s      <Plug>Vsurround
+  xmap <unique> S      <Plug>VSurround
+  xmap <unique> gs     <Plug>Vgsurround
+  xmap <unique> gS     <Plug>VgSurround
+  imap <unique> <C-S>  <Plug>Isurround
+  imap <unique> <C-G>s <Plug>Isurround
+  imap <unique> <C-G>S <Plug>ISurround
 
   call neobundle#untap()
 endif " }}}
