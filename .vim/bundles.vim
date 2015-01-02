@@ -42,7 +42,7 @@ NeoBundleLazy 'osyo-manga/vim-watchdogs', {
   \ ],
   \ }
 NeoBundleLazy 'mattn/emmet-vim', {
-  \ 'filetypes': [ 'html', 'haml', 'css' ],
+  \ 'filetypes': [ 'html', 'haml', 'css', 'scss', 'xml' ],
   \ }
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
