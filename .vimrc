@@ -576,7 +576,7 @@ if neobundle#tap('yankround.vim') " {{{
 endif " }}}
 
 if neobundle#tap('emmet-vim') " {{{
-  let g:user_zen_settings = {
+  let g:user_emmet_settings = {
   \ 'indentation': '  ',
   \ }
 
