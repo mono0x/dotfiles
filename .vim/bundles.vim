@@ -83,7 +83,13 @@ NeoBundleLazy 'Shougo/unite.vim', {
 NeoBundleLazy 'Shougo/unite-outline'
 NeoBundleLazy 'Shougo/unite-build'
 NeoBundleLazy 'hewes/unite-gtags'
-NeoBundleLazy 'lambdalisue/unite-grep-vcs'
+NeoBundleLazy 'lambdalisue/unite-grep-vcs', {
+  \ 'unite_sources': [ 'grep/git', 'grep/hg' ],
+  \ 'functions': [
+  \   'unite#sources#grep_git#is_available',
+  \   'unite#sources#grep_hg#is_available',
+  \ ],
+  \ }
 " }}}
 
 " Syntax {{{
