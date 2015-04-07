@@ -23,6 +23,7 @@ ln -sf  $dir/.zsh        ~
 ln -sf  $dir/.zshenv     ~
 ln -sf  $dir/.zshrc      ~
 ln -sf  $dir/.tigrc      ~
+ln -sf  $dir/.ideavimrc  ~
 
 mkdir ~/.vimswap
 mkdir ~/.vim/bundle

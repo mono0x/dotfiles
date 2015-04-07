@@ -1,0 +1,6 @@
+
+set hlsearch
+set ignorecase
+set smartcase
+
+inoremap <C-]> <Esc>
