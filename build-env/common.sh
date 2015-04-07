@@ -14,15 +14,15 @@ darwin*)
   ln -fs $dir/.gitconfig.osx ~/.gitconfig.local
   ;;
 esac
-ln -s  $dir/.gitignore.global ~/.gitignore
-ln -s  $dir/.gvimrc     ~
-ln -s  $dir/.tmux.conf  ~
-ln -s  $dir/.vim        ~
-ln -s  $dir/.vimrc      ~
-ln -s  $dir/.zsh        ~
-ln -s  $dir/.zshenv     ~
-ln -s  $dir/.zshrc      ~
-ln -s  $dir/.tigrc      ~
+ln -sf  $dir/.gitignore.global ~/.gitignore
+ln -sf  $dir/.gvimrc     ~
+ln -sf  $dir/.tmux.conf  ~
+ln -sf  $dir/.vim        ~
+ln -sf  $dir/.vimrc      ~
+ln -sf  $dir/.zsh        ~
+ln -sf  $dir/.zshenv     ~
+ln -sf  $dir/.zshrc      ~
+ln -sf  $dir/.tigrc      ~
 
 mkdir ~/.vimswap
 mkdir ~/.vim/bundle
