@@ -10,6 +10,8 @@ setopt prompt_subst
 setopt pushd_ignore_dups
 
 export WORDCHARS="*?_-.[]~&;!#$%^(){}<>"
+
+stty -ixon
 # }}}
 
 # History {{{
@@ -136,7 +138,6 @@ alias gd='git diff'
 alias gl='git log --graph'
 alias gg='git grep -H --heading -I --line-number --break'
 alias gs='git status'
-alias gf='cd $(ghq list -p | peco --null)'
 
 alias b='bundle'
 alias be='bundle exec'
@@ -146,6 +147,8 @@ alias rake='noglob rake'
 alias frbe='foreman run bundle exec'
 alias frbet='foreman run bundle exec thor'
 alias frber='foreman run bundle exec rake'
+
+alias gf='cd $(ghq list -p | peco --null)'
 
 # http://www.reddit.com/r/commandline/comments/12g76v/how_to_automatically_source_zshrc_in_all_open/
 trap "source ~/.zshrc" USR1
@@ -183,6 +186,37 @@ _Z_CMD=j source ~/.zsh/z/z.sh
 
 autoload -Uz cd-gitroot
 alias u=cd-gitroot
+# }}}
+
+# Peco {{{
+if which peco &> /dev/null; then
+  peco-cd() {
+    local selected_dir=$(ghq list | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+      BUFFER="cd ${GOPATH}/src/${selected_dir}"
+      zle accept-line
+    fi
+    zle redisplay
+  }
+  zle -N peco-cd
+  bindkey '^s' peco-cd
+
+  peco-select-history() {
+    typeset tac
+    if which tac > /dev/null; then
+      tac=tac
+    else
+      tac='tail -r'
+    fi
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle redisplay
+
+    alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
+  }
+  zle -N peco-select-history
+  bindkey '^r' peco-select-history
+fi
 # }}}
 
 # Functions {{{
