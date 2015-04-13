@@ -3,6 +3,7 @@ brew update
 brew upgrade
 
 brew install ansible
+brew install exiftool
 brew install git
 brew install go --cross-compile-common
 brew install gzip
