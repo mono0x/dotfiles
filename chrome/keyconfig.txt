@@ -59,12 +59,12 @@
       "args": []
     },
     "b": {
-      "name": "Taberareloo.link",
-      "args": []
-    },
-    "B": {
-      "name": "Taberareloo.quote",
-      "args": []
+      "name": "go to #1",
+      "args": [
+        "javascript:q%3Dlocation.href%3Bif(document.getSelection)%7Bd%3Ddocument.getSelection()%3B%7Delse%7Bd%3D%27%27%3B%7D%3Bp%3Ddocument.title%3Bvoid(open(%27https://pinboard.in/add%3Furl%3D%27%2BencodeURIComponent(q)%2B%27%26description%3D%27%2BencodeURIComponent(d)%2B%27%26title%3D%27%2BencodeURIComponent(p),%27Pinboard%27,%27toolbar%3Dno,width%3D700,height%3D350%27))%3B",
+        "bookmark"
+      ],
+      "and": false
     },
     "C-q": {
       "name": "limited mode",
@@ -77,6 +77,14 @@
     "x": {
       "name": "forward",
       "args": []
+    },
+    "B": {
+      "name": "go to #1",
+      "args": [
+        "javascript:q=location.href;p=document.title;void(t=open('https://pinboard.in/add?later=yes&noui=yes&jump=close&url='+encodeURIComponent(q)+'&title='+encodeURIComponent(p),'Pinboard','toolbar=no,width=100,height=100'));t.blur();",
+        "read later"
+      ],
+      "and": false
     }
   },
   "limited_actions": {
