@@ -1,6 +1,15 @@
-
+set clipboard
+set history=1000
 set hlsearch
 set ignorecase
 set smartcase
 
+" for OS X
+noremap <C-]> <Esc>
 inoremap <C-]> <Esc>
+
+" Built-in actions
+nnoremap <Space>r :action RunClass<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+nnoremap J :action EditorJoinLines<CR>
