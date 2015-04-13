@@ -12,11 +12,11 @@ endif
 NeoBundle 'sudo.vim'
 
 if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-  NeoBundleLazy 'Shougo/neocomplete', {
+  NeoBundleLazy 'Shougo/neocomplete.vim', {
     \ 'insert': 1,
     \ }
 else
-  NeoBundleFetch 'Shougo/neocomplete'
+  NeoBundleFetch 'Shougo/neocomplete.vim'
 endif
 NeoBundleLazy 'osyo-manga/vim-marching', {
   \ 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ],
