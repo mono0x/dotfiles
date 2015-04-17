@@ -123,6 +123,12 @@ NeoBundleLazy 'honza/dockerfile.vim', {
 NeoBundleLazy 'pangloss/vim-javascript', {
   \ 'filetypes': [ 'javascript', 'markdown' ],
   \ }
+NeoBundleLazy 'leafgarland/typescript-vim', {
+  \ 'filetypes': 'typescript',
+  \ }
+NeoBundleLazy 'clausreinke/typescript-tools.vim', {
+  \ 'filetypes': 'typescript',
+  \ }
 " }}}
 
 " colorscheme {{{
