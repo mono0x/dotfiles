@@ -13,11 +13,11 @@ rbenv_init() {
   export RBENV_ROOT=$HOME/.rbenv
   if [[ -f /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh ]]; then
     source /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh
+  elif [[ -f $HOME/.rbenv/completions/rbenv.zsh ]]; then
+    source "$HOME/.rbenv/completions/rbenv.zsh"
   elif [[ -f /opt/rbenv/completions/rbenv.zsh ]]; then
     export RBENV_ROOT=/opt/rbenv
     source /opt/rbenv/completions/rbenv.zsh
-  elif [[ -f $HOME/.rbenv/completions/rbenv.zsh ]]; then
-    source "$HOME/.rbenv/completions/rbenv.zsh"
   else
     return
   fi
