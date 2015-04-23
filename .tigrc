@@ -1,10 +1,22 @@
 set diff-options = -m --first-parent
+set split-view-height = 80%
+
+set blame-view = line-number:yes,interval=5 \
+                 id:yes \
+                 date:local \
+                 author:abbreviated
 
 set main-view = line-number:yes,interval=5 \
                 id:yes \
-                date:default \
+                date:local \
                 author:full \
                 commit-title:yes,graph,refs,overflow=no
 
 # Disable the default mapping for running git-gc
 bind generic G none
+
+bind main G move-last-line
+
+# vi like cursor movements
+bind generic g move-first-line
+bind generic G move-last-line
