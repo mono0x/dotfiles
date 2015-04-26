@@ -118,7 +118,7 @@ set tabstop=8
 
 let g:vim_indent_cont=2
 " }}}
-"
+
 " Search {{{
 set hlsearch
 set ignorecase
