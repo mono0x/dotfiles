@@ -175,6 +175,7 @@ set updatetime=1000
 " Automatic nopaste
 autocmd vimrc_loading InsertLeave * if &paste | set nopaste mouse=a | echo 'nopaste' | endif
 
+autocmd vimrc_loading BufReadPost COMMIT_EDITMSG exec "normal! gg"
 " }}}
 
 " Window {{{
