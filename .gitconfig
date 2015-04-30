@@ -1,5 +1,6 @@
 [include]
   path = .gitconfig.local
+  path = .gitconfig.platform
 [user]
   name = mono
   email = mono@monoweb.info

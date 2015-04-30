@@ -8,10 +8,10 @@ ln -s  $dir/.gdbinit    ~
 ln -fs $dir/.gitconfig  ~
 case "${OSTYPE}" in
 linux*)
-  ln -fs $dir/.gitconfig.linux ~/.gitconfig.local
+  ln -fs $dir/.gitconfig.linux ~/.gitconfig.platform
   ;;
 darwin*)
-  ln -fs $dir/.gitconfig.osx ~/.gitconfig.local
+  ln -fs $dir/.gitconfig.osx ~/.gitconfig.platform
   ;;
 esac
 ln -sf  $dir/.gitignore.global ~/.gitignore
