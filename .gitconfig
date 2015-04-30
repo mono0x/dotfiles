@@ -30,6 +30,8 @@
   rc = rebase --continue
 [push]
   default = simple
+[pull]
+  ff = only
 [merge]
   ff = false
 [url "git@github.com:"]
