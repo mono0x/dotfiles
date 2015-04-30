@@ -1,6 +1,3 @@
-[include]
-  path = .gitconfig.local
-  path = .gitconfig.platform
 [user]
   name = mono
   email = mono@monoweb.info
@@ -44,3 +41,6 @@
   protocol = https
 [ghq]
   root = ~/src
+[include]
+  path = .gitconfig.platform
+  path = .gitconfig.local
