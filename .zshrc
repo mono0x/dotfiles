@@ -254,6 +254,15 @@ add-zsh-hook precmd update_tmux_environment
 # }}}
 
 # External scripts {{{
+# rbenv
+if [[ -f /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh ]]; then
+  source /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh
+elif [[ -f $HOME/.rbenv/completions/rbenv.zsh ]]; then
+  source "$HOME/.rbenv/completions/rbenv.zsh"
+else
+  return
+fi
+
 if which dnvm.sh &> /dev/null; then
   source dnvm.sh
 fi
