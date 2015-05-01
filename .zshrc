@@ -253,6 +253,10 @@ update_tmux_environment() {
 add-zsh-hook precmd update_tmux_environment
 # }}}
 
+# External scripts {{{
+source dnvm.sh
+# }}}
+
 #eval 'dircolors'
 export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
