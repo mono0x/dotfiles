@@ -254,7 +254,9 @@ add-zsh-hook precmd update_tmux_environment
 # }}}
 
 # External scripts {{{
-source dnvm.sh
+if which dnvm.sh &> /dev/null; then
+  source dnvm.sh
+fi
 # }}}
 
 #eval 'dircolors'
