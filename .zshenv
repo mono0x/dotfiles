@@ -62,8 +62,6 @@ darwin*)
   if [[ -f /Applications/MacVim.app/Contents/MacOS/Vim ]]; then
     alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
   fi
-  # Command Line Tools
-  export PATH="/Library/Developer/CommandLineTools/usr/bin:$PATH"
   ;;
 esac
 
