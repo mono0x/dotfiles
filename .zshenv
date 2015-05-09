@@ -7,13 +7,13 @@ typeset -U PATH
 case "${OSTYPE}" in
 linux*)
   # TeX Live
-  export PATH="/usr/local/texlive/2012/bin/i386-linux:$PATH"
+  path=(/usr/local/texlive/2012/bin/i386-linux(N-/) $path)
   ;;
 darwin*)
   # Heroku Toolbelt
-  export PATH="/usr/local/heroku/bin:$PATH"
+  path=(/usr/local/heroku/bin(N-/) $path)
   # sbin
-  export PATH="/sbin:$PATH"
+  path=(/sbin(N-/) $path)
   # MacVim
   if [[ -f /Applications/MacVim.app/Contents/MacOS/Vim ]]; then
     alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
@@ -21,7 +21,7 @@ darwin*)
   ;;
 esac
 
-export PATH=$HOME/bin:$HOME/dotfiles/bin:$PATH
+path=($HOME/bin(N-/) $HOME/dotfiles/bin(N-/) $path)
 if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
@@ -49,7 +49,6 @@ rbenv_init() {
       command rbenv "$command" "$@";;
     esac
   }
-  export PATH=$RBENV_ROOT/bin:$PATH
   path=($RBENV_ROOT/shims $path)
 }
 rbenv_init
