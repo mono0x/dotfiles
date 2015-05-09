@@ -2,7 +2,7 @@
 # vim: foldmethod=marker
 
 # PATH {{{
-typeset -U PATH
+typeset -U path cdpath fpath manpath
 
 case "${OSTYPE}" in
 linux*)
