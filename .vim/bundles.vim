@@ -129,6 +129,9 @@ NeoBundleLazy 'leafgarland/typescript-vim', {
 NeoBundleLazy 'clausreinke/typescript-tools.vim', {
   \ 'filetypes': 'typescript',
   \ }
+NeoBundleLazy 'vim-perl/vim-perl', {
+  \ 'filetypes': 'perl',
+  \ }
 " }}}
 
 " colorscheme {{{
