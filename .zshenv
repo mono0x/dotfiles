@@ -55,4 +55,8 @@ rbenv_init
 unfunction rbenv_init
 # }}}
 
+# plenv {{{
+path=($HOME/.plenv/shims(N-/) $path)
+# }}}
+
 export GOPATH=$HOME
