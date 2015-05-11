@@ -73,6 +73,7 @@ NeoBundleLazy 'haya14busa/incsearch.vim', {
 NeoBundleLazy 'godlygeek/tabular', {
   \ 'commands': 'Tabularize',
   \ }
+NeoBundle 'thinca/vim-template'
 
 " Unite {{{
 NeoBundle 'Shougo/neomru.vim'
