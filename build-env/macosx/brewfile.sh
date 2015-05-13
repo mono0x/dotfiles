@@ -5,7 +5,7 @@ brew upgrade
 brew install ansible
 brew install exiftool
 brew install git --with-pcre
-brew install global --with-exuberant-ctags --with-sqlite3
+brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
 brew install go --cross-compile-common
 brew install gzip
 brew install htop-osx
