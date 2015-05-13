@@ -21,7 +21,7 @@ darwin*)
   ;;
 esac
 
-path=($HOME/bin(N-/) $HOME/dotfiles/bin(N-/) $path)
+path=($HOME/bin(N-/) $HOME/dotfiles/bin(N-/) /usr/local/bin(N-/) $path)
 if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
