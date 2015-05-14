@@ -15,6 +15,7 @@ darwin*)
   ;;
 esac
 ln -sf  $dir/.gitignore.global ~/.gitignore
+ln -sf  $dir/.globalrc   ~
 ln -sf  $dir/.gvimrc     ~
 ln -sf  $dir/.tmux.conf  ~
 ln -sf  $dir/.vim        ~
