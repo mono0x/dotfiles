@@ -393,6 +393,7 @@ if neobundle#tap('unite.vim') " {{{
   nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
   nnoremap <silent> <Leader>m :<C-u>Unite file_mru -hide-source-names<CR>
   nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
+  nnoremap <silent> <Leader>E :<C-u>Unite file_rec/async<CR>
   nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
   nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
   nnoremap <silent> <Leader>g :<C-u>call <SID>unite_smart_grep()<CR>
