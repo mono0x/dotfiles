@@ -74,6 +74,7 @@ NeoBundleLazy 'godlygeek/tabular', {
   \ 'commands': 'Tabularize',
   \ }
 NeoBundle 'thinca/vim-template'
+NeoBundle 'thinca/vim-localrc'
 
 " Unite {{{
 NeoBundle 'Shougo/neomru.vim'
