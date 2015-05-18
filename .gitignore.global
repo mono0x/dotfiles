@@ -29,3 +29,6 @@ GTAGS
 
 # trace-cmd
 trace.dat
+
+# prove
+.prove
