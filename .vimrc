@@ -1,9 +1,11 @@
 " .vimrc
 " vim: foldmethod=marker
 
+" Base {{{
 augroup vimrc_loading
   autocmd!
 augroup END
+" }}}
 
 " terminal {{{
 set lazyredraw
