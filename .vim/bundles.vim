@@ -134,6 +134,9 @@ NeoBundleLazy 'clausreinke/typescript-tools.vim', {
 NeoBundleLazy 'vim-perl/vim-perl', {
   \ 'filetypes': 'perl',
   \ }
+NeoBundleLazy 'motemen/xslate-vim', {
+  \ 'filetypes': 'xslate',
+  \ }
 " }}}
 
 " colorscheme {{{
