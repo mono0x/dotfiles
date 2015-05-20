@@ -132,10 +132,13 @@ NeoBundleLazy 'clausreinke/typescript-tools.vim', {
   \ 'filetypes': 'typescript',
   \ }
 NeoBundleLazy 'vim-perl/vim-perl', {
-  \ 'filetypes': 'perl',
+  \ 'filetypes': [ 'perl', 'cpanfile', 'tt2html' ]
   \ }
 NeoBundleLazy 'motemen/xslate-vim', {
   \ 'filetypes': 'xslate',
+  \ }
+NeoBundleLazy 'moznion/vim-cpanfile', {
+  \ 'filetypes': 'cpanfile',
   \ }
 " }}}
 

@@ -561,9 +561,17 @@ if neobundle#tap('vim-quickrun') " {{{
 endif " }}}
 
 if neobundle#tap('vim-watchdogs') " {{{
+  let g:quickrun_config['watchdogs_checker/cpanfile'] = {
+    \ 'command' : 'perl',
+    \ 'exec' : '%c %o -w -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
+    \ 'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
+    \ }
+  let g:quickrun_config['cpanfile/watchdogs_checker'] = {
+    \ 'type' : 'watchdogs_checker/cpanfile',
+    \ }
+
   let g:watchdogs_check_BufWritePost_enable = 1
   call watchdogs#setup(g:quickrun_config)
-
   call neobundle#untap()
 endif " }}}
 
