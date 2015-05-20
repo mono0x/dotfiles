@@ -190,6 +190,9 @@ function! s:good_width()
   if &filetype == 'unite'
     return
   endif
+  if &filetype == 'fugitiveblame'
+    return
+  endif
   if winwidth(0) < 84
     vertical resize 84
   endif
