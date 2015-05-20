@@ -570,6 +570,10 @@ if neobundle#tap('vim-watchdogs') " {{{
     \ 'type' : 'watchdogs_checker/cpanfile',
     \ }
 
+  let g:quickrun_config['watchdogs_checker/perl'] = {
+    \ 'cmdopt': '-Ilib',
+    \ }
+
   let g:watchdogs_check_BufWritePost_enable = 1
   call watchdogs#setup(g:quickrun_config)
   call neobundle#untap()
