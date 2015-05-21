@@ -174,6 +174,7 @@ set updatetime=1000
 " Automatic nopaste
 autocmd vimrc_loading InsertLeave * if &paste | set nopaste mouse=a | echo 'nopaste' | endif
 
+" Reset cursor position in COMMIT_EDITMSG
 autocmd vimrc_loading BufReadPost COMMIT_EDITMSG exec "normal! gg"
 " }}}
 
@@ -264,7 +265,6 @@ if neobundle#tap('vim-colors-solarized') " {{{
   let g:solarized_termtrans=1
   let g:solarized_italic=0
   colorscheme solarized
-
   call neobundle#untap()
 endif " }}}
 
@@ -421,45 +421,47 @@ if neobundle#tap('unite.vim') " {{{
     endif
   endfunction
 
-  call unite#custom#source('file,file_rec/git,file_rec/async', 'ignore_pattern',
-    \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
-    \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
-    \ '\|downloads/tmp\|templates_c')
+  function! neobundle#hooks.on_source(bundle)
+    call unite#custom#source('file,file_rec/git,file_rec/async', 'ignore_pattern',
+      \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
+      \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
+      \ '\|downloads/tmp\|templates_c')
 
-  call unite#custom#source(
-    \ 'file,buffer,file_mru', 'matchers',
-    \ ['matcher_context'])
+    call unite#custom#source(
+      \ 'file,buffer,file_mru', 'matchers',
+      \ ['matcher_context'])
 
-  call unite#custom#source(
-    \ 'file_rec/async,file_rec/git', 'matchers',
-    \ ['matcher_context'])
+    call unite#custom#source(
+      \ 'file_rec/async,file_rec/git', 'matchers',
+      \ ['matcher_context'])
 
-  call unite#custom#source(
-    \ 'file,file_mru,file_rec/async,file_rec/git', 'converters',
-    \ ['converter_smart_path', 'converter_file_directory'])
+    call unite#custom#source(
+      \ 'file,file_mru,file_rec/async,file_rec/git', 'converters',
+      \ ['converter_smart_path', 'converter_file_directory'])
 
-  call unite#custom#profile('default', 'context', {
-    \ 'start_insert': 1,
-    \ })
+    call unite#custom#profile('default', 'context', {
+      \ 'start_insert': 1,
+      \ })
 
-  call unite#custom#profile('file,file_mru,file_rec/async,file_rec/git', 'context', {
-    \ 'buffer_name': 'files',
-    \ })
+    call unite#custom#profile('file,file_mru,file_rec/async,file_rec/git', 'context', {
+      \ 'buffer_name': 'files',
+      \ })
 
-  call unite#custom#profile('grep,grep/git,grep/hg', 'context', {
-    \ 'buffer_name': 'search-buffer',
-    \ 'start_insert': 0,
-    \ 'quit': 0,
-    \ })
+    call unite#custom#profile('grep,grep/git,grep/hg', 'context', {
+      \ 'buffer_name': 'search-buffer',
+      \ 'start_insert': 0,
+      \ 'quit': 0,
+      \ })
 
-  call unite#custom#profile('outline', 'context', {
-    \ 'buffer_name': 'outline',
-    \ 'start_insert': 0,
-    \ 'quit': 0,
-    \ 'winwidth': 32,
-    \ 'direction': 'botright',
-    \ 'vertical': 1,
-    \ })
+    call unite#custom#profile('outline', 'context', {
+      \ 'buffer_name': 'outline',
+      \ 'start_insert': 0,
+      \ 'quit': 0,
+      \ 'winwidth': 32,
+      \ 'direction': 'botright',
+      \ 'vertical': 1,
+      \ })
+  endfunction
 
   if executable('ag')
     let g:unite_source_grep_command = 'ag'
@@ -513,6 +515,12 @@ endif " }}}
 if neobundle#tap('emmet-vim') " {{{
   let g:user_emmet_settings = {
   \ 'indentation': '  ',
+  \ 'xslate': {
+  \   'indentation': '    ',
+  \ },
+  \ 'tt2html': {
+  \   'indentation': '    ',
+  \ },
   \ }
 
   call neobundle#untap()
@@ -560,6 +568,7 @@ endif " }}}
 
 if neobundle#tap('vim-watchdogs') " {{{
   function! neobundle#hooks.on_source(bundle)
+    " http://this.aereal.org/entry/2013/08/10/005547
     let g:quickrun_config['watchdogs_checker/cpanfile'] = {
       \ 'command' : 'perl',
       \ 'exec' : '%c %o -w -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
