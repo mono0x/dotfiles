@@ -36,8 +36,10 @@ NeoBundleLazy 'osyo-manga/vim-watchdogs', {
   \ 'depends': [ 'thinca/vim-quickrun', 'osyo-manga/shabadou.vim', 'cohama/vim-hier', ],
   \ 'filetypes': [
   \   'c',
+  \   'cpanfile',
   \   'cpp',
   \   'javascript',
+  \   'perl',
   \   'ruby',
   \ ],
   \ }

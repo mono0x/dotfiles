@@ -542,40 +542,43 @@ if neobundle#tap('vim-alignta') " {{{
 endif " }}}
 
 if neobundle#tap('vim-quickrun') " {{{
-  if !exists('g:quickrun_config')
-    let g:quickrun_config = {}
-  endif
-  let g:quickrun_config['_'] = {
-    \   'runner': 'vimproc',
-    \ }
-  let g:quickrun_config['hsp'] = {
-    \   'command': 'D:/Documents/tools/hsp3/hscl',
-    \   'exec': '%c %s',
-    \   'hook/output_encode/encoding': 'cp932',
-    \   'outputter': 'error',
-    \   'error': 'quickfix',
-    \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
-    \ }
-
+  function! neobundle#hooks.on_source(bundle)
+    if !exists('g:quickrun_config')
+      let g:quickrun_config = {}
+    endif
+    let g:quickrun_config['_'] = {
+      \   'runner': 'vimproc',
+      \ }
+    let g:quickrun_config['hsp'] = {
+      \   'command': 'D:/Documents/tools/hsp3/hscl',
+      \   'exec': '%c %s',
+      \   'hook/output_encode/encoding': 'cp932',
+      \   'outputter': 'error',
+      \   'error': 'quickfix',
+      \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
+      \ }
+  endfunction
   call neobundle#untap()
 endif " }}}
 
 if neobundle#tap('vim-watchdogs') " {{{
-  let g:quickrun_config['watchdogs_checker/cpanfile'] = {
-    \ 'command' : 'perl',
-    \ 'exec' : '%c %o -w -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
-    \ 'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
-    \ }
-  let g:quickrun_config['cpanfile/watchdogs_checker'] = {
-    \ 'type' : 'watchdogs_checker/cpanfile',
-    \ }
+  function! neobundle#hooks.on_source(bundle)
+    let g:quickrun_config['watchdogs_checker/cpanfile'] = {
+      \ 'command' : 'perl',
+      \ 'exec' : '%c %o -w -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
+      \ 'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
+      \ }
+    let g:quickrun_config['cpanfile/watchdogs_checker'] = {
+      \ 'type' : 'watchdogs_checker/cpanfile',
+      \ }
 
-  let g:quickrun_config['watchdogs_checker/perl'] = {
-    \ 'cmdopt': '-Ilib',
-    \ }
+    let g:quickrun_config['watchdogs_checker/perl'] = {
+      \ 'cmdopt': '-Ilib -Ilocal/lib/perl5',
+      \ }
 
-  let g:watchdogs_check_BufWritePost_enable = 1
-  call watchdogs#setup(g:quickrun_config)
+    let g:watchdogs_check_BufWritePost_enable = 1
+    call watchdogs#setup(g:quickrun_config)
+  endfunction
   call neobundle#untap()
 endif " }}}
 
