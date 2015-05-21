@@ -17,6 +17,7 @@ esac
 ln -sf  $dir/.gitignore.global ~/.gitignore
 ln -sf  $dir/.globalrc   ~
 ln -sf  $dir/.gvimrc     ~
+ln -sf  $dir/.peco       ~
 ln -sf  $dir/.tmux.conf  ~
 ln -sf  $dir/.vim        ~
 ln -sf  $dir/.vimrc      ~
