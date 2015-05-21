@@ -22,7 +22,6 @@ nnoremap <silent> <Leader>s :<C-u>setlocal spell!<CR>
 " }}}
 
 " Highlight trailing spaces {{{
-highlight TrailingSpaces ctermbg=1
 function! s:highlight_trailing_spaces(insert)
   if &filetype ==# 'unite'
     return
@@ -35,13 +34,11 @@ function! s:highlight_trailing_spaces(insert)
   else
     match TrailingSpaces /\s\+$/
   endif
-endf
-augroup TrailingSpaces
-  autocmd!
-  autocmd BufNew,BufRead * call s:highlight_trailing_spaces(0)
-  autocmd InsertEnter * call s:highlight_trailing_spaces(1)
-  autocmd InsertLeave * call s:highlight_trailing_spaces(0)
-augroup END
+endfunction
+autocmd vimrc_loading BufNew,BufRead * call s:highlight_trailing_spaces(0)
+autocmd vimrc_loading InsertEnter * call s:highlight_trailing_spaces(1)
+autocmd vimrc_loading InsertLeave * call s:highlight_trailing_spaces(0)
+autocmd vimrc_loading ColorScheme * highlight TrailingSpaces ctermbg=red guibg=red
 " }}}
 
 " Disable wrapping {{{
