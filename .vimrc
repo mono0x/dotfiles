@@ -366,7 +366,7 @@ if neobundle#tap('unite.vim') " {{{
   nnoremap <silent> <Leader>E :<C-u>Unite file_rec/async<CR>
   nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
   nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
-  nnoremap <silent> <Leader>g :<C-u>call <SID>unite_smart_grep()<CR>
+  nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
   nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
   nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
 
@@ -445,6 +445,14 @@ if neobundle#tap('unite.vim') " {{{
 
   call neobundle#untap()
 endif " }}}
+
+" fugitive {{{
+if neobundle#tap('vim-fugitive')
+  nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
+  nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
+  nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
+endif
+" }}}
 
 if neobundle#tap('yankround.vim') " {{{
   nmap p <Plug>(yankround-p)
