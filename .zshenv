@@ -24,6 +24,8 @@ esac
 path=($HOME/bin(N-/) $HOME/dotfiles/bin(N-/) /usr/local/bin(N-/) $path)
 if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
   export LANG=en_US.UTF-8
+fi
+if [[ -z $LC_ALL ]]; then
   export LC_ALL=en_US.UTF-8
 fi
 # }}}
@@ -56,7 +58,7 @@ unfunction rbenv_init
 # }}}
 
 # plenv {{{
-path=($HOME/.plenv/shims(N-/) $path)
+path=($HOME/.plenv/bin(N-/) $HOME/.plenv/shims(N-/) $path)
 # }}}
 
 export GOPATH=$HOME
