@@ -33,5 +33,5 @@ trace.dat
 # prove
 .prove
 
-# vim-localrc
-.local.vimrc
+# editorconfig
+.editorconfig

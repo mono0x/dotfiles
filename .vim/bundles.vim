@@ -18,6 +18,7 @@ if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 else
   NeoBundleFetch 'Shougo/neocomplete.vim'
 endif
+NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundleLazy 'osyo-manga/vim-marching', {
   \ 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ],
   \ }
@@ -85,7 +86,6 @@ NeoBundleLazy 'godlygeek/tabular', {
   \ 'commands': 'Tabularize',
   \ }
 NeoBundle 'thinca/vim-template'
-NeoBundle 'thinca/vim-localrc'
 
 " Unite {{{
 NeoBundle 'Shougo/neomru.vim'
