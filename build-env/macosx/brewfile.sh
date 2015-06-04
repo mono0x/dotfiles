@@ -15,6 +15,7 @@ brew install peco/peco/peco
 brew install postgresql
 brew install rbenv
 brew install readline
+brew install reattach-to-user-namespace
 brew install ruby-build
 brew install the_silver_searcher
 brew install tig
