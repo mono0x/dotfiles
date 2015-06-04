@@ -1,0 +1,4 @@
+#!/bin/sh
+if type pbpaste >/dev/null 2>&1; then
+  reattach-to-user-namespace pbpaste
+fi
