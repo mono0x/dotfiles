@@ -1,18 +1,13 @@
+# .gitconfig
+# vim: foldmethod=marker
+
+# user {{{
 [user]
   name = mono
   email = mono@monoweb.info
-[color]
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
-  ui = auto
-[core]
-  excludesfile = ~/.gitignore
-  autocrlf = false
-  pager = LESS=-R less
-[grep]
-  lineNumber = true
+# }}}
+
+# aliases {{{
 [alias]
   br = branch
   ci = commit -v
@@ -25,24 +20,49 @@
   fo = fetch origin
   ro = rebase origin
   rc = rebase --continue
+# }}}
+
+# settings {{{
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = false
+  pager = LESS=-R less
 [diff]
   algorithm = histogram
-[push]
-  default = simple
-[pull]
-  ff = only
+[grep]
+  lineNumber = true
 [merge]
   ff = false
+[pull]
+  ff = only
+[push]
+  default = simple
+# }}}
+
+# instead of {{{
 [url "git@github.com:"]
   pushinsteadof = "git://github.com/"
   pushinsteadof = "https://github.com/"
 [url "git@bitbucket.org:"]
   pushinsteadof = "git://bitbucket.org/"
   pushinsteadof = "https://bitbucket.org/"
+# }}}
+
+# external commands {{{
 [hub]
   protocol = https
 [ghq]
   root = ~/src
+# }}}
+
+# include {{{
 [include]
   path = .gitconfig.platform
   path = .gitconfig.local
+# }}}
