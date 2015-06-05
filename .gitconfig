@@ -12,8 +12,8 @@
   br = branch
   ci = commit -v
   co = checkout
-  di = diff
-  wd = diff --word-diff
+  di = diff --ignore-space-change
+  wd = diff --ignore-space-change --word-diff
   st = status
   pr = pull --rebase
   gp = grep -n
