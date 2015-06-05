@@ -17,14 +17,16 @@
   br = branch
   ci = commit -v
   co = checkout
-  di = diff --histogram
-  wd = diff --word-diff --histogram
+  di = diff
+  wd = diff --word-diff
   st = status
   pr = pull --rebase
   gp = grep -n
   fo = fetch origin
   ro = rebase origin
   rc = rebase --continue
+[diff]
+  algorithm = histogram
 [push]
   default = simple
 [pull]
