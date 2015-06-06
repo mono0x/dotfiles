@@ -15,6 +15,7 @@
   di = diff --ignore-space-change
   wd = diff --ignore-space-change --word-diff
   st = status
+  pl = pull
   pr = pull --rebase
   gp = grep -n
   fo = fetch origin
