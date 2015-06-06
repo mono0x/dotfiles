@@ -43,6 +43,9 @@
   ff = only
 [push]
   default = simple
+[rebase]
+  autosquash = true
+  autostash = true
 # }}}
 
 # instead of {{{
