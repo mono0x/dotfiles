@@ -22,6 +22,7 @@ ln -sf  $dir/.replyrc    ~
 ln -sf  $dir/.tmux.conf  ~
 ln -sf  $dir/.vim        ~
 ln -sf  $dir/.vimrc      ~
+ln -sf  $dir/.wgetrc     ~
 ln -sf  $dir/.zsh        ~
 ln -sf  $dir/.zshenv     ~
 ln -sf  $dir/.zshrc      ~
