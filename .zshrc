@@ -195,6 +195,17 @@ if which peco &> /dev/null; then
   }
   zle -N peco-cd
   bindkey '^s' peco-cd
+
+  peco-git-hash() {
+    local selected_hash=$(git log --date=short --pretty='format:%h %cd %s' --branches 2>/dev/null | peco 2>/dev/null | awk '{print $1}')
+    if [ -n "$selected_hash" ]; then
+      BUFFER="$BUFFER$selected_hash"
+      CURSOR="$#BUFFER"
+    fi
+    zle redisplay
+  }
+  zle -N peco-git-hash
+  bindkey '^g' peco-git-hash
 fi
 # }}}
 
