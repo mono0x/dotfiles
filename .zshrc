@@ -1,6 +1,12 @@
 # .zshrc
 # vim: foldmethod=marker
 
+# Compile {{{
+if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
+fi
+# }}}
+
 # Options {{{
 setopt auto_list
 setopt auto_pushd
