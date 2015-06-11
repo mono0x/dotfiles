@@ -98,6 +98,7 @@ zstyle ':completion:*:default' menu select=1
 # }}}
 
 # Key {{{
+bindkey -d
 bindkey -e
 
 autoload -Uz history-search-end
