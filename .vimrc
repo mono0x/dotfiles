@@ -446,8 +446,7 @@ if neobundle#tap('unite.vim') " {{{
   call neobundle#untap()
 endif " }}}
 
-" fugitive {{{
-if neobundle#tap('vim-fugitive')
+if neobundle#tap('vim-fugitive') " {{{
   nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
   nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
   nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
