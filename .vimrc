@@ -345,15 +345,15 @@ if neobundle#tap('neocomplete.vim') " {{{
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     autocmd FileType typescript setlocal omnifunc=TSScompleteFunc
   augroup END
-  if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns={}
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns={}
   endif
-  let g:neocomplete#force_omni_input_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplete#force_omni_input_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplete#force_omni_input_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplete#force_omni_input_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  "let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-  let g:neocomplete#force_omni_input_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
+  let g:neocomplete#sources#omni#input_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#sources#omni#input_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplete#sources#omni#input_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#sources#omni#input_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+  let g:neocomplete#sources#omni#input_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 
   call neobundle#untap()
 endif " }}}
