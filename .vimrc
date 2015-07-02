@@ -143,6 +143,8 @@ autocmd vimrc_loading InsertLeave * if &paste | set nopaste mouse=a | echo 'nopa
 
 " Reset cursor position in COMMIT_EDITMSG
 autocmd vimrc_loading BufReadPost COMMIT_EDITMSG exec "normal! gg"
+
+nnoremap <silent> <Leader>w :<C-u>w<CR>
 " }}}
 
 " Window {{{
