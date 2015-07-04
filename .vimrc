@@ -371,6 +371,7 @@ if neobundle#tap('unite.vim') " {{{
   nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
   nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
   nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
+  nnoremap <silent> <Leader>j :<C-u>Unite gtags/completion<CR>
 
   function! s:unite_smart_file_rec()
     if isdirectory(getcwd() . "/.git")
