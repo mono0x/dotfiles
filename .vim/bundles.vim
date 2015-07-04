@@ -76,7 +76,7 @@ NeoBundleLazy 'anyakichi/vim-surround', {
   \   '<Plug>ISurround',
   \ ],
   \ }
-NeoBundle 'LeafCage/yankround.vim', {
+NeoBundleLazy 'LeafCage/yankround.vim', {
   \ 'mappings': '<Plug>',
   \ }
 NeoBundleLazy 'haya14busa/incsearch.vim', {
