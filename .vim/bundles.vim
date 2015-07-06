@@ -85,6 +85,11 @@ NeoBundleLazy 'haya14busa/incsearch.vim', {
 NeoBundleLazy 'haya14busa/incsearch-fuzzy.vim', {
   \ 'mappings': '<Plug>',
   \ }
+NeoBundleLazy 'haya14busa/vim-migemo', {
+  \ 'functions': [
+  \   'migemo#',
+  \ ],
+  \ }
 NeoBundleLazy 'haya14busa/incsearch-migemo.vim', {
   \ 'mappings': '<Plug>',
   \ }
