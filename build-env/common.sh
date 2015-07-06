@@ -1,35 +1,37 @@
 #!/bin/sh
 
-git submodule update --init
+git submodule init
+git submodule sync
+git submodule update
 
 dir=$(cd $(dirname $0)/.. && pwd)
 
-ln -sf $dir/.ctags      ~
-ln -s  $dir/.gdbinit    ~
-ln -fs $dir/.gitconfig  ~
+ln -sf $dir/.ctags            ~
+ln -sf $dir/.gdbinit          ~
+ln -sf $dir/.gitconfig        ~
+ln -sf $dir/.gitignore.global ~/.gitignore
+ln -sf $dir/.globalrc         ~
+ln -sf $dir/.gvimrc           ~
+ln -sf $dir/.peco             ~
+ln -sf $dir/.replyrc          ~
+ln -sf $dir/.tmux.conf        ~
+ln -sf $dir/.vim              ~
+ln -sf $dir/.vimrc            ~
+ln -sf $dir/.wgetrc           ~
+ln -sf $dir/.zsh              ~
+ln -sf $dir/.zshenv           ~
+ln -sf $dir/.zshrc            ~
+ln -sf $dir/.tigrc            ~
+ln -sf $dir/.ideavimrc        ~
 case "${OSTYPE}" in
 linux*)
-  ln -fs $dir/.gitconfig.linux ~/.gitconfig.platform
+  ln -sf $dir/.gitconfig.linux ~/.gitconfig.platform
   ;;
 darwin*)
-  ln -fs $dir/.gitconfig.osx ~/.gitconfig.platform
+  ln -sf $dir/.gitconfig.osx ~/.gitconfig.platform
   ;;
 esac
-ln -sf  $dir/.gitignore.global ~/.gitignore
-ln -sf  $dir/.globalrc   ~
-ln -sf  $dir/.gvimrc     ~
-ln -sf  $dir/.peco       ~
-ln -sf  $dir/.replyrc    ~
-ln -sf  $dir/.tmux.conf  ~
-ln -sf  $dir/.vim        ~
-ln -sf  $dir/.vimrc      ~
-ln -sf  $dir/.wgetrc     ~
-ln -sf  $dir/.zsh        ~
-ln -sf  $dir/.zshenv     ~
-ln -sf  $dir/.zshrc      ~
-ln -sf  $dir/.tigrc      ~
-ln -sf  $dir/.ideavimrc  ~
 
-mkdir ~/.vimswap
-mkdir ~/.vim/bundle
-git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+mkdir -p ~/.vimswap
+mkdir -p ~/.vim/bundle
+[ -d ~/.vim/bundle/neobundle.vim ] || git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
