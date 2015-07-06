@@ -82,6 +82,12 @@ NeoBundleLazy 'LeafCage/yankround.vim', {
 NeoBundleLazy 'haya14busa/incsearch.vim', {
   \ 'mappings': '<Plug>',
   \ }
+NeoBundleLazy 'haya14busa/incsearch-fuzzy.vim', {
+  \ 'mappings': '<Plug>',
+  \ }
+NeoBundleLazy 'haya14busa/incsearch-migemo.vim', {
+  \ 'mappings': '<Plug>',
+  \ }
 NeoBundleLazy 'godlygeek/tabular', {
   \ 'commands': 'Tabularize',
   \ }

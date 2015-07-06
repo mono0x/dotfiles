@@ -325,6 +325,20 @@ if neobundle#tap('incsearch.vim') " {{{
   call neobundle#untap()
 endif " }}}
 
+if neobundle#tap('incsearch-fuzzy.vim') " {{{
+  map z/ <Plug>(incsearch-fuzzy-/)
+  map z? <Plug>(incsearch-fuzzy-?)
+  map zg/ <Plug>(incsearch-fuzzy-stay)
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('incsearch-migemo.vim') " {{{
+  map m/ <Plug>(incsearch-migemo-/)
+  map m? <Plug>(incsearch-migemo-?)
+  map mg/ <Plug>(incsearch-migemo-stay)
+  call neobundle#untap()
+endif " }}}
+
 if neobundle#tap('vim-marching') " {{{
   let g:marching_enable_neocomplete = 1
 
@@ -431,6 +445,8 @@ if neobundle#tap('unite.vim') " {{{
       \ 'direction': 'botright',
       \ 'vertical': 1,
       \ })
+
+    let g:unite_source_gtags_enable_nearness = 1
   endfunction
 
   if executable('ag')
