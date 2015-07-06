@@ -51,7 +51,7 @@ rbenv_init() {
       command rbenv "$command" "$@";;
     esac
   }
-  path=($RBENV_ROOT/shims $path)
+  path=($RBENV_ROOT/shims $RBENV_ROOT/bin $path)
 }
 rbenv_init
 unfunction rbenv_init
