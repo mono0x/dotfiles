@@ -4,6 +4,7 @@ git submodule update --init
 
 dir=$(cd $(dirname $0)/.. && pwd)
 
+ln -sf $dir/.ctags      ~
 ln -s  $dir/.gdbinit    ~
 ln -fs $dir/.gitconfig  ~
 case "${OSTYPE}" in
