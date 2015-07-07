@@ -1,10 +1,11 @@
 #!/bin/sh
 
+dir=$(cd $(dirname $0)/.. && pwd)
+
+cd $dir
 git submodule init
 git submodule sync
 git submodule update
-
-dir=$(cd $(dirname $0)/.. && pwd)
 
 ln -sf $dir/.ctags            ~
 ln -sf $dir/.gdbinit          ~
