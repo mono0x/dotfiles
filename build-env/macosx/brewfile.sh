@@ -3,6 +3,7 @@ brew update
 brew upgrade
 
 brew install ansible
+brew install cmigemo
 brew install exiftool
 brew install git --with-pcre
 brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
@@ -28,17 +29,13 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
 brew cask install appcleaner
-brew cask install bittorrent-sync
-brew cask install boot2docker
 brew cask install dropbox
 brew cask install firefox-ja
 brew cask install google-chrome
 brew cask install google-japanese-ime
 brew cask install heroku-toolbelt
 #brew cask install macvim-kaoriya
-brew cask install mendeley-desktop
 brew cask install onepassword
-brew cask install skype
 brew cask install vagrant
 brew cask install virtualbox
 #brew cask install vmware-fusion
