@@ -40,6 +40,7 @@
   lineNumber = true
 [merge]
   ff = false
+  mergeoptions = --strategy-option=patience
 [pull]
   ff = only
 [push]
