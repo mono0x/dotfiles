@@ -13,14 +13,14 @@
   ci = commit -v
   co = checkout
   di = diff --ignore-space-change
-  wd = diff --ignore-space-change --word-diff
-  st = status
+  fo = fetch origin
+  gp = grep -n
   pl = pull
   pr = pull --rebase
-  gp = grep -n
-  fo = fetch origin
-  ro = rebase origin
   rc = rebase --continue
+  ro = rebase origin
+  st = status
+  wd = diff --ignore-space-change --word-diff
 # }}}
 
 # settings {{{
