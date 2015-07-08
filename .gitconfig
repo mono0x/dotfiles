@@ -22,6 +22,8 @@
   ro = rebase origin
   st = status
   wd = diff --ignore-space-change --word-diff
+
+  mergetest = !git-mergetest
 # }}}
 
 # settings {{{

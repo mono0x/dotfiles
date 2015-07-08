@@ -1,0 +1,5 @@
+#!/bin/sh
+# http://qiita.com/horimislime/items/84fa431460c8d39f37e6
+from=$1
+: ${from:=`git rev-parse --abbrev-ref @{-1}`}
+git format-patch `git rev-parse --abbrev-ref HEAD`..$from --stdout | git apply --check
