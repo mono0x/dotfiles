@@ -15,6 +15,7 @@
   di = diff --ignore-space-change
   fo = fetch origin
   gp = grep -n
+  me = merge
   pl = pull
   pr = pull --rebase
   rc = rebase --continue
