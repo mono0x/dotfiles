@@ -254,13 +254,19 @@ add-zsh-hook precmd update_tmux_environment
 
 # External scripts {{{
 # rbenv
-if [[ -f /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh ]]; then
-  source /usr/local/Cellar/rbenv/0.4.0/completions/rbenv.zsh
-elif [[ -f $HOME/.rbenv/completions/rbenv.zsh ]]; then
-  source "$HOME/.rbenv/completions/rbenv.zsh"
-else
-  return
-fi
+case "${OSTYPE}" in
+linux*)
+  if [[ -f $HOME/.rbenv/completions/rbenv.zsh ]]; then
+    source "$HOME/.rbenv/completions/rbenv.zsh"
+  fi
+  ;;
+darwin*)
+  rbenv_prefix=`brew --prefix rbenv 2> /dev/null`
+  if [ -d "$rbenv_prefix" ]; then
+    source "$rbenv_prefix/completions/rbenv.zsh"
+  fi
+  ;;
+esac
 
 # plenv
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
