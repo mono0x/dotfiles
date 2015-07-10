@@ -97,6 +97,20 @@ NeoBundleLazy 'godlygeek/tabular', {
   \ 'commands': 'Tabularize',
   \ }
 NeoBundle 'thinca/vim-template'
+NeoBundleLazy 'tyru/open-browser.vim', {
+  \ 'mappings': '<Plug>(openbrowser',
+  \ }
+NeoBundleLazy 'tyru/open-browser-github.vim', {
+  \ 'commands': [
+  \   'OpenGithubFile',
+  \   'OpenGithubIssue',
+  \   'OpenGithubPullReq',
+  \   'OpenGithubProject',
+  \ ],
+  \ 'depends': [
+  \   'open-browser.vim',
+  \ ],
+  \ }
 
 " Unite {{{
 NeoBundle 'Shougo/neomru.vim'
