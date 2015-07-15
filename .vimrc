@@ -605,3 +605,9 @@ if neobundle#tap('open-browser.vim') " {{{
 
   call neobundle#untap()
 endif " }}}
+
+if neobundle#tap('open-browser-github.vim') " {{{
+  let g:openbrowser_github_always_use_commit_hash = 1
+  nnoremap gh :OpenGithubFile<CR>
+  vnoremap gh :OpenGithubFile<CR>
+endif " }}}
