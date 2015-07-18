@@ -9,7 +9,15 @@ if !(has('win32') && has('kaoriya'))
     \ }
 endif
 
-NeoBundle 'sudo.vim'
+NeoBundleLazy 'sudo.vim', {
+  \ 'filename_patterns': [
+  \   '^sudo:',
+  \ ],
+  \ 'commands': [
+  \   'SudoRead',
+  \   'SudoWrite',
+  \ ],
+  \ }
 
 if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
   NeoBundleLazy 'Shougo/neocomplete.vim', {
