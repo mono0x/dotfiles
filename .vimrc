@@ -145,6 +145,9 @@ autocmd vimrc_loading InsertLeave * if &paste | set nopaste mouse=a | echo 'nopa
 autocmd vimrc_loading BufReadPost COMMIT_EDITMSG exec "normal! gg"
 
 nnoremap <silent> <Leader>w :<C-u>w<CR>
+
+" Remove comment leaders when joining lines
+set formatoptions+=j
 " }}}
 
 " Window {{{
