@@ -1,4 +1,6 @@
+set line-graphics = utf-8
 set diff-options = -m --first-parent
+set ignore-space = all
 set split-view-height = 80%
 
 set blame-view = line-number:yes,interval=5 \
