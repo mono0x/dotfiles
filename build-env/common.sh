@@ -15,6 +15,7 @@ ln -sf $dir/.globalrc         ~
 ln -sf $dir/.gvimrc           ~
 ln -sf $dir/.peco             ~
 ln -sf $dir/.replyrc          ~
+ln -sf $dir/.source-highlight ~
 ln -sf $dir/.tmux.conf        ~
 ln -sf $dir/.vim              ~
 ln -sf $dir/.vimrc            ~

@@ -252,7 +252,7 @@ update_tmux_environment() {
 add-zsh-hook precmd update_tmux_environment
 
 lesr() {
-  LESS='-R' LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh  %s' less $*
+  LESS='-R' LESSOPEN="| $HOME/.source-highlight/src-hilite-lesspipe.sh %s" less $*
 }
 
 # }}}

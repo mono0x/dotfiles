@@ -10,3 +10,6 @@
 [submodule "firefox/profile/searchplugins"]
 	path = firefox/profile/searchplugins
 	url = git@bitbucket.org:mono0x/searchplugins.git
+[submodule ".source-highlight/source-highlight-solarized"]
+	path = .source-highlight/source-highlight-solarized
+	url = https://github.com/jrunning/source-highlight-solarized
