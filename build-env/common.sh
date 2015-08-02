@@ -7,26 +7,33 @@ git submodule init
 git submodule sync
 git submodule update
 
-ln -sf $dir/.ctags            ~
-ln -sf $dir/.gdbinit          ~
-ln -sf $dir/.gitconfig        ~
+rcs='
+  .ctags
+  .gdbinit
+  .gitconfig
+  .gitignore.global
+  .globalrc
+  .gvimrc
+  .myclirc
+  .peco
+  .pgclirc
+  .replyrc
+  .source-highlight
+  .tmux.conf
+  .vim
+  .vimrc
+  .wgetrc
+  .zsh
+  .zshenv
+  .zshrc
+  .tigrc
+  .ideavimrc
+'
+for rc in $rcs; do
+  ln -sf $dir/$rc ~
+done
 ln -sf $dir/.gitignore.global ~/.gitignore
-ln -sf $dir/.globalrc         ~
-ln -sf $dir/.gvimrc           ~
-ln -sf $dir/.myclirc          ~
-ln -sf $dir/.peco             ~
-ln -sf $dir/.pgclirc          ~
-ln -sf $dir/.replyrc          ~
-ln -sf $dir/.source-highlight ~
-ln -sf $dir/.tmux.conf        ~
-ln -sf $dir/.vim              ~
-ln -sf $dir/.vimrc            ~
-ln -sf $dir/.wgetrc           ~
-ln -sf $dir/.zsh              ~
-ln -sf $dir/.zshenv           ~
-ln -sf $dir/.zshrc            ~
-ln -sf $dir/.tigrc            ~
-ln -sf $dir/.ideavimrc        ~
+
 case "${OSTYPE}" in
 linux*)
   ln -sf $dir/.gitconfig.linux ~/.gitconfig.platform
