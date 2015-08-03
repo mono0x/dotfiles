@@ -32,4 +32,4 @@ table_format = psql
 syntax_style = default
 
 # Enables vi-mode
-vi = True
+vi = False

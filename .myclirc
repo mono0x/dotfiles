@@ -32,7 +32,7 @@ table_format = psql
 syntax_style = default
 
 # Keybindings: Possible values: emacs, vi
-key_bindings = vi
+key_bindings = emacs
 
 # MySQL prompt
 # \t - Product type (Percona, MySQL, Mariadb)
