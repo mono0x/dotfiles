@@ -144,7 +144,7 @@ alias gco='git co'
 alias gd='git di'
 alias gfo='git fo'
 alias gg='git grep -H --heading -I --line-number --break'
-alias gl='git log --graph'
+alias gl='git log'
 alias gme='git me'
 alias gs='git status'
 
