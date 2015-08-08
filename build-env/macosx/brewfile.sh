@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 brew update
 brew upgrade
 
@@ -8,7 +10,7 @@ brew install exiftool
 brew install git --with-pcre
 brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
 brew install go --cross-compile-common
-brew install gzip
+#brew install gzip
 brew install htop-osx
 brew install nginx
 brew install openssl
@@ -31,14 +33,14 @@ brew tap caskroom/versions
 
 brew cask install appcleaner
 brew cask install dropbox
-brew cask install firefox-ja
+#brew cask install firefox-ja
 brew cask install google-chrome
 brew cask install google-japanese-ime
 brew cask install heroku-toolbelt
 #brew cask install macvim-kaoriya
-brew cask install onepassword
-brew cask install vagrant
-brew cask install virtualbox
+brew cask install 1password
+#brew cask install vagrant
+#brew cask install virtualbox
 #brew cask install vmware-fusion
 
 brew cask cleanup
