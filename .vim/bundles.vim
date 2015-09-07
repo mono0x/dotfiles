@@ -26,7 +26,9 @@ if has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 else
   NeoBundleFetch 'Shougo/neocomplete.vim'
 endif
-NeoBundle 'editorconfig/editorconfig-vim'
+if !has('win32')
+  NeoBundle 'editorconfig/editorconfig-vim'
+endif
 NeoBundleLazy 'osyo-manga/vim-marching', {
   \ 'filetypes': [ 'c', 'cpp', 'objc', 'objcpp' ],
   \ }
