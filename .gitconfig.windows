@@ -1,0 +1,6 @@
+[credential]
+  helper = wincred
+
+[core]
+  preloadindex = true
+  fscache = true
