@@ -15,6 +15,7 @@ rcs='
   .globalrc
   .gvimrc
   .myclirc
+  .npmrc
   .peco
   .pgclirc
   .replyrc

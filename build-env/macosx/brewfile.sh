@@ -13,6 +13,7 @@ brew install go --cross-compile-common
 #brew install gzip
 brew install htop-osx
 brew install nginx
+brew install node --without-npm
 brew install openssl
 brew install peco/peco/peco
 brew install postgresql
