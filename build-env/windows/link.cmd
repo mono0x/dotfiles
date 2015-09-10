@@ -5,4 +5,5 @@ mklink %HOME%\.zshrc %HOME%\dotfiles\.zshrc
 mklink %HOME%\.zshenv %HOME%\dotfiles\.zshenv
 mklink /D %HOME%\.zsh %HOME%\dotfiles\.zsh
 mklink %HOME%\.gitconfig %HOME%\dotfiles\.gitconfig
+mklink %HOME%\.gitconfig.windows %HOME%\dotfiles\.gitconfig.platform
 mklink %HOME%\.gitignore %HOME%\dotfiles\.gitignore.global
