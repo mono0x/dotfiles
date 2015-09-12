@@ -42,9 +42,10 @@ zshaddhistory() {
 # }}}
 
 # Completions {{{
-dotzsh=$HOME/.zsh
-fpath=($dotzsh/cd-gitroot $dotzsh/z $dotzsh/zsh-completions/src $GOPATH/src/github.com/motemen/ghq/zsh $fpath)
-unset dotzsh
+() {
+  local dotzsh=$HOME/.zsh
+  fpath=($dotzsh/cd-gitroot $dotzsh/z $dotzsh/zsh-completions/src $GOPATH/src/github.com/motemen/ghq/zsh $fpath)
+}
 
 autoload -U compinit
 compinit
@@ -79,25 +80,27 @@ update_vcs_info_message() {
 
 add-zsh-hook precmd update_vcs_info_message
 
-local HOST_COLOR='%{${reset_color}%}'
-[ -f ~/.zshrc.color ] && source ~/.zshrc.color
+() {
+  local HOST_COLOR='%{${reset_color}%}'
+  [ -f ~/.zshrc.color ] && source ~/.zshrc.color
 
-case ${UID} in
-0)
-  local USER_COLOR='%{${fg[red]}%}'
-  local MARK_COLOR='%{${fg[red]}%}'
-  ;;
-*)
-  local USER_COLOR='%{${reset_color}%}'
-  local MARK_COLOR='%{${fg[blue]}%}'
-esac
+  case ${UID} in
+  0)
+    local USER_COLOR='%{${fg[red]}%}'
+    local MARK_COLOR='%{${fg[red]}%}'
+    ;;
+  *)
+    local USER_COLOR='%{${reset_color}%}'
+    local MARK_COLOR='%{${fg[blue]}%}'
+  esac
 
-PROMPT="
+  PROMPT="
 %{${fg[blue]}%}%/%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
 [${USER_COLOR}%n%{${reset_color}%}@${HOST_COLOR}%m%{${reset_color}%}] %{${MARK_COLOR}%}%#%{${reset_color}%} "
-PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
-SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-#RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
+  PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
+  SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+  #RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
+}
 
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*:default' menu select=1
