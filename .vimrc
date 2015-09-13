@@ -400,11 +400,11 @@ if neobundle#tap('unite.vim') " {{{
 
   function! s:unite_smart_grep()
     if unite#sources#grep_git#is_available()
-      Unite grep/git:.
+      Unite -no-start-insert grep/git:.
     elseif unite#sources#grep_hg#is_available()
-      Unite grep/hg:.
+      Unite -no-start-insert grep/hg:.
     else
-      Unite grep:.
+      Unite -no-start-insert grep:.
     endif
   endfunction
 
@@ -469,6 +469,7 @@ if neobundle#tap('unite.vim') " {{{
 endif " }}}
 
 if neobundle#tap('vim-fugitive') " {{{
+  nnoremap <silent> <Leader>gc :<C-u>Gcommit<CR>
   nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
   nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
   nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
