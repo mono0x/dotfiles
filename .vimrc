@@ -612,6 +612,7 @@ endif " }}}
 
 if neobundle#tap('open-browser-github.vim') " {{{
   let g:openbrowser_github_always_use_commit_hash = 1
+  let g:openbrowser_github_url_exists_check = 'ignore'
   nnoremap <silent> <Leader>gh :OpenGithubFile<CR>
   vnoremap <silent> <Leader>gh :OpenGithubFile<CR>
 endif " }}}
