@@ -158,6 +158,10 @@ nnoremap <C-w>h <C-w>h:call <SID>good_width()<Cr>
 nnoremap <C-w>l <C-w>l:call <SID>good_width()<Cr>
 nnoremap <C-w>H <C-w>H:call <SID>good_width()<Cr>
 nnoremap <C-w>L <C-w>L:call <SID>good_width()<Cr>
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
 function! s:good_width()
   if &filetype == 'unite'
     return
@@ -378,6 +382,7 @@ if neobundle#tap('neocomplete.vim') " {{{
 endif " }}}
 
 if neobundle#tap('unite.vim') " {{{
+  nnoremap <Leader>w :<C-u>Unite -buffer-name=files buffer<CR>
   nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
   nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
   nnoremap <silent> <Leader>m :<C-u>Unite file_mru -hide-source-names<CR>
@@ -388,7 +393,6 @@ if neobundle#tap('unite.vim') " {{{
   nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
   nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
   nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
-  nnoremap <silent> <Leader>j :<C-u>Unite gtags/completion<CR>
 
   function! s:unite_smart_file_rec()
     if isdirectory(getcwd() . "/.git")
