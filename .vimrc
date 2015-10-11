@@ -564,6 +564,8 @@ if neobundle#tap('vim-quickrun') " {{{
       \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
       \ }
   endfunction
+
+  nmap <silent> <Leader>r <Plug>(quickrun)
   call neobundle#untap()
 endif " }}}
 
