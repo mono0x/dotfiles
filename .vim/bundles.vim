@@ -140,7 +140,7 @@ NeoBundleLazy 'lambdalisue/unite-grep-vcs', {
   \ }
 " }}}
 
-" Syntax {{{
+" File types {{{
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
   \ 'filetypes': [ 'css', 'sass', 'scss', 'markdown' ],
   \ }
@@ -185,6 +185,9 @@ NeoBundleLazy 'motemen/xslate-vim', {
   \ }
 NeoBundleLazy 'moznion/vim-cpanfile', {
   \ 'filetypes': 'cpanfile',
+  \ }
+NeoBundleLazy 'vim-jp/vim-go-extra', {
+  \ 'filetypes': 'go',
   \ }
 " }}}
 

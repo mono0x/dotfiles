@@ -608,6 +608,10 @@ if neobundle#tap('vim-markdown') " {{{
   call neobundle#untap()
 endif " }}}
 
+if neobundle#tap('vim-go-extra') " {{{
+  autocmd FileType go autocmd BufWritePre <buffer> Fmt
+endif " }}}
+
 if neobundle#tap('open-browser.vim') " {{{
   let g:netrw_nogx = 1
   nmap gx <Plug>(openbrowser-smart-search)
