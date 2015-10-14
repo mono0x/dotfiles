@@ -186,8 +186,9 @@ NeoBundleLazy 'motemen/xslate-vim', {
 NeoBundleLazy 'moznion/vim-cpanfile', {
   \ 'filetypes': 'cpanfile',
   \ }
-NeoBundleLazy 'vim-jp/vim-go-extra', {
+NeoBundleLazy 'nsf/gocode', {
   \ 'filetypes': 'go',
+  \ 'rtp': 'vim',
   \ }
 " }}}
 
