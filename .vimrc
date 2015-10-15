@@ -611,7 +611,16 @@ if neobundle#tap('vim-markdown') " {{{
 endif " }}}
 
 if neobundle#tap('vim-go-extra') " {{{
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
+  function! s:go_settings()
+    autocmd BufWritePre <buffer> Fmt
+    nnoremap <buffer> K :<C-u>Godoc<CR>
+  endfunction
+  autocmd vimrc_loading FileType go call s:go_settings()
+
+  function! s:godoc_settings()
+    nnoremap <buffer> q :<C-u>q<CR>
+  endfunction
+  autocmd vimrc_loading FileType godoc call s:godoc_settings()
 endif " }}}
 
 if neobundle#tap('open-browser.vim') " {{{
