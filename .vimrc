@@ -71,6 +71,11 @@ set history=100
 if v:version < 703 || (v:version == 7.3 && !has('patch336'))
   set notagbsearch
 endif
+
+function! s:help_settings()
+  nnoremap <buffer> q :<C-u>q<CR>
+endfunction
+autocmd vimrc_loading FileType help call s:help_settings()
 " }}}
 
 " Indent {{{
