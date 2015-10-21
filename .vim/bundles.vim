@@ -187,7 +187,7 @@ NeoBundleLazy 'moznion/vim-cpanfile', {
   \ 'filetypes': 'cpanfile',
   \ }
 NeoBundleLazy 'vim-jp/vim-go-extra', {
-  \ 'filetypes': 'go',
+  \ 'commands': [ 'Fmt', 'Godoc', 'Import' ],
   \ }
 NeoBundleLazy 'nsf/gocode', {
   \ 'filetypes': 'go',
