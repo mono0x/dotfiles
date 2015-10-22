@@ -43,7 +43,7 @@
   lineNumber = true
 [merge]
   ff = false
-  mergeoptions = --strategy-option=patience
+  mergeoptions = --strategy-option=histogram
 [pull]
   ff = only
 [push]
