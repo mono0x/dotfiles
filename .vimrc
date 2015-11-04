@@ -619,9 +619,6 @@ if neobundle#tap('vim-go-extra') " {{{
   function! s:go_settings()
     autocmd BufWritePre <buffer> Fmt
     nnoremap <buffer> K :<C-u>Godoc<CR>
-
-    highlight goErr ctermfg=5
-    match goErr /\<err\>/
   endfunction
   autocmd vimrc_loading FileType go call s:go_settings()
 
