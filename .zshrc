@@ -292,4 +292,4 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # added by travis gem
-[ -f /Users/mono/.travis/travis.sh ] && source /Users/mono/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
