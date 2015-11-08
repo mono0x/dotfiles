@@ -28,7 +28,7 @@ brew install tig
 brew install tmux
 brew install wget
 brew install xz
-brew install zsh
+brew install zsh --without-etcdir
 
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
