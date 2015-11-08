@@ -20,6 +20,8 @@
   pr = pull --rebase
   rc = rebase --continue
   ro = rebase origin
+  ss = stash save
+  sp = stash pop
   st = status
   wd = diff --ignore-space-change --word-diff
 
@@ -39,6 +41,8 @@
   pager = LESS=-R less
 [diff]
   algorithm = histogram
+[fetch]
+  prune = true
 [grep]
   lineNumber = true
 [merge]
