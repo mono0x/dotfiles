@@ -13,6 +13,8 @@ brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
 brew install go --cross-compile-common
 #brew install gzip
 brew install htop-osx
+brew install lua
+brew install luajit
 brew install nginx
 brew install node --without-npm
 brew install openssl
