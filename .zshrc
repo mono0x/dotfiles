@@ -22,8 +22,8 @@ stty -ixon
 
 # History {{{
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=100000
-SAVEHIST=$HISTSIZE
+HISTSIZE=10000
+SAVEHIST=100000
 
 setopt extended_glob
 setopt extended_history
