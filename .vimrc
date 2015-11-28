@@ -602,6 +602,11 @@ if neobundle#tap('vim-markdown') " {{{
   let g:vim_markdown_liquid=1
   let g:vim_markdown_frontmatter=1
   let g:vim_markdown_folding_disabled=1
+
+  call neobundle#untap()
+endif " }}}
+
+if neobundle#tap('vim-markdown-quote-syntax') " {{{
   let g:markdown_quote_syntax_filetypes = {
     \ "coffee": { "start": "coffee" },
     \ "cpp": { "start": "cpp" },
