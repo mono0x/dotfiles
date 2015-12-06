@@ -16,11 +16,9 @@ darwin*)
   path=(/sbin(N-/) $path)
   # MacVim
   macvim=/Applications/MacVim.app/Contents/MacOS/Vim
-  if [ -x $macvim ]; then
+  if [ -x "$macvim" ]; then
     export EDITOR=$macvim
-  fi
-  if [[ -f /Applications/MacVim.app/Contents/MacOS/Vim ]]; then
-    alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
+    alias vim=$macvim
   fi
   # node
   path=($HOME/.node/bin(N-/) $path)
