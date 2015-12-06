@@ -15,6 +15,10 @@ darwin*)
   # sbin
   path=(/sbin(N-/) $path)
   # MacVim
+  macvim=/Applications/MacVim.app/Contents/MacOS/Vim
+  if [ -x $macvim ]; then
+    export EDITOR=$macvim
+  fi
   if [[ -f /Applications/MacVim.app/Contents/MacOS/Vim ]]; then
     alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
   fi
@@ -22,6 +26,10 @@ darwin*)
   path=($HOME/.node/bin(N-/) $path)
   ;;
 esac
+
+if [ ! -x "$EDITOR" ]; then
+  export EDITOR=vim
+fi
 
 path=($HOME/bin(N-/) $HOME/dotfiles/bin(N-/) /usr/local/bin(N-/) $path)
 if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
