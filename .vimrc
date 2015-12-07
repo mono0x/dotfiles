@@ -621,6 +621,8 @@ if neobundle#tap('vim-markdown-quote-syntax') " {{{
 endif " }}}
 
 if neobundle#tap('vim-go-extra') " {{{
+  let g:gofmt_command = 'goimports'
+
   function! s:go_settings()
     autocmd BufWritePre <buffer> Fmt
     nnoremap <buffer> K :<C-u>Godoc<CR>
