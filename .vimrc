@@ -430,6 +430,10 @@ if neobundle#tap('unite.vim') " {{{
       \ ['matcher_context'])
 
     call unite#custom#source(
+      \ 'file,file_rec/async,file_rec/git', 'ignore_pattern',
+      \ 'blib/')
+
+    call unite#custom#source(
       \ 'file_rec/async,file_rec/git', 'matchers',
       \ ['matcher_context'])
 
