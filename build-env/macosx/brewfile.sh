@@ -14,6 +14,7 @@ brew install go --cross-compile-common
 brew install htop-osx
 brew install lua
 brew install luajit
+brew install mercurial
 brew install nginx
 brew install node --without-npm
 brew install openssl
