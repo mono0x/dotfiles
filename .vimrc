@@ -423,8 +423,7 @@ if neobundle#tap('unite.vim') " {{{
     call unite#custom#source('file,file_rec/git,file_rec/async', 'ignore_pattern',
       \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
       \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
-      \ '\|downloads/tmp\|templates_c'.
-      \ '\|blib/\|local/')
+      \ '\|downloads/tmp\|templates_c')
 
     call unite#custom#source(
       \ 'file,buffer,file_mru', 'matchers',
