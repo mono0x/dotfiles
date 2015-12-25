@@ -420,10 +420,9 @@ if neobundle#tap('unite.vim') " {{{
   endfunction
 
   function! neobundle#hooks.on_source(bundle)
-    call unite#custom#source('file,file_rec/git,file_rec/async', 'ignore_pattern',
-      \ '\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\|jpg\|jpeg\|png\|gif\)$'.
-      \ '\|\%(^\|/\)\%(\.hg\|\.git\|\.bzr\|\.svn\|tags\%(-.*\)\?\)\%($\|/\)\|lib/Cake'.
-      \ '\|downloads/tmp\|templates_c')
+    set wildignore=*.exe,*.dll,*.class,*.jpg,*.jpeg,*.png,*.gif
+    call unite#custom#source('file,file_rec/git,file_rec/async', 'ignore_globs',
+      \ split(&wildignore, ','))
 
     call unite#custom#source(
       \ 'file,buffer,file_mru', 'matchers',
