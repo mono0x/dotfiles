@@ -136,6 +136,10 @@ alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -Al'
 
+alias grep='LC_ALL=C grep'
+alias sort='LC_ALL=C sort'
+alias uniq='LC_ALL=C uniq'
+
 if which hub &> /dev/null; then
   alias git='hub'
   compdef hub=git
