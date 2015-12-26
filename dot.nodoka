@@ -1,8 +1,6 @@
 # 〠 for encoding detection
 include "109.nodoka"
 
-def option KeyboardDelay = enable 150 15
-
 def key E0RightShift = E0-0x36
 
 keymap KeymapBase
