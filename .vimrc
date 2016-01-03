@@ -20,6 +20,12 @@ let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
 " }}}
 
+" matchit {{{
+if filereadable(expand('$VIMRUNTIME/macros/matchit.vim'))
+  source $VIMRUNTIME/macros/matchit.vim
+endif
+" }}}
+
 " Base {{{
 augroup vimrc_loading
   autocmd!
