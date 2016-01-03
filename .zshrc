@@ -138,6 +138,7 @@ alias lla='ls -Al'
 
 alias comm='LC_ALL=C comm'
 alias grep='LC_ALL=C grep'
+alias look='LC_ALL=C look'
 alias sort='LC_ALL=C sort'
 alias uniq='LC_ALL=C uniq'
 
