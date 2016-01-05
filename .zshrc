@@ -127,20 +127,26 @@ alias v='vim'
 case "${OSTYPE}" in
 linux*)
   alias ls="ls --color"
+
+  alias comm='LC_ALL=C comm'
+  alias grep='LC_ALL=C grep'
+  alias look='LC_ALL=C look'
+  alias sort='LC_ALL=C sort'
+  alias uniq='LC_ALL=C uniq'
   ;;
 darwin*)
   alias ls="ls -G"
+
+  alias comm='LC_ALL=C gcomm'
+  alias grep='LC_ALL=C ggrep'
+  alias look='LC_ALL=C look'
+  alias sort='LC_ALL=C gsort'
+  alias uniq='LC_ALL=C guniq'
   ;;
 esac
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -Al'
-
-alias comm='LC_ALL=C gcomm'
-alias grep='LC_ALL=C ggrep'
-alias look='LC_ALL=C look'
-alias sort='LC_ALL=C gsort'
-alias uniq='LC_ALL=C guniq'
 
 if which hub &> /dev/null; then
   alias git='hub'
