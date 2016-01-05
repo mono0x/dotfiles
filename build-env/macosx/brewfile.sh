@@ -6,11 +6,14 @@ brew upgrade
 
 brew install ansible
 brew install cmigemo
+brew install coreutils
 brew install exiftool
+brew install findutils
 brew install fswatch
 brew install git --with-pcre
 brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
 brew install go --cross-compile-common
+brew install homebrew/dupes/grep
 brew install htop-osx
 brew install lua
 brew install luajit
