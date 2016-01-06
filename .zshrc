@@ -141,7 +141,9 @@ darwin*)
   alias grep='LC_ALL=C ggrep'
   alias look='LC_ALL=C look'
   alias sort='LC_ALL=C gsort'
+  alias tail='gtail'
   alias uniq='LC_ALL=C guniq'
+  alias wc='gwc'
   ;;
 esac
 alias ll='ls -l'
