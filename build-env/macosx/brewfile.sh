@@ -21,7 +21,7 @@ brew install mercurial
 brew install nginx
 brew install node --without-npm
 brew install openssl
-brew install peco/peco/peco
+brew install peco
 brew install postgresql
 brew install rbenv
 brew install readline
