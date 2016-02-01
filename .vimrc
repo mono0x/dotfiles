@@ -67,11 +67,6 @@ autocmd vimrc_loading ColorScheme * highlight TrailingSpaces ctermbg=red guibg=r
 " }}}
 
 " wrapping {{{
-set breakindent
-autocmd vimrc_loading BufEnter * setl breakindentopt=min:20,shift:0
-set linebreak
-set wrap
-
 set textwidth=0
 " force textwidth=0
 autocmd vimrc_loading FileType text setlocal textwidth=0
