@@ -39,6 +39,7 @@
   excludesfile = ~/.gitignore
   autocrlf = false
   pager = LESS=-R less
+  precomposeunicode = true
 [diff]
   algorithm = histogram
 [fetch]
