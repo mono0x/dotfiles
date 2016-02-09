@@ -118,10 +118,18 @@ NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundleLazy 'Shougo/unite.vim', {
   \ 'commands': [{ 'name': 'Unite', 'complete': 'customlist,unite#complete_source' }],
   \ }
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite-build'
-NeoBundle 'hewes/unite-gtags'
-NeoBundle 'lambdalisue/unite-grep-vcs'
+NeoBundleLazy 'Shougo/unite-outline', {
+  \ 'on_source': [ 'unite.vim' ],
+  \ }
+NeoBundleLazy 'Shougo/unite-build', {
+  \ 'on_source': [ 'unite.vim' ],
+  \ }
+NeoBundleLazy 'hewes/unite-gtags', {
+  \ 'on_source': [ 'unite.vim' ],
+  \ }
+NeoBundleLazy 'lambdalisue/unite-grep-vcs', {
+  \ 'on_source': [ 'unite.vim' ],
+  \ }
 " }}}
 
 " File types {{{
