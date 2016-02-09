@@ -272,10 +272,6 @@ esac
 
 # plenv
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
-
-if which dnvm.sh &> /dev/null; then
-  source dnvm.sh
-fi
 # }}}
 
 #eval 'dircolors'
