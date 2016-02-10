@@ -17,7 +17,7 @@ setopt pushd_ignore_dups
 
 export WORDCHARS="*?_-.[]~&;!#$%^(){}<>"
 
-stty -ixon
+stty stop undef
 # }}}
 
 # History {{{
@@ -121,6 +121,7 @@ bindkey "^n" history-beginning-search-forward-end
 alias sudo="sudo "
 alias sudoe='sudo -e'
 alias tmux='TERM=screen-256color tmux'
+alias man='vs man'
 alias vi='vim'
 alias v='vim'
 
@@ -232,6 +233,9 @@ n() {
   t update "done: $* => $? ($dt)" > /dev/null 2>&1
 }
 
+# tmux
+() {
+
 # update environment variables
 update_tmux_environment() {
   local _tmux_env
@@ -248,8 +252,22 @@ update_tmux_environment() {
 }
 add-zsh-hook precmd update_tmux_environment
 
-lesr() {
-  LESS='-R' LESSOPEN="| $HOME/.source-highlight/src-hilite-lesspipe.sh %s" less $*
+vs() {
+  if [ -n "${TMUX}" ]; then
+    tmux split-window -h "exec $*"
+  else
+    command $*
+  fi
+}
+
+sp() {
+  if [ -n "${TMUX}" ]; then
+    tmux split-window -v "exec $*"
+  else
+    command $*
+  fi
+}
+
 }
 
 # }}}
