@@ -606,7 +606,7 @@ if neobundle#tap('vim-watchdogs') " {{{
     " http://this.aereal.org/entry/2013/08/10/005547
     let g:quickrun_config['watchdogs_checker/cpanfile'] = {
       \ 'command' : 'perl',
-      \ 'exec' : '%c %o -w -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
+      \ 'exec' : '%c %o -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
       \ 'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
       \ }
     let g:quickrun_config['cpanfile/watchdogs_checker'] = {
