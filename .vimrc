@@ -141,6 +141,7 @@ imap <C-d> <Delete>
 " }}}
 
 " Appearances {{{
+set colorcolumn=112
 set cursorline
 set display=lastline
 set hidden
@@ -222,6 +223,7 @@ xmap :  <sid>(command-line-enter)
 
 autocmd vimrc_loading CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
+  setlocal colorcolumn=
   setlocal nonumber
 
   nnoremap <buffer> q :<C-u>quit<CR>
