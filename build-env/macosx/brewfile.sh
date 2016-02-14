@@ -14,6 +14,7 @@ brew install git --with-pcre
 brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
 brew install go --cross-compile-common
 brew install homebrew/dupes/grep
+brew install homebrew/dupes/rsync
 brew install htop-osx
 brew install lua
 brew install luajit
