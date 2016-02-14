@@ -37,7 +37,6 @@ brew install xz
 brew install zsh --without-etcdir
 
 brew install caskroom/cask/brew-cask
-brew tap caskroom/versions
 
 brew cask install appcleaner
 brew cask install dropbox
