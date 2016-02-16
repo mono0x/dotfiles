@@ -268,6 +268,10 @@ sp() {
   fi
 }
 
+quit() {
+  command osascript -e "quit app \"$1\""
+}
+
 }
 
 # }}}
