@@ -149,8 +149,8 @@ set list
 set listchars=tab:>\ ,extends:>,precedes:<
 set matchtime=1
 set number
+set noshowmatch
 set pumheight=10
-set showmatch
 set wildmenu
 
 set cmdheight=1
@@ -159,6 +159,8 @@ set showcmd
 set statusline=%<[%n]%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%8P
 
 set t_Co=256
+
+autocmd vimrc_loading VimEnter,ColorScheme * highlight MatchParen guibg=#fdf6e3 ctermbg=15
 
 if exists('&ambiwidth')
   set ambiwidth=double
