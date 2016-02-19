@@ -10,6 +10,7 @@ brew install coreutils
 brew install exiftool
 brew install findutils
 brew install fswatch
+brew install ghq
 brew install git --with-pcre
 brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
 brew install go --cross-compile-common
