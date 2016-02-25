@@ -174,6 +174,15 @@ alias bet='bundle exec thor'
 alias ber='noglob bundle exec rake'
 alias rake='noglob rake'
 
+alias d='docker'
+alias dc='docker-compose'
+alias dm='docker-machine'
+alias dmenv='eval $(dm env default)'
+alias dmstart='dm start default && dmenv'
+alias dmrestart='dm restart default && dmenv'
+alias dmstop='dm stop default'
+alias dmssh='dm ssh default'
+
 # http://www.reddit.com/r/commandline/comments/12g76v/how_to_automatically_source_zshrc_in_all_open/
 trap "source ~/.zshrc" USR1
 alias source-zshrc-all="pkill -usr1 zsh"
