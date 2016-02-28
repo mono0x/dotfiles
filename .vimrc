@@ -148,7 +148,7 @@ set hidden
 set list
 set listchars=tab:>\ ,extends:>,precedes:<
 set matchtime=1
-set number
+set nonumber
 set noshowmatch
 set pumheight=10
 set wildmenu
