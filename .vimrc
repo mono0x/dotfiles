@@ -280,12 +280,6 @@ call dein#end()
 filetype plugin indent on
 syntax on
 
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-" }}}
-
 if dein#tap('vim-colors-solarized') " {{{
   set background=light
   let g:solarized_termcolors=16
