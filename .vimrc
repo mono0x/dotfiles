@@ -244,53 +244,66 @@ endfunction
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-" NeoBundle {{{
+" dein.vim {{{
 filetype off
 
 if has('win32')
   set rtp^=$HOME/.vim,$HOME/.vim/after
 endif
 
-if has('vim_starting')
-  set rtp+=$HOME/.vim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-let s:bundles_vim = fnameescape(expand('~/.vim/bundles.vim'))
-if neobundle#load_cache(s:bundles_vim)
-  execute 'source' s:bundles_vim
-  NeoBundleSaveCache
+if &compatible
+  set nocompatible
 endif
 
-call neobundle#end()
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_repos_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repos_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repos_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repos_dir, ':p')
+endif
+
+call dein#begin(s:dein_dir)
+
+let s:toml = expand('~/.vim/dein.toml')
+let s:lazy_toml = expand('~/.vim/dein_lazy.toml')
+
+if dein#load_cache([ expand('<sfile>'), s:toml, s:lazy_toml ])
+  call dein#load_toml(s:toml, { 'lazy': 0 })
+  call dein#load_toml(s:lazy_toml, { 'lazy': 1 })
+  call dein#save_cache()
+endif
+
+call dein#end()
 filetype plugin indent on
 syntax on
 
-NeoBundleCheck
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
 " }}}
 
-if neobundle#tap('vim-colors-solarized') " {{{
+if dein#tap('vim-colors-solarized') " {{{
   set background=light
   let g:solarized_termcolors=16
   let g:solarized_termtrans=1
   let g:solarized_italic=0
   colorscheme solarized
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-indent-guides') " {{{
+if dein#tap('vim-indent-guides') " {{{
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_guide_size = 1
   let g:indent_guides_start_level = 2
   let g:indent_guides_auto_colors = 0
   autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
   autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('lightline.vim') " {{{
+if dein#tap('lightline.vim') " {{{
   set noshowmode
 
   let g:lightline = {
@@ -324,11 +337,9 @@ if neobundle#tap('lightline.vim') " {{{
   function! MyModified()
     return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
   endfunction
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-surround') " {{{
+if dein#tap('vim-surround') " {{{
   let g:surround_no_mappings = 1
 
   nmap <unique> ds     <Plug>Dsurround
@@ -347,11 +358,9 @@ if neobundle#tap('vim-surround') " {{{
   imap <unique> <C-S>  <Plug>Isurround
   imap <unique> <C-G>s <Plug>Isurround
   imap <unique> <C-G>S <Plug>ISurround
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('incsearch.vim') " {{{
+if dein#tap('incsearch.vim') " {{{
   let g:incsearch#auto_nohlsearch = 1
 
   map /  <Plug>(incsearch-forward)
@@ -363,31 +372,25 @@ if neobundle#tap('incsearch.vim') " {{{
   map #  <Plug>(incsearch-nohl-#)
   map g* <Plug>(incsearch-nohl-g*)
   map g# <Plug>(incsearch-nohl-g#)
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('incsearch-fuzzy.vim') " {{{
+if dein#tap('incsearch-fuzzy.vim') " {{{
   map z/ <Plug>(incsearch-fuzzy-/)
   map z? <Plug>(incsearch-fuzzy-?)
   map zg/ <Plug>(incsearch-fuzzy-stay)
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('incsearch-migemo.vim') " {{{
+if dein#tap('incsearch-migemo.vim') " {{{
   map m/ <Plug>(incsearch-migemo-/)
   map m? <Plug>(incsearch-migemo-?)
   map mg/ <Plug>(incsearch-migemo-stay)
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-marching') " {{{
+if dein#tap('vim-marching') " {{{
   let g:marching_enable_neocomplete = 1
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('neocomplete.vim') " {{{
+if dein#tap('neocomplete.vim') " {{{
   set completeopt-=preview
 
   let g:neocomplete#enable_at_startup=1
@@ -414,11 +417,9 @@ if neobundle#tap('neocomplete.vim') " {{{
   let g:neocomplete#sources#omni#input_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
   let g:neocomplete#sources#omni#input_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('unite.vim') " {{{
+if dein#tap('unite.vim') " {{{
   nnoremap <Leader>w :<C-u>Unite -buffer-name=files buffer<CR>
   nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
   nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
@@ -449,7 +450,7 @@ if neobundle#tap('unite.vim') " {{{
     endif
   endfunction
 
-  function! neobundle#hooks.on_source(bundle)
+  function! s:unite_on_source()
     set wildignore=*.exe,*.dll,*.class,*.jpg,*.jpeg,*.png,*.gif
     call unite#custom#source('file,file_rec/git,file_rec/async', 'ignore_globs',
       \ split(&wildignore, ','))
@@ -491,6 +492,7 @@ if neobundle#tap('unite.vim') " {{{
 
     let g:unite_source_gtags_enable_nearness = 1
   endfunction
+  execute 'autocmd vimrc_loading User' 'dein#source#' . g:dein#name 'call s:unite_on_source()'
 
   if executable('ag')
     let g:unite_source_grep_command = 'ag'
@@ -504,11 +506,9 @@ if neobundle#tap('unite.vim') " {{{
     imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
   endfunction
   autocmd vimrc_loading FileType unite call s:unite_my_settings()
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-fugitive') " {{{
+if dein#tap('vim-fugitive') " {{{
   nnoremap <silent> <Leader>gc :<C-u>Gcommit<CR>
   nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
   nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
@@ -516,7 +516,7 @@ if neobundle#tap('vim-fugitive') " {{{
 endif
 " }}}
 
-if neobundle#tap('yankround.vim') " {{{
+if dein#tap('yankround.vim') " {{{
   nmap p <Plug>(yankround-p)
   nmap P <Plug>(yankround-P)
   nmap gp <Plug>(yankround-gp)
@@ -545,11 +545,9 @@ if neobundle#tap('yankround.vim') " {{{
       set clipboard=unnamed
     endif
   endif
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('emmet-vim') " {{{
+if dein#tap('emmet-vim') " {{{
   let g:user_emmet_settings = {
   \ 'indentation': '  ',
   \ 'xslate': {
@@ -559,17 +557,13 @@ if neobundle#tap('emmet-vim') " {{{
   \   'indentation': '    ',
   \ },
   \ }
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('echodoc') " {{{
+if dein#tap('echodoc') " {{{
   let g:echodoc_enable_at_startup = 1
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-alignta') " {{{
+if dein#tap('vim-alignta') " {{{
   xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
   xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
   xnoremap <silent> <Leader>t= :Alignta << -e =<CR>
@@ -579,12 +573,10 @@ if neobundle#tap('vim-alignta') " {{{
   xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
   xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
   xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-quickrun') " {{{
-  function! neobundle#hooks.on_source(bundle)
+if dein#tap('vim-quickrun') " {{{
+  function! s:vim_quickrun_on_source()
     if !exists('g:quickrun_config')
       let g:quickrun_config = {}
     endif
@@ -600,13 +592,13 @@ if neobundle#tap('vim-quickrun') " {{{
       \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
       \ }
   endfunction
+  execute 'autocmd vimrc_loading User' 'dein#source#' . g:dein#name 'call s:vim_quickrun_on_source()'
 
   nmap <silent> <Leader>r <Plug>(quickrun)
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-watchdogs') " {{{
-  function! neobundle#hooks.on_source(bundle)
+if dein#tap('vim-watchdogs') " {{{
+  function! s:vim_watchdogs_on_source()
     " http://this.aereal.org/entry/2013/08/10/005547
     let g:quickrun_config['watchdogs_checker/cpanfile'] = {
       \ 'command' : 'perl',
@@ -624,18 +616,16 @@ if neobundle#tap('vim-watchdogs') " {{{
     let g:watchdogs_check_BufWritePost_enable = 1
     call watchdogs#setup(g:quickrun_config)
   endfunction
-  call neobundle#untap()
+  execute 'autocmd vimrc_loading User' 'dein#source#' . g:dein#name 'call s:vim_watchdogs_on_source()'
 endif " }}}
 
-if neobundle#tap('vim-markdown') " {{{
+if dein#tap('vim-markdown') " {{{
   let g:vim_markdown_liquid=1
   let g:vim_markdown_frontmatter=1
   let g:vim_markdown_folding_disabled=1
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-markdown-quote-syntax') " {{{
+if dein#tap('vim-markdown-quote-syntax') " {{{
   let g:markdown_quote_syntax_filetypes = {
     \ "coffee": { "start": "coffee" },
     \ "cpp": { "start": "cpp" },
@@ -645,11 +635,9 @@ if neobundle#tap('vim-markdown-quote-syntax') " {{{
     \ "scss": { "start": "scss" },
     \ "sh": { "start": "sh" },
     \}
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('vim-go-extra') " {{{
+if dein#tap('vim-go-extra') " {{{
   let g:gofmt_command = 'goimports'
 
   function! s:go_settings()
@@ -664,17 +652,16 @@ if neobundle#tap('vim-go-extra') " {{{
   autocmd vimrc_loading FileType godoc call s:godoc_settings()
 endif " }}}
 
-if neobundle#tap('open-browser.vim') " {{{
+if dein#tap('open-browser.vim') " {{{
   let g:netrw_nogx = 1
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
-
-  call neobundle#untap()
 endif " }}}
 
-if neobundle#tap('open-browser-github.vim') " {{{
+if dein#tap('open-browser-github.vim') " {{{
   let g:openbrowser_github_always_use_commit_hash = 1
   let g:openbrowser_github_url_exists_check = 'ignore'
   nnoremap <silent> <Leader>gh :OpenGithubFile<CR>
   vnoremap <silent> <Leader>gh :OpenGithubFile<CR>
+
 endif " }}}

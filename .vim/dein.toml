@@ -1,0 +1,35 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc'
+if = '''!(has('win32') && has('kaoriya'))'''
+
+  [plugins.build]
+  mac = 'make -f make_mac.mak'
+  unix = 'make -f make_unix.mak'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+if = '''!has('win32')'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'thinca/vim-template'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/tabpagebuffer.vim'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
