@@ -25,7 +25,7 @@ repo = 'cohama/vim-hier'
 repo = 'osyo-manga/shabadou.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-watchdogs'
-depends = [ 'thinca/vim-quickrun', 'osyo-manga/shabadou.vim', 'cohama/vim-hier', ]
+depends = [ 'vim-quickrun', 'shabadou.vim', 'vim-hier', ]
 on_ft = [ 'c', 'cpanfile', 'cpp', 'javascript', 'perl', 'ruby', ]
 
 [[plugins]]
