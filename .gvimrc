@@ -11,7 +11,7 @@ else
   set guifont=Ricty\ 12
 endif
 
-if !dein#check_install([ 'vim-colors-solarized' ])
+if dein#tap('vim-colors-solarized')
   set background=light
   colorscheme solarized
 endif
