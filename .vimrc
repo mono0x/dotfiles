@@ -270,7 +270,7 @@ call dein#begin(s:dein_dir)
 let s:toml = expand('~/.vim/dein.toml')
 let s:lazy_toml = expand('~/.vim/dein_lazy.toml')
 
-if dein#load_cache([ expand('<sfile>'), s:toml, s:lazy_toml ])
+if dein#load_cache([ $MYVIMRC, s:toml, s:lazy_toml ])
   call dein#load_toml(s:toml, { 'lazy': 0 })
   call dein#load_toml(s:lazy_toml, { 'lazy': 1 })
   call dein#save_cache()
@@ -279,6 +279,7 @@ endif
 call dein#end()
 filetype plugin indent on
 syntax on
+" }}}
 
 if dein#tap('vim-colors-solarized') " {{{
   set background=light
