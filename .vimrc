@@ -262,7 +262,7 @@ if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repos_dir)
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repos_dir
   endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repos_dir, ':p')
+  execute 'set runtimepath^=' . s:dein_repos_dir
 endif
 
 call dein#begin(s:dein_dir)
