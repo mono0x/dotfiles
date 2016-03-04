@@ -161,7 +161,14 @@ set statusline=%<[%n]%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%
 
 set t_Co=256
 
-autocmd vimrc_loading VimEnter,ColorScheme * highlight MatchParen guibg=#fdf6e3 ctermbg=15
+augroup vimrc_loading
+  autocmd WinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+  autocmd InsertEnter * setlocal nocursorline
+  autocmd InsertLeave * setlocal cursorline
+
+  autocmd VimEnter,ColorScheme * highlight MatchParen guibg=#fdf6e3 ctermbg=15
+augroup END
 
 if exists('&ambiwidth')
   set ambiwidth=double
