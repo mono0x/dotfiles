@@ -151,6 +151,7 @@ set matchtime=1
 set nonumber
 set noshowmatch
 set pumheight=10
+set synmaxcol=256
 set wildmenu
 
 set cmdheight=1
