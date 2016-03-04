@@ -150,6 +150,11 @@ repo = 'clausreinke/typescript-tools.vim'
 on_ft = 'typescript'
 
 [[plugins]]
+repo = 'c9s/perlomni.vim'
+on_ft = [ 'perl' ]
+on_i = 1
+
+[[plugins]]
 repo = 'vim-perl/vim-perl'
 on_ft = [ 'perl', 'cpanfile', 'tt2html' ]
 
