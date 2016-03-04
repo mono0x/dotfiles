@@ -696,3 +696,7 @@ if dein#tap('open-browser-github.vim') " {{{
   vnoremap <silent> <Leader>gh :OpenGithubFile<CR>
 
 endif " }}}
+
+if dein#tap('perlomni.vim') " {{{
+  let $PATH.=':'.dein#get('perlomni.vim')['path'].'/bin'
+endif " }}}
