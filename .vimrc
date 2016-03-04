@@ -414,6 +414,32 @@ if dein#tap('neocomplete.vim') " {{{
   let g:neocomplete#sources#omni#input_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 endif " }}}
 
+if dein#tap('deoplete.nvim') " {{{
+  set completeopt-=preview
+
+  let g:deoplete#enable_at_startup=1
+  let g:deoplete#enable_smart_case=1
+
+  augroup vimrc_loading
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType typescript setlocal omnifunc=TSScompleteFunc
+  augroup END
+  if !exists('g:deoplete#omni_patterns')
+    let g:deoplete#omni_patterns={}
+  endif
+  let g:deoplete#omni_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:deoplete#omni_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:deoplete#omni_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:deoplete#omni_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  "let g:deoplete#omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+  let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
+endif " }}}
+
 if dein#tap('unite.vim') " {{{
   nnoremap <Leader>w :<C-u>Unite -buffer-name=files buffer<CR>
   nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>

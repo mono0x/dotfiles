@@ -2,6 +2,13 @@
 repo = 'Shougo/neocomplete.vim'
 lazy = 1
 on_i = 1
+if = '''!has('nvim')'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+lazy = 1
+on_i = 1
+if = '''has('nvim')'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-marching'

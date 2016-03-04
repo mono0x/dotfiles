@@ -26,6 +26,7 @@ brew install node --without-npm
 brew install openssl
 brew install peco
 brew install postgresql
+brew install python3
 brew install rbenv
 brew install readline
 brew install reattach-to-user-namespace
