@@ -4,8 +4,8 @@ dir=$(cd $(dirname $0)/.. && pwd)
 
 cd $dir
 git submodule init
-git submodule sync
-git submodule update
+git submodule sync --recursive
+git submodule update --recursive
 
 rcs='
   .ctags
