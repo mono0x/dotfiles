@@ -8,6 +8,7 @@ set smartcase
 noremap <C-]> <Esc>
 inoremap <C-]> <Esc>
 vnoremap <C-]> <Esc>
+inoremap <¥> \
 
 " Built-in actions
 nnoremap <Space>r :action RunClass<CR>
