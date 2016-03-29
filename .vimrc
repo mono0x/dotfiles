@@ -668,12 +668,13 @@ if dein#tap('vim-markdown-quote-syntax') " {{{
     \}
 endif " }}}
 
-if dein#tap('vim-go-extra') " {{{
-  let g:gofmt_command = 'goimports'
+if dein#tap('vim-go') " {{{
+  let g:go_fmt_command = 'goimports'
+  let g:go_fmt_fail_silently = 1
 
   function! s:go_settings()
-    autocmd BufWritePre <buffer> Fmt
-    nnoremap <buffer> K :<C-u>Godoc<CR>
+    autocmd BufWritePre <buffer> GoFmt
+    nnoremap <buffer> K :<C-u>GoDoc<CR>
   endfunction
   autocmd vimrc_loading FileType go call s:go_settings()
 

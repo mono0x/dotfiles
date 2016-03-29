@@ -167,8 +167,29 @@ repo = 'moznion/vim-cpanfile'
 on_ft = 'cpanfile'
 
 [[plugins]]
-repo = 'vim-jp/vim-go-extra'
-on_cmd = [ 'Fmt', 'Godoc', 'Import' ]
+repo = 'fatih/vim-go'
+on_cmd = [
+  'GoAlternatej',
+  'GoCallees',
+  'GoCoverage',
+  'GoDef',
+  'GoDoc',
+  'GoErrCheck',
+  'GoFmt',
+  'GoImplements',
+  'GoImport',
+  'GoInstall',
+  'GoLint',
+  'GoLint',
+  'GoMetaLinter',
+  'GoPath',
+  'GoPlay',
+  'GoReferrers',
+  'GoRename',
+  'GoRun',
+  'GoTestFunc',
+  'GoVet',
+]
 
 [[plugins]]
 repo = 'nsf/gocode'
