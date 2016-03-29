@@ -210,12 +210,6 @@ on_cmd = [
 ]
 
 [[plugins]]
-repo = 'nsf/gocode'
-on_ft = 'go'
-rtp = 'vim'
-if = '''!has('nvim')'''
-
-[[plugins]]
 repo = 'zchee/deoplete-go'
 on_ft = 'go'
 on_i = 1
