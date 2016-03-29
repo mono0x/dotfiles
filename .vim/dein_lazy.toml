@@ -42,7 +42,20 @@ on_ft = [ 'css', 'haml', 'html', 'markdown', 'scss', 'tt2html', 'xml', 'xslate',
 [[plugins]]
 repo = 'anyakichi/vim-surround'
 on_map = [
-  '<Plug>SurroundRepeat', '<Plug>Dsurround', '<Plug>Csurround', '<Plug>Yssurround', '<Plug>Ygssurround', '<Plug>Ysurround', '<Plug>Ygsurround', '<Plug>Vsurround', '<Plug>VSurround', '<Plug>Vgsurround', '<Plug>VgSurround', '<Plug>Isurround', '<Plug>ISurround', ]
+  '<Plug>Csurround',
+  '<Plug>Dsurround',
+  '<Plug>ISurround',
+  '<Plug>Isurround',
+  '<Plug>SurroundRepeat',
+  '<Plug>VSurround',
+  '<Plug>VgSurround',
+  '<Plug>Vgsurround',
+  '<Plug>Vsurround',
+  '<Plug>Ygssurround',
+  '<Plug>Ygsurround',
+  '<Plug>Yssurround',
+  '<Plug>Ysurround',
+]
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'
@@ -74,7 +87,12 @@ on_map = '<Plug>(openbrowser'
 
 [[plugins]]
 repo = 'tyru/open-browser-github.vim'
-on_cmd = [ 'OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq', 'OpenGithubProject', ]
+on_cmd = [
+  'OpenGithubFile',
+  'OpenGithubIssue',
+  'OpenGithubProject',
+  'OpenGithubPullReq',
+]
 depends = 'open-browser.vim'
 
 # Unite {{{
