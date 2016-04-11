@@ -4,10 +4,7 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/vimproc'
 if = '''!(has('win32') && has('kaoriya'))'''
-
-  [plugins.build]
-  mac = 'make -f make_mac.mak'
-  unix = 'make -f make_unix.mak'
+build = 'make'
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
