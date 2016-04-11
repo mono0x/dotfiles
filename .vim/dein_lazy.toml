@@ -25,6 +25,9 @@ on_i = 1
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_map = '<Plug>'
+hook_source = '''
+  call VimQuickrunOnSource()
+'''
 
 [[plugins]]
 repo = 'cohama/vim-hier'
@@ -34,6 +37,9 @@ repo = 'osyo-manga/shabadou.vim'
 repo = 'osyo-manga/vim-watchdogs'
 depends = [ 'vim-quickrun', 'shabadou.vim', 'vim-hier', ]
 on_ft = [ 'c', 'cpanfile', 'cpp', 'javascript', 'perl', 'ruby', ]
+hook_source = '''
+  call VimWatchdogsOnSource()
+'''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
