@@ -639,21 +639,3 @@ if dein#tap('vim-go') " {{{
   endfunction
   autocmd vimrc_loading FileType godoc call s:godoc_settings()
 endif " }}}
-
-if dein#tap('open-browser.vim') " {{{
-  let g:netrw_nogx = 1
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
-endif " }}}
-
-if dein#tap('open-browser-github.vim') " {{{
-  let g:openbrowser_github_always_use_commit_hash = 1
-  let g:openbrowser_github_url_exists_check = 'ignore'
-  nnoremap <silent> <Leader>gh :OpenGithubFile<CR>
-  vnoremap <silent> <Leader>gh :OpenGithubFile<CR>
-
-endif " }}}
-
-if dein#tap('perlomni.vim') " {{{
-  let $PATH.=':'.dein#get('perlomni.vim')['path'].'/bin'
-endif " }}}

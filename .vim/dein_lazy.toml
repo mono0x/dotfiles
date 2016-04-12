@@ -122,6 +122,13 @@ on_cmd = 'Tabularize'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_map = '<Plug>(openbrowser'
+hook_add = '''
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
+'''
+hook_source = '''
+  let g:netrw_nogx = 1
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser-github.vim'
@@ -132,6 +139,14 @@ on_cmd = [
   'OpenGithubPullReq',
 ]
 depends = 'open-browser.vim'
+hook_add = '''
+  nnoremap <silent> <Leader>gh :OpenGithubFile<CR>
+  vnoremap <silent> <Leader>gh :OpenGithubFile<CR>
+'''
+hook_source = '''
+  let g:openbrowser_github_always_use_commit_hash = 1
+  let g:openbrowser_github_url_exists_check = 'ignore'
+'''
 
 # Unite {{{
 [[plugins]]
@@ -209,6 +224,9 @@ on_ft = 'typescript'
 repo = 'c9s/perlomni.vim'
 on_ft = [ 'perl' ]
 on_i = 1
+hook_add = '''
+  let $PATH.=':'.dein#get('perlomni.vim')['path'].'/bin'
+'''
 
 [[plugins]]
 repo = 'vim-perl/vim-perl'
