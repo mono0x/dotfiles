@@ -179,6 +179,7 @@ endif
 set backspace=indent,eol,start
 set infercase
 set updatetime=1000
+set wildignore=*.exe,*.dll,*.class,*.jpg,*.jpeg,*.png,*.gif
 
 " Automatic nopaste
 autocmd vimrc_loading InsertLeave * if &paste | set nopaste mouse=a | echo 'nopaste' | endif
@@ -450,95 +451,6 @@ if dein#tap('deoplete.nvim') " {{{
   let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 endif " }}}
 
-if dein#tap('unite.vim') " {{{
-  nnoremap <Leader>w :<C-u>Unite -buffer-name=files buffer<CR>
-  nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
-  nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
-  nnoremap <silent> <Leader>m :<C-u>Unite file_mru -hide-source-names<CR>
-  nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
-  nnoremap <silent> <Leader>E :<C-u>Unite file_rec/async<CR>
-  nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
-  nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
-  nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
-  nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
-  nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
-
-  function! s:unite_smart_file_rec()
-    if isdirectory(getcwd() . "/.git")
-      Unite file_rec/git
-    else
-      Unite file_rec/async
-    endif
-  endfunction
-
-  function! s:unite_smart_grep()
-    if unite#sources#grep_git#is_available()
-      Unite -no-start-insert grep/git:.
-    elseif unite#sources#grep_hg#is_available()
-      Unite -no-start-insert grep/hg:.
-    else
-      Unite -no-start-insert grep:.
-    endif
-  endfunction
-
-  function! s:unite_on_source()
-    set wildignore=*.exe,*.dll,*.class,*.jpg,*.jpeg,*.png,*.gif
-    call unite#custom#source('file,file_rec/git,file_rec/async', 'ignore_globs',
-      \ split(&wildignore, ','))
-
-    call unite#custom#source(
-      \ 'file,buffer,file_mru', 'matchers',
-      \ ['matcher_context'])
-
-    call unite#custom#source(
-      \ 'file_rec/async,file_rec/git', 'matchers',
-      \ ['matcher_context'])
-
-    call unite#custom#source(
-      \ 'file,file_mru,file_rec/async,file_rec/git', 'converters',
-      \ ['converter_smart_path', 'converter_file_directory'])
-
-    call unite#custom#profile('default', 'context', {
-      \ 'start_insert': 1,
-      \ })
-
-    call unite#custom#profile('file,file_mru,file_rec/async,file_rec/git', 'context', {
-      \ 'buffer_name': 'files',
-      \ })
-
-    call unite#custom#profile('grep,grep/git,grep/hg', 'context', {
-      \ 'buffer_name': 'search-buffer',
-      \ 'start_insert': 0,
-      \ 'quit': 0,
-      \ })
-
-    call unite#custom#profile('outline', 'context', {
-      \ 'buffer_name': 'outline',
-      \ 'start_insert': 0,
-      \ 'quit': 0,
-      \ 'winwidth': 32,
-      \ 'direction': 'botright',
-      \ 'vertical': 1,
-      \ })
-
-    let g:unite_source_gtags_enable_nearness = 1
-  endfunction
-  execute 'autocmd vimrc_loading User' 'dein#source#' . g:dein#name 'call s:unite_on_source()'
-
-  if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
-    let g:unite_source_grep_recursive_opt = ''
-  endif
-
-  function! s:unite_my_settings()
-    imap <buffer><expr> j unite#smart_map('j', '')
-
-    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  endfunction
-  autocmd vimrc_loading FileType unite call s:unite_my_settings()
-endif " }}}
-
 if dein#tap('vim-fugitive') " {{{
   nnoremap <silent> <Leader>gc :<C-u>Gcommit<CR>
   nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
@@ -591,7 +503,6 @@ if dein#tap('emmet-vim') " {{{
 endif " }}}
 
 if dein#tap('echodoc') " {{{
-  let g:echodoc_enable_at_startup = 1
 endif " }}}
 
 if dein#tap('vim-alignta') " {{{
