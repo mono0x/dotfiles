@@ -607,7 +607,7 @@ if dein#tap('vim-alignta') " {{{
 endif " }}}
 
 if dein#tap('vim-quickrun') " {{{
-  function! s:vim_quickrun_on_source()
+  function! VimQuickrunOnSource()
     if !exists('g:quickrun_config')
       let g:quickrun_config = {}
     endif
@@ -623,13 +623,11 @@ if dein#tap('vim-quickrun') " {{{
       \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
       \ }
   endfunction
-  execute 'autocmd vimrc_loading User' 'dein#source#' . g:dein#name 'call s:vim_quickrun_on_source()'
-
   nmap <silent> <Leader>r <Plug>(quickrun)
 endif " }}}
 
 if dein#tap('vim-watchdogs') " {{{
-  function! s:vim_watchdogs_on_source()
+  function! VimWatchdogsOnSource()
     " http://this.aereal.org/entry/2013/08/10/005547
     let g:quickrun_config['watchdogs_checker/cpanfile'] = {
       \ 'command' : 'perl',
@@ -647,7 +645,6 @@ if dein#tap('vim-watchdogs') " {{{
     let g:watchdogs_check_BufWritePost_enable = 1
     call watchdogs#setup(g:quickrun_config)
   endfunction
-  execute 'autocmd vimrc_loading User' 'dein#source#' . g:dein#name 'call s:vim_watchdogs_on_source()'
 endif " }}}
 
 if dein#tap('vim-markdown') " {{{
