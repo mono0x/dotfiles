@@ -25,8 +25,22 @@ on_i = 1
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_map = '<Plug>'
+hook_add = '''
+  nmap <silent> <Leader>r <Plug>(quickrun)
+'''
 hook_source = '''
-  call VimQuickrunOnSource()
+  let g:quickrun_config = get(g:, 'quickrun_config', {})
+  let g:quickrun_config['_'] = {
+    \   'runner': 'vimproc',
+    \ }
+  let g:quickrun_config['hsp'] = {
+    \   'command': 'D:/Documents/tools/hsp3/hscl',
+    \   'exec': '%c %s',
+    \   'hook/output_encode/encoding': 'cp932',
+    \   'outputter': 'error',
+    \   'error': 'quickfix',
+    \   'errorformat': '%f\(%l)%*[^0-9]%n\ :\ %m',
+    \ }
 '''
 
 [[plugins]]
@@ -37,8 +51,26 @@ repo = 'osyo-manga/shabadou.vim'
 repo = 'osyo-manga/vim-watchdogs'
 depends = [ 'vim-quickrun', 'shabadou.vim', 'vim-hier', ]
 on_ft = [ 'c', 'cpanfile', 'cpp', 'javascript', 'perl', 'ruby', ]
+on_idle = 1
 hook_source = '''
-  call VimWatchdogsOnSource()
+  let g:quickrun_config = get(g:, 'quickrun_config', {})
+  " http://this.aereal.org/entry/2013/08/10/005547
+  let g:quickrun_config['watchdogs_checker/cpanfile'] = {
+    \ 'command' : 'perl',
+    \ 'exec' : '%c %o -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
+    \ 'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
+    \ }
+  let g:quickrun_config['cpanfile/watchdogs_checker'] = {
+    \ 'type' : 'watchdogs_checker/cpanfile',
+    \ }
+  let g:quickrun_config['watchdogs_checker/perl'] = {
+    \ 'cmdopt': '-Ilib -Ilocal/lib/perl5',
+    \ }
+
+  let g:watchdogs_check_BufWritePost_enable = 1
+'''
+hook_post_source = '''
+  call watchdogs#setup(g:quickrun_config)
 '''
 
 [[plugins]]
