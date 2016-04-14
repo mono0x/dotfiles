@@ -94,10 +94,54 @@ on_map = [
   '<Plug>Yssurround',
   '<Plug>Ysurround',
 ]
+hook_add = '''
+  nmap <unique> ds     <Plug>Dsurround
+  nmap <unique> cs     <Plug>Csurround
+  nmap <unique> ys     <Plug>Ysurround
+  nmap <unique> yS     <Plug>Ysurround$
+  nmap <unique> yss    <Plug>Yssurround
+  nmap <unique> ygs    <Plug>Ygsurround
+  nmap <unique> ygS    <Plug>Ygsurround$
+  nmap <unique> ygss   <Plug>Ygssurround
+  nmap <unique> ygsgs  <Plug>Ygssurround
+  xmap <unique> s      <Plug>Vsurround
+  xmap <unique> S      <Plug>VSurround
+  xmap <unique> gs     <Plug>Vgsurround
+  xmap <unique> gS     <Plug>VgSurround
+  imap <unique> <C-S>  <Plug>Isurround
+  imap <unique> <C-G>s <Plug>Isurround
+  imap <unique> <C-G>S <Plug>ISurround
+'''
+hook_source = '''
+  let g:surround_no_mappings = 1
+'''
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'
 on_map = '<Plug>'
+hook_add = '''
+  nmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap gp <Plug>(yankround-gp)
+  nmap gP <Plug>(yankround-gP)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+  xmap p <Plug>(yankround-p)
+  xmap gp <Plug>(yankround-gp)
+'''
+hook_source = '''
+  let g:yankround_use_region_hl = 1
+  let g:yankround_region_hl_groupname = 'YankRoundRegion'
+
+  autocmd vimrc_loading ColorScheme * call s:define_region_hl()
+  function! s:define_region_hl()
+    if &bg=='dark'
+      highlight default YankRoundRegion guibg=Brown ctermbg=Brown term=reverse
+    else
+      highlight default YankRoundRegion guibg=LightRed ctermbg=LightRed term=reverse
+    end
+  endfunction
+'''
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'

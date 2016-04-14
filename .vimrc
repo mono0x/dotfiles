@@ -191,6 +191,15 @@ nnoremap <silent> <Leader>w :<C-u>w<CR>
 
 " Remove comment leaders when joining lines
 set formatoptions+=j
+
+" Clipboard
+if has('gui_running') && has('clipboard')
+  if has('unnamedplus')
+    set clipboard=unnamedplus,unnamed
+  else
+    set clipboard=unnamed
+  endif
+endif
 " }}}
 
 " Window {{{
@@ -344,27 +353,6 @@ if dein#tap('lightline.vim') " {{{
   endfunction
 endif " }}}
 
-if dein#tap('vim-surround') " {{{
-  let g:surround_no_mappings = 1
-
-  nmap <unique> ds     <Plug>Dsurround
-  nmap <unique> cs     <Plug>Csurround
-  nmap <unique> ys     <Plug>Ysurround
-  nmap <unique> yS     <Plug>Ysurround$
-  nmap <unique> yss    <Plug>Yssurround
-  nmap <unique> ygs    <Plug>Ygsurround
-  nmap <unique> ygS    <Plug>Ygsurround$
-  nmap <unique> ygss   <Plug>Ygssurround
-  nmap <unique> ygsgs  <Plug>Ygssurround
-  xmap <unique> s      <Plug>Vsurround
-  xmap <unique> S      <Plug>VSurround
-  xmap <unique> gs     <Plug>Vgsurround
-  xmap <unique> gS     <Plug>VgSurround
-  imap <unique> <C-S>  <Plug>Isurround
-  imap <unique> <C-G>s <Plug>Isurround
-  imap <unique> <C-G>S <Plug>ISurround
-endif " }}}
-
 if dein#tap('vim-marching') " {{{
   let g:marching_enable_neocomplete = 1
 endif " }}}
@@ -432,37 +420,6 @@ if dein#tap('vim-fugitive') " {{{
   nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
 endif
 " }}}
-
-if dein#tap('yankround.vim') " {{{
-  nmap p <Plug>(yankround-p)
-  nmap P <Plug>(yankround-P)
-  nmap gp <Plug>(yankround-gp)
-  nmap gP <Plug>(yankround-gP)
-  nmap <C-p> <Plug>(yankround-prev)
-  nmap <C-n> <Plug>(yankround-next)
-  xmap p <Plug>(yankround-p)
-  xmap gp <Plug>(yankround-gp)
-
-  let g:yankround_use_region_hl = 1
-  let g:yankround_region_hl_groupname = 'YankRoundRegion'
-
-  autocmd vimrc_loading ColorScheme *   call s:define_region_hl()
-  function! s:define_region_hl()
-    if &bg=='dark'
-      highlight default YankRoundRegion   guibg=Brown ctermbg=Brown term=reverse
-    else
-      highlight default YankRoundRegion   guibg=LightRed ctermbg=LightRed term=reverse
-    end
-  endfunction
-
-  if has('gui_running') && has('clipboard')
-    if has('unnamedplus')
-      set clipboard=unnamedplus,unnamed
-    else
-      set clipboard=unnamed
-    endif
-  endif
-endif " }}}
 
 if dein#tap('emmet-vim') " {{{
   let g:user_emmet_settings = {
