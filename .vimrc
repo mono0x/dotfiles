@@ -421,49 +421,7 @@ if dein#tap('vim-fugitive') " {{{
 endif
 " }}}
 
-if dein#tap('emmet-vim') " {{{
-  let g:user_emmet_settings = {
-  \ 'indentation': '  ',
-  \ 'xslate': {
-  \   'indentation': '    ',
-  \ },
-  \ 'tt2html': {
-  \   'indentation': '    ',
-  \ },
-  \ }
-endif " }}}
-
 if dein#tap('echodoc') " {{{
-endif " }}}
-
-if dein#tap('vim-alignta') " {{{
-  xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
-  xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
-  xnoremap <silent> <Leader>t= :Alignta << -e =<CR>
-  xnoremap <silent> <Leader>t> :Alignta << -e =><CR>
-
-  xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
-  xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
-  xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
-  xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
-endif " }}}
-
-if dein#tap('vim-markdown') " {{{
-  let g:vim_markdown_liquid=1
-  let g:vim_markdown_frontmatter=1
-  let g:vim_markdown_folding_disabled=1
-endif " }}}
-
-if dein#tap('vim-markdown-quote-syntax') " {{{
-  let g:markdown_quote_syntax_filetypes = {
-    \ "coffee": { "start": "coffee" },
-    \ "cpp": { "start": "cpp" },
-    \ "css": { "start": "css" },
-    \ "javascript": { "start": "javascript" },
-    \ "ruby": { "start": "ruby" },
-    \ "scss": { "start": "scss" },
-    \ "sh": { "start": "sh" },
-    \}
 endif " }}}
 
 if dein#tap('vim-go') " {{{

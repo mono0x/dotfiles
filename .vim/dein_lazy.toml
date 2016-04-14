@@ -17,6 +17,17 @@ on_ft = [ 'c', 'cpp', 'objc', 'objcpp' ]
 [[plugins]]
 repo = 'h1mesuke/vim-alignta'
 on_cmd = 'Alignta'
+hook_add = '''
+  xnoremap <silent> <Leader>t: :Alignta <<0 \ /1<CR>
+  xnoremap <silent> <Leader>t, :Alignta << -e ,<CR>
+  xnoremap <silent> <Leader>t= :Alignta << -e =<CR>
+  xnoremap <silent> <Leader>t> :Alignta << -e =><CR>
+
+  xnoremap <silent> <Leader>T: :Alignta >>0 \ /1<CR>
+  xnoremap <silent> <Leader>T, :Alignta >> -e ,<CR>
+  xnoremap <silent> <Leader>T= :Alignta >> -e =<CR>
+  xnoremap <silent> <Leader>T> :Alignta >> -e =><CR>
+'''
 
 [[plugins]]
 repo = 'Shougo/echodoc'
@@ -76,6 +87,17 @@ hook_post_source = '''
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = [ 'css', 'haml', 'html', 'markdown', 'scss', 'tt2html', 'xml', 'xslate', ]
+hook_source = '''
+  let g:user_emmet_settings = {
+  \ 'indentation': '  ',
+  \ 'xslate': {
+  \   'indentation': '    ',
+  \ },
+  \ 'tt2html': {
+  \   'indentation': '    ',
+  \ },
+  \ }
+'''
 
 [[plugins]]
 repo = 'anyakichi/vim-surround'
@@ -312,12 +334,29 @@ repo = 'othree/html5.vim'
 on_ft = [ 'html', 'markdown' ]
 
 [[plugins]]
-repo = 'joker1007/vim-markdown-quote-syntax'
-on_ft = 'markdown'
-
-[[plugins]]
 repo = 'rcmdnk/vim-markdown'
 on_ft = 'markdown'
+hook_source = '''
+  let g:vim_markdown_liquid=1
+  let g:vim_markdown_frontmatter=1
+  let g:vim_markdown_folding_disabled=1
+'''
+
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+depends = [ 'vim-markdown' ]
+on_ft = 'markdown'
+hook_source = '''
+  let g:markdown_quote_syntax_filetypes = {
+    \ "coffee": { "start": "coffee" },
+    \ "cpp": { "start": "cpp" },
+    \ "css": { "start": "css" },
+    \ "javascript": { "start": "javascript" },
+    \ "ruby": { "start": "ruby" },
+    \ "scss": { "start": "scss" },
+    \ "sh": { "start": "sh" },
+    \}
+'''
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
