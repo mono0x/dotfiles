@@ -398,7 +398,6 @@ on_ft = 'typescript'
 [[plugins]]
 repo = 'c9s/perlomni.vim'
 on_ft = [ 'perl' ]
-on_i = 1
 hook_add = '''
   let $PATH.=':'.dein#get('perlomni.vim')['path'].'/bin'
 '''
@@ -439,11 +438,11 @@ on_cmd = [
   'GoTestFunc',
   'GoVet',
 ]
+on_ft = 'go'
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
 on_ft = 'go'
-on_i = 1
 if = '''has('nvim')'''
 
 [[plugins]]

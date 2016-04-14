@@ -15,9 +15,23 @@ repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+  nnoremap <silent> <Leader>gc :<C-u>Gcommit<CR>
+  nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
+  nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
+  nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
+'''
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_auto_colors = 0
+  autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
+  autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
+'''
 
 [[plugins]]
 repo = 'thinca/vim-template'

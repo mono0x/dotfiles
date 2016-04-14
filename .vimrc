@@ -296,6 +296,8 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
+autocmd vimrc_loading VimEnter * call dein#call_hook('post_source')
+
 filetype plugin indent on
 syntax on
 " }}}
@@ -306,15 +308,6 @@ if dein#tap('vim-colors-solarized') " {{{
   let g:solarized_termtrans=1
   let g:solarized_italic=0
   colorscheme solarized
-endif " }}}
-
-if dein#tap('vim-indent-guides') " {{{
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_start_level = 2
-  let g:indent_guides_auto_colors = 0
-  autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
-  autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
 endif " }}}
 
 if dein#tap('lightline.vim') " {{{
@@ -407,17 +400,6 @@ if dein#tap('deoplete.nvim') " {{{
   let g:deoplete#omni_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   "let g:deoplete#omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
   let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
-endif " }}}
-
-if dein#tap('vim-fugitive') " {{{
-  nnoremap <silent> <Leader>gc :<C-u>Gcommit<CR>
-  nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
-  nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
-  nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
-endif
-" }}}
-
-if dein#tap('echodoc') " {{{
 endif " }}}
 
 if dein#tap('vim-go') " {{{
