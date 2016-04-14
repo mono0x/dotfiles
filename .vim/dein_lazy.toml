@@ -185,6 +185,7 @@ hook_add = '''
   map g# <Plug>(incsearch-nohl-g#)
 '''
 hook_source = '''
+  let g:incsearch#magic = '\v'
   let g:incsearch#auto_nohlsearch = 1
 '''
 
