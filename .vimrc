@@ -353,10 +353,6 @@ if dein#tap('lightline.vim') " {{{
   endfunction
 endif " }}}
 
-if dein#tap('vim-marching') " {{{
-  let g:marching_enable_neocomplete = 1
-endif " }}}
-
 if dein#tap('neocomplete.vim') " {{{
   set completeopt-=preview
 

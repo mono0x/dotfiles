@@ -12,7 +12,12 @@ if = '''has('nvim')'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-marching'
+depends = [ 'neocomplete.vim' ]
 on_ft = [ 'c', 'cpp', 'objc', 'objcpp' ]
+if = '''!has('nvim')'''
+hook_source = '''
+  let g:marching_enable_neocomplete = 1
+'''
 
 [[plugins]]
 repo = 'h1mesuke/vim-alignta'
