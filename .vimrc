@@ -365,32 +365,6 @@ if dein#tap('vim-surround') " {{{
   imap <unique> <C-G>S <Plug>ISurround
 endif " }}}
 
-if dein#tap('incsearch.vim') " {{{
-  let g:incsearch#auto_nohlsearch = 1
-
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-  map n  <Plug>(incsearch-nohl-n)
-  map N  <Plug>(incsearch-nohl-N)
-  map *  <Plug>(incsearch-nohl-*)
-  map #  <Plug>(incsearch-nohl-#)
-  map g* <Plug>(incsearch-nohl-g*)
-  map g# <Plug>(incsearch-nohl-g#)
-endif " }}}
-
-if dein#tap('incsearch-fuzzy.vim') " {{{
-  map z/ <Plug>(incsearch-fuzzy-/)
-  map z? <Plug>(incsearch-fuzzy-?)
-  map zg/ <Plug>(incsearch-fuzzy-stay)
-endif " }}}
-
-if dein#tap('incsearch-migemo.vim') " {{{
-  map m/ <Plug>(incsearch-migemo-/)
-  map m? <Plug>(incsearch-migemo-?)
-  map mg/ <Plug>(incsearch-migemo-stay)
-endif " }}}
-
 if dein#tap('vim-marching') " {{{
   let g:marching_enable_neocomplete = 1
 endif " }}}

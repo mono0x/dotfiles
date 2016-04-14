@@ -102,18 +102,20 @@ on_map = '<Plug>'
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
 on_map = '<Plug>'
-
-[[plugins]]
-repo = 'haya14busa/incsearch-fuzzy.vim'
-on_map = '<Plug>'
-
-[[plugins]]
-repo = 'haya14busa/vim-migemo'
-on_func = 'migemo#'
-
-[[plugins]]
-repo = 'haya14busa/incsearch-migemo.vim'
-on_map = '<Plug>'
+hook_add = '''
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  map *  <Plug>(incsearch-nohl-*)
+  map #  <Plug>(incsearch-nohl-#)
+  map g* <Plug>(incsearch-nohl-g*)
+  map g# <Plug>(incsearch-nohl-g#)
+'''
+hook_source = '''
+  let g:incsearch#auto_nohlsearch = 1
+'''
 
 [[plugins]]
 repo = 'godlygeek/tabular'
