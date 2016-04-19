@@ -2,6 +2,10 @@
   helper = /usr/local/bin/git-credential-osxkeychain
 [core]
   editor = /Applications/MacVim.app/Contents/MacOS/Vim
+[merge]
+  tool = vimdiff
+[mergetool.vimdiff]
+  path = /Applications/MacVim.app/Contents/MacOS/vimdiff
 [pager]
   log = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
   show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
