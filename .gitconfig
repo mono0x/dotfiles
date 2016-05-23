@@ -25,6 +25,15 @@
   st = status
   wd = diff --ignore-space-change --word-diff
 
+  branches = branch -a
+  remotes = remote -v
+  stashes = stash list
+  tags = tag
+
+  unstage = reset -q HEAD --
+  discard = checkout --
+  uncommit = reset --mixed HEAD~
+
   mergetest = !git-mergetest
 # }}}
 
