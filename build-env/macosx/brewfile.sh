@@ -22,7 +22,7 @@ brew install lua
 brew install luajit
 brew install mercurial
 brew install nginx
-brew install node --without-npm
+brew install node
 brew install openssl
 brew install peco
 brew install postgresql
