@@ -20,6 +20,7 @@ brew install homebrew/dupes/rsync
 brew install htop-osx
 brew install lua
 brew install luajit
+brew install mas
 brew install mercurial
 brew install nginx
 brew install node
