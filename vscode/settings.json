@@ -1,4 +1,11 @@
 // 既定の設定を上書きするには、このファイル内に設定を挿入します
 {
+    "editor.fontFamily": "Ricty",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 16,
+
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+
     "vim.useCtrlKeys": true
 }
