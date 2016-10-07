@@ -403,11 +403,10 @@ if dein#tap('deoplete.nvim') " {{{
 endif " }}}
 
 if dein#tap('vim-go') " {{{
-  let g:go_fmt_command = 'goimports'
   let g:go_fmt_fail_silently = 1
 
   function! s:go_settings()
-    autocmd BufWritePre <buffer> GoFmt
+    autocmd! BufWritePre <buffer> GoImports
     nnoremap <buffer> K :<C-u>GoDoc<CR>
   endfunction
   autocmd vimrc_loading FileType go call s:go_settings()
