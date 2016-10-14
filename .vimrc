@@ -1,6 +1,20 @@
 " .vimrc
 " vim: foldmethod=marker
 
+" dylib {{{
+if filereadable('/usr/local/Frameworks/Python.framework/Versions/2.7/Python')
+  set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+endif
+
+if filereadable('/usr/local/Frameworks/Python.framework/Versions/3.5/Python')
+  set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.5/Python
+endif
+
+if filereadable('/usr/local/lib/liblua.dylib')
+  set luadll=/usr/local/lib/liblua.dylib
+endif
+" }}}
+
 " Disable default plugins {{{
 " http://lambdalisue.hatenablog.com/entry/2015/12/25/000046
 let g:loaded_gzip              = 1
