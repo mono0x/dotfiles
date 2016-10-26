@@ -405,7 +405,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-perl/vim-perl'
-on_ft = [ 'perl', 'cpanfile', 'tt2html' ]
+on_ft = [ 'perl', 'tt2html' ]
 
 [[plugins]]
 repo = 'motemen/xslate-vim'
