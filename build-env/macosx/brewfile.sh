@@ -6,6 +6,7 @@ brew upgrade
 
 brew install ansible
 brew install cmigemo
+brew install colordiff
 brew install coreutils
 brew install exiftool
 brew install findutils
