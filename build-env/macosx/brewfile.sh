@@ -42,19 +42,4 @@ brew install wget
 brew install xz
 brew install zsh --without-etcdir
 
-brew install caskroom/cask/brew-cask
-
-brew cask install appcleaner
-brew cask install dropbox
-#brew cask install firefox-ja
-brew cask install google-chrome
-brew cask install google-japanese-ime
-brew cask install heroku-toolbelt
-#brew cask install macvim-kaoriya
-brew cask install 1password
-#brew cask install vagrant
-#brew cask install virtualbox
-#brew cask install vmware-fusion
-
-brew cask cleanup
 brew cleanup
