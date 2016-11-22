@@ -139,6 +139,7 @@ darwin*)
   alias ls="ls -G"
 
   alias comm='LC_ALL=C gcomm'
+  alias date='gdate'
   alias grep='LC_ALL=C ggrep'
   alias look='LC_ALL=C look'
   alias sed='gsed'
