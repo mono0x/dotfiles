@@ -38,6 +38,7 @@ repo = 'thinca/vim-template'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
+if = '''version < 800'''
 
 [[plugins]]
 repo = 'Shougo/tabpagebuffer.vim'

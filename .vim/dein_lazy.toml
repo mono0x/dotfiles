@@ -228,8 +228,13 @@ on_cmd = 'Unite'
 hook_add = '''
   nnoremap <Leader>w :<C-u>Unite -buffer-name=files buffer<CR>
   nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
-  nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
-  nnoremap <silent> <Leader>m :<C-u>Unite file_mru -hide-source-names<CR>
+  if dein#is_sourced('neomru.vim')
+    nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
+    nnoremap <silent> <Leader>m :<C-u>Unite file_mru -hide-source-names<CR>
+  else
+    nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir oldfiles file file/new -hide-source-names<CR>
+    nnoremap <silent> <Leader>m :<C-u>Unite oldfiles -hide-source-names<CR>
+  endif
   nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
   nnoremap <silent> <Leader>E :<C-u>Unite file_rec/async<CR>
   nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
@@ -326,6 +331,11 @@ on_source = [ 'unite.vim' ]
 
 [[plugins]]
 repo = 'lambdalisue/unite-grep-vcs'
+on_source = [ 'unite.vim' ]
+
+[[plugins]]
+repo = 'osyo-manga/unite-oldfiles'
+if = '''version >= 800'''
 on_source = [ 'unite.vim' ]
 
 # }}}
