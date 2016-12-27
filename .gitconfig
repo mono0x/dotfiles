@@ -70,11 +70,11 @@
 
 # instead of {{{
 [url "git@github.com:"]
-  insteadof = "git://github.com/"
-  insteadof = "https://github.com/"
+  pushinsteadof = "git://github.com/"
+  pushinsteadof = "https://github.com/"
 [url "git@bitbucket.org:"]
-  insteadof = "git://bitbucket.org/"
-  insteadof = "https://bitbucket.org/"
+  pushinsteadof = "git://bitbucket.org/"
+  pushinsteadof = "https://bitbucket.org/"
 # }}}
 
 # external commands {{{
