@@ -414,6 +414,7 @@ if dein#tap('deoplete.nvim') " {{{
   let g:deoplete#omni_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:deoplete#omni_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
   let g:deoplete#omni_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:deoplete#omni_patterns.perl='\h\w*->\|\h\w*::'
   "let g:deoplete#omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
   let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 endif " }}}
