@@ -2,16 +2,18 @@
 " vim: foldmethod=marker
 
 " dylib {{{
-if filereadable('/usr/local/Frameworks/Python.framework/Versions/2.7/Python')
-  set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
-endif
+if !has('nvim')
+  if filereadable('/usr/local/Frameworks/Python.framework/Versions/2.7/Python')
+    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+  endif
 
-if filereadable('/usr/local/Frameworks/Python.framework/Versions/3.5/Python')
-  set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.5/Python
-endif
+  if filereadable('/usr/local/Frameworks/Python.framework/Versions/3.5/Python')
+    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.5/Python
+  endif
 
-if filereadable('/usr/local/lib/liblua.dylib')
-  set luadll=/usr/local/lib/liblua.dylib
+  if filereadable('/usr/local/lib/liblua.dylib')
+    set luadll=/usr/local/lib/liblua.dylib
+  endif
 endif
 " }}}
 
