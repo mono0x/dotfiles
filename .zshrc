@@ -122,8 +122,11 @@ alias sudo="sudo "
 alias sudoe='sudo -e'
 alias tmux='TERM=screen-256color tmux'
 alias man='vs man'
-alias vi='vim'
-alias v='vim'
+if which nvim &> /dev/null; then
+  alias vi='nvim'
+else
+  alias vi='vim'
+fi
 
 case "${OSTYPE}" in
 linux*)
