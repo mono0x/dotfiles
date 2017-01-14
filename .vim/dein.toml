@@ -9,6 +9,11 @@ build = 'make'
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 if = '''!has('win32')'''
+hook_source = '''
+  if executable('editorconfig')
+    let g:EditorConfig_core_mode = 'external_command'
+  endif
+'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
