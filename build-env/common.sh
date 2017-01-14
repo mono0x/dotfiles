@@ -44,5 +44,9 @@ darwin*)
   ;;
 esac
 
+mkdir -p ~/.config/nvim
+ln -sf $dir/.vim ~/.config/nvim/
+ln -sf $dir/.vimrc ~/.config/nvim/init.vim
+
 mkdir -p ~/.vimswap
 [ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
