@@ -275,6 +275,12 @@ function! s:init_cmdwin()
 endfunction
 " }}}
 
+" Terminal {{{
+if has('nvim')
+  tnoremap <silent> <Esc> <C-\><C-n>
+endif
+" }}}
+
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
