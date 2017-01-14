@@ -315,7 +315,6 @@ hook_add = '''
   nnoremap <silent> <Leader>m :<C-u>Denite unite:oldfiles -hide-source-names<CR>
   nnoremap <silent> <Leader>e :<C-u>call <SID>denite_smart_file_rec()<CR>
   nnoremap <silent> <Leader>E :<C-u>Denite file_rec<CR>
-  nnoremap <silent> <Leader>o :<C-u>Denite unite:outline<CR>
   nnoremap <silent> <Leader>b :<C-u>Denite -no-start-insert unite:build<CR>
   nnoremap <silent> <Leader>gg :<C-u>call <SID>denite_smart_grep()<CR>
   nnoremap <silent> <C-^> :<C-u>Denite jump<CR>
