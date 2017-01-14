@@ -221,52 +221,47 @@ hook_source = '''
   let g:openbrowser_github_url_exists_check = 'ignore'
 '''
 
-# Unite {{{
+# Unite / Denite {{{
 [[plugins]]
 repo = 'Shougo/unite.vim'
 on_cmd = 'Unite'
 hook_add = '''
-  nnoremap <Leader>w :<C-u>Unite -buffer-name=files buffer<CR>
-  nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
-  if dein#is_sourced('neomru.vim')
-    nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir file_mru file file/new -hide-source-names<CR>
-    nnoremap <silent> <Leader>m :<C-u>Unite file_mru -hide-source-names<CR>
-  else
+  if !has('nvim')
+    nnoremap <Leader>w :<C-u>Unite -buffer-name=files buffer<CR>
+    nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
     nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir oldfiles file file/new -hide-source-names<CR>
     nnoremap <silent> <Leader>m :<C-u>Unite oldfiles -hide-source-names<CR>
+    nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
+    nnoremap <silent> <Leader>E :<C-u>Unite file_rec/async<CR>
+    nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
+    nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
+    nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
+    nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
+
+    function! s:unite_smart_file_rec()
+      if isdirectory(getcwd() . "/.git")
+        Unite file_rec/git
+      else
+        Unite file_rec/async
+      endif
+    endfunction
+
+    function! s:unite_smart_grep()
+      if unite#sources#grep_git#is_available()
+        Unite -no-start-insert grep/git:.
+      elseif unite#sources#grep_hg#is_available()
+        Unite -no-start-insert grep/hg:.
+      else
+        Unite -no-start-insert grep:.
+      endif
+    endfunction
+
+    function! s:unite_my_settings()
+      imap <buffer> <Esc> <Plug>(unite_exit)
+      imap <buffer> <C-o> <Plug>(unite_insert_leave)
+    endfunction
+    autocmd vimrc_loading FileType unite call s:unite_my_settings()
   endif
-  nnoremap <silent> <Leader>e :<C-u>call <SID>unite_smart_file_rec()<CR>
-  nnoremap <silent> <Leader>E :<C-u>Unite file_rec/async<CR>
-  nnoremap <silent> <Leader>o :<C-u>Unite outline<CR>
-  nnoremap <silent> <Leader>b :<C-u>Unite -no-start-insert build<CR>
-  nnoremap <silent> <Leader>gg :<C-u>call <SID>unite_smart_grep()<CR>
-  nnoremap <silent> <C-^> :<C-u>Unite jump<CR>
-  nnoremap <silent> <C-j> :<C-u>Unite -immediately -no-start-insert gtags/context<CR>
-
-  function! s:unite_smart_file_rec()
-    if isdirectory(getcwd() . "/.git")
-      Unite file_rec/git
-    else
-      Unite file_rec/async
-    endif
-  endfunction
-
-  function! s:unite_smart_grep()
-    if unite#sources#grep_git#is_available()
-      Unite -no-start-insert grep/git:.
-    elseif unite#sources#grep_hg#is_available()
-      Unite -no-start-insert grep/hg:.
-    else
-      Unite -no-start-insert grep:.
-    endif
-  endfunction
-
-  function! s:unite_my_settings()
-    imap <buffer><expr> j unite#smart_map('j', '')
-
-    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  endfunction
-  autocmd vimrc_loading FileType unite call s:unite_my_settings()
 '''
 hook_source = '''
   let g:unite_source_gtags_enable_nearness = 1
@@ -306,20 +301,66 @@ hook_post_source = '''
     \ 'start_insert': 0,
     \ 'quit': 0,
     \ })
-
-  call unite#custom#profile('outline', 'context', {
-    \ 'buffer_name': 'outline',
-    \ 'start_insert': 0,
-    \ 'quit': 0,
-    \ 'winwidth': 32,
-    \ 'direction': 'botright',
-    \ 'vertical': 1,
-    \ })
 '''
 
 [[plugins]]
-repo = 'Shougo/unite-outline'
-on_source = [ 'unite.vim' ]
+repo = 'Shougo/denite.nvim'
+depends = [ 'unite.vim' ]
+if = '''has('nvim')'''
+on_cmd = 'Denite'
+hook_add = '''
+  nnoremap <Leader>w :<C-u>Denite -buffer-name=files buffer<CR>
+  nnoremap <C-w><C-w> :<C-u>Denite -buffer-name=files buffer<CR>
+  nnoremap <silent> <Leader>f :<C-u>DeniteWithCurrentDir unite:oldfiles file -hide-source-names<CR>
+  nnoremap <silent> <Leader>m :<C-u>Denite unite:oldfiles -hide-source-names<CR>
+  nnoremap <silent> <Leader>e :<C-u>call <SID>denite_smart_file_rec()<CR>
+  nnoremap <silent> <Leader>E :<C-u>Denite file_rec<CR>
+  nnoremap <silent> <Leader>o :<C-u>Denite unite:outline<CR>
+  nnoremap <silent> <Leader>b :<C-u>Denite -no-start-insert unite:build<CR>
+  nnoremap <silent> <Leader>gg :<C-u>call <SID>denite_smart_grep()<CR>
+  nnoremap <silent> <C-^> :<C-u>Denite jump<CR>
+  nnoremap <silent> <C-j> :<C-u>Denite -immediately -no-start-insert unite:gtags/context<CR>
+
+  function! s:denite_smart_file_rec()
+    if finddir('.git', ';') != ''
+      Denite file_rec/git
+    else
+      Denite file_rec
+    endif
+  endfunction
+
+  function! s:denite_smart_grep()
+    if denite#sources#grep_git#is_available()
+      Denite -no-start-insert grep/git:.
+    elseif denite#sources#grep_hg#is_available()
+      Denite -no-start-insert grep/hg:.
+    else
+      Denite -no-start-insert grep:.
+    endif
+  endfunction
+'''
+hook_post_source = '''
+  call denite#custom#map(
+    \ 'insert',
+    \ '<C-n>',
+    \ '<denite:move_to_next_line>',
+    \ 'noremap'
+    \)
+  call denite#custom#map(
+    \ 'insert',
+    \ '<C-p>',
+    \ '<denite:move_to_previous_line>',
+    \ 'noremap'
+    \)
+
+  if executable('ag')
+    call denite#custom#var('file_rec', 'command',
+      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+  endif
+  call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+  call denite#custom#var('file_rec/git', 'command',
+    \ ['git', 'ls-files', '-co', '--exclude-standard'])
+'''
 
 [[plugins]]
 repo = 'Shougo/unite-build'
