@@ -25,6 +25,7 @@ brew install lua
 brew install luajit
 brew install mas
 brew install mercurial
+brew install neovim/neovim/neovim
 brew install nginx
 brew install node
 brew install openssl
