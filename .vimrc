@@ -70,6 +70,7 @@ function! s:highlight_trailing_spaces(insert)
   if expand('%:t') ==# '[Command Line]'
     return
   endif
+  highlight TrailingSpaces ctermbg=red guibg=red
   if a:insert
     match TrailingSpaces /\S\zs\s\+$/
   else
@@ -79,7 +80,6 @@ endfunction
 autocmd vimrc_loading BufNew,BufRead * call s:highlight_trailing_spaces(0)
 autocmd vimrc_loading InsertEnter * call s:highlight_trailing_spaces(1)
 autocmd vimrc_loading InsertLeave * call s:highlight_trailing_spaces(0)
-autocmd vimrc_loading ColorScheme * highlight TrailingSpaces ctermbg=red guibg=red
 " }}}
 
 " wrapping {{{
@@ -323,14 +323,6 @@ autocmd vimrc_loading VimEnter * call dein#call_hook('post_source')
 filetype plugin indent on
 syntax on
 " }}}
-
-if dein#tap('vim-colors-solarized') " {{{
-  set background=light
-  let g:solarized_termcolors=16
-  let g:solarized_termtrans=1
-  let g:solarized_italic=0
-  colorscheme solarized
-endif " }}}
 
 if dein#tap('lightline.vim') " {{{
   set noshowmode
