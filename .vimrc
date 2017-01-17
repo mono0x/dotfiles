@@ -3,16 +3,31 @@
 
 " dylib {{{
 if !has('nvim')
-  if filereadable('/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib')
-    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
-  endif
+  if has('win32')
+    if has('win64')
+      let path=fnamemodify('~\AppData\Local\Programs\Python\Python36\python36.dll', ':p')
+    else
+      let path=fnamemodify('~\AppData\Local\Programs\Python\Python36-32\python36.dll', ':p')
+    endif
+    if filereadable(path)
+      execute 'set pythonthreedll='.path
+    endif
+  elseif has('win32')
+    if filereadable('~/AppData/Local/Programs/Python/Python36-32/python36.dll')
+      set pythonthreedll=~/AppData/Local/Programs/Python/Python36-32/python36.dll
+    endif
+  else
+    if filereadable('/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib')
+      set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
+    endif
 
-  if filereadable('/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib')
-    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib
-  endif
+    if filereadable('/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib')
+      set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib
+    endif
 
-  if filereadable('/usr/local/lib/liblua.dylib')
-    set luadll=/usr/local/lib/liblua.dylib
+    if filereadable('/usr/local/lib/liblua.dylib')
+      set luadll=/usr/local/lib/liblua.dylib
+    endif
   endif
 endif
 " }}}
