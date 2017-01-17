@@ -3,7 +3,7 @@
 
 " dylib {{{
 if !has('nvim')
-  if has('win32')
+  if has('win32') " Windows
     if has('win64')
       let path=fnamemodify('~\AppData\Local\Programs\Python\Python36\python36.dll', ':p')
     else
@@ -12,12 +12,9 @@ if !has('nvim')
     if filereadable(path)
       execute 'set pythonthreedll='.path
     endif
-  else
-    if filereadable('/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib')
-      set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
-    endif
-
+  elseif has('mac') " OS X
     if filereadable('/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib')
+      set pythondll= " Disable Python2
       set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib
     endif
 
