@@ -226,7 +226,7 @@ hook_source = '''
 repo = 'Shougo/unite.vim'
 on_cmd = 'Unite'
 hook_add = '''
-  if !has('nvim')
+  if !has('python3')
     nnoremap <Leader>w :<C-u>Unite -buffer-name=files buffer<CR>
     nnoremap <C-w><C-w> :<C-u>Unite -buffer-name=files buffer<CR>
     nnoremap <silent> <Leader>f :<C-u>UniteWithCurrentDir oldfiles file file/new -hide-source-names<CR>
@@ -306,7 +306,7 @@ hook_post_source = '''
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 depends = [ 'unite.vim' ]
-if = '''has('nvim')'''
+if = '''has('python3')'''
 on_cmd = 'Denite'
 hook_add = '''
   nnoremap <Leader>w :<C-u>Denite -buffer-name=files buffer<CR>
