@@ -12,10 +12,6 @@ if !has('nvim')
     if filereadable(path)
       execute 'set pythonthreedll='.path
     endif
-  elseif has('win32')
-    if filereadable('~/AppData/Local/Programs/Python/Python36-32/python36.dll')
-      set pythonthreedll=~/AppData/Local/Programs/Python/Python36-32/python36.dll
-    endif
   else
     if filereadable('/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib')
       set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
