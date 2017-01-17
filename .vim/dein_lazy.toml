@@ -311,14 +311,17 @@ on_cmd = 'Denite'
 hook_add = '''
   nnoremap <Leader>w :<C-u>Denite -buffer-name=files buffer<CR>
   nnoremap <C-w><C-w> :<C-u>Denite -buffer-name=files buffer<CR>
-  nnoremap <silent> <Leader>f :<C-u>DeniteWithCurrentDir unite:oldfiles file -hide-source-names<CR>
-  nnoremap <silent> <Leader>m :<C-u>Denite unite:oldfiles -hide-source-names<CR>
+  nnoremap <silent> <Leader>f :<C-u>DeniteWithCurrentDir unite:oldfiles file<CR>
+  nnoremap <silent> <Leader>m :<C-u>Denite unite:oldfiles<CR>
   nnoremap <silent> <Leader>e :<C-u>call <SID>denite_smart_file_rec()<CR>
   nnoremap <silent> <Leader>E :<C-u>Denite file_rec<CR>
-  nnoremap <silent> <Leader>b :<C-u>Denite -no-start-insert unite:build<CR>
-  nnoremap <silent> <Leader>gg :<C-u>call <SID>denite_smart_grep()<CR>
+  nnoremap <silent> <Leader>b :<C-u>Denite unite:build<CR>
+  nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
   nnoremap <silent> <C-^> :<C-u>Denite jump<CR>
-  nnoremap <silent> <C-j> :<C-u>Denite -immediately -no-start-insert unite:gtags/context<CR>
+  nnoremap <silent> <C-j> :<C-u>Denite -immediately -mode=normal unite:gtags/context<CR>
+
+  nnoremap <silent> <Leader>n :Denite -resume -cursor-pos=+1 -immediately<CR>
+  nnoremap <silent> <Leader>p :Denite -resume -cursor-pos=-1 -immediately<CR>
 
   function! s:denite_smart_file_rec()
     if finddir('.git', ';') != ''
@@ -329,10 +332,10 @@ hook_add = '''
   endfunction
 
   function! s:denite_smart_grep()
-    if denite#sources#grep_git#is_available()
-      Denite -no-start-insert grep/git:.
-    elseif denite#sources#grep_hg#is_available()
-      Denite -no-start-insert grep/hg:.
+    if unite#sources#grep_git#is_available()
+      Denite unite:grep/git:.
+    elseif unite#sources#grep_hg#is_available()
+      Denite unite:grep/hg:.
     else
       Denite -no-start-insert grep:.
     endif
