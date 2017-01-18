@@ -241,16 +241,6 @@ hook_add = '''
 
   nnoremap <silent> <Leader>n :Denite -resume -cursor-pos=+1 -immediately<CR>
   nnoremap <silent> <Leader>p :Denite -resume -cursor-pos=-1 -immediately<CR>
-
-  function! s:denite_smart_grep()
-    if unite#sources#grep_git#is_available()
-      Denite unite:grep/git:.
-    elseif unite#sources#grep_hg#is_available()
-      Denite unite:grep/hg:.
-    else
-      Denite -no-start-insert grep:.
-    endif
-  endfunction
 '''
 hook_post_source = '''
   call denite#custom#map(
