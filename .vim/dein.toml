@@ -3,7 +3,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc'
-if = '''!(has('win32') && has('kaoriya'))'''
+if = '''!has('nvim') && !(has('win32') && has('kaoriya'))'''
 build = 'make'
 
 [[plugins]]
