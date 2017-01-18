@@ -118,10 +118,6 @@ set history=100
 " }}}
 
 " Help {{{
-if v:version < 703 || (v:version == 7.3 && !has('patch336'))
-  set notagbsearch
-endif
-
 function! s:help_settings()
   nnoremap <buffer> q :<C-u>q<CR>
 endfunction
