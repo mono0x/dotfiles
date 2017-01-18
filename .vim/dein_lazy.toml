@@ -230,12 +230,10 @@ repo = 'Shougo/denite.nvim'
 depends = [ 'unite.vim' ]
 on_cmd = 'Denite'
 hook_add = '''
-  nnoremap <Leader>w :<C-u>Denite -buffer-name=files buffer<CR>
-  nnoremap <C-w><C-w> :<C-u>Denite -buffer-name=files buffer<CR>
-  nnoremap <silent> <Leader>f :<C-u>DeniteWithCurrentDir unite:oldfiles file<CR>
+  nnoremap <C-w><C-w> :<C-u>Denite buffer<CR>
+  nnoremap <silent> <Leader>f :<C-u>Denite file_rec<CR>
   nnoremap <silent> <Leader>m :<C-u>Denite unite:oldfiles<CR>
-  nnoremap <silent> <Leader>e :<C-u>call <SID>denite_smart_file_rec()<CR>
-  nnoremap <silent> <Leader>E :<C-u>Denite file_rec<CR>
+  nnoremap <silent> <Leader>e :<C-u>DeniteProjectDir file_rec/git<CR>
   nnoremap <silent> <Leader>b :<C-u>Denite unite:build<CR>
   nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
   nnoremap <silent> <C-^> :<C-u>Denite jump<CR>
@@ -243,14 +241,6 @@ hook_add = '''
 
   nnoremap <silent> <Leader>n :Denite -resume -cursor-pos=+1 -immediately<CR>
   nnoremap <silent> <Leader>p :Denite -resume -cursor-pos=-1 -immediately<CR>
-
-  function! s:denite_smart_file_rec()
-    if finddir('.git', ';') != ''
-      Denite file_rec/git
-    else
-      Denite file_rec
-    endif
-  endfunction
 
   function! s:denite_smart_grep()
     if unite#sources#grep_git#is_available()
