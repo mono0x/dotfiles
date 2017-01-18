@@ -2,8 +2,14 @@
 " vim: foldmethod=marker
 
 " dylib {{{
-if !has('nvim')
-  if has('win32') " Windows
+if has('nvim')
+  if has('win32')
+    " TODO
+  elseif has('mac')
+    let g:python3_host_prog='/usr/local/bin/python3'
+  endif
+else
+  if has('win32')
     if has('win64')
       let path=fnamemodify('~\AppData\Local\Programs\Python\Python36\python36.dll', ':p')
     else
@@ -12,7 +18,7 @@ if !has('nvim')
     if filereadable(path)
       execute 'set pythonthreedll='.path
     endif
-  elseif has('mac') " OS X
+  elseif has('mac')
     if filereadable('/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib')
       set pythondll= " Disable Python2
       set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib
