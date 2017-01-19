@@ -1,4 +1,9 @@
 [[plugins]]
+repo = 'Shougo/vimproc'
+if = '''!(has('win32') && has('kaoriya'))'''
+build = 'make'
+
+[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 lazy = 1
 on_i = 1
@@ -40,6 +45,7 @@ on_i = 1
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+depends = [ 'vimproc' ]
 on_map = '<Plug>'
 hook_add = '''
   nmap <silent> <Leader>r <Plug>(quickrun)

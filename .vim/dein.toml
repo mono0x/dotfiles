@@ -2,11 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/vimproc'
-if = '''!has('nvim') && !(has('win32') && has('kaoriya'))'''
-build = 'make'
-
-[[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 hook_add = '''
   if executable('editorconfig')
