@@ -5,15 +5,18 @@ build = 'make'
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
-lazy = 1
-on_i = 1
 if = '''!has('nvim')'''
+depends = [ 'context_filetype.vim' ]
+on_i = 1
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-lazy = 1
-on_i = 1
 if = '''has('nvim')'''
+depends = [ 'context_filetype.vim' ]
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-marching'
@@ -306,22 +309,6 @@ hook_source = '''
   let g:vim_markdown_liquid=1
   let g:vim_markdown_frontmatter=1
   let g:vim_markdown_folding_disabled=1
-'''
-
-[[plugins]]
-repo = 'joker1007/vim-markdown-quote-syntax'
-depends = [ 'vim-markdown' ]
-on_ft = 'markdown'
-hook_source = '''
-  let g:markdown_quote_syntax_filetypes = {
-    \ "coffee": { "start": "coffee" },
-    \ "cpp": { "start": "cpp" },
-    \ "css": { "start": "css" },
-    \ "javascript": { "start": "javascript" },
-    \ "ruby": { "start": "ruby" },
-    \ "scss": { "start": "scss" },
-    \ "sh": { "start": "sh" },
-    \}
 '''
 
 [[plugins]]

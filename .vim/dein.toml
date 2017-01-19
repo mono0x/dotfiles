@@ -47,3 +47,7 @@ hook_add = '''
   let g:solarized_italic=0
   autocmd vimrc_loading VimEnter * nested colorscheme solarized
 '''
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = [ 'context_filetype.vim' ]
