@@ -141,6 +141,7 @@ linux*)
 darwin*)
   alias ls="ls -G"
 
+  alias base64='gbase64'
   alias comm='LC_ALL=C gcomm'
   alias date='gdate'
   alias grep='LC_ALL=C ggrep'
