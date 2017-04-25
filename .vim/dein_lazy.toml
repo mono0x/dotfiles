@@ -246,7 +246,7 @@ hook_add = '''
   nnoremap <silent> <Leader>b :<C-u>Denite unite:build<CR>
   nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
   nnoremap <silent> <C-^> :<C-u>Denite jump<CR>
-  nnoremap <silent> <C-j> :<C-u>Denite -immediately -mode=normal unite:gtags/context<CR>
+  nnoremap <silent> <C-j> :<C-u>Unite -immediately gtags/context<CR>
 
   nnoremap <silent> <Leader>n :Denite -resume -cursor-pos=+1 -immediately<CR>
   nnoremap <silent> <Leader>p :Denite -resume -cursor-pos=-1 -immediately<CR>
