@@ -324,7 +324,7 @@ repo = 'evanmiller/nginx-vim-syntax'
 on_ft = 'nginx'
 
 [[plugins]]
-repo = 'gnuplot.vim'
+repo = 'vim-scripts/gnuplot.vim'
 on_ft = 'gnuplot'
 
 [[plugins]]
