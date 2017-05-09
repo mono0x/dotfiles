@@ -7,5 +7,7 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
 
-    "vim.useCtrlKeys": true
+    "vim.useCtrlKeys": true,
+
+    "workbench.colorTheme": "Solarized Light"
 }
