@@ -96,7 +96,7 @@
       "name": "select right tab",
       "args": []
     },
-    "Esc": {
+    "Escape": {
       "name": "normal mode",
       "args": []
     }
@@ -131,7 +131,7 @@
       "name": "Line foot",
       "args": []
     },
-    "Esc": {
+    "Escape": {
       "name": "normal mode",
       "args": []
     },
@@ -141,7 +141,7 @@
     }
   },
   "vim_insert_actions": {
-    "Esc": {
+    "Escape": {
       "name": "normal mode",
       "args": []
     }
