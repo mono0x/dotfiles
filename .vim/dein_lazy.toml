@@ -404,4 +404,8 @@ on_ft = 'javascript'
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
+
+[[plugins]]
+repo = 'stephpy/vim-yaml'
+on_ft = 'yaml'
 # }}}
