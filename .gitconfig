@@ -18,6 +18,7 @@
   me = merge
   pl = pull
   pr = pull --rebase
+  push-f = push --force-with-lease
   rc = rebase --continue
   ro = rebase origin
   ss = stash save
