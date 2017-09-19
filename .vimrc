@@ -429,10 +429,14 @@ endif " }}}
 
 if dein#tap('vim-go') " {{{
   let g:go_fmt_fail_silently = 1
+  let g:go_term_enabled = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_auto_type_info = 1
 
   function! s:go_settings()
     autocmd! BufWritePre <buffer> GoImports
-    nnoremap <buffer> K :<C-u>GoDoc<CR>
+    nmap <buffer> K <Plug>(go-doc)
+    nmap <buffer> <C-j> <Plug>(go-def)
   endfunction
   autocmd vimrc_loading FileType go call s:go_settings()
 
