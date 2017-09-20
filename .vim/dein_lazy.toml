@@ -244,7 +244,6 @@ hook_add = '''
   nnoremap <silent> <Leader>m :<C-u>Denite unite:oldfiles<CR>
   nnoremap <silent> <Leader>e :<C-u>Denite file_rec/git<CR>
   nnoremap <silent> <Leader>b :<C-u>Denite unite:build<CR>
-  nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
   nnoremap <silent> <C-^> :<C-u>Denite jump<CR>
   nnoremap <silent> <C-j> :<C-u>Unite -immediately gtags/context<CR>
 
@@ -387,6 +386,9 @@ on_cmd = [
   'GoVet',
 ]
 on_ft = 'go'
+hook_add = '''
+  nnoremap <silent> <Leader>ga :<C-u>GoAlternate<CR>
+'''
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
