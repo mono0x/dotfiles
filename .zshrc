@@ -195,6 +195,8 @@ alias dmrestart='dm restart default && dmenv'
 alias dmstop='dm stop default'
 alias dmssh='dm ssh default'
 
+alias go-build='go build -tags netgo -installsuffix netgo --ldflags "-extldflags -static"'
+
 if which colordiff &> /dev/null; then
   alias di='colordiff -u'
 else
