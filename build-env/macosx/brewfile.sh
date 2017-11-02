@@ -8,6 +8,7 @@ brew install ansible
 brew install cmigemo
 brew install colordiff
 brew install coreutils
+brew install dep
 brew install editorconfig
 brew install exiftool
 brew install findutils
