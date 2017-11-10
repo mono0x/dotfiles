@@ -219,7 +219,7 @@ nnoremap <silent> <Leader>w :<C-u>w<CR>
 set formatoptions+=j
 
 " Clipboard
-if has('gui_running') && has('clipboard')
+if has('clipboard')
   if has('unnamedplus')
     set clipboard=unnamedplus,unnamed
   else
