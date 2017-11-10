@@ -21,7 +21,7 @@ brew install go --cross-compile-common
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/gzip
 brew install homebrew/dupes/rsync
-brew install htop-osx
+brew install htop
 brew install hub
 brew install lua
 brew install luajit
