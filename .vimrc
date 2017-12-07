@@ -301,10 +301,6 @@ if has('win32')
   set rtp^=$HOME/.vim,$HOME/.vim/after
 endif
 
-if &compatible
-  set nocompatible
-endif
-
 let s:dein_dir = expand('~/.vim/dein')
 let s:dein_repos_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
