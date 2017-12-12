@@ -34,8 +34,6 @@
   unstage = reset -q HEAD --
   discard = checkout --
   uncommit = reset --mixed HEAD~
-
-  mergetest = !git-mergetest
 # }}}
 
 # settings {{{
