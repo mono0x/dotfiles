@@ -1,5 +1,0 @@
-#!/bin/sh
-# Open Dictionary.app
-#
-# Usage: dict [word]
-exec open "dict://$*"
