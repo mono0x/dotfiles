@@ -319,7 +319,7 @@ repo = 'sophacles/vim-processing'
 on_ft = 'processing'
 
 [[plugins]]
-repo = 'evanmiller/nginx-vim-syntax'
+repo = 'chr4/nginx.vim'
 on_ft = 'nginx'
 
 [[plugins]]
