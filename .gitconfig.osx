@@ -1,5 +1,3 @@
-[credential]
-  helper = /usr/local/bin/git-credential-osxkeychain
 [core]
   editor = /usr/local/bin/nvim
 [merge]
