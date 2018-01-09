@@ -4,14 +4,10 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" for OS X
-noremap <C-]> <Esc>
-inoremap <C-]> <Esc>
-vnoremap <C-]> <Esc>
+" for macOS
 inoremap <¥> \
 
 " Built-in actions
 nnoremap <Space>r :action RunClass<CR>
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
-nnoremap J :action EditorJoinLines<CR>
