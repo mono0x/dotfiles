@@ -1,13 +1,25 @@
+" .ideavimrc
+" vim: foldmethod=marker
+
+" Edit {{{
 set clipboard
 set history=1000
 set hlsearch
 set ignorecase
 set smartcase
+" }}}
 
-" for macOS
+" for macOS {{{
 inoremap <¥> \
+" }}}
 
-" Built-in actions
+" Built-in actions {{{
 nnoremap <Space>r :action RunClass<CR>
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
+" }}}
+
+" Git operations {{{
+noremap <Space>gb :action Annotate<CR>
+noremap <Space>gh :action Github.Open.In.Browser<CR>
+" }}}
