@@ -38,3 +38,6 @@ trace.dat
 
 # IntelliJ IDEA
 .idea
+
+# Ansible Galaxy
+meta/.galaxy_install_info
