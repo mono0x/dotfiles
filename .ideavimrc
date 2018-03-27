@@ -2,11 +2,18 @@
 " vim: foldmethod=marker
 
 " Edit {{{
-set clipboard
+set clipboard=unnamed,unnamedplus
 set history=1000
 set hlsearch
 set ignorecase
+set iminsert=2
+set incsearch
+set showcmd
+set showmatch
 set smartcase
+
+nnoremap <Esc><Esc> :nohlsearch<CR>
+nnoremap <C-[><C-[> :nohlsearch<CR>
 " }}}
 
 " for macOS {{{
