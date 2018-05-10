@@ -1,0 +1,9 @@
+New-Item -ItemType SymbolicLink -Path ${Home}\_vimrc -Target ${Home}\dotfiles\.vimrc
+New-Item -ItemType SymbolicLink -Path ${Home}\_gvimrc -Target ${Home}\dotfiles\.gvimrc
+New-Item -ItemType SymbolicLink -Path ${Home}\.vim -Target ${Home}\dotfiles\.vim
+New-Item -ItemType SymbolicLink -Path ${Home}\.zshrc -Target ${Home}\dotfiles\.zshrc
+New-Item -ItemType SymbolicLink -Path ${Home}\.zshenv -Target ${Home}\dotfiles\.zshenv
+New-Item -ItemType SymbolicLink -Path ${Home}\.zsh -Target ${Home}\dotfiles\.zsh
+New-Item -ItemType SymbolicLink -Path ${Home}\.gitconfig -Target ${Home}\dotfiles\.gitconfig
+New-Item -ItemType SymbolicLink -Path ${Home}\.gitconfig.platform -Target ${Home}\dotfiles\.gitconfig.windows
+New-Item -ItemType SymbolicLink -Path ${Home}\.gitignore -Target ${Home}\dotfiles\.gitignore.global
