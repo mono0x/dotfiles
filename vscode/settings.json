@@ -1,6 +1,6 @@
 // 既定の設定を上書きするには、このファイル内に設定を挿入します
 {
-    "editor.fontFamily": "Ricty",
+    "editor.fontFamily": "Ricty, Consolas, monospace",
     "editor.fontSize": 14,
     "editor.lineHeight": 16,
 
