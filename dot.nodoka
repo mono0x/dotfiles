@@ -51,6 +51,9 @@ keymap Global : KeymapBase
   key BrowserBack = &Undefined
   key BrowserForward = &Undefined
 
+  key S-A-LeftSquareBracket = C-S-Tab
+  key S-A-RightSquareBracket = C-Tab
+
 window Word /winword.exe:/ : Global
 
   key C-G = &Default
