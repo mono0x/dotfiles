@@ -7,4 +7,4 @@ New-Item -ItemType SymbolicLink -Path ${Home}\.zsh -Target ${Home}\dotfiles\.zsh
 New-Item -ItemType SymbolicLink -Path ${Home}\.gitconfig -Target ${Home}\dotfiles\.gitconfig
 New-Item -ItemType SymbolicLink -Path ${Home}\.gitconfig.platform -Target ${Home}\dotfiles\.gitconfig.windows
 New-Item -ItemType SymbolicLink -Path ${Home}\.gitignore -Target ${Home}\dotfiles\.gitignore.global
-New-Item -ItemType SymbolicLink -Path ${Home}\.vscode -Target ${Home}\dotfiles\vscode
+New-Item -ItemType SymbolicLink -Path ${Home}\AppData\Roaming\Code\User -Target ${Home}\dotfiles\vscode
