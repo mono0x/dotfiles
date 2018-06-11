@@ -178,6 +178,7 @@ alias gfo='git fo'
 alias gg='git grep -H --heading -I --line-number --break --show-function'
 alias gl='git log'
 alias gme='git me'
+alias gpr='git pull --rebase'
 alias gs='git status'
 
 alias b='bundle'
