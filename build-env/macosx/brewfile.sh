@@ -18,9 +18,9 @@ brew install git --with-pcre2
 brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
 brew install gnu-sed
 brew install go --cross-compile-common
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/gzip
-brew install homebrew/dupes/rsync
+brew install grep
+brew install gzip
+brew install rsync
 brew install htop
 brew install hub
 brew install lua
