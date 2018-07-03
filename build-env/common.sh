@@ -50,3 +50,15 @@ ln -sf $dir/.vimrc ~/.config/nvim/init.vim
 
 mkdir -p ~/.vimswap
 [ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+case "${OSTYPE}" in
+linux*)
+  code_dir="$HOME/.config/Code/User"
+  ;;
+darwin*)
+  code_dir="$HOME/Library/Application Support/Code/User"
+  ;;
+esac
+
+mkdir -p "$code_dir"
+ln -sf $dir/vscode/settings.json "$code_dir/settings.json"
