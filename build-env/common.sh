@@ -1,8 +1,8 @@
 #!/bin/sh
 
-dir=$(cd $(dirname $0)/.. && pwd)
+dir=$(cd "$(dirname $0)/.."; pwd)
 
-cd $dir
+cd "$dir"
 git submodule init
 git submodule sync --recursive
 git submodule update --recursive
@@ -11,15 +11,16 @@ rcs='
   .ctags
   .gdbinit
   .gitconfig
-  .gitignore.global
   .globalrc
   .gvimrc
+  .ideavimrc
   .myclirc
   .npmrc
   .peco
   .pgclirc
   .replyrc
   .source-highlight
+  .tigrc
   .tmux.conf
   .vim
   .vimrc
@@ -27,26 +28,23 @@ rcs='
   .zsh
   .zshenv
   .zshrc
-  .tigrc
-  .ideavimrc
 '
 for rc in $rcs; do
-  ln -sf $dir/$rc ~
+  ln -sfn "$dir/$rc" "$HOME/$rc"
 done
-ln -sf $dir/.gitignore.global ~/.gitignore
+ln -sfn "$dir/.gitignore.global" "$HOME/.gitignore"
 
 case "${OSTYPE}" in
 linux*)
-  ln -sf $dir/.gitconfig.linux ~/.gitconfig.platform
+  ln -sfn "$dir/.gitconfig.linux" "$HOME/.gitconfig.platform"
   ;;
 darwin*)
-  ln -sf $dir/.gitconfig.osx ~/.gitconfig.platform
+  ln -sfn "$dir/.gitconfig.osx" "$HOME/.gitconfig.platform"
   ;;
 esac
 
-mkdir -p ~/.config/nvim
-ln -sf $dir/.vim ~/.config/nvim/
-ln -sf $dir/.vimrc ~/.config/nvim/init.vim
+ln -sfn "$dir/.vim" "$HOME/.config/nvim"
+ln -sfn "$dir/.vimrc" "$HOME/.config/nvim/init.vim"
 
 mkdir -p ~/.vimswap
 [ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
@@ -61,4 +59,4 @@ darwin*)
 esac
 
 mkdir -p "$code_dir"
-ln -sf $dir/vscode/settings.json "$code_dir/settings.json"
+ln -sfn $dir/vscode/settings.json "$code_dir/settings.json"
