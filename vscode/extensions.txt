@@ -1,0 +1,2 @@
+ms-vscode.Go
+vscodevim.vim
