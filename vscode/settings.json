@@ -9,5 +9,6 @@
 
     "vim.useCtrlKeys": true,
 
-    "workbench.colorTheme": "Solarized Light"
+    "workbench.colorTheme": "Solarized Light",
+    "workbench.startupEditor": "newUntitledFile"
 }
