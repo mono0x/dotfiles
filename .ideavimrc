@@ -24,6 +24,7 @@ inoremap <¥> \
 nnoremap <Space>r :action RunClass<CR>
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
+nnoremap <C-t> :action Refactorings.QuickListPopupAction<CR>
 " }}}
 
 " Git operations {{{
