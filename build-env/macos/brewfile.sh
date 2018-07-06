@@ -20,9 +20,9 @@ brew install gnu-sed
 brew install go --cross-compile-common
 brew install grep
 brew install gzip
-brew install rsync
 brew install htop
 brew install hub
+brew install kubernetes-cli
 brew install lua
 brew install luajit
 brew install mas
@@ -37,6 +37,7 @@ brew install python3
 brew install rbenv
 brew install readline
 brew install reattach-to-user-namespace
+brew install rsync
 brew install ruby-build
 brew install source-highlight
 brew install the_silver_searcher
