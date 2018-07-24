@@ -11,6 +11,7 @@ set incsearch
 set showcmd
 set showmatch
 set smartcase
+set surround
 
 nnoremap <Esc><Esc> :nohlsearch<CR>
 nnoremap <C-[><C-[> :nohlsearch<CR>
