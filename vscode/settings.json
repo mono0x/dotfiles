@@ -8,6 +8,9 @@
     "telemetry.enableCrashReporter": false,
 
     "vim.useCtrlKeys": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
 
     "workbench.colorTheme": "Solarized Light",
     "workbench.startupEditor": "newUntitledFile"
