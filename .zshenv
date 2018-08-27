@@ -71,4 +71,8 @@ unfunction rbenv_init
 path=($HOME/.plenv/bin(N-/) $HOME/.plenv/shims(N-/) $path)
 # }}}
 
+# rust {{{
+path=($HOME/.cargo/bin $path)
+# }}}
+
 export GOPATH=$HOME
