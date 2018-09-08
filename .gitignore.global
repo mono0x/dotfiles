@@ -33,12 +33,6 @@ trace.dat
 # prove
 .prove
 
-# editorconfig
-.editorconfig
-
-# IntelliJ IDEA
-.idea
-
 # Ansible
 *.retry
 .galaxy_install_info
