@@ -189,12 +189,6 @@ alias rake='noglob rake'
 
 alias d='docker'
 alias dc='docker-compose'
-alias dm='docker-machine'
-alias dmenv='eval $(dm env default)'
-alias dmstart='dm start default && dmenv'
-alias dmrestart='dm restart default && dmenv'
-alias dmstop='dm stop default'
-alias dmssh='dm ssh default'
 
 alias go-build='go build -tags netgo -installsuffix netgo -ldflags "-w -s -extldflags -static"'
 
