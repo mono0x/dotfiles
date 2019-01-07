@@ -1,11 +1,12 @@
 MS-CEINTL.vscode-language-pack-ja
 PeterJausovec.vscode-docker
 Zignd.html-css-class-completion
+jebbs.plantuml
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 ms-vscode.Go
 ms-vscode.cpptools
-rebornix.Ruby
+rebornix.ruby
 redhat.vscode-yaml
 vscodevim.vim
 vscoss.vscode-ansible
