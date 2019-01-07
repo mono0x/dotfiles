@@ -32,6 +32,7 @@ brew install nginx
 brew install node
 brew install openssl
 brew install peco
+brew install plantuml
 brew install postgresql
 brew install python3
 brew install rbenv
