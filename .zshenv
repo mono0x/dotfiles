@@ -13,7 +13,7 @@ darwin*)
   # Heroku Toolbelt
   path=(/usr/local/heroku/bin(N-/) $path)
   # sbin
-  path=(/sbin(N-/) $path)
+  path=(/sbin(N-/) /usr/sbin(N-/) $path)
   # MacVim
   macvim_dir=/Applications/MacVim.app/Contents/MacOS
   macvim="$macvim_dir/Vim"
