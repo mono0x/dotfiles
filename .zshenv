@@ -22,8 +22,8 @@ darwin*)
     alias vim=$macvim
     alias vimdiff="$macvim_dir/vimdiff"
   fi
-  # node
-  path=($HOME/.node/bin(N-/) $path)
+  # Python
+  path=($HOME/Library/Python/3.7/bin(N-/) $path)
   ;;
 esac
 
@@ -73,6 +73,11 @@ path=($HOME/.plenv/bin(N-/) $HOME/.plenv/shims(N-/) $path)
 
 # rust {{{
 path=($HOME/.cargo/bin $path)
+# }}}
+
+
+# node {{{
+path=($HOME/.node/bin(N-/) $path)
 # }}}
 
 export GOPATH=$HOME
