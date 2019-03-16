@@ -36,3 +36,6 @@ trace.dat
 # Ansible
 *.retry
 .galaxy_install_info
+
+# direnv
+.envrc
