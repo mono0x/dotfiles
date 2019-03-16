@@ -219,6 +219,8 @@ nnoremap <silent> <Leader>w :<C-u>w<CR>
 set formatoptions+=j
 
 " Clipboard
+" workaround: https://github.com/neovim/neovim/issues/8631
+let g:clipboard = {'copy': {'+': 'pbcopy', '*': 'pbcopy'}, 'paste': {'+': 'pbpaste', '*': 'pbpaste'}, 'name': 'pbcopy', 'cache_enabled': 0}
 if has('clipboard')
   if has('unnamedplus')
     set clipboard=unnamedplus,unnamed
