@@ -9,6 +9,7 @@ brew install cmigemo
 brew install colordiff
 brew install coreutils
 brew install dep
+brew install direnv
 brew install editorconfig
 brew install exiftool
 brew install findutils
@@ -29,7 +30,7 @@ brew install mas
 brew install mercurial
 brew install neovim/neovim/neovim
 brew install nginx
-brew install node
+brew install nvm
 brew install openssl
 brew install peco
 brew install plantuml

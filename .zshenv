@@ -71,13 +71,13 @@ unfunction rbenv_init
 path=($HOME/.plenv/bin(N-/) $HOME/.plenv/shims(N-/) $path)
 # }}}
 
-# rust {{{
-path=($HOME/.cargo/bin $path)
+# nvm {{{
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 # }}}
 
-
-# node {{{
-path=($HOME/.node/bin(N-/) $path)
+# rust {{{
+path=($HOME/.cargo/bin $path)
 # }}}
 
 export GOPATH=$HOME

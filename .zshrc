@@ -302,6 +302,9 @@ quit() {
 # }}}
 
 # External scripts {{{
+# direnv
+eval "$(direnv hook zsh)"
+
 # rbenv
 case "${OSTYPE}" in
 linux*)
@@ -319,6 +322,11 @@ esac
 
 # plenv
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
+
+# nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+export NODE_VERSIONS=$NVM_DIR/versions/node
+export NODE_VERSION_PREFIX=v
 # }}}
 
 # Environment variables {{{
