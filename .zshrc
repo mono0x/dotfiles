@@ -120,7 +120,11 @@ bindkey "^n" history-beginning-search-forward-end
 # Aliases {{{
 alias sudo="sudo "
 alias sudoe='sudo -e'
-alias tmux='TERM=screen-256color tmux'
+if which direnv &> /dev/null; then
+  alias tmux='TERM=screen-256color direnv exec / tmux'
+else
+  alias tmux='TERM=screen-256color tmux'
+fi
 alias man='vs man'
 if which nvim &> /dev/null; then
   alias vi='nvim'
