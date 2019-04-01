@@ -310,19 +310,7 @@ quit() {
 eval "$(direnv hook zsh)"
 
 # rbenv
-case "${OSTYPE}" in
-linux*)
-  if [[ -f $HOME/.rbenv/completions/rbenv.zsh ]]; then
-    source "$HOME/.rbenv/completions/rbenv.zsh"
-  fi
-  ;;
-darwin*)
-  rbenv_prefix=`brew --prefix rbenv 2> /dev/null`
-  if [ -d "$rbenv_prefix" ]; then
-    source "$rbenv_prefix/completions/rbenv.zsh"
-  fi
-  ;;
-esac
+eval "$(rbenv init -)"
 
 # plenv
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi

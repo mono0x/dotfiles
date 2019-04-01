@@ -40,33 +40,6 @@ if [[ -z $LC_ALL ]]; then
 fi
 # }}}
 
-# rbenv {{{
-# http://blog.uu59.org/2014-01-06-fast-rbenv.html
-rbenv_init() {
-  # eval "$(rbenv init - --no-rehash)" is crazy slow (it takes arround 100ms)
-  # below style took ~2ms
-  export RBENV_SHELL=zsh
-  export RBENV_ROOT=$HOME/.rbenv
-  rbenv() {
-    local command
-    command="$1"
-    if [ "$#" -gt 0 ]; then
-      shift
-    fi
-
-    case "$command" in
-    rehash|shell)
-      eval "`rbenv "sh-$command" "$@"`";;
-    *)
-      command rbenv "$command" "$@";;
-    esac
-  }
-  path=($RBENV_ROOT/shims $RBENV_ROOT/bin $path)
-}
-rbenv_init
-unfunction rbenv_init
-# }}}
-
 # plenv {{{
 path=($HOME/.plenv/bin(N-/) $HOME/.plenv/shims(N-/) $path)
 # }}}
