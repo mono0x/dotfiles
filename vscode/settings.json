@@ -13,5 +13,6 @@
     "vim.visualstar": true,
 
     "workbench.colorTheme": "Solarized Light",
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.tree.indent": 16
 }
