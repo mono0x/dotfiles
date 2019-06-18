@@ -32,5 +32,7 @@
 
     "workbench.colorTheme": "Solarized Light",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.tree.indent": 16
+    "workbench.tree.indent": 16,
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
 }
