@@ -11,6 +11,24 @@
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.visualstar": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j"],
+            "after": ["g", "j"],
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"],
+        },
+        {
+            "before": ["g", "j"],
+            "after": ["j"],
+        },
+        {
+            "before": ["g", "k"],
+            "after": ["k"],
+        },
+    ],
 
     "workbench.colorTheme": "Solarized Light",
     "workbench.startupEditor": "newUntitledFile",
