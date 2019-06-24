@@ -6,6 +6,5 @@ ms-vscode.Go
 ms-vscode.cpptools
 rebornix.ruby
 redhat.vscode-yaml
-tickleforce.scrolloff
 vscodevim.vim
 vscoss.vscode-ansible
