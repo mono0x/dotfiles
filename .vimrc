@@ -204,6 +204,7 @@ endif
 " Edit {{{
 set backspace=indent,eol,start
 set infercase
+set scrolloff=10
 set updatetime=1000
 set wildignore=*.exe,*.dll,*.class,*.jpg,*.jpeg,*.png,*.gif
 
