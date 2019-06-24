@@ -35,4 +35,6 @@
     "workbench.tree.indent": 16,
     "editor.wordWrap": "on",
     "editor.minimap.enabled": false,
+
+    "scrolloff.scrolloff": 10,
 }
