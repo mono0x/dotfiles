@@ -38,6 +38,4 @@
 
     "editor.wordWrap": "on",
     "editor.minimap.enabled": false,
-    "editor.smoothScrolling": true,
-    "editor.cursorSmoothCaretAnimation": true,
 }
