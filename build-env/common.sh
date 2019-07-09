@@ -49,6 +49,8 @@ ln -sfn "$dir/.vimrc" "$HOME/.config/nvim/init.vim"
 mkdir -p ~/.vimswap
 [ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
 
+[ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.2
+
 case "${OSTYPE}" in
 linux*)
   code_dir="$HOME/.config/Code/User"

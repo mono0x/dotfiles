@@ -120,11 +120,7 @@ bindkey "^n" history-beginning-search-forward-end
 # Aliases {{{
 alias sudo="sudo "
 alias sudoe='sudo -e'
-if which direnv &> /dev/null; then
-  alias tmux='TERM=screen-256color direnv exec / tmux'
-else
-  alias tmux='TERM=screen-256color tmux'
-fi
+alias tmux='TERM=screen-256color tmux'
 alias man='vs man'
 if which nvim &> /dev/null; then
   alias vi='nvim'
@@ -306,19 +302,18 @@ quit() {
 # }}}
 
 # External scripts {{{
-# direnv
-eval "$(direnv hook zsh)"
-
-# rbenv
-eval "$(rbenv init -)"
-
-# plenv
-if which plenv > /dev/null; then eval "$(plenv init -)"; fi
-
-# nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-export NODE_VERSIONS=$NVM_DIR/versions/node
-export NODE_VERSION_PREFIX=v
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+## rbenv
+#eval "$(rbenv init -)"
+#
+## plenv
+#if which plenv > /dev/null; then eval "$(plenv init -)"; fi
+#
+## nvm
+#[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+#export NODE_VERSIONS=$NVM_DIR/versions/node
+#export NODE_VERSION_PREFIX=v
 # }}}
 
 # Environment variables {{{

@@ -5,11 +5,13 @@ brew update
 brew upgrade
 
 brew install ansible
+brew install autoconf
+brew install automake
 brew install cmigemo
 brew install colordiff
 brew install coreutils
+brew install curl
 brew install dep
-brew install direnv
 brew install editorconfig
 brew install exiftool
 brew install findutils
@@ -24,6 +26,9 @@ brew install gzip
 brew install htop
 brew install hub
 brew install kubernetes-cli
+brew install libtool
+brew install libxslt
+brew install libyaml
 brew install lua
 brew install luajit
 brew install mas
@@ -45,6 +50,8 @@ brew install source-highlight
 brew install the_silver_searcher
 brew install tig
 brew install tmux
+brew install unixodbc
+brew install unzip
 brew install wget
 brew install xz
 brew install zsh --without-etcdir
