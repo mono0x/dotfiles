@@ -17,6 +17,7 @@ brew install exiftool
 brew install findutils
 brew install fswatch
 brew install ghq
+brew install gpg
 brew install git --with-pcre2
 brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
 brew install gnu-sed
