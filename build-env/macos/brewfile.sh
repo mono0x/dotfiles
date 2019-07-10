@@ -36,7 +36,7 @@ brew install luajit
 brew install luarocks
 brew install mas
 brew install mercurial
-brew install neovim/neovim/neovim
+brew install --HEAD neovim
 brew install nginx
 brew install nvm
 brew install openssl
