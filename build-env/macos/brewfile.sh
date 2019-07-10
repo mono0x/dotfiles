@@ -7,6 +7,7 @@ brew upgrade
 brew install ansible
 brew install autoconf
 brew install automake
+brew install cmake
 brew install cmigemo
 brew install colordiff
 brew install coreutils
@@ -32,6 +33,7 @@ brew install libxslt
 brew install libyaml
 brew install lua
 brew install luajit
+brew install luarocks
 brew install mas
 brew install mercurial
 brew install neovim/neovim/neovim
