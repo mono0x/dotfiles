@@ -226,22 +226,6 @@ fi
 # tmux
 () {
 
-# update environment variables
-update_tmux_environment() {
-  local _tmux_env
-  if [ -n "${TMUX}" ]; then
-    _tmux_env=$( tmux show-environment )
-    if [ "${_tmux_env}" != "${_expected_tmux_env}" ]; then
-      eval $( echo "${_tmux_env}" | \
-        sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
-        -e 's/^-/unset /' \
-        -e 's/$/;/' )
-      _expected_tmux_env="${_tmux_env}"
-    fi
-  fi
-}
-add-zsh-hook precmd update_tmux_environment
-
 vs() {
   if [ -n "${TMUX}" ]; then
     tmux split-window -h "exec $*"
