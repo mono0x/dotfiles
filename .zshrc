@@ -319,3 +319,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+# Dedup PATH
+path=($path)
