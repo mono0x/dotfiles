@@ -1,12 +1,3 @@
-[submodule ".zsh/zsh-completions"]
-	path = .zsh/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
-[submodule ".zsh/z"]
-	path = .zsh/z
-	url = https://github.com/rupa/z
-[submodule ".zsh/cd-gitroot"]
-	path = .zsh/cd-gitroot
-	url = https://github.com/mollifier/cd-gitroot
 [submodule ".source-highlight/source-highlight-solarized"]
 	path = .source-highlight/source-highlight-solarized
 	url = https://github.com/jrunning/source-highlight-solarized

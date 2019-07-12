@@ -7,6 +7,12 @@ if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
 fi
 # }}}
 
+# zplugin {{{
+source ~/.zplugin/bin/zplugin.zsh
+
+zplugin light zsh-users/zsh-completions
+# }}}
+
 # Options {{{
 setopt auto_list
 setopt auto_pushd
@@ -44,7 +50,7 @@ zshaddhistory() {
 # Completions {{{
 () {
   local dotzsh=$HOME/.zsh
-  fpath=($dotzsh/cd-gitroot $dotzsh/z $dotzsh/zsh-completions/src $GOPATH/src/github.com/motemen/ghq/zsh $fpath)
+  fpath=($GOPATH/src/github.com/motemen/ghq/zsh $fpath)
 }
 
 autoload -U compinit
@@ -208,11 +214,6 @@ cygwin*)
   alias vim=gvim
   ;;
 esac
-
-_Z_CMD=j source ~/.zsh/z/z.sh
-
-autoload -Uz cd-gitroot
-alias u=cd-gitroot
 # }}}
 
 # Peco {{{
