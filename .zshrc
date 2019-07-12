@@ -49,7 +49,6 @@ zshaddhistory() {
 
 # Completions {{{
 () {
-  local dotzsh=$HOME/.zsh
   fpath=($GOPATH/src/github.com/motemen/ghq/zsh $fpath)
 }
 
