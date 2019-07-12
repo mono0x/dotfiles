@@ -195,14 +195,6 @@ alias rake='noglob rake'
 alias d='docker'
 alias dc='docker-compose'
 
-alias go-build='go build -tags netgo -installsuffix netgo -ldflags "-w -s -extldflags -static"'
-
-if which colordiff &> /dev/null; then
-  alias di='colordiff -u'
-else
-  alias di='diff -u'
-fi
-
 # http://www.reddit.com/r/commandline/comments/12g76v/how_to_automatically_source_zshrc_in_all_open/
 trap "source ~/.zshrc" USR1
 alias source-zshrc-all="pkill -usr1 zsh"
@@ -227,37 +219,10 @@ if which peco &> /dev/null; then
   }
   zle -N peco-cd
   bindkey '^s' peco-cd
-
-  peco-git-hash() {
-    local selected_hash=$(git log --date=short --pretty='format:%h %cd %s' --branches 2>/dev/null | peco 2>/dev/null | awk '{print $1}')
-    if [ -n "$selected_hash" ]; then
-      BUFFER="$BUFFER$selected_hash"
-      CURSOR="$#BUFFER"
-    fi
-    zle redisplay
-  }
-  zle -N peco-git-hash
-  bindkey '^g' peco-git-hash
 fi
 # }}}
 
 # Functions {{{
-# sudo with rbenv
-rbenvsudo() {
-  local executable
-  executable=$1
-  shift 1
-  command sudo PATH=$PATH $(rbenv which $executable) $*
-}
-
-# Notify to Twitter
-n() {
-  local dt
-  dt=`date '+%m/%d %H:%M:%S'`
-  $*
-  t update "done: $* => $? ($dt)" > /dev/null 2>&1
-}
-
 # tmux
 () {
 
@@ -316,9 +281,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Load local zshrc
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 # Dedup PATH
 path=($path)
