@@ -153,13 +153,14 @@ repo = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+rev = '2.1'
 depends = [ 'unite.vim' ]
 on_cmd = 'Denite'
 hook_add = '''
   nnoremap <C-w><C-w> :<C-u>Denite buffer<CR>
-  nnoremap <silent> <Leader>f :<C-u>Denite file_rec<CR>
+  nnoremap <silent> <Leader>f :<C-u>Denite file/rec<CR>
   nnoremap <silent> <Leader>m :<C-u>Denite unite:oldfiles<CR>
-  nnoremap <silent> <Leader>e :<C-u>Denite file_rec/git<CR>
+  nnoremap <silent> <Leader>e :<C-u>Denite file/rec/git<CR>
   nnoremap <silent> <Leader>b :<C-u>Denite unite:build<CR>
   nnoremap <silent> <C-^> :<C-u>Denite jump<CR>
   nnoremap <silent> <C-j> :<C-u>Unite -immediately gtags/context<CR>
@@ -182,11 +183,11 @@ hook_post_source = '''
     \)
 
   if executable('ag')
-    call denite#custom#var('file_rec', 'command',
+    call denite#custom#var('file/rec', 'command',
       \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
   endif
-  call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-  call denite#custom#var('file_rec/git', 'command',
+  call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+  call denite#custom#var('file/rec/git', 'command',
     \ ['git', 'ls-files', '-co', '--exclude-standard'])
 '''
 
