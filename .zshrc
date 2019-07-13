@@ -10,7 +10,15 @@ fi
 # zplugin {{{
 source ~/.zplugin/bin/zplugin.zsh
 
+zplugin ice blockf
 zplugin light zsh-users/zsh-completions
+
+zplugin ice wait"!0" atinit"zpcompinit; zpcdreplay" lucid
+zplugin light zdharma/fast-syntax-highlighting
+
+autoload -Uz compinit
+compinit
+zplugin cdreplay -q
 # }}}
 
 # Options {{{
@@ -45,15 +53,6 @@ zshaddhistory() {
 
   [[ ${#line} -ge 4 ]]
 }
-# }}}
-
-# Completions {{{
-() {
-  fpath=($GOPATH/src/github.com/motemen/ghq/zsh $fpath)
-}
-
-autoload -U compinit
-compinit
 # }}}
 
 # Prompt {{{
@@ -171,7 +170,6 @@ alias lla='ls -Al'
 
 if which hub &> /dev/null; then
   alias git='hub'
-  compdef hub=git
 fi
 alias g='git'
 alias ga='git add'
