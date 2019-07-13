@@ -13,6 +13,12 @@ source ~/.zplugin/bin/zplugin.zsh
 zplugin ice blockf
 zplugin light zsh-users/zsh-completions
 
+zplugin ice as"completion" wait"!0" atinit"zpcompinit" lucid
+zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+zplugin ice as"completion" wait"!0" atinit"zpcompinit" lucid
+zplugin snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
+
 zplugin ice wait"!0" atinit"zpcompinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
