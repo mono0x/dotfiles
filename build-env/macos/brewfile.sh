@@ -46,7 +46,6 @@ brew install postgresql
 brew install python3
 brew install rbenv
 brew install readline
-brew install reattach-to-user-namespace
 brew install rsync
 brew install ruby-build
 brew install source-highlight
