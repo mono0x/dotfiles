@@ -13,17 +13,23 @@ source ~/.zplugin/bin/zplugin.zsh
 zplugin ice blockf
 zplugin light zsh-users/zsh-completions
 
-zplugin ice as"completion" wait"!0" atinit"zpcompinit" lucid
+zplugin ice wait"!0" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-zplugin ice as"completion" wait"!0" atinit"zpcompinit" lucid
+zplugin ice wait"!0" as"completion" lucid
 zplugin snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
-zplugin ice wait"!0" atinit"zpcompinit; zpcdreplay" lucid
+zplugin ice wait"!0" atinit"zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
+# https://medium.com/@dannysmith/little-thing-2-speeding-up-zsh-f1860390f92
+# https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
 autoload -Uz compinit
-compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
 zplugin cdreplay -q
 # }}}
 
