@@ -1,6 +1,13 @@
 # .zshenv
 # vim: foldmethod=marker
 
+# Performance test {{
+# ZSH_PERFORMANCE_TEST=1 zsh -i -c exit
+if [ -n "$ZSH_PERFORMANCE_TEST" ]; then
+  zmodload zsh/zprof && zprof
+fi
+# }}}
+
 # PATH {{{
 typeset -U path cdpath fpath manpath
 
