@@ -13,24 +13,34 @@ source ~/.zplugin/bin/zplugin.zsh
 zplugin ice blockf
 zplugin light zsh-users/zsh-completions
 
+zplugin ice wait"!0" lucid
+zplugin snippet OMZ::plugins/asdf/asdf.plugin.zsh
+
 zplugin ice wait"!0" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
 zplugin ice wait"!0" as"completion" lucid
 zplugin snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
-zplugin ice wait"!0" atinit"zpcdreplay" lucid
+# https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2894219
+_zpcompinit_custom() {
+  setopt extendedglob local_options
+  autoload -Uz compinit
+  local zcd=${ZDOTDIR:-$HOME}/.zcompdump
+  local zcdc="$zcd.zwc"
+  # Compile the completion dump to increase startup speed, if dump is newer or doesn't exist,
+  # in the background as this is doesn't affect the current session
+  if [[ -f "$zcd"(#qN.m+1) ]]; then
+        compinit -i -d "$zcd"
+        { rm -f "$zcdc" && zcompile "$zcd" } &!
+  else
+        compinit -C -d "$zcd"
+        { [[ ! -f "$zcdc" || "$zcd" -nt "$zcdc" ]] && rm -f "$zcdc" && zcompile "$zcd" } &!
+  fi
+}
+
+zplugin ice wait"!0" atinit"_zpcompinit_custom; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
-
-# https://medium.com/@dannysmith/little-thing-2-speeding-up-zsh-f1860390f92
-# https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
-
-zplugin cdreplay -q
 # }}}
 
 # Options {{{
@@ -258,11 +268,6 @@ quit() {
 
 }
 
-# }}}
-
-# External scripts {{{
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
 # }}}
 
 # Environment variables {{{
