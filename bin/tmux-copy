@@ -1,8 +1,8 @@
 #!/bin/sh
 if type pbcopy >/dev/null 2>&1; then
-  reattach-to-user-namespace pbcopy
+  exec pbcopy
 elif type xclip >/dev/null 2>&1; then
-  xclip -sel c
+  exec xclip -sel c
 elif type xsel >/dev/null 2>&1; then
-  xsel -ib
+  exec xsel -ib
 fi
