@@ -284,8 +284,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # Dedup PATH
 path=($path)
 
-# Performance test {{{
-if [ -n "$ZSH_PERFORMANCE_TEST" ]; then
+# Finish profiling {{{
+if [ -n "$ZPROF" ]; then
   zprof
 fi
 # }}}

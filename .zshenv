@@ -1,9 +1,9 @@
 # .zshenv
 # vim: foldmethod=marker
 
-# Performance test {{
-# ZSH_PERFORMANCE_TEST=1 zsh -i -c exit
-if [ -n "$ZSH_PERFORMANCE_TEST" ]; then
+# Start profiling {{
+# ZPROF=1 zsh -i -c exit
+if [ -n "$ZPROF" ]; then
   zmodload zsh/zprof && zprof
 fi
 # }}}
