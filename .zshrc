@@ -16,8 +16,10 @@ zplugin light zsh-users/zsh-completions
 zplugin ice wait"!0" lucid
 zplugin snippet OMZ::plugins/asdf/asdf.plugin.zsh
 
-zplugin ice wait"!0" lucid
-zplugin snippet $HOME/google-cloud-sdk/completion.zsh.inc
+if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
+  zplugin ice wait"!0" lucid
+  zplugin snippet $HOME/google-cloud-sdk/completion.zsh.inc
+fi
 
 zplugin ice wait"!0" as"completion" lucid
 zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
