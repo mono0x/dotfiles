@@ -20,9 +20,9 @@ brew install fswatch
 brew install ghq
 brew install gpg
 brew install git
-brew install global --with-exuberant-ctags --with-pygments --with-sqlite3
+brew install global
 brew install gnu-sed
-brew install go --cross-compile-common
+brew install go
 brew install grep
 brew install gzip
 brew install htop
@@ -56,6 +56,6 @@ brew install unixodbc
 brew install unzip
 brew install wget
 brew install xz
-brew install zsh --without-etcdir
+brew install zsh
 
 brew cleanup
