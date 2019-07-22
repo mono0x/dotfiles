@@ -43,6 +43,8 @@ darwin*)
   ;;
 esac
 
+mkdir -p $HOME/.config
+
 ln -sfn "$dir/.vim" "$HOME/.config/nvim"
 ln -sfn "$dir/.vimrc" "$HOME/.config/nvim/init.vim"
 
