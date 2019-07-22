@@ -9,6 +9,8 @@ fi
 # }}}
 
 # PATH {{{
+unsetopt GLOBAL_RCS
+
 typeset -U path cdpath fpath manpath
 
 case "${OSTYPE}" in
