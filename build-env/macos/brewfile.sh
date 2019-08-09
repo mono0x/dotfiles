@@ -44,7 +44,6 @@ brew install peco
 brew install plantuml
 brew install postgresql
 brew install python3
-brew install rbenv
 brew install readline
 brew install rsync
 brew install ruby-build
