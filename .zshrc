@@ -13,8 +13,10 @@ source ~/.zplugin/bin/zplugin.zsh
 zplugin ice blockf
 zplugin light zsh-users/zsh-completions
 
-zplugin ice wait"!0" lucid
-zplugin snippet OMZ::plugins/asdf/asdf.plugin.zsh
+if [ -f $HOME/.asdf/completions/asdf.bash ]; then
+  zplugin ice wait"!0" lucid
+  zplugin snippet $HOME/.asdf/completions/asdf.bash
+fi
 
 if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
   zplugin ice wait"!0" lucid

@@ -54,4 +54,8 @@ fi
 path=($HOME/.cargo/bin $path)
 # }}}
 
+# asdf {{{
+source $HOME/.asdf/asdf.sh
+# }}}
+
 export GOPATH=$HOME
