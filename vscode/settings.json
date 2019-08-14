@@ -42,4 +42,8 @@
     "go.alternateTools": {
         "go-langserver": "gopls",
     },
+    "go.toolsEnvVars": {
+      "GO111MODULE": "on",
+    },
+    "go.lintFlags": ["--disable=golint"],
 }
