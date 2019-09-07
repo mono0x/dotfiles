@@ -60,8 +60,5 @@
         "go-langserver": "gopls",
         "goreturns": "gofumpt",
     },
-    "go.toolsEnvVars": {
-        "GO111MODULE": "on",
-    },
     "go.lintOnSave": "off",
 }
