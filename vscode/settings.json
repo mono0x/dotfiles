@@ -41,6 +41,7 @@
     "go.useLanguageServer": true,
     "go.alternateTools": {
         "go-langserver": "gopls",
+        "goreturns": "gofumpt",
     },
     "go.toolsEnvVars": {
       "GO111MODULE": "on",
