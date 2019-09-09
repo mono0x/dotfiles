@@ -397,13 +397,13 @@ if dein#tap('deoplete.nvim') " {{{
 endif " }}}
 
 if dein#tap('vim-go') " {{{
+  let g:go_fmt_command = 'gofumports'
   let g:go_fmt_fail_silently = 1
   let g:go_term_enabled = 1
   let g:go_highlight_build_constraints = 1
   let g:go_auto_type_info = 1
 
   function! s:go_settings()
-    autocmd! BufWritePre <buffer> GoImports
     nmap <buffer> K <Plug>(go-doc)
     nmap <buffer> <C-j> <Plug>(go-def)
   endfunction
