@@ -6,5 +6,6 @@ ms-vscode.Go
 ms-vscode.cpptools
 rebornix.ruby
 redhat.vscode-yaml
+stevensona.character-count
 vscodevim.vim
 vscoss.vscode-ansible
