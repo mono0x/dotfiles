@@ -15,17 +15,13 @@ rcs='
   .globalrc
   .gvimrc
   .ideavimrc
-  .myclirc
   .npmrc
   .peco
-  .pgclirc
-  .replyrc
   .source-highlight
   .tigrc
   .tmux.conf
   .vim
   .vimrc
-  .wgetrc
   .zshenv
   .zshrc
 '
