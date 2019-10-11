@@ -26,7 +26,9 @@ brew install grep
 brew install gzip
 brew install htop
 brew install hub
+brew install kubectx
 brew install kubernetes-cli
+brew install kubernetes-helm
 brew install libtool
 brew install libxslt
 brew install libyaml
