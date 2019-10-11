@@ -1,5 +1,6 @@
 #!/bin/sh
 asdf plugin-add golang
+asdf plugin-add kubectl
 asdf plugin-add nodejs
 asdf plugin-add ruby
 
