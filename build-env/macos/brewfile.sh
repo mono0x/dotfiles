@@ -48,6 +48,7 @@ brew install python3
 brew install readline
 brew install rsync
 brew install ruby-build
+brew install rustup
 brew install source-highlight
 brew install the_silver_searcher
 brew install tig
