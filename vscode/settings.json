@@ -61,4 +61,6 @@
         "goreturns": "gofumpt",
     },
     "go.lintOnSave": "off",
+    "plantuml.render": "PlantUMLServer",
+    "plantuml.server": "http://localhost:28080/",
 }
