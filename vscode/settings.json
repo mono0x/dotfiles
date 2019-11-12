@@ -61,6 +61,12 @@
         "goreturns": "gofumpt",
     },
     "go.lintOnSave": "off",
+    "gopls": {
+        "completeUnimported": true,
+        "deepCompletion": true,
+        "staticcheck": true,
+        "usePlaceholders": true,
+    },
     "plantuml.render": "PlantUMLServer",
     "plantuml.server": "http://localhost:28080/",
 }
