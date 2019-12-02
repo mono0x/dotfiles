@@ -1,4 +1,5 @@
 set line-graphics = utf-8
+set diff-highlight = true
 set diff-options = -m --first-parent
 set ignore-space = all
 set split-view-height = 80%
