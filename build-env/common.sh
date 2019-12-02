@@ -35,7 +35,8 @@ linux*)
   ln -sfn "$dir/.gitconfig.linux" "$HOME/.gitconfig.platform"
   ;;
 darwin*)
-  ln -sfn "$dir/.gitconfig.osx" "$HOME/.gitconfig.platform"
+  ln -sfn "$dir/.gitconfig.macos" "$HOME/.gitconfig.platform"
+  ln -sfn /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
   ;;
 esac
 
