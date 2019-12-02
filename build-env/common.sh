@@ -50,7 +50,7 @@ mkdir -p ~/.vimswap
 
 [ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.2
 
-[ -d ~/.zplugin ] || mkdir ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+[ -d ~/.zplugin ] || (mkdir ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin)
 
 case "${OSTYPE}" in
 linux*)
