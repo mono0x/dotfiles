@@ -1,4 +1,4 @@
-set line-graphics = utf-8
+set line-graphics = ascii
 set diff-highlight = true
 set diff-options = -m --first-parent
 set ignore-space = all
