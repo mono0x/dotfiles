@@ -19,8 +19,6 @@ linux*)
   path=(/usr/local/texlive/2012/bin/i386-linux(N-/) $path)
   ;;
 darwin*)
-  # Heroku Toolbelt
-  path=(/usr/local/heroku/bin(N-/) $path)
   # sbin
   path=(/sbin(N-/) /usr/sbin(N-/) $path)
   # MacVim
@@ -33,6 +31,9 @@ darwin*)
   fi
   # Python
   path=($HOME/Library/Python/3.7/bin(N-/) $path)
+  # Homebrew
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_AUTO_UPDATE=1
   ;;
 esac
 
