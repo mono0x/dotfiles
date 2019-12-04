@@ -14,10 +14,6 @@ unsetopt GLOBAL_RCS
 typeset -U path cdpath fpath manpath
 
 case "${OSTYPE}" in
-linux*)
-  # TeX Live
-  path=(/usr/local/texlive/2012/bin/i386-linux(N-/) $path)
-  ;;
 darwin*)
   # sbin
   path=(/sbin(N-/) /usr/sbin(N-/) $path)
