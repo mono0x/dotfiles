@@ -6,6 +6,8 @@
     "editor.wordWrap": "on",
     "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
     "files.insertFinalNewline": true,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
