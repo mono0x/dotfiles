@@ -36,9 +36,6 @@ hook_add = '''
 repo = 'thinca/vim-template'
 
 [[plugins]]
-repo = 'Shougo/tabpagebuffer.vim'
-
-[[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
   set background=light

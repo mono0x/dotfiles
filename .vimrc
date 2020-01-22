@@ -395,22 +395,3 @@ if dein#tap('deoplete.nvim') " {{{
   "let g:deoplete#omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
   let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 endif " }}}
-
-if dein#tap('vim-go') " {{{
-  let g:go_fmt_command = 'gofumports'
-  let g:go_fmt_fail_silently = 1
-  let g:go_term_enabled = 1
-  let g:go_highlight_build_constraints = 1
-  let g:go_auto_type_info = 1
-
-  function! s:go_settings()
-    nmap <buffer> K <Plug>(go-doc)
-    nmap <buffer> <C-j> <Plug>(go-def)
-  endfunction
-  autocmd vimrc_loading FileType go call s:go_settings()
-
-  function! s:godoc_settings()
-    nnoremap <buffer> q :<C-u>q<CR>
-  endfunction
-  autocmd vimrc_loading FileType godoc call s:godoc_settings()
-endif " }}}

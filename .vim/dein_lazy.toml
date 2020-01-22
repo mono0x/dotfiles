@@ -1,9 +1,4 @@
 [[plugins]]
-repo = 'Shougo/vimproc'
-if = '''!(has('win32') && has('kaoriya'))'''
-build = 'make'
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = [ 'context_filetype.vim' ]
 on_i = 1
@@ -116,10 +111,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'godlygeek/tabular'
-on_cmd = 'Tabularize'
-
-[[plugins]]
 repo = 'tyru/open-browser.vim'
 on_map = '<Plug>(openbrowser'
 hook_add = '''
@@ -147,26 +138,16 @@ hook_source = '''
   let g:openbrowser_github_url_exists_check = 'ignore'
 '''
 
-# Unite / Denite {{{
-[[plugins]]
-repo = 'Shougo/unite.vim'
-
+# Denite {{{
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 rev = '2.1'
-depends = [ 'unite.vim' ]
 on_cmd = 'Denite'
 hook_add = '''
   nnoremap <C-w><C-w> :<C-u>Denite buffer<CR>
   nnoremap <silent> <Leader>f :<C-u>Denite file/rec<CR>
-  nnoremap <silent> <Leader>m :<C-u>Denite unite:oldfiles<CR>
+  nnoremap <silent> <Leader>m :<C-u>Denite file/old<CR>
   nnoremap <silent> <Leader>e :<C-u>Denite file/rec/git<CR>
-  nnoremap <silent> <Leader>b :<C-u>Denite unite:build<CR>
-  nnoremap <silent> <C-^> :<C-u>Denite jump<CR>
-  nnoremap <silent> <C-j> :<C-u>Unite -immediately gtags/context<CR>
-
-  nnoremap <silent> <Leader>n :Denite -resume -cursor-pos=+1 -immediately<CR>
-  nnoremap <silent> <Leader>p :Denite -resume -cursor-pos=-1 -immediately<CR>
 '''
 hook_post_source = '''
   call denite#custom#map(
@@ -190,34 +171,9 @@ hook_post_source = '''
   call denite#custom#var('file/rec/git', 'command',
     \ ['git', 'ls-files', '-co', '--exclude-standard'])
 '''
-
-[[plugins]]
-repo = 'Shougo/unite-build'
-on_source = [ 'unite.vim' ]
-
-[[plugins]]
-repo = 'hewes/unite-gtags'
-on_source = [ 'unite.vim' ]
-
-[[plugins]]
-repo = 'lambdalisue/unite-grep-vcs'
-on_source = [ 'unite.vim' ]
-
-[[plugins]]
-repo = 'osyo-manga/unite-oldfiles'
-on_source = [ 'unite.vim' ]
-
 # }}}
 
 # File types {{{
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
-on_ft = [ 'css', 'sass', 'scss', 'markdown' ]
-
-[[plugins]]
-repo = 'othree/html5.vim'
-on_ft = [ 'html', 'markdown' ]
-
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
 on_ft = 'markdown'
@@ -232,57 +188,12 @@ repo = 'chr4/nginx.vim'
 on_ft = 'nginx'
 
 [[plugins]]
-repo = 'honza/dockerfile.vim'
-on_ft = 'dockerfile'
-
-[[plugins]]
 repo = 'pangloss/vim-javascript'
 on_ft = [ 'javascript', 'markdown' ]
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = 'typescript'
-
-[[plugins]]
-repo = 'vim-perl/vim-perl'
-on_ft = [ 'perl', 'tt2html' ]
-
-[[plugins]]
-repo = 'motemen/xslate-vim'
-on_ft = 'xslate'
-
-[[plugins]]
-repo = 'moznion/vim-cpanfile'
-on_ft = 'cpanfile'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-on_cmd = [
-  'GoAlternatej',
-  'GoCallees',
-  'GoCoverage',
-  'GoDef',
-  'GoDoc',
-  'GoErrCheck',
-  'GoFmt',
-  'GoImplements',
-  'GoImport',
-  'GoInstall',
-  'GoLint',
-  'GoLint',
-  'GoMetaLinter',
-  'GoPath',
-  'GoPlay',
-  'GoReferrers',
-  'GoRename',
-  'GoRun',
-  'GoTestFunc',
-  'GoVet',
-]
-on_ft = 'go'
-hook_add = '''
-  nnoremap <silent> <Leader>ga :<C-u>GoAlternate<CR>
-'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -295,8 +206,4 @@ on_ft = 'javascript'
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
-
-[[plugins]]
-repo = 'stephpy/vim-yaml'
-on_ft = 'yaml'
 # }}}
