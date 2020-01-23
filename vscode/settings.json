@@ -58,6 +58,8 @@
     "workbench.tree.indent": 16,
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreview": false,
     "go.useLanguageServer": true,
     "go.alternateTools": {
         "go-langserver": "gopls",
