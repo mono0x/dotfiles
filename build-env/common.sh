@@ -12,7 +12,6 @@ rcs='
   .ctags
   .gdbinit
   .gitconfig
-  .globalrc
   .gvimrc
   .ideavimrc
   .npmrc
