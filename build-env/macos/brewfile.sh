@@ -20,7 +20,6 @@ brew install fswatch
 brew install ghq
 brew install gpg
 brew install git
-brew install global
 brew install gnu-sed
 brew install grep
 brew install gzip
