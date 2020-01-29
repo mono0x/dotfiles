@@ -41,7 +41,6 @@ brew install nginx
 brew install nvm
 brew install openssl
 brew install peco
-brew install plantuml
 brew install postgresql
 brew install python3
 brew install readline
