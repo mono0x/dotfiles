@@ -1,5 +1,7 @@
 #!/bin/sh
 
+os=$(uname)
+
 dir=$(cd "$(dirname $0)/.."; pwd)
 
 cd "$dir"
@@ -28,11 +30,11 @@ for rc in $rcs; do
 done
 ln -sfn "$dir/.gitignore.global" "$HOME/.gitignore"
 
-case "${OSTYPE}" in
-linux*)
+case "$os" in
+Linux)
   ln -sfn "$dir/.gitconfig.linux" "$HOME/.gitconfig.platform"
   ;;
-darwin*)
+Darwin)
   ln -sfn "$dir/.gitconfig.macos" "$HOME/.gitconfig.platform"
   ln -sfn /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
   ;;
@@ -50,11 +52,11 @@ mkdir -p ~/.vimswap
 
 [ -d ~/.zplugin ] || (mkdir ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin)
 
-case "${OSTYPE}" in
-linux*)
+case "$os" in
+Linux)
   code_dir="$HOME/.config/Code/User"
   ;;
-darwin*)
+Darwin)
   code_dir="$HOME/Library/Application Support/Code/User"
   ;;
 esac
