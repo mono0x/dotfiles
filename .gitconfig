@@ -13,7 +13,6 @@
   ci = commit -v
   co = checkout
   di = diff --ignore-space-change
-  fo = fetch origin
   gp = grep -n
   me = merge
   pl = pull
