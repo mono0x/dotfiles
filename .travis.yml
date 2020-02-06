@@ -6,3 +6,5 @@ os:
 
 script:
   - ./build-env/common.sh
+  # Run script twice test idempotency
+  - ./build-env/common.sh
