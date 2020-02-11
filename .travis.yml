@@ -1,18 +1,15 @@
 language: sh
 
-os:
-  - linux
-  - osx
-  - windows
-
-script:
-  - |-
-    case $TRAVIS_OS_NAME in
-      windows)
-        ./build-env/windows/link.ps1
-      ;;
-      linux|osx)
-        ./build-env/common.sh
+matrix:
+  include:
+    - os:
+        - linux
+        - osx
+      script:
+        - ./build-env/common.sh
         # Run script twice to test idempotency
-        ./build-env/common.sh
-      ;;
+        - ./build-env/common.sh
+
+    - os: windows
+      script:
+        - ./build-env/windows/link.ps1
