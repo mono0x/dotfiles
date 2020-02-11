@@ -1,6 +1,7 @@
 $ErrorActionPreference = "Stop"
 
-$dir = Resolve-Path (Get-Item $PSScriptRoot).parent.parent
+$dir = (Get-Item (Resolve-Path $PSScriptRoot)).parent.parent
+$dir
 
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .gitconfig) -Target (Join-Path ${dir} .gitconfig -Resolve)
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .gitconfig.platform) -Target (Join-Path ${dir} .gitconfig.windows -Resolve)
