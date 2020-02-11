@@ -1,3 +1,4 @@
+Set-PSDebug -Trace 1
 $PSScriptRoot
 $dir = (Get-Item $PSScriptRoot).parent.parent
 $dir.FullName
