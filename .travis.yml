@@ -7,9 +7,9 @@ matrix:
 
     - os: windows
       script:
-        - powershell ./build-env/windows/link.ps1
+        - powershell -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
         # Run script twice to test idempotency
-        - powershell ./build-env/windows/link.ps1
+        - powershell -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
 
 script:
   - ./build-env/common.sh
