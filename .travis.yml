@@ -3,8 +3,16 @@ language: sh
 os:
   - linux
   - osx
+  - windows
 
 script:
-  - ./build-env/common.sh
-  # Run script twice to test idempotency
-  - ./build-env/common.sh
+  - |-
+    case $TRAVIS_OS_NAME in
+      windows)
+        ./build-env/windows/link.ps1
+      ;;
+      linux|osx)
+        ./build-env/common.sh
+        # Run script twice to test idempotency
+        ./build-env/common.sh
+      ;;
