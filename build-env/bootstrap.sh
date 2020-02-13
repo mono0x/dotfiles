@@ -8,5 +8,8 @@ fi
 dotfiles_parent="$HOME/src/github.com/mono0x"
 dotfiles_dir="$dotfiles_parent/dotfiles"
 
-mkdir -p "$dotfiles_parent"
-git clone https://github.com/mono0x/dotfiles "$dotfiles_dir"
+if [ ! -d "$dotfiles_dir" ]
+then
+  mkdir -p "$dotfiles_parent"
+  git clone https://github.com/mono0x/dotfiles "$dotfiles_dir"
+fi
