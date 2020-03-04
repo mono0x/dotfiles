@@ -11,6 +11,7 @@ git submodule update --recursive
 
 rcs='
   .asdfrc
+  .config/bat
   .gdbinit
   .gitconfig
   .gvimrc

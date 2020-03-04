@@ -7,6 +7,7 @@ brew upgrade
 brew install ansible
 brew install autoconf
 brew install automake
+brew install bat
 brew install cmake
 brew install cmigemo
 brew install colordiff
