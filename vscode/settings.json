@@ -1,11 +1,12 @@
 // 既定の設定を上書きするには、このファイル内に設定を挿入します
 {
+    "editor.copyWithSyntaxHighlighting": false,
     "editor.fontFamily": "Ricty, Consolas, monospace",
     "editor.fontSize": 14,
-    "editor.lineHeight": 16,
-    "editor.wordWrap": "on",
-    "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
+    "editor.lineHeight": 16,
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": "on",
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "files.insertFinalNewline": true,
