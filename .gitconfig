@@ -11,6 +11,7 @@
 [alias]
   br = branch
   ci = commit -v
+  ch = cherry-pick
   co = checkout
   di = diff --ignore-space-change
   gp = grep -n
