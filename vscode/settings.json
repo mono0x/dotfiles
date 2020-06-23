@@ -63,7 +63,6 @@
     "workbench.editor.enablePreview": false,
     "go.useLanguageServer": true,
     "go.alternateTools": {
-        "go-langserver": "gopls",
         "goreturns": "gofumpt",
     },
     "go.lintOnSave": "off",
