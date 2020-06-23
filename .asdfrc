@@ -1,1 +1,2 @@
 legacy_version_file = yes
+post_asdf_install_nodejs = npm install -g yarn
