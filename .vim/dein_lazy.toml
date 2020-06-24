@@ -1,9 +1,4 @@
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = [ 'context_filetype.vim' ]
-on_i = 1
-
-[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
@@ -137,41 +132,6 @@ hook_source = '''
   let g:openbrowser_github_always_use_commit_hash = 1
   let g:openbrowser_github_url_exists_check = 'ignore'
 '''
-
-# Denite {{{
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-rev = '2.1'
-on_cmd = 'Denite'
-hook_add = '''
-  nnoremap <C-w><C-w> :<C-u>Denite buffer<CR>
-  nnoremap <silent> <Leader>f :<C-u>Denite file/rec<CR>
-  nnoremap <silent> <Leader>m :<C-u>Denite file/old<CR>
-  nnoremap <silent> <Leader>e :<C-u>Denite file/rec/git<CR>
-'''
-hook_post_source = '''
-  call denite#custom#map(
-    \ 'insert',
-    \ '<C-n>',
-    \ '<denite:move_to_next_line>',
-    \ 'noremap'
-    \)
-  call denite#custom#map(
-    \ 'insert',
-    \ '<C-p>',
-    \ '<denite:move_to_previous_line>',
-    \ 'noremap'
-    \)
-
-  if executable('ag')
-    call denite#custom#var('file/rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-  endif
-  call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-  call denite#custom#var('file/rec/git', 'command',
-    \ ['git', 'ls-files', '-co', '--exclude-standard'])
-'''
-# }}}
 
 # File types {{{
 [[plugins]]

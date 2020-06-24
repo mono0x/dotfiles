@@ -78,9 +78,6 @@ nnoremap <silent> <Leader>s :<C-u>setlocal spell!<CR>
 
 " Highlight trailing spaces {{{
 function! s:highlight_trailing_spaces(insert)
-  if &filetype ==# 'unite'
-    return
-  endif
   if expand('%:t') ==# '[Command Line]'
     return
   endif
@@ -244,9 +241,6 @@ nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 function! s:good_width()
-  if &filetype == 'unite'
-    return
-  endif
   if &filetype == 'fugitiveblame'
     return
   endif
@@ -367,31 +361,4 @@ if dein#tap('lightline.vim') " {{{
   function! MyModified()
     return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
   endfunction
-endif " }}}
-
-if dein#tap('deoplete.nvim') " {{{
-  set completeopt-=preview
-
-  let g:deoplete#enable_at_startup=1
-  let g:deoplete#enable_smart_case=1
-
-  augroup vimrc_loading
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType typescript setlocal omnifunc=TSScompleteFunc
-  augroup END
-  if !exists('g:deoplete#omni_patterns')
-    let g:deoplete#omni_patterns={}
-  endif
-  let g:deoplete#omni_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:deoplete#omni_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:deoplete#omni_patterns.objc='[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:deoplete#omni_patterns.objcpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:deoplete#omni_patterns.perl='\h\w*->\|\h\w*::'
-  "let g:deoplete#omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-  let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 endif " }}}
