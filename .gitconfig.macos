@@ -1,5 +1,5 @@
 [core]
-  editor = myeditor
+  editor = /usr/local/bin/nvim
 [merge]
   tool = vimdiff
 [mergetool.vimdiff]

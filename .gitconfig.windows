@@ -2,6 +2,5 @@
   helper = wincred
 
 [core]
-  editor = code --wait
   preloadindex = true
   fscache = true
