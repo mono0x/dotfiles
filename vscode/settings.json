@@ -72,6 +72,4 @@
         "staticcheck": true,
         "usePlaceholders": true,
     },
-    "plantuml.render": "PlantUMLServer",
-    "plantuml.server": "http://localhost:28080/",
 }
