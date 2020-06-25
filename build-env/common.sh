@@ -41,9 +41,6 @@ esac
 
 mkdir -p $HOME/.config
 
-ln -sfn "$dir/.vim" "$HOME/.config/nvim"
-ln -sfn "$dir/.vimrc" "$HOME/.config/nvim/init.vim"
-
 mkdir -p ~/.vimswap
 [ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
 
