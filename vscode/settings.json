@@ -72,4 +72,7 @@
         "staticcheck": true,
         "usePlaceholders": true,
     },
+    "terminal.integrated.commandsToSkipShell": [
+        "-workbench.action.quickOpen",
+    ],
 }
