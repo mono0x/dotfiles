@@ -46,7 +46,7 @@ mkdir -p ~/.vimswap
 
 [ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
 
-[ -d ~/.zplugin ] || (mkdir ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin)
+[ -d ~/.zinit ] || (mkdir -p $HOME/.zinit && git clone https://github.com/zdharma/zinit.git ~/.zinit/bin)
 
 case "$os" in
 Linux)

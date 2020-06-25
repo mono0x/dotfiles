@@ -7,47 +7,32 @@ if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
 fi
 # }}}
 
-# zplugin {{{
-source ~/.zplugin/bin/zplugin.zsh
+# zinit {{{
+source ~/.zinit/bin/zinit.zsh
 
-zplugin ice blockf
-zplugin light zsh-users/zsh-completions
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit ice blockf
+zinit light zsh-users/zsh-completions
 
 if [ -f $HOME/.asdf/completions/asdf.bash ]; then
-  zplugin ice wait"!0" lucid
-  zplugin snippet $HOME/.asdf/completions/asdf.bash
+  zinit ice wait"!0" lucid
+  zinit snippet $HOME/.asdf/completions/asdf.bash
 fi
 
 if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
-  zplugin ice wait"!0" lucid
-  zplugin snippet $HOME/google-cloud-sdk/completion.zsh.inc
+  zinit ice wait"!0" lucid
+  zinit snippet $HOME/google-cloud-sdk/completion.zsh.inc
 fi
 
-zplugin ice wait"!0" as"completion" lucid
-zplugin snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+zinit ice wait"!0" as"completion" lucid
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-zplugin ice wait"!0" as"completion" lucid
-zplugin snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
+zinit ice wait"!0" as"completion" lucid
+zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
-# https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2894219
-_zpcompinit_custom() {
-  setopt extendedglob local_options
-  autoload -Uz compinit
-  local zcd=${ZDOTDIR:-$HOME}/.zcompdump
-  local zcdc="$zcd.zwc"
-  # Compile the completion dump to increase startup speed, if dump is newer or doesn't exist,
-  # in the background as this is doesn't affect the current session
-  if [[ -f "$zcd"(#qN.m+1) ]]; then
-        compinit -i -d "$zcd"
-        { rm -f "$zcdc" && zcompile "$zcd" } &!
-  else
-        compinit -C -d "$zcd"
-        { [[ ! -f "$zcdc" || "$zcd" -nt "$zcdc" ]] && rm -f "$zcdc" && zcompile "$zcd" } &!
-  fi
-}
-
-zplugin ice wait"!0" atinit"_zpcompinit_custom; zpcdreplay" lucid
-zplugin light zdharma/fast-syntax-highlighting
+zinit light zdharma/fast-syntax-highlighting
 # }}}
 
 # Options {{{
