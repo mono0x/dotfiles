@@ -23,6 +23,7 @@ rcs='
   .tmux.conf
   .vim
   .vimrc
+  .zprofile
   .zshenv
   .zshrc
 '
