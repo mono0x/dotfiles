@@ -3,5 +3,6 @@ asdf plugin-add golang
 asdf plugin-add kubectl
 asdf plugin-add nodejs
 asdf plugin-add ruby
+asdf plugin-add rust
 
-echo 'bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring'
+$ASDF_DIR/plugins/nodejs/bin/import-release-team-keyring
