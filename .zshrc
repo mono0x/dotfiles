@@ -13,8 +13,7 @@ source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit ice blockf
-zinit light zsh-users/zsh-completions
+zinit wait lucid for zsh-users/zsh-completions
 
 if [ -f $HOME/.asdf/completions/asdf.bash ]; then
   zinit ice wait"!0" lucid
@@ -32,7 +31,7 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 zinit ice wait"!0" as"completion" lucid
 zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
-zinit light zdharma/fast-syntax-highlighting
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for zdharma/fast-syntax-highlighting
 # }}}
 
 # Options {{{
