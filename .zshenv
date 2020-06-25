@@ -17,14 +17,6 @@ case "${OSTYPE}" in
 darwin*)
   # sbin
   path=(/sbin(N-/) /usr/sbin(N-/) $path)
-  # MacVim
-  macvim_dir=/Applications/MacVim.app/Contents/MacOS
-  macvim="$macvim_dir/Vim"
-  if [ -x "$macvim" ]; then
-    export EDITOR=$macvim
-    alias vim=$macvim
-    alias vimdiff="$macvim_dir/vimdiff"
-  fi
   # Python
   path=($HOME/Library/Python/3.7/bin(N-/) $path)
   # Homebrew

@@ -1,9 +1,5 @@
 [core]
-  editor = /usr/local/bin/nvim
-[merge]
-  tool = vimdiff
-[mergetool.vimdiff]
-  path = /usr/local/bin/nvim -d
+  editor = vim
 [pager]
   log = diff-highlight | less
   show = diff-highlight | less

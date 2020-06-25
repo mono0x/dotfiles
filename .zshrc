@@ -155,11 +155,7 @@ alias sudo="sudo "
 alias sudoe='sudo -e'
 alias tmux='TERM=screen-256color tmux'
 alias man='vs man'
-if which nvim &> /dev/null; then
-  alias vi='nvim'
-else
-  alias vi='vim'
-fi
+alias vi='vim'
 
 case "${OSTYPE}" in
 linux*)
@@ -225,13 +221,6 @@ alias dc='docker-compose'
 # http://www.reddit.com/r/commandline/comments/12g76v/how_to_automatically_source_zshrc_in_all_open/
 trap "source ~/.zshrc" USR1
 alias source-zshrc-all="pkill -usr1 zsh"
-
-case "${OSTYPE}" in
-cygwin*)
-  alias vi=gvim
-  alias vim=gvim
-  ;;
-esac
 # }}}
 
 # Peco {{{

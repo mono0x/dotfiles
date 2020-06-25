@@ -33,12 +33,8 @@ brew install kubernetes-helm
 brew install libtool
 brew install libxslt
 brew install libyaml
-brew install lua
-brew install luajit
-brew install luarocks
 brew install mas
 brew install mercurial
-brew install --HEAD neovim
 brew install nginx
 brew install nvm
 brew install openssl
