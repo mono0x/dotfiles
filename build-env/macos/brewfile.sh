@@ -7,9 +7,7 @@ brew upgrade
 brew install ansible
 brew install autoconf
 brew install automake
-brew install bat
 brew install cmake
-brew install cmigemo
 brew install colordiff
 brew install coreutils
 brew install curl
@@ -27,9 +25,6 @@ brew install gzip
 brew install htop
 brew install hub
 brew install jq
-brew install kubectx
-brew install kubernetes-cli
-brew install kubernetes-helm
 brew install libtool
 brew install libxslt
 brew install libyaml
@@ -39,12 +34,9 @@ brew install nginx
 brew install nvm
 brew install openssl
 brew install peco
-brew install postgresql
 brew install python3
 brew install readline
 brew install rsync
-brew install ruby-build
-brew install rustup
 brew install source-highlight
 brew install the_silver_searcher
 brew install tig
