@@ -44,7 +44,7 @@ mkdir -p $HOME/.config
 mkdir -p ~/.vimswap
 [ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-[ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.2
+[ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
 
 [ -d ~/.zplugin ] || (mkdir ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin)
 
