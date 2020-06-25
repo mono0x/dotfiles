@@ -39,10 +39,6 @@ if [[ -z $LC_ALL ]]; then
 fi
 # }}}
 
-# rust {{{
-path=($HOME/.cargo/bin $path)
-# }}}
-
 # asdf {{{
 source $HOME/.asdf/asdf.sh
 # }}}
