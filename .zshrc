@@ -13,25 +13,27 @@ source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit wait lucid for zsh-users/zsh-completions
-
 if [ -f $HOME/.asdf/completions/asdf.bash ]; then
-  zinit ice wait"!0" lucid
+  zinit ice wait"0" lucid
   zinit snippet $HOME/.asdf/completions/asdf.bash
 fi
 
 if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
-  zinit ice wait"!0" lucid
+  zinit ice wait"0" lucid
   zinit snippet $HOME/google-cloud-sdk/completion.zsh.inc
 fi
 
-zinit ice wait"!0" as"completion" lucid
+zinit ice wait"0" as"completion" lucid
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-zinit ice wait"!0" as"completion" lucid
+zinit ice wait"0" as"completion" lucid
 zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for zdharma/fast-syntax-highlighting
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions
 # }}}
 
 # Options {{{
