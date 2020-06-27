@@ -1,5 +1,14 @@
 language: sh
 
+addons:
+  apt:
+    packages:
+      - zsh
+  homebrew:
+    packages:
+      - zsh
+    update: true
+
 matrix:
   include:
     - os: linux
