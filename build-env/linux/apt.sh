@@ -4,7 +4,10 @@ set -e
 SUDO=''
 if [ $(id -u) -ne 0 ]
 then
-    SUDO='sudo'
+  SUDO='sudo'
 fi
 
-${SUDO} apt-get install -y build-essential
+${SUDO} apt-get install -y \
+  build-essential \
+  libssl-dev \
+  pkg-config
