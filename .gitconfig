@@ -69,11 +69,17 @@
 
 # instead of {{{
 [url "git@github.com:"]
-  insteadof = "git://github.com/"
-  insteadof = "https://github.com/"
+  pushinsteadof = "git://github.com/"
+  pushinsteadof = "https://github.com/"
+[url "git@github.com:mono0x/"]
+  insteadof = "git://github.com/mono0x/"
+  insteadof = "https://github.com/mono0x/"
 [url "git@bitbucket.org:"]
-  insteadof = "git://bitbucket.org/"
-  insteadof = "https://bitbucket.org/"
+  pushinsteadof = "git://bitbucket.org/"
+  pushinsteadof = "https://bitbucket.org/"
+[url "git@bitbucket.org:mono0x/"]
+  insteadof = "git://bitbucket.org/mono0x/"
+  insteadof = "https://bitbucket.org/mono0x/"
 # }}}
 
 # external commands {{{
