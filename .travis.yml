@@ -9,6 +9,8 @@ matrix:
   include:
     - os: linux
     - os: osx
+      script:
+        - ./test/unix.sh
 
     - os: windows
       script:
