@@ -5,4 +5,4 @@ asdf plugin-add nodejs
 asdf plugin-add ruby
 asdf plugin-add rust
 
-$ASDF_DIR/plugins/nodejs/bin/import-release-team-keyring
+"$ASDF_DIR/plugins/nodejs/bin/import-release-team-keyring"

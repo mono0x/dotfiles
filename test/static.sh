@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-cd $(cd "$(dirname $0)/.."; pwd)
+cd "$(cd "$(dirname "$0")/.."; pwd)"
 
-shellcheck **/*.sh
+shellcheck ./**/*.sh
 zsh -n .zshenv .zshrc

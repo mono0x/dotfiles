@@ -1,10 +1,12 @@
 #!/bin/sh
+set -e
 
 os=$(uname)
 
-dir=$(cd "$(dirname $0)/.."; pwd)
+dir="$(cd "$(dirname "$0")/.."; pwd)"
 
 cd "$dir"
+
 git submodule init
 git submodule sync --recursive
 git submodule update --recursive
@@ -39,14 +41,14 @@ Darwin)
   ;;
 esac
 
-mkdir -p $HOME/.config
+mkdir -p "$HOME/.config"
 
 mkdir -p ~/.vimswap
 [ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 [ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
 
-[ -d ~/.zinit ] || (mkdir -p $HOME/.zinit && git clone https://github.com/zdharma/zinit.git ~/.zinit/bin)
+[ -d ~/.zinit ] || (mkdir -p "$HOME/.zinit" && git clone https://github.com/zdharma/zinit.git ~/.zinit/bin)
 
 case "$os" in
 Linux)
@@ -58,4 +60,4 @@ Darwin)
 esac
 
 mkdir -p "$code_dir"
-ln -sfn $dir/vscode/settings.json "$code_dir/settings.json"
+ln -sfn "$dir/vscode/settings.json" "$code_dir/settings.json"
