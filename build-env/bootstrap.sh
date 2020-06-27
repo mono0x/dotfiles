@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ ! -x "$(which git 2> /dev/null)" ]
+if [ ! -x "$(command -v git > /dev/null)" ]
 then
   echo "git not found." >&2
   exit 1
