@@ -7,3 +7,6 @@ New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .gitconfig.platf
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .gitignore) -Target (Join-Path ${dir} .gitignore.global -Resolve)
 New-Item -ItemType Directory -Force -Path (Join-Path ${Home} AppData\Roaming\Code\User)
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} AppData\Roaming\Code\User\settings.json) -Target (Join-Path ${dir} vscode\settings.json -Resolve)
+
+$userProfile = (Join-Path ${dir} user_profile.ps1 -Resolve)
+Write-Output ". `"${userProfile}`"" > $PROFILE.CurrentUserCurrentHost
