@@ -49,15 +49,3 @@ mkdir -p ~/.vimswap
 [ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
 
 [ -d ~/.zinit ] || (mkdir -p "$HOME/.zinit" && git clone https://github.com/zdharma/zinit.git ~/.zinit/bin)
-
-case "$os" in
-Linux)
-  code_dir="$HOME/.config/Code/User"
-  ;;
-Darwin)
-  code_dir="$HOME/Library/Application Support/Code/User"
-  ;;
-esac
-
-mkdir -p "$code_dir"
-ln -sfn "$dir/vscode/settings.json" "$code_dir/settings.json"
