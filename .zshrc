@@ -13,9 +13,9 @@ source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-if [ -f $HOME/.asdf/completions/asdf.bash ]; then
+if [ -f $HOME/.asdf/completions/_asdf ]; then
   zinit ice wait"0" lucid
-  zinit snippet $HOME/.asdf/completions/asdf.bash
+  zinit snippet $HOME/.asdf/completions/_asdf
 fi
 
 if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
