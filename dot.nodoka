@@ -54,32 +54,6 @@ keymap Global : KeymapBase
   key S-A-LeftSquareBracket = C-S-Tab
   key S-A-RightSquareBracket = C-Tab
 
-window Word /winword.exe:/ : Global
+window Code /Code.exe:/ : KeymapBase
 
-  key C-G = &Default
-
-window Explorer /explorer.exe:.*SHELLDLL_DefView/ : Global
-
-  key C-E = Apps V Enter
-  key C-S-E = Apps V V Enter
-  key C-P = S-Apps W
-
-window Console /^ConsoleWindowClass$/ : Global
-
-  key C-V = &PostMessage(ToItself, 274, 65521, 0)
-  key C-W = M-Space C
-
-window iTunes /:iTunes/ : Global
-
-  key C-M = &Default
-
-window Chrome /Chrome.exe:/ : Global
-
-window IllustStudio /IllustStudio.exe:/ : KeymapBase
-
-window VirtualBox /VirtualBox.exe:/ : KeymapBase
-
-window Vim /gvim.exe:/ : KeymapBase
-
-window PuTTY /PuTTY.exe:/ :KeymapBase
-
+window WindowsTerminal /WindowsTerminal.exe:/ :KeymapBase
