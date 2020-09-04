@@ -5,3 +5,4 @@
   editor = code --wait
   preloadindex = true
   fscache = true
+  symlinks = true
