@@ -1,8 +1,8 @@
 Set-PSReadLineOption `
-    -BellStyle None `
-    -EditMode Emacs `
-    -HistoryNoDuplicates `
-    -ShowToolTips
+  -BellStyle None `
+  -EditMode Emacs `
+  -HistoryNoDuplicates `
+  -ShowToolTips
 
 # https://secondlife.hatenablog.jp/entry/2020/08/17/070735
 @"
@@ -17,10 +17,11 @@ Set-PSReadLineOption `
 ForEach-Object { $_.trim() } |
 Where-Object { ! @('tee', 'sort', 'sleep').Contains($_) } |
 ForEach-Object {
-    $cmd = $_
-    if (Test-Path Alias:$cmd) { Remove-Item -Path Alias:$cmd }
-    $fn = '$input | uutils ' + $cmd + ' $args'
-    Invoke-Expression "function global:$cmd { $fn }"
+  $cmd = $_
+  if (Test-Path Alias:$cmd) { Remove-Item -Path Alias:$cmd }
+  $fn = '$input | uutils ' + $cmd + ' $args'
+  Invoke-Expression "function global:$cmd { $fn }"
 }
 
 Set-Alias grep rg
+function ll { uutils ls -l }
