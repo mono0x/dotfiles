@@ -23,3 +23,7 @@ bind main G move-last-line
 # vi like cursor movements
 bind generic g move-first-line
 bind generic G move-last-line
+
+# Open the selected commit in the browser
+bind main v !@hub browse -- commit/%(commit)
+bind diff v !@hub browse -- commit/%(commit)
