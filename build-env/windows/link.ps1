@@ -6,5 +6,7 @@ New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .gitconfig) -Tar
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .gitconfig.platform) -Target (Join-Path ${dir} .gitconfig.windows -Resolve)
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .gitignore) -Target (Join-Path ${dir} .gitignore.global -Resolve)
 
+New-Item -ItemType Directory -Force -Path (Split-Path $PROFILE.CurrentUserCurrentHost -Parent)
+
 $userProfile = (Join-Path ${dir} user_profile.ps1 -Resolve)
 Write-Output ". `"${userProfile}`"" > $PROFILE.CurrentUserCurrentHost
