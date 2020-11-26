@@ -1,0 +1,24 @@
+name: test
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./test/static.sh
+      - run: ./test/unix.sh
+
+  test-macos:
+    runs-on: macos-latest
+    steps:
+      - run: ./test/unix.sh
+
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - run: powershell -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
+      # Run script twice to test idempotency
+      - run: powershell -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
