@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -xeu
 
 cd "$(cd "$(dirname "$0")/.."; pwd)"
 

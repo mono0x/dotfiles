@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -eu
 
 SUDO=''
 if [ $(id -u) -ne 0 ]
