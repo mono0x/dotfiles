@@ -8,17 +8,26 @@ jobs:
   test-linux:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
       - run: ./test/static.sh
       - run: ./test/unix.sh
 
   test-macos:
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
       - run: ./test/unix.sh
 
   test-windows:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
       - run: powershell -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
       # Run script twice to test idempotency
       - run: powershell -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
