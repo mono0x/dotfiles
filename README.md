@@ -1,3 +1,3 @@
 # dotfiles
 
-[![Build Status](https://travis-ci.org/mono0x/dotfiles.svg?branch=master)](https://travis-ci.org/mono0x/dotfiles)
+![test](https://github.com/mono0x/dotfiles/workflows/test/badge.svg)
