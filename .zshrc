@@ -7,6 +7,10 @@ if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
 fi
 # }}}
 
+# Variables {{{
+CPUARCH="$(uname -m)"
+# }}}
+
 # zinit {{{
 source ~/.zinit/bin/zinit.zsh
 
@@ -120,6 +124,9 @@ add-zsh-hook precmd update_vcs_info_message
   local HOST_COLOR='%{${reset_color}%}'
   [ -f ~/.zshrc.color ] && source ~/.zshrc.color
 
+  local ARCH_COLOR='%{${fg[magenta]}%}'
+  local ARCH_LABEL="(${CPUARCH})"
+
   case ${UID} in
   0)
     local USER_COLOR='%{${fg[red]}%}'
@@ -131,7 +138,7 @@ add-zsh-hook precmd update_vcs_info_message
   esac
 
   PROMPT="
-%{${fg[blue]}%}%/%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
+%{${fg[blue]}%}%/%{${reset_color}%} ${ARCH_COLOR}${ARCH_LABEL}%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
 [${USER_COLOR}%n%{${reset_color}%}@${HOST_COLOR}%m%{${reset_color}%}] %{${MARK_COLOR}%}%#%{${reset_color}%} "
   PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
