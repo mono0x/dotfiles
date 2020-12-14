@@ -85,7 +85,7 @@ fi
 # }}}
 
 # asdf {{{
-source $HOME/.asdf/asdf.sh
+[ -f $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
 # }}}
 
 export GOPATH=$HOME
