@@ -171,6 +171,25 @@ linux*)
   alias uniq='LC_ALL=C uniq'
   ;;
 darwin*)
+  alias brew='echo "Use brew-x86_64 or brew-arm64"'
+  brew-x86_64() {
+    if [ "$(uname -m)" = "x86_64" ]
+    then
+      /usr/local/bin/brew $@
+    else
+      echo "Run brew-x86_64 on x86_64 shell"
+    fi
+  }
+  
+  brew-arm64() {
+    if [ "$(uname -m)" = "arm64" ]
+    then
+      /opt/homebrew/bin/brew $@
+    else
+      echo "Run brew-arm64 on arm64 shell"
+    fi
+  }
+
   alias ls="ls -G"
 
   alias base64='gbase64'
