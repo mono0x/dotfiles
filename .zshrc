@@ -180,11 +180,11 @@ linux*)
 darwin*)
   alias brew='echo "Use brew-x86_64 or brew-arm64"'
   brew-x86_64() {
-    /usr/local/bin/zsh -c "/usr/local/bin/brew $@"
+    /usr/local/bin/zsh -c "exec /usr/local/bin/brew $*"
   }
   
   brew-arm64() {
-    /opt/homebrew/bin/zsh -c "/opt/homebrew/bin/brew $@"
+    /opt/homebrew/bin/zsh -c "exec /opt/homebrew/bin/brew $*"
   }
 
   alias ls="ls -G"
