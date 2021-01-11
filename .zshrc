@@ -178,14 +178,18 @@ linux*)
   alias uniq='LC_ALL=C uniq'
   ;;
 darwin*)
-  alias brew='echo "Use brew-x86_64 or brew-arm64"'
-  brew-x86_64() {
-    /usr/local/bin/zsh -c "exec /usr/local/bin/brew $*"
-  }
-  
-  brew-arm64() {
-    /opt/homebrew/bin/zsh -c "exec /opt/homebrew/bin/brew $*"
-  }
+  if which arch &> /dev/null; then
+    alias exec-x86_64='arch -arch x86_64 '
+    alias exec-arm64='arch -arch arm64 '
+
+    alias brew='echo "Use brew-x86_64 or brew-arm64"'
+    brew-x86_64() {
+      arch -arch x86_64 /usr/local/bin/brew $*
+    }
+    brew-arm64() {
+      arch -arch arm64 /opt/homebrew/bin/brew $*
+    }
+  fi
 
   alias ls="ls -G"
 
