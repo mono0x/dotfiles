@@ -182,13 +182,15 @@ darwin*)
     alias exec-x86_64='arch -arch x86_64 '
     alias exec-arm64='arch -arch arm64 '
 
-    alias brew='echo "Use brew-x86_64 or brew-arm64"'
-    brew-x86_64() {
-      arch -arch x86_64 /usr/local/bin/brew $*
-    }
-    brew-arm64() {
-      arch -arch arm64 /opt/homebrew/bin/brew $*
-    }
+    if which brew &> /dev/null; then
+      alias brew='echo "Use brew-x86_64 or brew-arm64"'
+      brew-x86_64() {
+        arch -arch x86_64 /usr/local/bin/brew $*
+      }
+      brew-arm64() {
+        arch -arch arm64 /opt/homebrew/bin/brew $*
+      }
+    fi
   fi
 
   alias ls="ls -G"
