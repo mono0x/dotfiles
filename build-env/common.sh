@@ -5,6 +5,9 @@ os=$(uname)
 
 dotfiles_root="$(cd "$(dirname "$0")/.."; pwd)"
 
+mkdir -p "$HOME/bin"
+mkdir -p "$HOME/.config"
+
 cd "$dotfiles_root"
 
 git submodule init
@@ -41,14 +44,12 @@ Darwin)
   do
     if [ -f "$path" ]
     then
-      ln -sfn "$path" "$dotfiles_root/bin/diff-highlight"
+      ln -sfn "$path" "$HOME/bin/diff-highlight"
       break
     fi
   done
   ;;
 esac
-
-mkdir -p "$HOME/.config"
 
 mkdir -p ~/.vimswap
 [ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
