@@ -3,9 +3,9 @@ set -e
 
 os=$(uname)
 
-dir="$(cd "$(dirname "$0")/.."; pwd)"
+dotfiles_root="$(cd "$(dirname "$0")/.."; pwd)"
 
-cd "$dir"
+cd "$dotfiles_root"
 
 git submodule init
 git submodule sync --recursive
@@ -27,21 +27,21 @@ rcs='
   .zshrc
 '
 for rc in $rcs; do
-  ln -sfn "$dir/$rc" "$HOME/$rc"
+  ln -sfn "$dotfiles_root/$rc" "$HOME/$rc"
 done
-ln -sfn "$dir/.gitignore.global" "$HOME/.gitignore"
+ln -sfn "$dotfiles_root/.gitignore.global" "$HOME/.gitignore"
 
 case "$os" in
 Linux)
-  ln -sfn "$dir/.gitconfig.linux" "$HOME/.gitconfig.platform"
+  ln -sfn "$dotfiles_root/.gitconfig.linux" "$HOME/.gitconfig.platform"
   ;;
 Darwin)
-  ln -sfn "$dir/.gitconfig.macos" "$HOME/.gitconfig.platform"
+  ln -sfn "$dotfiles_root/.gitconfig.macos" "$HOME/.gitconfig.platform"
   for path in /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
   do
     if [ -f "$path" ]
     then
-      ln -sfn "$path" /usr/local/bin/diff-highlight
+      ln -sfn "$path" "$dotfiles_root/bin/diff-highlight"
       break
     fi
   done
