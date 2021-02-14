@@ -37,7 +37,14 @@ Linux)
   ;;
 Darwin)
   ln -sfn "$dir/.gitconfig.macos" "$HOME/.gitconfig.platform"
-  ln -sfn /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+  for path in /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+  do
+    if [ -f "$path" ]
+    then
+      ln -sfn "$path" /usr/local/bin/diff-highlight
+      break
+    fi
+  done
   ;;
 esac
 
