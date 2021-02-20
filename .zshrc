@@ -108,8 +108,8 @@ if is-at-least 4.3.10; then
   zstyle ':vcs_info:git:*' check-for-changes true
   zstyle ':vcs_info:git:*' stagedstr "+"
   zstyle ':vcs_info:git:*' unstagedstr "-"
-  zstyle ':vcs_info:git:*' formats '(%s)-[%b] %c%u'
-  zstyle ':vcs_info:git:*' actionformats '(%s)-[%b|%a] %c%u'
+  zstyle ':vcs_info:git:*' formats ' (%s)-[%b] %c%u'
+  zstyle ':vcs_info:git:*' actionformats ' (%s)-[%b|%a] %c%u'
 fi
 
 update_vcs_info_message() {
@@ -120,29 +120,78 @@ update_vcs_info_message() {
 
 add-zsh-hook precmd update_vcs_info_message
 
+# https://gist.github.com/knadh/123bca5cfdae8645db750bfb49cb44b0#gistcomment-3556104
+start_command_execution_timer() {
+  command_start=$(($(print -P %D{%s%6.}) / 1000))
+}
+
+add-zsh-hook preexec start_command_execution_timer
+
+update_command_execution_timer() {
+  if [ $command_start ]
+  then
+    local now=$(($(print -P %D{%s%6.}) / 1000))
+    local d_ms=$(($now - $command_start))
+    local d_s=$((d_ms / 1000))
+    local ms=$((d_ms % 1000))
+    local s=$((d_s % 60))
+    local m=$(((d_s / 60) % 60))
+    local h=$((d_s / 3600))
+
+    if   ((h > 0)); then command_time=${h}h${m}m
+    elif ((m > 0)); then command_time=${m}m${s}s
+    elif ((s > 9)); then command_time=${s}.$(printf %03d $ms | cut -c1-2)s # 12.34s
+    elif ((s > 0)); then command_time=${s}.$(printf %03d $ms)s # 1.234s
+    else unset command_time
+    #else command_time=${ms}ms
+    fi
+
+    unset command_start
+  else
+    unset command_time
+  fi
+}
+
+add-zsh-hook precmd update_command_execution_timer
+
 () {
-  local HOST_COLOR='%{${reset_color}%}'
-  [ -f ~/.zshrc.color ] && source ~/.zshrc.color
+  local PATH_PART='%{${fg[blue]}%}%/%{${reset_color}%}'
 
-  local ARCH_COLOR='%{${fg[magenta]}%}'
-  local ARCH_LABEL="(${CPUARCH})"
+  local ARCH_PART=' %{${fg[magenta]}%}(${CPUARCH})%{${reset_color}%}'
 
-  case ${UID} in
-  0)
-    local USER_COLOR='%{${fg[red]}%}'
-    local MARK_COLOR='%{${fg[red]}%}'
-    ;;
-  *)
-    local USER_COLOR='%{${reset_color}%}'
-    local MARK_COLOR='%{${fg[blue]}%}'
-  esac
+  local VCS_PART='%1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}'
+
+  local COMMAND_TIME_PART='$(if [ $command_time ]; then echo " %{${fg[yellow]}%}$command_time%{${reset_color}%}"; fi)'
+
+  user_host_part() {
+    if [ $UID = 0 ]
+    then
+      local user_color='%{${fg[red]}%}'
+    else
+      local user_color='%{${reset_color}%}'
+    fi
+
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]
+    then
+      echo "${user_color}%n%{${reset_color}%}@%m "
+    fi
+  }
+
+  prompt_part() {
+    if [ $UID = 0 ]
+    then
+      local prompt_color='%{${fg[red]}%}'
+    else
+      local prompt_color='%{${fg[blue]}%}'
+    fi
+    echo "${prompt_color}>%{${reset_color}%} "
+  }
 
   PROMPT="
-%{${fg[blue]}%}%/%{${reset_color}%} ${ARCH_COLOR}${ARCH_LABEL}%{${reset_color}%} %1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}
-[${USER_COLOR}%n%{${reset_color}%}@${HOST_COLOR}%m%{${reset_color}%}] %{${MARK_COLOR}%}%#%{${reset_color}%} "
+$( user_host_part )${PATH_PART}${ARCH_PART}${VCS_PART}${COMMAND_TIME_PART}
+$( prompt_part )"
   PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-  #RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
 }
 
 zstyle ':completion:*' use-cache true
