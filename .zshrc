@@ -171,7 +171,18 @@ add-zsh-hook precmd update_command_execution_timer
       local user_color='%{${reset_color}%}'
     fi
 
+    # https://unix.stackexchange.com/questions/9605/how-can-i-detect-if-the-shell-is-controlled-from-ssh
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]
+    then
+      local session_type=remote/ssh
+    else
+      case $(ps -o comm= -p $PPID) in
+        sshd|*/sshd) local session_type=remote/ssh
+        ;;
+      esac
+    fi
+
+    if [ "$session_type" = remote/ssh ]
     then
       echo "${user_color}%n%{${reset_color}%}@%m "
     fi
