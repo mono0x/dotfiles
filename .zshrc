@@ -27,6 +27,9 @@ if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
   zinit snippet $HOME/google-cloud-sdk/completion.zsh.inc
 fi
 
+zinit ice atload"async_init"
+zinit light mafredri/zsh-async
+
 zinit ice wait"0" as"completion" lucid
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
@@ -97,28 +100,39 @@ colors
 
 autoload -Uz add-zsh-hook
 
+# https://vincent.bernat.ch/en/blog/2019-zsh-async-vcs-info
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn hg
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
 zstyle ':vcs_info:(svn):*' branchformat '%b:r%r'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "+"
+zstyle ':vcs_info:git:*' unstagedstr "-"
+zstyle ':vcs_info:git:*' formats ' (%s)-[%b] %c%u'
+zstyle ':vcs_info:git:*' actionformats ' (%s)-[%b|%a] %c%u'
 
-autoload -Uz is-at-least
-if is-at-least 4.3.10; then
-  zstyle ':vcs_info:git:*' check-for-changes true
-  zstyle ':vcs_info:git:*' stagedstr "+"
-  zstyle ':vcs_info:git:*' unstagedstr "-"
-  zstyle ':vcs_info:git:*' formats ' (%s)-[%b] %c%u'
-  zstyle ':vcs_info:git:*' actionformats ' (%s)-[%b|%a] %c%u'
-fi
-
-update_vcs_info_message() {
-  psvar=()
+_vcs_info() {
+  cd -q "$1"
   LANG=en_US.UTF-8 vcs_info
-  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+  print "$vcs_info_msg_0_"
 }
 
-add-zsh-hook precmd update_vcs_info_message
+_vcs_info_done() {
+  local stdout=$3
+  vcs_info_msg_0_=$stdout
+  zle reset-prompt
+}
+
+async_start_worker vcs_info
+async_register_callback vcs_info _vcs_info_done
+
+flush_vcs_info_job() {
+  async_flush_jobs vcs_info
+  async_job vcs_info _vcs_info "$PWD"
+}
+
+add-zsh-hook precmd flush_vcs_info_job
 
 # https://gist.github.com/knadh/123bca5cfdae8645db750bfb49cb44b0#gistcomment-3556104
 start_command_execution_timer() {
@@ -159,7 +173,7 @@ add-zsh-hook precmd update_command_execution_timer
 
   local ARCH_PART=' %{${fg[magenta]}%}(${CPUARCH})%{${reset_color}%}'
 
-  local VCS_PART='%1(v|%{${fg[green]}%}%1v%f|)%{${reset_color}%}'
+  local VCS_PART='%{${fg[green]}%}${vcs_info_msg_0_}%{${reset_color}%}'
 
   local COMMAND_TIME_PART='$(if [ $command_time ]; then echo " %{${fg[yellow]}%}$command_time%{${reset_color}%}"; fi)'
 
