@@ -109,13 +109,13 @@ zstyle ':vcs_info:(svn):*' branchformat '%b:r%r'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "+"
 zstyle ':vcs_info:git:*' unstagedstr "-"
-zstyle ':vcs_info:git:*' formats ' (%s)-[%b] %c%u'
-zstyle ':vcs_info:git:*' actionformats ' (%s)-[%b|%a] %c%u'
+zstyle ':vcs_info:git:*' formats '(%s)-[%b] %c%u'
+zstyle ':vcs_info:git:*' actionformats '(%s)-[%b|%a] %c%u'
 
 _vcs_info() {
   cd -q "$1"
   LANG=en_US.UTF-8 vcs_info
-  print "$vcs_info_msg_0_"
+  print "${vcs_info_msg_0_%% }" # Trim trailing space
 }
 
 _vcs_info_done() {
@@ -169,13 +169,10 @@ update_command_execution_timer() {
 add-zsh-hook precmd update_command_execution_timer
 
 () {
-  local PATH_PART='%{${fg[blue]}%}%/%{${reset_color}%}'
-
-  local ARCH_PART=' %{${fg[magenta]}%}(${CPUARCH})%{${reset_color}%}'
-
-  local VCS_PART='%{${fg[green]}%}${vcs_info_msg_0_}%{${reset_color}%}'
-
-  local COMMAND_TIME_PART='$(if [ $command_time ]; then echo " %{${fg[yellow]}%}$command_time%{${reset_color}%}"; fi)'
+  local path_part='%{${fg[blue]}%}%/%{${reset_color}%}'
+  local arch_part='%{${fg[magenta]}%}(${CPUARCH})%{${reset_color}%}'
+  local vcs_part='%{${fg[green]}%}${vcs_info_msg_0_}%{${reset_color}%}'
+  local command_time_part='$(if [ $command_time ]; then echo "%{${fg[yellow]}%}$command_time%{${reset_color}%}"; fi)'
 
   user_host_part() {
     if [ $UID = 0 ]
@@ -198,7 +195,7 @@ add-zsh-hook precmd update_command_execution_timer
 
     if [ "$session_type" = remote/ssh ]
     then
-      echo "${user_color}%n%{${reset_color}%}@%m "
+      echo "${user_color}%n%{${reset_color}%}@%m"
     fi
   }
 
@@ -212,8 +209,18 @@ add-zsh-hook precmd update_command_execution_timer
     echo "${prompt_color}>%{${reset_color}%} "
   }
 
+  local parts=(
+    "$( user_host_part )"
+    "$path_part"
+    "$arch_part"
+    "$vcs_part"
+    "$command_time_part"
+  )
+  # Remove empty parts
+  parts=${parts:#}
+
   PROMPT="
-$( user_host_part )${PATH_PART}${ARCH_PART}${VCS_PART}${COMMAND_TIME_PART}
+${parts}
 $( prompt_part )"
   PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
