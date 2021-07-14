@@ -9,10 +9,6 @@ keymap KeymapBase
   mod Control += 英数
   key *英数 = *LCtrl
 
-  # ひらがな -> Windows
-  mod Windows += ひらがな
-  key *ひらがな = *RightWindows
-
   # RShift (RDP)
   mod Shift += E0RightShift
   key *E0RightShift = *LShift
@@ -48,12 +44,12 @@ keymap Global : KeymapBase
   key C-*IC-G = Escape &SetImeStatus(off)
   key C-*IC-LeftSquareBracket = Escape &SetImeStatus(off)
 
-  key BrowserBack = &Undefined
-  key BrowserForward = &Undefined
-
   key S-A-LeftSquareBracket = C-S-Tab
   key S-A-RightSquareBracket = C-Tab
 
 window Code /Code.exe:/ : KeymapBase
 
 window WindowsTerminal /WindowsTerminal.exe:/ :KeymapBase
+
+window LightroomClassic /Lightroom.exe:/ : Global
+    key C-D = &Default
