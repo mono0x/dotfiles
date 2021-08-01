@@ -248,12 +248,6 @@ alias tmux='TERM=screen-256color tmux'
 alias man='vs man'
 alias vi='vim'
 
-if [ -n "$WSL_DISTRO_NAME" ]
-then
-  alias pbcopy='/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe Get-Clipboard'
-
-fi
-
 case "${OSTYPE}" in
 linux*)
   alias ls="ls --color"
