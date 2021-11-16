@@ -56,4 +56,4 @@ mkdir -p ~/.vimswap
 
 [ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 
-[ -d ~/.zinit ] || (mkdir -p "$HOME/.zinit" && git clone https://github.com/zdharma/zinit.git ~/.zinit/bin)
+[ -d ~/.zinit ] || (mkdir -p "$HOME/.zinit" && git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin)

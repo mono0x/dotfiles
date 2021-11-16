@@ -55,7 +55,7 @@ _zicompinit_custom() {
 
 zinit wait lucid for \
  atinit"_zicompinit_custom; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
+    zdharma-continuum/fast-syntax-highlighting \
  blockf \
     zsh-users/zsh-completions
 # }}}
