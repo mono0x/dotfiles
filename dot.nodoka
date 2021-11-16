@@ -3,29 +3,21 @@ include "109.nodoka"
 
 def key E0RightShift = E0-0x36
 
-keymap KeymapBase
+keymap Global
+  if ( HHKB_MAC )
+    # LAlt <-> LWindows
+    mod Windows -= LWindows
+    mod Alt += LWindows
+    key *LAlt = *LWindows
+    
+    mod Alt -= LAlt
+    mod Windows += LAlt
+    key *LWindows = *LAlt
+  endif
 
   # Caps -> Ctrl
   mod Control += 英数
   key *英数 = *LCtrl
-
-  # RShift (RDP)
-  mod Shift += E0RightShift
-  key *E0RightShift = *LShift
-
-  key IC-C-S-H = C-Backspace
-
-  key ReverseSolidus = S-ReverseSolidus
-
-keymap Global : KeymapBase
-
-  # Caps -> Ctrl
-  mod Control += 英数
-  key *英数 = *LCtrl
-
-  # ひらがな -> Windows
-  mod Windows += ひらがな
-  key *ひらがな = *RightWindows
 
   # RShift (RDP)
   mod Shift += E0RightShift
@@ -40,16 +32,5 @@ keymap Global : KeymapBase
   key C-S-D = S-Delete
   key C-H = Backspace
 
-  # キャンセル
-  key C-*IC-G = Escape &SetImeStatus(off)
-  key C-*IC-LeftSquareBracket = Escape &SetImeStatus(off)
-
   key S-A-LeftSquareBracket = C-S-Tab
   key S-A-RightSquareBracket = C-Tab
-
-window Code /Code.exe:/ : KeymapBase
-
-window WindowsTerminal /WindowsTerminal.exe:/ :KeymapBase
-
-window LightroomClassic /Lightroom.exe:/ : Global
-    key C-D = &Default
