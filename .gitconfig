@@ -7,6 +7,11 @@
   email = mono@mono0x.net
 # }}}
 
+# init {{{
+[init]
+  defaultBranch = main
+# }}}
+
 # aliases {{{
 [alias]
   br = branch
