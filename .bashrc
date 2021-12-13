@@ -1,5 +1,4 @@
 #!/bin/bash
-source .bashrc.default
 
 alias ll='ls -l'
 alias la='ls -A'
@@ -16,3 +15,5 @@ alias gl='git log'
 alias gme='git me'
 alias gpr='git pull --rebase'
 alias gs='git status'
+
+source ~/.bashrc.default
