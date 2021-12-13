@@ -1,4 +1,5 @@
 #!/bin/bash
+source .bashrc.default
 
 alias ll='ls -l'
 alias la='ls -A'

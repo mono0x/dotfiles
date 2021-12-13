@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+mv $HOME/.bashrc $HOME/.bashrc.default
+
 dotfiles_root="$(cd "$(dirname "$0")/.."; pwd)"
 
 cd "$dotfiles_root"
