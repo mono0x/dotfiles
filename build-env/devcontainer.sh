@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-mv $HOME/.bashrc $HOME/.bashrc.default
+mv "$HOME/.bashrc" "$HOME/.bashrc.default"
 
 dotfiles_root="$(cd "$(dirname "$0")/.."; pwd)"
 
