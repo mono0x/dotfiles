@@ -5,6 +5,15 @@ on:
       - "*"
 
 jobs:
+  test-devcontainer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - run: sudo apt install -y zsh
+      - run: ./test/unix.sh
+
   test-linux:
     runs-on: ubuntu-latest
     steps:
@@ -12,7 +21,6 @@ jobs:
         with:
           fetch-depth: 1
       - run: sudo apt install -y zsh
-      - run: ./test/static.sh
       - run: ./test/unix.sh
 
   test-macos:
@@ -32,3 +40,12 @@ jobs:
       - run: powershell -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
       # Run script twice to test idempotency
       - run: powershell -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
+
+  test-static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - run: sudo apt install -y zsh
+      - run: ./test/static.sh
