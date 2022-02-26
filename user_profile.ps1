@@ -2,6 +2,8 @@ Set-PSReadLineOption `
   -BellStyle None `
   -EditMode Emacs `
   -HistoryNoDuplicates `
+  -PredictionSource History `
+  -PredictionViewStyle ListView `
   -ShowToolTips
 
 # https://secondlife.hatenablog.jp/entry/2020/08/17/070735
