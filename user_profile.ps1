@@ -25,5 +25,13 @@ ForEach-Object {
   Invoke-Expression "function global:$cmd { $fn }"
 }
 
+Set-Alias g git
+function ga() { git add $args }
+function gci() { git ci $args }
+function gd() { git di $args }
+function gf() { git fetch --all $args }
+function gg() { git grep -H --heading -I --line-number --break --show-function $args }
+function gl() { git log $args }
+function gs() { git status $args }
 Set-Alias grep rg
-function ll { uutils ls -l }
+function ll { uutils ls -l $args }
