@@ -300,25 +300,11 @@ if which hub &> /dev/null; then
 fi
 alias g='git'
 alias ga='git add'
-alias gbr='git br'
-alias gci='git ci'
-alias gco='git co'
 alias gd='git di'
 alias gf='git fetch --all'
 alias gg='git grep -H --heading -I --line-number --break --show-function'
 alias gl='git log'
-alias gme='git me'
-alias gpr='git pull --rebase'
 alias gs='git status'
-
-alias b='bundle'
-alias be='bundle exec'
-alias bet='bundle exec thor'
-alias ber='noglob bundle exec rake'
-alias rake='noglob rake'
-
-alias d='docker'
-alias dc='docker-compose'
 
 # http://www.reddit.com/r/commandline/comments/12g76v/how_to_automatically_source_zshrc_in_all_open/
 trap "source ~/.zshrc" USR1

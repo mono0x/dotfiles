@@ -27,7 +27,6 @@ ForEach-Object {
 
 Set-Alias g git
 function ga() { git add $args }
-function gci() { git ci $args }
 function gd() { git di $args }
 function gf() { git fetch --all $args }
 function gg() { git grep -H --heading -I --line-number --break --show-function $args }
