@@ -2,27 +2,12 @@ Set-PSReadLineOption `
     -BellStyle None `
     -EditMode Emacs `
     -HistoryNoDuplicates `
-    -ShowToolTips
+    -ShowToolTips `
+    -PredictionSource None
 
-# https://gist.github.com/trapezoid/5c824599f58f1b00f41487c51c41fe13
-if (Get-InstalledModule -Name PSReadline -MinimumVersion 2.2.0 -ErrorAction SilentlyContinue) {
-    Set-PSReadLineOption -PredictionSource History -PredictionViewStyle InlineView
-    Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
-
-    function Switch-PredictionView() {
-        if ((Get-PSReadLineOption).PredictionViewStyle -eq "InlineView") {
-            Set-PSReadLineOption -PredictionViewStyle ListView
-            Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function HistorySearchForward
-            Set-PSReadLineKeyHandler -Key "Ctrl+b" -Function HistorySearchBackward
-        }
-        else {
-            Set-PSReadLineOption -PredictionViewStyle InlineView
-            Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
-        }
-    }
-
-    Set-PSReadLineKeyHandler -Chord "Ctrl+r" -ScriptBlock { Switch-PredictionView }
-}
+Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
 # https://secondlife.hatenablog.jp/entry/2020/08/17/070735
 @"
