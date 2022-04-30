@@ -2,8 +2,8 @@ Set-PSReadLineOption `
   -BellStyle None `
   -EditMode Emacs `
   -HistoryNoDuplicates `
-  -ShowToolTips `
-  -PredictionSource None
+  -PredictionSource None `
+  -ShowToolTips
 
 Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
