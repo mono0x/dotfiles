@@ -36,6 +36,7 @@ function ga() { git add $args }
 function gd() { git di $args }
 function gf() { git fetch --all $args }
 function gg() { git grep -H --heading -I --line-number --break --show-function $args }
+Remove-Alias -Force gl
 function gl() { git log $args }
 function gs() { git status $args }
 Set-Alias grep rg
