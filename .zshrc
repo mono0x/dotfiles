@@ -305,6 +305,7 @@ alias gf='git fetch --all'
 alias gg='git grep -H --heading -I --line-number --break --show-function'
 alias gl='git log'
 alias gs='git status'
+alias k='kubectl'
 
 # http://www.reddit.com/r/commandline/comments/12g76v/how_to_automatically_source_zshrc_in_all_open/
 trap "source ~/.zshrc" USR1

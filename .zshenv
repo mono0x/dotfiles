@@ -74,7 +74,7 @@ fi
 
 export DOTFILES_DIR=$(dirname $(readlink $HOME/.zshenv))
 
-path=($HOME/google-cloud-sdk/bin(N-/) $path)
+path=($HOME/google-cloud-sdk/bin(N-/) $HOME/.krew(N-/) $path)
 path=($HOME/bin(N-/) $DOTFILES_DIR/bin(N-/) $path)
 if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
   export LANG=en_US.UTF-8
