@@ -246,7 +246,7 @@ alias sudo="sudo "
 alias sudoe='sudo -e'
 alias tmux='TERM=screen-256color tmux'
 alias man='vs man'
-alias vi='vim'
+alias vi='nvim'
 
 case "${OSTYPE}" in
 linux*)
