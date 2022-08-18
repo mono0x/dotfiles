@@ -32,6 +32,7 @@ brew install git
 brew install htop
 brew install jq
 brew install mercurial
+brew install neovim
 brew install peco
 brew install source-highlight
 brew install the_silver_searcher

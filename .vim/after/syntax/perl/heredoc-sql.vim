@@ -1,1 +1,0 @@
-../../../dein/repos/github.com/vim-perl/vim-perl/contrib/heredoc-sql.vim

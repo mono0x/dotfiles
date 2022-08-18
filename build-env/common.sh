@@ -17,15 +17,12 @@ git submodule update --recursive
 rcs='
   .asdfrc
   .gitconfig
-  .gvimrc
   .ideavimrc
   .npmrc
   .peco
   .source-highlight
   .tigrc
   .tmux.conf
-  .vim
-  .vimrc
   .zshenv
   .zshrc
 '
@@ -51,8 +48,7 @@ Darwin)
   ;;
 esac
 
-mkdir -p ~/.vimswap
-[ -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ] || git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
+ln -sfn "$dotfiles_root/nvim" "$HOME/.config/nvim"
 
 [ -d ~/.asdf ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 

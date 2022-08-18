@@ -1,8 +1,8 @@
+scoop install aria2
+scoop bucket add extras
+scoop config aria2-enabled true
 scoop install `
-  aria2 `
   less `
   ripgrep `
   sudo `
   uutils-coreutils
-
-scoop config aria2-enabled true

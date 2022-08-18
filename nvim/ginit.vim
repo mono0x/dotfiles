@@ -3,15 +3,14 @@ augroup gvimrc_loading
 augroup END
 
 " font settings
-if has("win32")
-  set guifont=Ricty:h12
+if has("win32") 
+  set guifont=Consolas:h12
+  set guifontwide=MeiryoKe_Console:h12
 elseif has("mac")
-  set guifont=Menlo:h13
-else
-  set guifont=Ricty\ 12
+  set guifont=Ricty:h13
 endif
 
-if dein#tap('vim-colors-solarized')
+if dein#tap('solarized.nvim')
   set background=light
   colorscheme solarized
 endif

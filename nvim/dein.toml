@@ -23,21 +23,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-hook_add = '''
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_start_level = 2
-  let g:indent_guides_auto_colors = 0
-  autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#fdf6e3 ctermbg=15
-  autocmd vimrc_loading VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#eee8d5 ctermbg=7
-'''
-
-[[plugins]]
-repo = 'thinca/vim-template'
-
-[[plugins]]
-repo = 'altercation/vim-colors-solarized'
+repo = 'shaunsingh/solarized.nvim'
 hook_add = '''
   set background=light
   let g:solarized_termcolors=16
@@ -45,7 +31,3 @@ hook_add = '''
   let g:solarized_italic=0
   autocmd vimrc_loading VimEnter * nested colorscheme solarized
 '''
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = [ 'context_filetype.vim' ]

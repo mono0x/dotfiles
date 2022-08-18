@@ -10,3 +10,5 @@ New-Item -ItemType Directory -Force -Path (Split-Path $PROFILE.CurrentUserCurren
 
 $userProfile = (Join-Path ${dir} user_profile.ps1 -Resolve)
 Write-Output ". `"${userProfile}`"" > $PROFILE.CurrentUserCurrentHost
+
+New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Env:LOCALAPPDATA} nvim) -Target (Join-Path ${dir} nvim -Resolve)

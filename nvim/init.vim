@@ -1,36 +1,6 @@
 " .vimrc
 " vim: foldmethod=marker
 
-" dylib {{{
-if has('nvim')
-  if has('win32')
-    " TODO
-  elseif has('mac')
-    let g:python3_host_prog='/usr/local/bin/python3'
-  endif
-else
-  if has('win32')
-    if has('win64')
-      let path=fnamemodify('~\AppData\Local\Programs\Python\Python36\python36.dll', ':p')
-    else
-      let path=fnamemodify('~\AppData\Local\Programs\Python\Python36-32\python36.dll', ':p')
-    endif
-    if filereadable(path)
-      execute 'set pythonthreedll='.path
-    endif
-  elseif has('mac')
-    if filereadable('/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib')
-      set pythondll= " Disable Python2
-      set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib
-    endif
-
-    if filereadable('/usr/local/lib/liblua.dylib')
-      set luadll=/usr/local/lib/liblua.dylib
-    endif
-  endif
-endif
-" }}}
-
 " Disable default plugins {{{
 " http://lambdalisue.hatenablog.com/entry/2015/12/25/000046
 let g:loaded_gzip              = 1
@@ -62,35 +32,8 @@ augroup vimrc_loading
 augroup END
 " }}}
 
-" terminal {{{
-set lazyredraw
-set ttyfast
-" }}}
-
 " leader {{{
 let g:mapleader = ' '
-" }}}
-
-" spell checker {{{
-set spelllang=en,cjk
-nnoremap <silent> <Leader>s :<C-u>setlocal spell!<CR>
-" }}}
-
-" Highlight trailing spaces {{{
-function! s:highlight_trailing_spaces(insert)
-  if expand('%:t') ==# '[Command Line]'
-    return
-  endif
-  highlight TrailingSpaces ctermbg=red guibg=red
-  if a:insert
-    match TrailingSpaces /\S\zs\s\+$/
-  else
-    match TrailingSpaces /\s\+$/
-  endif
-endfunction
-autocmd vimrc_loading BufNew,BufRead * call s:highlight_trailing_spaces(0)
-autocmd vimrc_loading InsertEnter * call s:highlight_trailing_spaces(1)
-autocmd vimrc_loading InsertLeave * call s:highlight_trailing_spaces(0)
 " }}}
 
 " wrapping {{{
@@ -116,15 +59,8 @@ set fileformats=unix,dos,mac
 set nobackup
 set noundofile
 set nowritebackup
-set directory=~/.vimswap//
+set noswapfile
 set history=100
-" }}}
-
-" Help {{{
-function! s:help_settings()
-  nnoremap <buffer> q :<C-u>q<CR>
-endfunction
-autocmd vimrc_loading FileType help call s:help_settings()
 " }}}
 
 " Indent {{{
@@ -292,25 +228,29 @@ if !1 | finish | endif
 " dein.vim {{{
 filetype off
 
-if has('win32')
-  set rtp^=$HOME/.vim,$HOME/.vim/after
+let s:cache = expand('~/.cache')
+if !isdirectory(s:cache)
+  call mkdir(s:cache, 'p')
 endif
-
-let s:dein_dir = expand('~/.vim/dein')
-let s:dein_repos_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repos_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repos_dir
+  let s:dein_dir = fnamemodify('dein.vim', ':p')
+  if !isdirectory(s:dein_dir)
+    let s:dein_dir = s:cache . '/dein/repos/github.com/Shougo/dein.vim'
+    if !isdirectory(s:dein_dir)
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+    endif
   endif
-  execute 'set runtimepath^=' . s:dein_repos_dir
+  execute 'set runtimepath^=' . s:dein_dir
 endif
 
-if dein#load_state(s:dein_dir)
-  let s:toml = expand('~/.vim/dein.toml')
-  let s:lazy_toml = expand('~/.vim/dein_lazy.toml')
+let s:path = s:cache . '/dein'
+if dein#min#load_state(s:path)
+  let s:base_dir = fnamemodify($MYVIMRC, ':h') . '/'
+  let s:toml = s:base_dir . 'dein.toml'
+  let s:lazy_toml = s:base_dir . 'dein_lazy.toml'
 
-  call dein#begin(s:dein_dir, [ $MYVIMRC, s:toml, s:lazy_toml, ])
+  call dein#begin(s:path, [ $MYVIMRC, s:toml, s:lazy_toml, ])
 
   call dein#load_toml(s:toml, { 'lazy': 0 })
   call dein#load_toml(s:lazy_toml, { 'lazy': 1 })
