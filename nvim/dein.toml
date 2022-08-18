@@ -23,8 +23,9 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'shaunsingh/solarized.nvim'
+repo = 'altercation/vim-colors-solarized'
 hook_add = '''
+  set termguicolors
   set background=light
   let g:solarized_termcolors=16
   let g:solarized_termtrans=1

@@ -10,7 +10,7 @@ elseif has("mac")
   set guifont=Ricty:h13
 endif
 
-if dein#tap('solarized.nvim')
+if dein#tap('vim-colors-solarized')
   set background=light
   colorscheme solarized
 endif
