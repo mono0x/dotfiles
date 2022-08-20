@@ -40,5 +40,6 @@ brew install tig
 brew install tmux
 brew install xz
 brew install zsh
+brew install zx
 
 brew cleanup
