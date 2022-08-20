@@ -1,0 +1,6 @@
+file:
+  ~/.gitconfig:
+    exists: true
+    filetype: symlink
+    contains:
+      - "name = mono"
