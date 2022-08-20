@@ -33,7 +33,8 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-          sudo curl -fsSL https://goss.rocks/install | sh
+          sudo curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-alpha-darwin-amd64 -o /usr/local/bin/goss
+          sudo chmod +rx /usr/local/bin/goss
       - run: |
           npx zx ./test/unix.mjs
           goss --gossfile test/goss/unix.yaml validate --format documentation
