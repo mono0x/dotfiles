@@ -32,8 +32,8 @@ if vim.call('dein#min#load_state', dein_root_dir) ~= 0 then
   local dein_lazy_toml = dein_toml_dir .. 'dein_lazy.toml'
 
   vim.call('dein#begin', dein_root_dir, { dein_lua, dein_toml, dein_lazy })
-  vim.call('dein#load_toml', dein_toml, {lazy = false })
-  vim.call('dein#load_toml', dein_lazy_toml, {lazy = true })
+  vim.call('dein#load_toml', dein_toml, { lazy = false })
+  vim.call('dein#load_toml', dein_lazy_toml, { lazy = true })
   vim.call('dein#end')
   vim.call('dein#save_state')
 end
