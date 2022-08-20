@@ -20,8 +20,8 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-          sudo apt install -y zsh
-          curl -fsSL https://goss.rocks/install | GOSS_DST="~/bin" sh
+        sudo apt install -y zsh
+        curl -fsSL https://goss.rocks/install | GOSS_DST="~/bin" sh
       - run: npx zx ./test/unix.mjs
       - run: "~/bin/goss" --gossfile test/goss/unix.yaml validate --format documentation
 
@@ -32,7 +32,7 @@ jobs:
         with:
           fetch-depth: 1
       - run: |
-          curl -fsSL https://goss.rocks/install | GOSS_DST="~/bin" sh
+        curl -fsSL https://goss.rocks/install | GOSS_DST="~/bin" sh
       - run: npx zx ./test/unix.mjs
       - run: "~/bin/goss" --gossfile test/goss/unix.yaml validate --format documentation
 
