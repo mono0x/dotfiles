@@ -37,7 +37,7 @@ jobs:
           sudo chmod +rx /usr/local/bin/goss
       - run: |
           npx zx ./test/unix.mjs
-          goss --gossfile test/goss/unix.yaml validate --format documentation
+          GOSS_USE_ALPHA=1 goss --gossfile test/goss/unix.yaml validate --format documentation
 
   test-windows:
     runs-on: windows-latest
