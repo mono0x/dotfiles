@@ -1,5 +1,3 @@
-#!/bin/sh
-
 const root = path.join(__dirname, "..")
 
 await fs.mkdirp(path.join(os.homedir(), "bin"))
