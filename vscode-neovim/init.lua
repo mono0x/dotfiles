@@ -1,8 +1,15 @@
 vim.opt.clipboard:append('unnamedplus')
 
+vim.g.mapleader = ' '
+
 -- Workaround: https://github.com/vscode-neovim/vscode-neovim/issues/259
 vim.keymap.set('', 'j', 'gj', { remap = true })
 vim.keymap.set('', 'k', 'gk', { remap = true })
+
+vim.cmd [[
+  nnoremap <leader>gb <Cmd>call VSCodeNotify('gitlens.toggleFileBlame')<CR>
+  nnoremap <leader>gh <Cmd>call VSCodeNotify('gitlens.openFileOnRemote')<CR>
+]]
 
 vim.cmd [[
   filetype off
