@@ -7,8 +7,8 @@ vim.keymap.set('', 'j', 'gj', { remap = true })
 vim.keymap.set('', 'k', 'gk', { remap = true })
 
 vim.cmd [[
-  nnoremap <leader>gb <Cmd>call VSCodeNotify('gitlens.toggleFileBlame')<CR>
-  nnoremap <leader>gh <Cmd>call VSCodeNotify('gitlens.openFileOnRemote')<CR>
+  noremap <leader>gb <Cmd>call VSCodeNotify('gitlens.toggleFileBlame')<CR>
+  noremap <leader>gh <Cmd>call VSCodeNotifyVisual('gitlens.openFileOnRemote', 0)<CR>
 ]]
 
 vim.cmd [[
