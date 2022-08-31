@@ -31,13 +31,12 @@ await Promise.all(
 )
 await $`ln -sfn ${path.join(root, ".gitignore.global")} ${path.join(os.homedir(), ".gitignore")}`
 
-switch (os.type()) {
-  case "Linux":
-    await $`ln -sfn ${path.join(root, ".gitconfig.linux")} ${path.join(os.homedir(), ".gitconfig.platform")}`
-    break
-  case "Darwin":
-    await $`ln -sfn ${path.join(root, ".gitconfig.macos")} ${path.join(os.homedir(), ".gitconfig.platform")}`
-    break
+const gitconfig = {
+  "Linux": ".gitconfig.linux",
+  "Darwin": ".gitconfig.macos",
+}[os.type()]
+if (gitconfig) {
+  await $`ln -sfn ${path.join(root, gitconfig)} ${path.join(os.homedir(), ".gitconfig.platform")}`
 }
 
 for (const prefix of ["/home/linuxbrew/.linuxbrew", "/opt/homebrew", "/usr/local"]) {
