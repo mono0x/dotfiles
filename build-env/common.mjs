@@ -1,3 +1,5 @@
+/// <reference types="zx/build/globals" />
+
 const root = path.join(__dirname, "..")
 
 await fs.mkdirp(path.join(os.homedir(), "bin"))

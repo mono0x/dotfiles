@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "devDependencies": {
+    "zx": "^7.0.8"
+  }
+}
