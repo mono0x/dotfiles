@@ -1,3 +1,5 @@
+/// <reference types="zx/build/globals" />
+
 cd(path.join(__dirname, ".."))
 
 await $`npx zx ./build-env/common.mjs`
