@@ -29,6 +29,7 @@ brew install colordiff
 brew install editorconfig
 brew install ghq
 brew install git
+brew install git-lfs
 brew install htop
 brew install jq
 brew install mercurial
