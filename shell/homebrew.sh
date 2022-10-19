@@ -14,7 +14,7 @@ then
   export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
   export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
   export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
-  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH}";
+  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 fi
 
 # [ -e /opt/homebrew/bin/brew ] && /opt/homebrew/bin/brew shellenv
@@ -25,5 +25,5 @@ then
   export HOMEBREW_REPOSITORY="/opt/homebrew";
   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
   export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-  export INFOPATH="/opt/homebrew/share/info:${INFOPATH}";
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 fi
