@@ -1,4 +1,5 @@
-if [ ! -z ${HOMEBREW_PREFIX+x} ]
+#!/bin/sh
+if [ -n "${HOMEBREW_PREFIX+x}" ]
 then
   return
 fi
