@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC1090,SC1091
 set -eu
 
 dotfiles_root="$(cd "$(dirname "$0")/.."; pwd)"
