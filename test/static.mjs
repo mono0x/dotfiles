@@ -2,5 +2,6 @@
 
 cd(path.join(__dirname, ".."))
 
+await $`shellcheck --version`
 await $`shellcheck ./**/*.sh`
 await $`zsh -n .zshenv .zshrc`
