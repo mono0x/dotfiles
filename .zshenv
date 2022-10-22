@@ -15,6 +15,8 @@ typeset -U path cdpath fpath manpath
 
 case "${OSTYPE}" in
 darwin*)
+  # local
+  path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) $path)
   # sbin
   path=(/sbin(N-/) /usr/sbin(N-/) $path)
   # Python
