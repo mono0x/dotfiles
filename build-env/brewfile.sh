@@ -29,6 +29,11 @@ darwin*)
   ;;
 esac
 
+if [ -n "${WSL_DISTRO_NAME:-}" ]
+then
+  brew install socat
+fi
+
 brew install colordiff
 brew install editorconfig
 brew install ghq
