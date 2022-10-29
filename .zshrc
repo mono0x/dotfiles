@@ -365,7 +365,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # {{{
 # https://1password.community/discussion/128023/ssh-agent-on-windows-subsystem-for-linux
-if [ -n "${WSL_DISTRO_NAME:-}" ]
+if [ -n "${WSL_DISTRO_NAME:-}" ] \
+  && type socat > /dev/null && type npiperelay.exe > /dev/null # check socat and npiperelay.exe are installed
 then
   # Configure ssh forwarding
   export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
