@@ -1,3 +1,8 @@
+if ($PSVersionTable["PSEdition"] -ne "Core") {
+    Write-Warning "This script requires PowerShell Core."
+    return
+}
+
 Set-PSReadLineOption `
   -BellStyle None `
   -EditMode Emacs `
