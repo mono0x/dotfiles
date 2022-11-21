@@ -36,6 +36,7 @@ fi
 
 brew install colordiff
 brew install editorconfig
+brew install fzf
 brew install ghq
 brew install git
 brew install git-lfs
