@@ -36,6 +36,8 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 zinit ice wait"0" as"completion" lucid
 zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
+zinit light jonmosco/kube-ps1
+
 # https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2894219
 _zicompinit_custom() {
   setopt extendedglob local_options
@@ -170,7 +172,6 @@ add-zsh-hook precmd update_command_execution_timer
 
 () {
   local path_part='%{${fg[blue]}%}%/%{${reset_color}%}'
-  local arch_part='%{${fg[magenta]}%}(${CPUARCH})%{${reset_color}%}'
   local vcs_part='%{${fg[green]}%}${vcs_info_msg_0_}%{${reset_color}%}'
   local command_time_part='$(if [ $command_time ]; then echo "%{${fg[yellow]}%}$command_time%{${reset_color}%}"; fi)'
 
@@ -212,7 +213,7 @@ add-zsh-hook precmd update_command_execution_timer
   local parts=(
     "$( user_host_part )"
     "$path_part"
-    "$arch_part"
+    '$( kube_ps1 )'
     "$vcs_part"
     "$command_time_part"
   )
