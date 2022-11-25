@@ -5,5 +5,6 @@ scoop install `
   less `
   npiperelay `
   ripgrep `
+  starship `
   sudo `
   uutils-coreutils

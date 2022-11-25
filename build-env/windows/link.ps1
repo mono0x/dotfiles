@@ -12,3 +12,6 @@ $userProfile = (Join-Path ${dir} user_profile.ps1 -Resolve)
 Write-Output ". `"${userProfile}`"" > $PROFILE.CurrentUserCurrentHost
 
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Env:LOCALAPPDATA} nvim) -Target (Join-Path ${dir} nvim -Resolve)
+
+New-Item -ItemType Directory -Force -Path (Join-Path ${Home} .config)
+New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .config starship.toml) -Target (Join-Path ${dir} .config starship.toml -Resolve)

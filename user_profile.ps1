@@ -46,3 +46,6 @@ function gl() { git log $args }
 function gs() { git status $args }
 Set-Alias grep rg
 function ll { uutils ls -l $args }
+
+# Starship
+Invoke-Expression (&starship init powershell)
