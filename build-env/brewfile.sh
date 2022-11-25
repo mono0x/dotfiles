@@ -46,6 +46,7 @@ brew install mercurial
 brew install neovim
 brew install peco
 brew install source-highlight
+brew install starship
 brew install the_silver_searcher
 brew install tig
 brew install tmux

@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "bungcip.better-toml",
     "editorconfig.editorconfig",
     "ms-vscode.powershell",
   ]

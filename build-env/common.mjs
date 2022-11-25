@@ -13,6 +13,7 @@ await $`git submodule update --recursive`
 
 const rcs = [
   ".asdfrc",
+  ".config/starship.toml",
   ".gitconfig",
   ".ideavimrc",
   ".npmrc",

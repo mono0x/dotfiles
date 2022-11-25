@@ -27,9 +27,6 @@ if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
   zinit snippet $HOME/google-cloud-sdk/completion.zsh.inc
 fi
 
-zinit ice atload"async_init"
-zinit light mafredri/zsh-async
-
 zinit ice wait"0" as"completion" lucid
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
@@ -94,141 +91,6 @@ zshaddhistory() {
 
   [[ ${#line} -ge 4 ]]
 }
-# }}}
-
-# Prompt {{{
-autoload colors
-colors
-
-autoload -Uz add-zsh-hook
-
-# https://vincent.bernat.ch/en/blog/2019-zsh-async-vcs-info
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn hg
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-zstyle ':vcs_info:(svn):*' branchformat '%b:r%r'
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "+"
-zstyle ':vcs_info:git:*' unstagedstr "-"
-zstyle ':vcs_info:git:*' formats '(%s)-[%b] %c%u'
-zstyle ':vcs_info:git:*' actionformats '(%s)-[%b|%a] %c%u'
-
-_vcs_info() {
-  cd -q "$1"
-  LANG=en_US.UTF-8 vcs_info
-  print "${vcs_info_msg_0_%% }" # Trim trailing space
-}
-
-_vcs_info_done() {
-  local stdout=$3
-  vcs_info_msg_0_=$stdout
-  zle reset-prompt
-}
-
-async_start_worker vcs_info
-async_register_callback vcs_info _vcs_info_done
-
-flush_vcs_info_job() {
-  async_flush_jobs vcs_info
-  async_job vcs_info _vcs_info "$PWD"
-}
-
-add-zsh-hook precmd flush_vcs_info_job
-
-# https://gist.github.com/knadh/123bca5cfdae8645db750bfb49cb44b0#gistcomment-3556104
-start_command_execution_timer() {
-  command_start=$(($(print -P %D{%s%6.}) / 1000))
-}
-
-add-zsh-hook preexec start_command_execution_timer
-
-update_command_execution_timer() {
-  if [ $command_start ]
-  then
-    local now=$(($(print -P %D{%s%6.}) / 1000))
-    local d_ms=$(($now - $command_start))
-    local d_s=$((d_ms / 1000))
-    local ms=$((d_ms % 1000))
-    local s=$((d_s % 60))
-    local m=$(((d_s / 60) % 60))
-    local h=$((d_s / 3600))
-
-    if   ((h > 0)); then command_time=${h}h${m}m
-    elif ((m > 0)); then command_time=${m}m${s}s
-    elif ((s > 9)); then command_time=${s}.$(printf %03d $ms | cut -c1-2)s # 12.34s
-    elif ((s > 0)); then command_time=${s}.$(printf %03d $ms)s # 1.234s
-    else unset command_time
-    #else command_time=${ms}ms
-    fi
-
-    unset command_start
-  else
-    unset command_time
-  fi
-}
-
-add-zsh-hook precmd update_command_execution_timer
-
-() {
-  local path_part='%{${fg[blue]}%}%/%{${reset_color}%}'
-  local vcs_part='%{${fg[green]}%}${vcs_info_msg_0_}%{${reset_color}%}'
-  local command_time_part='$(if [ $command_time ]; then echo "%{${fg[yellow]}%}$command_time%{${reset_color}%}"; fi)'
-
-  user_host_part() {
-    if [ $UID = 0 ]
-    then
-      local user_color='%{${fg[red]}%}'
-    else
-      local user_color='%{${reset_color}%}'
-    fi
-
-    # https://unix.stackexchange.com/questions/9605/how-can-i-detect-if-the-shell-is-controlled-from-ssh
-    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]
-    then
-      local session_type=remote/ssh
-    else
-      case $(ps -o comm= -p $PPID) in
-        sshd|*/sshd) local session_type=remote/ssh
-        ;;
-      esac
-    fi
-
-    if [ "$session_type" = remote/ssh ]
-    then
-      echo "${user_color}%n%{${reset_color}%}@%m"
-    fi
-  }
-
-  prompt_part() {
-    if [ $UID = 0 ]
-    then
-      local prompt_color='%{${fg[red]}%}'
-    else
-      local prompt_color='%{${fg[blue]}%}'
-    fi
-    echo "${prompt_color}>%{${reset_color}%} "
-  }
-
-  local parts=(
-    "$( user_host_part )"
-    "$path_part"
-    '$( kube_ps1 )'
-    "$vcs_part"
-    "$command_time_part"
-  )
-  # Remove empty parts
-  parts=${parts:#}
-
-  PROMPT="
-${parts}
-$( prompt_part )"
-  PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
-  SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-}
-
-zstyle ':completion:*' use-cache true
-zstyle ':completion:*:default' menu select=1
 # }}}
 
 # Key {{{
@@ -393,6 +255,9 @@ fi
 
 # Dedup PATH
 path=($path)
+
+# Starship
+eval "$(starship init zsh)"
 
 # Finish profiling {{{
 if [ -n "$ZPROF" ]; then
