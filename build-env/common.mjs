@@ -1,3 +1,4 @@
+#!/usr/bin/env zx
 /// <reference types="zx/build/globals" />
 
 const root = path.join(__dirname, "..")
