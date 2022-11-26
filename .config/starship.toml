@@ -37,9 +37,9 @@ stashed = "≡"
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
+[kubernetes]
+disabled = false
+
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
-
-[kubernetes]
-disabled = false
