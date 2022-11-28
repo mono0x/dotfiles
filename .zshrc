@@ -175,18 +175,18 @@ trap "source ~/.zshrc" USR1
 alias source-zshrc-all="pkill -usr1 zsh"
 # }}}
 
-# Peco {{{
-if which peco &> /dev/null; then
-  peco-cd() {
-    local selected_dir=$(ghq list | peco --query "$LBUFFER")
+# fzf {{{
+if which fzf &> /dev/null; then
+  fzf-cd() {
+    local selected_dir=$(ghq list | fzf --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
       BUFFER="cd ${GOPATH}/src/${selected_dir}"
       zle accept-line
     fi
     zle redisplay
   }
-  zle -N peco-cd
-  bindkey '^s' peco-cd
+  zle -N fzf-cd
+  bindkey '^s' fzf-cd
 fi
 # }}}
 
