@@ -39,6 +39,7 @@ style = "bright-black"
 
 [kubernetes]
 disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
 
 [cmd_duration]
 format = "[$duration]($style) "
