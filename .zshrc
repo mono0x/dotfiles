@@ -240,13 +240,18 @@ fi
 # Load local zshrc
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# Dedup PATH
-path=($path)
-
 # Starship
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 fi
+
+# asdf-direnv
+ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+echo $ASDF_DIRENV_ZSHRC
+[ -f "$ASDF_DIRENV_ZSHRC" ] && source "$ASDF_DIRENV_ZSHRC"
+
+# Dedup PATH
+path=($path)
 
 # Finish profiling {{{
 if [ -n "$ZPROF" ]; then

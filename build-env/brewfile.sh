@@ -35,6 +35,7 @@ then
 fi
 
 brew install colordiff
+brew install direnv
 brew install editorconfig
 brew install fzf
 brew install ghq
