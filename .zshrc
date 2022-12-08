@@ -247,7 +247,6 @@ fi
 
 # asdf-direnv
 ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-echo $ASDF_DIRENV_ZSHRC
 [ -f "$ASDF_DIRENV_ZSHRC" ] && source "$ASDF_DIRENV_ZSHRC"
 
 # Dedup PATH
