@@ -33,8 +33,6 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 zinit ice wait"0" as"completion" lucid
 zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
-zinit light jonmosco/kube-ps1
-
 # https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2894219
 _zicompinit_custom() {
   setopt extendedglob local_options
@@ -122,17 +120,6 @@ linux*)
   alias uniq='LC_ALL=C uniq'
   ;;
 darwin*)
-  if which arch &> /dev/null; then
-    alias exec-x86_64='arch -arch x86_64 '
-    alias exec-arm64='arch -arch arm64 '
-
-    if [ -f /opt/homebrew/bin/brew ]
-    then
-      alias brew='arch -arch arm64 /opt/homebrew/bin/brew'
-      alias brew-x86_64='arch -arch x86_64 /usr/local/bin/brew'
-    fi
-  fi
-
   alias ls="ls -G"
 
   alias base64='gbase64'
@@ -158,7 +145,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -Al'
 
-if which hub &> /dev/null; then
+if (( $+commands[hub] )); then
   alias git='hub'
 fi
 alias g='git'
@@ -176,7 +163,7 @@ alias source-zshrc-all="pkill -usr1 zsh"
 # }}}
 
 # fzf {{{
-if which fzf &> /dev/null; then
+if (( $+commands[fzf] )); then
   fzf-cd() {
     local selected_dir=$(ghq list | fzf --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
@@ -257,7 +244,9 @@ fi
 path=($path)
 
 # Starship
-eval "$(starship init zsh)"
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+fi
 
 # Finish profiling {{{
 if [ -n "$ZPROF" ]; then

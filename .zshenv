@@ -24,13 +24,13 @@ darwin*)
   ;;
 esac
 
-source ~/src/github.com/mono0x/dotfiles/shell/homebrew.sh
-
 if [ ! -x "$EDITOR" ]; then
   export EDITOR=vim
 fi
 
 export DOTFILES_DIR=$(dirname $(readlink $HOME/.zshenv))
+
+source $DOTFILES_DIR/shell/homebrew.sh
 
 path=($HOME/google-cloud-sdk/bin(N-/) $HOME/.krew/bin(N-/) $path)
 path=($HOME/bin(N-/) $DOTFILES_DIR/bin(N-/) $path)
