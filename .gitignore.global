@@ -13,6 +13,7 @@
 #
 # Windows
 #
+
 # Windows image file caches
 Thumbs.db 
 
@@ -22,17 +23,3 @@ Desktop.ini
 #
 # General
 #
-# global
-GPATH
-GRTAGS
-GTAGS
-
-# trace-cmd
-trace.dat
-
-# prove
-.prove
-
-# Ansible
-*.retry
-.galaxy_install_info
