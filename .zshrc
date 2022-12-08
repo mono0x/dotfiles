@@ -209,9 +209,11 @@ quit() {
 export LESS='-R'
 # }}}
 
+# LS_COLORS {{{
 #eval 'dircolors'
 export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# }}}
 
 # {{{
 # https://1password.community/discussion/128023/ssh-agent-on-windows-subsystem-for-linux
@@ -240,14 +242,16 @@ fi
 # Load local zshrc
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# Starship
+# Starship {{{
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 fi
+# }}}
 
-# asdf-direnv
+# asdf-direnv {{{
 ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 [ -f "$ASDF_DIRENV_ZSHRC" ] && source "$ASDF_DIRENV_ZSHRC"
+# }}}
 
 # Dedup PATH
 path=($path)
