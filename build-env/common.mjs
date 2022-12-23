@@ -29,9 +29,10 @@ const rcs = [
 await Promise.all(
   rcs.map(rc => {
     $`ln -sfn ${path.join(root, rc)} ${path.join(os.homedir(), rc)}`
-  })
+  }),
+  $`ln -sfn ${path.join(root, ".gitignore.global")} ${path.join(os.homedir(), ".gitignore")}`,
+  $`ln -sfn ${path.join(root, ".yarnrc.global.yml")} ${path.join(os.homedir(), ".yarnrc.yml")}`,
 )
-await $`ln -sfn ${path.join(root, ".gitignore.global")} ${path.join(os.homedir(), ".gitignore")}`
 
 const gitconfig = {
   "Linux": ".gitconfig.linux",
