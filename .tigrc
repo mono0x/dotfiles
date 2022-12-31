@@ -27,3 +27,6 @@ bind generic G move-last-line
 # Open the selected commit in the browser
 bind main v !@hub browse -- commit/%(commit)
 bind diff v !@hub browse -- commit/%(commit)
+
+# Revert
+bind main ! ?git revert %(commit)
