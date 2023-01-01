@@ -14,5 +14,5 @@ rcs='
 for rc in $rcs; do
   ln -sfn "$dotfiles_root/$rc" "$HOME/$rc"
 done
-ln -sfn "$dotfiles_root/.gitignore.global" "$HOME/.gitignore"
-ln -sfn "$dotfiles_root/.gitconfig.linux" "$HOME/.gitconfig.platform"
+ln -sfn "$dotfiles_root/conf/.gitignore.global" "$HOME/.gitignore"
+ln -sfn "$dotfiles_root/conf/.gitconfig.linux" "$HOME/.gitconfig.platform"

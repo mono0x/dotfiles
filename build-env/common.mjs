@@ -2,6 +2,7 @@
 /// <reference types="zx/build/globals" />
 
 const root = path.join(__dirname, "..")
+const conf = path.join(root, "conf")
 
 await fs.mkdirp(path.join(os.homedir(), "bin"))
 await fs.mkdirp(path.join(os.homedir(), ".config"))
@@ -27,10 +28,10 @@ const rcs = [
 
 await Promise.all(
   rcs.map(rc => {
-    $`ln -sfn ${path.join(root, rc)} ${path.join(os.homedir(), rc)}`
+    $`ln -sfn ${path.join(conf, rc)} ${path.join(os.homedir(), rc)}`
   }),
-  $`ln -sfn ${path.join(root, ".gitignore.global")} ${path.join(os.homedir(), ".gitignore")}`,
-  $`ln -sfn ${path.join(root, ".yarnrc.global.yml")} ${path.join(os.homedir(), ".yarnrc.yml")}`,
+  $`ln -sfn ${path.join(conf, ".gitignore.global")} ${path.join(os.homedir(), ".gitignore")}`,
+  $`ln -sfn ${path.join(conf, ".yarnrc.global.yml")} ${path.join(os.homedir(), ".yarnrc.yml")}`,
 )
 
 const gitconfig = {
@@ -38,7 +39,7 @@ const gitconfig = {
   "Darwin": ".gitconfig.macos",
 }[os.type()]
 if (gitconfig) {
-  await $`ln -sfn ${path.join(root, gitconfig)} ${path.join(os.homedir(), ".gitconfig.platform")}`
+  await $`ln -sfn ${path.join(conf, gitconfig)} ${path.join(os.homedir(), ".gitconfig.platform")}`
 }
 
 for (const prefix of ["/home/linuxbrew/.linuxbrew", "/opt/homebrew", "/usr/local"]) {
@@ -49,7 +50,7 @@ for (const prefix of ["/home/linuxbrew/.linuxbrew", "/opt/homebrew", "/usr/local
   }
 }
 
-await $`ln -sfn ${path.join(root, "nvim")} ${path.join(os.homedir(), ".config/nvim")}`
+await $`ln -sfn ${path.join(conf, "nvim")} ${path.join(os.homedir(), ".config/nvim")}`
 
 if (!await fs.pathExists(path.join(os.homedir(), ".asdf"))) {
   await $`git clone https://github.com/asdf-vm/asdf.git ${path.join(os.homedir(), ".asdf")} --branch v0.8.0`

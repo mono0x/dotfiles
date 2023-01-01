@@ -28,7 +28,7 @@ if [ ! -x "$EDITOR" ]; then
   export EDITOR=vim
 fi
 
-export DOTFILES_DIR=$(dirname $(readlink $HOME/.zshenv))
+export DOTFILES_DIR=$(cd $(dirname $(readlink $HOME/.zshenv))/..; pwd)
 
 source $DOTFILES_DIR/shell/homebrew.sh
 
