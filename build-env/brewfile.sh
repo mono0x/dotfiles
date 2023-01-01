@@ -3,7 +3,7 @@
 set -eu
 
 dotfiles_root="$(cd "$(dirname "$0")/.."; pwd)"
-source "$dotfiles_root/shell/homebrew.sh"
+source "$dotfiles_root/bin/homebrew.sh"
 
 brew update
 brew upgrade
