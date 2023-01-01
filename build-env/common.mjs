@@ -18,7 +18,6 @@ const rcs = [
   ".gitconfig",
   ".ideavimrc",
   ".npmrc",
-  ".peco",
   ".source-highlight",
   ".tigrc",
   ".tmux.conf",
