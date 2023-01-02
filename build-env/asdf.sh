@@ -1,6 +1,4 @@
 #!/bin/sh
-set -eu
-
 asdf plugin-add direnv
 asdf plugin-add golang
 asdf plugin-add kubectl

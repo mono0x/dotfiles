@@ -17,6 +17,13 @@ then
   git clone https://github.com/mono0x/dotfiles "$dotfiles_dir"
 fi
 
+# apt
+case "$(uname)" in
+Linux)
+  sh "$dotfiles_dir/build-env/linux/apt.sh"
+  ;;
+esac
+
 # Homebrew
 if ! (command -v brew 2>&1 > /dev/null)
 then
