@@ -2,8 +2,8 @@
 
 cd(path.join(__dirname, ".."))
 
-await $`npx zx ./build-env/common.mjs`
+await $`./build-env/bootstrap.sh`
 // Run the script twice to test idempotency
-await $`npx zx ./build-env/common.mjs`
+await $`./build-env/bootstrap.sh`
 
 await $`zsh -i -c exit`
