@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-if ! command -v git 2>&1 > /dev/null
+if ! (command -v git 2>&1 > /dev/null)
 then
   echo "git not found." >&2
   return 1
@@ -18,15 +18,12 @@ then
 fi
 
 # Homebrew
-if ! command -v brew 2>&1 > /dev/null
+if ! (command -v brew 2>&1 > /dev/null)
 then
   echo "Installing Homebrew..." >&2
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  . "$dotfiles_dir/bin/homebrew.sh"
 fi
 
-brew install zx
-
-sh "$dotfiles_dir/build-env/asdf.sh"
+zsh -c "brew bundle"
 zx "$dotfiles_dir/build-env/common.mjs"
-sh "$dotfiles_dir/build-env/brewfile.sh"
+zsh -c "sh $dotfiles_dir/build-env/asdf.sh"
