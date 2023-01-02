@@ -24,6 +24,8 @@ then
   . "$dotfiles_dir/bin/homebrew.sh"
 fi
 
+env
+
 brew install zx
 
 sh "$dotfiles_dir/build-env/asdf.sh"
