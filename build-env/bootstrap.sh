@@ -9,10 +9,10 @@ fi
 
 dotfiles_parent="$HOME/src/github.com/mono0x"
 dotfiles_dir="$dotfiles_parent/dotfiles"
-echo $dotfiles_dir
 
 if [ ! -d "$dotfiles_dir" ]
 then
+  echo "Cloning the repository..." >&2
   mkdir -p "$dotfiles_parent"
   git clone https://github.com/mono0x/dotfiles "$dotfiles_dir"
 fi
@@ -20,6 +20,7 @@ fi
 # Homebrew
 if [ ! -f /opt/homebrew/bin/brew ] && [ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]
 then
+  echo "Installing Homebrew..." >&2
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   . "$dotfiles_dir/bin/homebrew.sh"
 fi
