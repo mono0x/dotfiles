@@ -14,8 +14,4 @@ start ms-settings:developers
 
 # Winget
 irm https://raw.githubusercontent.com/mono0x/dotfiles/main/build-env/windows/winget.ps1 | iex
-
-# Scoop
-irm get.scoop.sh | iex
-irm https://raw.githubusercontent.com/mono0x/dotfiles/main/build-env/windows/scoop.ps1 | iex
 ```

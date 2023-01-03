@@ -1,0 +1,74 @@
+{
+    "apps": [
+        {
+            "Source": "main",
+            "Name": "aria2"
+        },
+        {
+            "Source": "main",
+            "Name": "exiftool"
+        },
+        {
+            "Source": "main",
+            "Name": "ffmpeg"
+        },
+        {
+            "Source": "main",
+            "Name": "git"
+        },
+        {
+            "Source": "main",
+            "Name": "jq"
+        },
+        {
+            "Source": "main",
+            "Name": "less"
+        },
+        {
+            "Source": "main",
+            "Name": "neovim"
+        },
+        {
+            "Source": "main",
+            "Name": "netcat"
+        },
+        {
+            "Source": "main",
+            "Name": "nodejs-lts"
+        },
+        {
+            "Source": "extras",
+            "Name": "npiperelay"
+        },
+        {
+            "Source": "main",
+            "Name": "python"
+        },
+        {
+            "Source": "main",
+            "Name": "ripgrep"
+        },
+        {
+            "Source": "main",
+            "Name": "starship"
+        },
+        {
+            "Source": "main",
+            "Name": "sudo"
+        },
+        {
+            "Source": "main",
+            "Name": "uutils-coreutils"
+        }
+    ],
+    "buckets": [
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras"
+        },
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main"
+        }
+    ]
+}
