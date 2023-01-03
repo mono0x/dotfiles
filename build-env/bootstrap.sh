@@ -16,11 +16,12 @@ then
   mkdir -p "$dotfiles_parent"
   git clone https://github.com/mono0x/dotfiles "$dotfiles_dir"
 fi
+cd "$dotfiles_dir"
 
 # apt
 case "$(uname)" in
 Linux)
-  sh "$dotfiles_dir/build-env/linux/apt.sh"
+  sh "./build-env/linux/apt.sh"
   ;;
 esac
 
@@ -31,6 +32,6 @@ then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-zsh -c "brew bundle"
-zx "$dotfiles_dir/build-env/common.mjs"
-zsh -c "sh $dotfiles_dir/build-env/asdf.sh"
+zsh -c "source ./bin/homebrew.sh && brew bundle"
+zx "./build-env/common.mjs"
+zsh -c "sh ./build-env/asdf.sh"
