@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-if ! (command -v git 2>&1 > /dev/null)
+if ! (command -v git > /dev/null 2>&1)
 then
   echo "git not found." >&2
   return 1
@@ -26,7 +26,7 @@ Linux)
 esac
 
 # Homebrew
-if ! (command -v brew 2>&1 > /dev/null)
+if ! (command -v brew > /dev/null 2>&1)
 then
   echo "Installing Homebrew..." >&2
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
