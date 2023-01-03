@@ -5,16 +5,19 @@ if ($PSVersionTable["PSEdition"] -ne "Core") {
 
 # https://stackoverflow.com/questions/9738535/powershell-test-for-noninteractive-mode
 function IsInteractive {
-  # not including `-NonInteractive` since it apparently does nothing
-  # "Does not present an interactive prompt to the user" - no, it does present!
-  $non_interactive = '-command', '-c', '-encodedcommand', '-e', '-ec', '-file', '-f'
+    # Test each Arg for match of abbreviated '-NonInteractive' command.
+    $NonInteractive = [Environment]::GetCommandLineArgs() | Where-Object{ $_ -like '-NonI*' }
 
-  # alternatively `$non_interactive [-contains|-eq] $PSItem`
-  -not ([Environment]::GetCommandLineArgs() | Where-Object -FilterScript {$PSItem -in $non_interactive})
+    if ([Environment]::UserInteractive -and -not $NonInteractive) {
+        # We are in an interactive shell.
+        return $true
+    }
+
+    return $false
 }
 
 if (-not (IsInteractive)) {
-  return
+    return
 }
 
 Set-PSReadLineOption `
