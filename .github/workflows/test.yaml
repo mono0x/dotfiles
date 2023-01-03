@@ -55,7 +55,7 @@ jobs:
         with:
           fetch-depth: 1
       # https://github.com/ScoopInstaller/Install#for-admin
-      - run: "& {$(irm get.scoop.sh)} -RunAsAdmin"
+      - run: iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
       - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
       # Run script twice to test idempotency
       - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
