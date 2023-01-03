@@ -1,6 +1,4 @@
 #!/bin/sh
-set -eu
-
 if [ -n "${HOMEBREW_PREFIX+x}" ]
 then
   return
