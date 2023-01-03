@@ -54,9 +54,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1
-      - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
+      - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
       # Run script twice to test idempotency
-      - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/windows/link.ps1
+      - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
 
   test-static:
     runs-on: ubuntu-latest
