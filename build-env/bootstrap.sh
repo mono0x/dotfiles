@@ -18,21 +18,23 @@ then
 fi
 cd "$dotfiles_dir"
 
-if [ ! -n "$SKIP_PACKAGE_INSTALLATION" ]; then
-  # apt
-  case "$(uname)" in
-  Linux)
-    sh "./build-env/linux/apt.sh"
-    ;;
-  esac
+# apt
+case "$(uname)" in
+Linux)
+  sh "./build-env/linux/apt.sh"
+  ;;
+esac
 
-  # Homebrew
-  if ! (command -v brew > /dev/null 2>&1)
-  then
-    echo "Installing Homebrew..." >&2
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  fi
+# Homebrew
+if ! (command -v brew > /dev/null 2>&1)
+then
+  echo "Installing Homebrew..." >&2
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+if [ ! -n "$SKIP_PACKAGE_INSTALLATION" ]; then
   zsh -c "source ./bin/homebrew.sh && brew bundle"
 fi
 
-zx "./build-env/setup.mjs"
+# Run setup.mjs using a new zsh process
+exec zsh -c "zx ./build-env/setup.mjs"
