@@ -33,10 +33,6 @@
             "Name": "netcat"
         },
         {
-            "Source": "main",
-            "Name": "nodejs-lts"
-        },
-        {
             "Source": "extras",
             "Name": "npiperelay"
         },
