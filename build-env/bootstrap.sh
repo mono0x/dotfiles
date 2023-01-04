@@ -36,5 +36,6 @@ if [ -z "$SKIP_PACKAGE_INSTALLATION" ]; then
   zsh -c "source ./bin/homebrew.sh && brew bundle"
 fi
 
-# Run setup.mjs using a new zsh process
-exec zsh -c "zx ./build-env/setup.mjs"
+zx ./build-env/setup.mjs
+# Run setup-asdf.mjs using a new zsh process to reflect .zshenv
+zsh -c "zx ./build-env/setup-asdf.mjs"
