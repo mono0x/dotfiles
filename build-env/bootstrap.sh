@@ -32,7 +32,7 @@ then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-if [ ! -n "$SKIP_PACKAGE_INSTALLATION" ]; then
+if [ -z "$SKIP_PACKAGE_INSTALLATION" ]; then
   zsh -c "source ./bin/homebrew.sh && brew bundle"
 fi
 
