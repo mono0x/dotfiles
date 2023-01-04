@@ -56,11 +56,6 @@ if (!await fs.pathExists(path.join(os.homedir(), ".asdf"))) {
   await $`git clone https://github.com/asdf-vm/asdf.git ${path.join(os.homedir(), ".asdf")} --branch v0.8.0`
 }
 
-if (!await fs.pathExists(path.join(os.homedir(), ".zinit"))) {
-  await fs.mkdirp(path.join(os.homedir(), ".zinit"))
-  await $`git clone https://github.com/zdharma-continuum/zinit.git ${path.join(os.homedir(), ".zinit/bin")}`
-}
-
 [
   "direnv",
   "golang",
@@ -69,5 +64,11 @@ if (!await fs.pathExists(path.join(os.homedir(), ".zinit"))) {
   "ruby",
   "rust",
 ].forEach(async plugin => {
-  await $`asdf plugin-add ${plugin}`
+  await $`${path.join(os.homedir(), ".asdf/bin/asdf")} plugin-add ${plugin}`
 })
+
+
+if (!await fs.pathExists(path.join(os.homedir(), ".zinit"))) {
+  await fs.mkdirp(path.join(os.homedir(), ".zinit"))
+  await $`git clone https://github.com/zdharma-continuum/zinit.git ${path.join(os.homedir(), ".zinit/bin")}`
+}
