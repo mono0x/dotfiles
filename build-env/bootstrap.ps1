@@ -11,7 +11,8 @@ $dotfiles_dir = Join-Path $env:USERPROFILE dotfiles
 if (-not (Test-Path $dotfiles_dir)) {
   git clone https://github.com/mono0x/dotfiles $dotfiles_dir
 }
+Set-Location $dotfiles_dir
 
-winget import (Join-Path $dotfiles_dir winget.json)
+winget import winget.json
 
-& (Join-Path $dotfiles_dir build-env\windows\link.ps1)
+& .\build-env\setup.ps1

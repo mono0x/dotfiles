@@ -60,3 +60,14 @@ if (!await fs.pathExists(path.join(os.homedir(), ".zinit"))) {
   await fs.mkdirp(path.join(os.homedir(), ".zinit"))
   await $`git clone https://github.com/zdharma-continuum/zinit.git ${path.join(os.homedir(), ".zinit/bin")}`
 }
+
+[
+  "direnv",
+  "golang",
+  "kubectl",
+  "nodejs",
+  "ruby",
+  "rust",
+].forEach(async plugin => {
+  await $`asdf plugin-add ${plugin}`
+})

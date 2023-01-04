@@ -33,5 +33,5 @@ then
 fi
 
 zsh -c "source ./bin/homebrew.sh && brew bundle"
-zx "./build-env/common.mjs"
+zx "./build-env/setup.mjs"
 zsh -c "sh ./build-env/asdf.sh"

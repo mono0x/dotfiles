@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$root = (Get-Item $PSScriptRoot).parent.parent.FullName
+$root = (Get-Item $PSScriptRoot).parent.FullName
 $conf = Join-Path ${root} conf
 
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .gitconfig) -Target (Join-Path ${conf} .gitconfig -Resolve)
