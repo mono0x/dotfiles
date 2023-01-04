@@ -1,11 +1,13 @@
 $ErrorActionPreference = "Stop"
 
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
-  Invoke-RestMethod get.scoop.sh | Invoke-Expression
-}
+if ($env:SKIP_PACKAGE_INSTALLATION -ne $true) {
+  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+  if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+    Invoke-RestMethod get.scoop.sh | Invoke-Expression
+  }
 
-scoop install git
+  scoop install git
+}
 
 $dotfiles_dir = Join-Path $env:USERPROFILE dotfiles
 if (-not (Test-Path $dotfiles_dir)) {
