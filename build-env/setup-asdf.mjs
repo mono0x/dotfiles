@@ -15,5 +15,5 @@ const plugins = [
 plugins
   .filter(plugin => !installed.includes(plugin))
   .forEach(async plugin => {
-    await $`asdf current ${plugin} || asdf plugin add ${plugin}`
+    await $`asdf plugin add ${plugin}`
   })
