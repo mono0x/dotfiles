@@ -53,7 +53,7 @@ for (const prefix of ["/home/linuxbrew/.linuxbrew", "/opt/homebrew", "/usr/local
 await $`ln -sfn ${path.join(conf, "nvim")} ${path.join(os.homedir(), ".config/nvim")}`
 
 if (!await fs.pathExists(path.join(os.homedir(), ".asdf"))) {
-  await $`git clone https://github.com/asdf-vm/asdf.git ${path.join(os.homedir(), ".asdf")} --branch v0.8.0`
+  await $`git clone https://github.com/asdf-vm/asdf.git ${path.join(os.homedir(), ".asdf")} --branch v0.11.0`
 }
 
 if (!await fs.pathExists(path.join(os.homedir(), ".zinit"))) {
