@@ -5,7 +5,7 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
   Invoke-RestMethod get.scoop.sh | Invoke-Expression
 }
 
-scoop import https://raw.githubusercontent.com/mono0x/dotfiles/main/scoopfile.json
+scoop install git
 
 $dotfiles_dir = Join-Path $env:USERPROFILE dotfiles
 if (-not (Test-Path $dotfiles_dir)) {
@@ -13,6 +13,9 @@ if (-not (Test-Path $dotfiles_dir)) {
 }
 Set-Location $dotfiles_dir
 
-winget import winget.json
+if ($env:SKIP_PACKAGE_INSTALLATION -ne $true) {
+  scoop import https://raw.githubusercontent.com/mono0x/dotfiles/main/scoopfile.json
+  winget import winget.json
+}
 
 & .\build-env\setup.ps1

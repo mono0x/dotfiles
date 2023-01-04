@@ -18,6 +18,8 @@ jobs:
 
   test-linux:
     runs-on: ubuntu-latest
+    env:
+      SKIP_PACKAGE_INSTALLATION: 1
     steps:
       - uses: actions/checkout@v3
         with:
@@ -34,6 +36,8 @@ jobs:
 
   test-macos:
     runs-on: macos-latest
+    env:
+      SKIP_PACKAGE_INSTALLATION: 1
     steps:
       - uses: actions/checkout@v3
         with:
@@ -50,6 +54,8 @@ jobs:
 
   test-windows:
     runs-on: windows-latest
+    env:
+      SKIP_PACKAGE_INSTALLATION: 1
     steps:
       - uses: actions/checkout@v3
         with:
