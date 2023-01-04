@@ -23,8 +23,6 @@ const plugins = [
   "rust",
 ]
 
-plugins
-  .filter(plugin => !installed.includes(plugin))
-  .forEach(async plugin => {
-    await $`asdf plugin add ${plugin}`
-  })
+for (const plugin of plugins.filter(plugin => !installed.includes(plugin))) {
+  await $`asdf plugin add ${plugin}`
+}
