@@ -6,6 +6,7 @@ const installed = await (async () => {
     return (await $`asdf plugin list`).stdout.split("\n")
   } catch (e) {
     if (e.exitCode === 1) {
+      // No plugins installed
       return []
     } else {
       throw e
