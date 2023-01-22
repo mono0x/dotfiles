@@ -2,7 +2,7 @@
 set -eu
 
 SUDO=''
-if [ $(id -u) -ne 0 ]
+if [ "$(id -u)" -ne 0 ]
 then
   SUDO='sudo'
 fi
