@@ -4,15 +4,12 @@ import $ from "https://deno.land/x/dax@0.24.1/mod.ts"
 $.setPrintCommand(true)
 
 const installed = await (async () => {
-  try {
-    return (await $`asdf plugin list`.stdout("piped")).stdout.split("\n")
-  } catch (e) {
-    if (e.exitCode === 1) {
-      // No plugins installed
-      return []
-    } else {
-      throw e
-    }
+  const result = await $`asdf plugin list`.stdout("piped").noThrow()
+  if (result.code == 0) {
+    return result.stdout.split("\n")
+  } else {
+    // No plugins installed
+    return []
   }
 })()
 
