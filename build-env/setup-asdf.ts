@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --allow-env --allow-read --allow-write --allow-run
+#!/usr/bin/env -S deno run --allow-env --allow-read --allow-write --allow-run --allow-net
 import $ from "https://deno.land/x/dax@0.24.1/mod.ts"
 
 $.setPrintCommand(true)
