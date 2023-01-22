@@ -34,13 +34,11 @@ const rcs = [
   ".zshrc",
 ]
 
-await Promise.all([
-  rcs.map(rc => {
-    $`ln -sfn ${path.join(conf, rc)} ${path.join(homedir, rc)}`
-  }),
-  $`ln -sfn ${path.join(conf, ".gitignore.global")} ${path.join(homedir, ".gitignore")}`,
-  $`ln -sfn ${path.join(conf, ".yarnrc.global.yml")} ${path.join(homedir, ".yarnrc.yml")}`,
-])
+for (const rc of rcs) {
+  await $`ln -sfn ${path.join(conf, rc)} ${path.join(homedir, rc)}`
+}
+await $`ln -sfn ${path.join(conf, ".gitignore.global")} ${path.join(homedir, ".gitignore")}`
+await $`ln -sfn ${path.join(conf, ".yarnrc.global.yml")} ${path.join(homedir, ".yarnrc.yml")}`
 
 const gitconfigs = {
   linux: ".gitconfig.linux",
