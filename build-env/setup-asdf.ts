@@ -1,6 +1,8 @@
 #!/usr/bin/env -S deno run --allow-env --allow-read --allow-run
 import $ from "https://deno.land/x/dax@0.24.1/mod.ts"
 
+$.setPrintCommand(true)
+
 const installed = await (async () => {
   try {
     return (await $`asdf plugin list`.stdout("piped")).stdout.split("\n")

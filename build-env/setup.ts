@@ -3,6 +3,8 @@ import $ from "https://deno.land/x/dax@0.24.1/mod.ts"
 import * as fs from "https://deno.land/std@0.173.0/fs/mod.ts"
 import * as path from "https://deno.land/std@0.173.0/path/mod.ts"
 
+$.setPrintCommand(true)
+
 const homedir = (Deno.env.get("HOME") ?? Deno.env.get("USERPROFILE") ?? Deno.env.get("HOMEPATH"))
 if (!homedir) {
   throw new Error("HOME is not set")
