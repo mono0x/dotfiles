@@ -1,7 +1,0 @@
-{
-  "private": true,
-  "devDependencies": {
-    "zx": "^7.0.8"
-  },
-  "packageManager": "yarn@3.3.1"
-}

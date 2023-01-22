@@ -2,90 +2,90 @@ name: test
 on:
   push:
     branches:
-      - "*"
+    - "*"
 
 jobs:
   test-devcontainer:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: ./.nvmrc
-      - run: npx zx ./test/devcontainer.mjs
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - uses: actions/setup-deno@v1
+      with:
+        deno-version: v1.x
+    - run: deno run -A ./test/devcontainer.ts
 
   test-linux:
     runs-on: ubuntu-latest
     env:
       SKIP_PACKAGE_INSTALLATION: 1
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: ./.nvmrc
-      - run: |
-          sudo apt install -y zsh
-          sudo curl -fsSL https://goss.rocks/install | sh
-      - run: |
-          npx zx ./test/unix.mjs
-          goss --gossfile test/goss/unix.yaml validate --format documentation
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - uses: actions/setup-deno@v1
+      with:
+        deno-version: v1.x
+    - run: |
+        sudo apt install -y zsh
+        sudo curl -fsSL https://goss.rocks/install | sh
+    - run: |
+        deno run -A ./test/unix.ts
+        goss --gossfile test/goss/unix.yaml validate --format documentation
 
   test-macos:
     runs-on: macos-latest
     env:
       SKIP_PACKAGE_INSTALLATION: 1
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: ./.nvmrc
-      - run: |
-          sudo curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-alpha-darwin-amd64 -o /usr/local/bin/goss
-          sudo chmod +rx /usr/local/bin/goss
-      - run: |
-          npx zx ./test/unix.mjs
-          GOSS_USE_ALPHA=1 goss --gossfile test/goss/unix.yaml validate --format documentation
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - uses: actions/setup-deno@v1
+      with:
+        deno-version: v1.x
+    - run: |
+        sudo curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-alpha-darwin-amd64 -o /usr/local/bin/goss
+        sudo chmod +rx /usr/local/bin/goss
+    - run: |
+        deno run -A ./test/unix.ts
+        GOSS_USE_ALPHA=1 goss --gossfile test/goss/unix.yaml validate --format documentation
 
   test-windows:
     runs-on: windows-latest
     env:
       SKIP_PACKAGE_INSTALLATION: 1
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
-      # Run script twice to test idempotency
-      - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
+    # Run script twice to test idempotency
+    - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
 
   test-static:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: ./.nvmrc
-      - run: sudo apt install -y zsh
-      - run: npx zx ./test/static.mjs
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - uses: actions/setup-deno@v1
+      with:
+        deno-version: v1.x
+    - run: sudo apt install -y zsh
+    - run: deno run -A ./test/static.ts
 
   actionlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      - name: Download actionlint
-        id: get_actionlint
-        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
-        shell: bash
-      - name: Check workflow files
-        run: ${{ steps.get_actionlint.outputs.executable }} -color
-        shell: bash
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - name: Download actionlint
+      id: get_actionlint
+      run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+      shell: bash
+    - name: Check workflow files
+      run: ${{ steps.get_actionlint.outputs.executable }} -color
+      shell: bash
