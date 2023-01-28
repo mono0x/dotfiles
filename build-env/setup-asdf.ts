@@ -14,6 +14,7 @@ const installed = await (async () => {
 })()
 
 const plugins = [
+  "deno",
   "direnv",
   "golang",
   "kubectl",
