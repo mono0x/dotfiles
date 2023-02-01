@@ -2,6 +2,10 @@
     "apps": [
         {
             "Source": "main",
+            "Name": "1password-cli"
+        },
+        {
+            "Source": "main",
             "Name": "aria2"
         },
         {
