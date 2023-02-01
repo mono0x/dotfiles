@@ -1,3 +1,4 @@
+tap "1password/tap"
 tap "homebrew/bundle"
 tap "homebrew/core"
 
@@ -40,4 +41,6 @@ if OS.mac?
   brew "rsync"
   brew "unzip"
   brew "wget"
+
+  cask "1password-cli"
 end
