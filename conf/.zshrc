@@ -161,10 +161,6 @@ if [ -n "${WSL_DISTRO_NAME:-}" ]
 then
   alias op='op.exe'
 fi
-
-# http://www.reddit.com/r/commandline/comments/12g76v/how_to_automatically_source_zshrc_in_all_open/
-trap "source ~/.zshrc" USR1
-alias source-zshrc-all="pkill -usr1 zsh"
 # }}}
 
 # fzf {{{
