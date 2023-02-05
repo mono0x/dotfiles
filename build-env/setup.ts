@@ -32,6 +32,7 @@ const rcs = [
   ".source-highlight",
   ".tigrc",
   ".tmux.conf",
+  ".wezterm.lua",
   ".zshenv",
   ".zshrc",
 ]
