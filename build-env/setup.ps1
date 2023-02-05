@@ -14,5 +14,7 @@ Write-Output ". `"${userProfile}`"" > $PROFILE.CurrentUserCurrentHost
 
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Env:LOCALAPPDATA} nvim) -Target (Join-Path ${conf} nvim -Resolve)
 
+New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .wezterm.lua) -Target (Join-Path ${conf} .wezterm.lua -Resolve)
+
 New-Item -ItemType Directory -Force -Path (Join-Path ${Home} .config)
 New-Item -ItemType SymbolicLink -Force -Path (Join-Path ${Home} .config starship.toml) -Target (Join-Path ${conf} .config starship.toml -Resolve)
