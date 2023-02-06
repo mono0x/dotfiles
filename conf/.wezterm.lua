@@ -5,8 +5,6 @@ local config = {
   font = wezterm.font('HackGen Console NF'),
   initial_cols = 120,
   initial_rows = 40,
-  default_prog = default_prog,
-  launch_menu = launch_menu,
 }
 
 if wezterm.target_triple:find('windows') then
