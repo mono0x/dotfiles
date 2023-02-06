@@ -34,3 +34,8 @@ keymap Global
 
   key S-A-LeftSquareBracket = C-S-Tab
   key S-A-RightSquareBracket = C-Tab
+
+window WezTerm /wezterm-gui.exe/ : Global
+  key C-D = &Default
+  key C-S-D = &Default
+  key C-H = &Default
