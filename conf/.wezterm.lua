@@ -1,8 +1,7 @@
 local wezterm = require 'wezterm'
 
 local config = {
-  -- color_scheme = "Solar Flare Light (base16)",
-  color_scheme = "Solarized (light) (terminal.sexy)",
+  color_scheme = "Builtin Solarized Light",
   font = wezterm.font('HackGen Console NF'),
   initial_cols = 120,
   initial_rows = 40,
