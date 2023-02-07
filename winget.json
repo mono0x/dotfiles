@@ -20,6 +20,9 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier": "wez.wezterm"
 				}
 			],
 			"SourceDetails" : 
