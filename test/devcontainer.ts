@@ -1,10 +1,10 @@
-import $ from "https://deno.land/x/dax@0.24.1/mod.ts"
-import * as path from "https://deno.land/std@0.173.0/path/mod.ts"
+import $ from "https://deno.land/x/dax@0.24.1/mod.ts";
+import * as path from "https://deno.land/std@0.173.0/path/mod.ts";
 
-$.setPrintCommand(true)
+$.setPrintCommand(true);
 
-const __dirname = path.dirname(path.fromFileUrl(import.meta.url))
+const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
 
-$.cd(path.join(__dirname, ".."))
+$.cd(path.join(__dirname, ".."));
 
-await $`./build-env/devcontainer.sh`
+await $`./build-env/devcontainer.sh`;
