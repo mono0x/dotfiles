@@ -13,3 +13,5 @@ for await (const entry of fs.expandGlob("{bin,build-env}/**/*.sh")) {
   await $`shellcheck ${entry.path}`;
 }
 await $`zsh -n conf/.zshenv conf/.zshrc`;
+
+await $`deno lint`;
