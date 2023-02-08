@@ -66,10 +66,10 @@ function ll { uutils ls -l $args }
 
 # Deno
 if (Get-Command deno -ErrorAction SilentlyContinue) {
-  Invoke-Expression (&deno completions powershell)
+  deno completions powershell | Out-String | Invoke-Expression
 }
 
 # Starship
 if (Get-Command starship -ErrorAction SilentlyContinue) {
-  Invoke-Expression (&starship init powershell)
+  starship init powershell | Out-String | Invoke-Expression
 }
