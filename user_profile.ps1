@@ -64,5 +64,12 @@ function gs() { git status $args }
 Set-Alias grep rg
 function ll { uutils ls -l $args }
 
+# Deno
+if (Get-Command deno -ErrorAction SilentlyContinue) {
+  Invoke-Expression (&deno completions powershell)
+}
+
 # Starship
-Invoke-Expression (&starship init powershell)
+if (Get-Command starship -ErrorAction SilentlyContinue) {
+  Invoke-Expression (&starship init powershell)
+}
