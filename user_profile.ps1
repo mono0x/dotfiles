@@ -1,31 +1,31 @@
 if ($PSVersionTable["PSEdition"] -ne "Core") {
-    Write-Warning "This script requires PowerShell Core."
-    return
+  Write-Warning "This script requires PowerShell Core."
+  return
 }
 
 # https://stackoverflow.com/questions/9738535/powershell-test-for-noninteractive-mode
 function IsInteractive {
-    # Test each Arg for match of abbreviated '-NonInteractive' command.
-    $NonInteractive = [Environment]::GetCommandLineArgs() | Where-Object{ $_ -like '-NonI*' }
+  # Test each Arg for match of abbreviated '-NonInteractive' command.
+  $NonInteractive = [Environment]::GetCommandLineArgs() | Where-Object { $_ -like '-NonI*' }
 
-    if ([Environment]::UserInteractive -and -not $NonInteractive) {
-        # We are in an interactive shell.
-        return $true
-    }
+  if ([Environment]::UserInteractive -and -not $NonInteractive) {
+    # We are in an interactive shell.
+    return $true
+  }
 
-    return $false
+  return $false
 }
 
 if (-not (IsInteractive)) {
-    return
+  return
 }
 
 Set-PSReadLineOption `
-    -BellStyle None `
-    -EditMode Emacs `
-    -HistoryNoDuplicates `
-    -PredictionSource None `
-    -ShowToolTips
+  -BellStyle None `
+  -EditMode Emacs `
+  -HistoryNoDuplicates `
+  -PredictionSource None `
+  -ShowToolTips
 
 Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
@@ -34,7 +34,7 @@ Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 # Remove default aliases to use coreutils-uutils
 # https://secondlife.hatenablog.jp/entry/2020/08/17/070735
 Remove-Alias -ErrorAction SilentlyContinue -Name (
-@"
+  @"
     [, arch, b2sum, b3sum, base32, base64, basename, basenc, cat, cksum, comm, cp, csplit, cut,
     date, dd, df, dircolors, dirname, du, echo, env, expand, expr, factor, false, fmt, fold,
     hashsum, head, hostname, join, link, ln, ls, md5sum, mkdir, mktemp, more, mv, nl, nproc,
@@ -44,13 +44,13 @@ Remove-Alias -ErrorAction SilentlyContinue -Name (
     sum, sync, tac, tail, tee, test, touch, tr, true, truncate, tsort, unexpand, uniq, unlink,
     wc, whoami, yes
 "@ -split ',' |
-ForEach-Object { $_.trim() } |
-Where-Object { ! @('tee', 'sort', 'sleep').Contains($_) }
+  ForEach-Object { $_.trim() } |
+  Where-Object { ! @('tee', 'sort', 'sleep').Contains($_) }
 )
 
 # https://tex2e.github.io/blog/powershell/which
 function which($cmd) {
-    Get-Command $cmd -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
+  Get-Command $cmd -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
 }
 
 Set-Alias g git
