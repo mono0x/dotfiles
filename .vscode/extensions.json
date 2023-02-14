@@ -3,6 +3,6 @@
     "denoland.vscode-deno",
     "editorconfig.editorconfig",
     "ms-vscode.powershell",
-    "tamasfe.even-better-toml",
+    "tamasfe.even-better-toml"
   ]
 }
