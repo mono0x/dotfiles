@@ -1,5 +1,6 @@
 {
   "deno.enable": true,
+  "deno.importMap": "deno.json",
   "deno.lint": true,
   "[typescript]": {
     "editor.formatOnSave": true,

@@ -1,4 +1,4 @@
-import $ from "https://deno.land/x/dax@0.24.1/mod.ts";
+import $ from "https://deno.land/x/dax/mod.ts";
 
 $.setPrintCommand(true);
 
