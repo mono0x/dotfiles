@@ -1,6 +1,21 @@
 #!/usr/bin/env -S deno run --allow-env --allow-read --allow-write --allow-run --allow-net
 import $ from "https://deno.land/x/dax/mod.ts";
 
+const link = async (
+  oldpath: string,
+  newpath: string,
+) => {
+  const tempDir = await Deno.makeTempDir();
+  try {
+    const temp = $.path.join(tempDir, $.path(newpath).basename());
+    await Deno.symlink(oldpath, temp);
+    await Deno.stat(temp); // check if the symlink is valid
+    await Deno.rename(temp, newpath);
+  } finally {
+    await Deno.remove(tempDir, { recursive: true });
+  }
+};
+
 $.setPrintCommand(true);
 
 const homedir = Deno.env.get("HOME") ?? Deno.env.get("USERPROFILE") ??
@@ -37,14 +52,16 @@ const rcs = [
 ];
 
 for (const rc of rcs) {
-  await $`ln -sfn ${$.path.join(conf, rc)} ${$.path.join(homedir, rc)}`;
+  await link($.path.join(conf, rc), $.path.join(homedir, rc));
 }
-await $`ln -sfn ${$.path.join(conf, ".gitignore.global")} ${
-  $.path.join(homedir, ".gitignore")
-}`;
-await $`ln -sfn ${$.path.join(conf, ".yarnrc.global.yml")} ${
-  $.path.join(homedir, ".yarnrc.yml")
-}`;
+await link(
+  $.path.join(conf, ".gitignore.global"),
+  $.path.join(homedir, ".gitignore"),
+);
+await link(
+  $.path.join(conf, ".yarnrc.global.yml"),
+  $.path.join(homedir, ".yarnrc.yml"),
+);
 
 const gitconfigs = {
   linux: ".gitconfig.linux",
@@ -53,9 +70,10 @@ const gitconfigs = {
 };
 
 const gitconfig = gitconfigs[Deno.build.os];
-await $`ln -sfn ${$.path.join(conf, gitconfig)} ${
-  $.path.join(homedir, ".gitconfig.platform")
-}`;
+await link(
+  $.path.join(conf, gitconfig),
+  $.path.join(homedir, ".gitconfig.platform"),
+);
 
 for (
   const prefix of ["/home/linuxbrew/.linuxbrew", "/opt/homebrew", "/usr/local"]
@@ -64,15 +82,19 @@ for (
     prefix,
     "share/git-core/contrib/diff-highlight/diff-highlight",
   );
-  if (await $.fs.exists(cmd)) {
-    await $`ln -sfn ${cmd} ${$.path.join(homedir, "bin/diff-highlight")}`;
+  try {
+    await link(cmd, $.path.join(homedir, "bin/diff-highlight"));
     break;
+  } catch (e) {
+    if (e instanceof Deno.errors.NotFound) {
+      continue;
+    } else {
+      throw e;
+    }
   }
 }
 
-await $`ln -sfn ${$.path.join(conf, "nvim")} ${
-  $.path.join(homedir, ".config/nvim")
-}`;
+await link($.path.join(conf, "nvim"), $.path.join(homedir, ".config/nvim"));
 
 try {
   await $`git clone https://github.com/asdf-vm/asdf.git ${
