@@ -51,9 +51,9 @@ const rcs = [
   ".zshrc",
 ];
 
-for (const rc of rcs) {
-  await link($.path.join(conf, rc), $.path.join(homedir, rc));
-}
+await Promise.all(
+  rcs.map((rc) => link($.path.join(conf, rc), $.path.join(homedir, rc))),
+);
 await link(
   $.path.join(conf, ".gitignore.global"),
   $.path.join(homedir, ".gitignore"),
