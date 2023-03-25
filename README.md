@@ -8,7 +8,5 @@
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Developer Mode
-start ms-settings:developers
+Invoke-RestMethod https://raw.githubusercontent.com/mono0x/dotfiles/main/build-env/bootstrap.ps1
 ```
