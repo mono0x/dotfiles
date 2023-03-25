@@ -8,5 +8,5 @@
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod https://raw.githubusercontent.com/mono0x/dotfiles/main/build-env/bootstrap.ps1
+Invoke-RestMethod https://raw.githubusercontent.com/mono0x/dotfiles/main/build-env/bootstrap.ps1 | Invoke-Expression
 ```
