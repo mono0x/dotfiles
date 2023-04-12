@@ -5,64 +5,76 @@ on:
     - "*"
 
 jobs:
-  test-devcontainer:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 1
-    - uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.x
-    - run: deno run -A ./test/devcontainer.ts
-
   test-linux:
     runs-on: ubuntu-latest
-    env:
-      SKIP_PACKAGE_INSTALLATION: 1
     steps:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 1
+    - name: "Workaround: Prepare ~/.local/share/chezmoi"
+      run: |
+        ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
     - uses: denoland/setup-deno@v1
       with:
         deno-version: v1.x
-    - run: |
+    - name: Install dependencies
+      run: |
         sudo apt install -y zsh
         sudo curl -fsSL https://goss.rocks/install | sh
-    - run: |
-        deno run -A ./test/unix.ts
-        goss --gossfile test/goss/unix.yaml validate --format documentation
+    - name: Run test
+      run: |
+        ./install.sh
+        # Run script twice to test idempotency
+        ./install.sh
+        goss validate --format documentation
 
   test-macos:
     runs-on: macos-latest
-    env:
-      SKIP_PACKAGE_INSTALLATION: 1
     steps:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 1
+    - name: "Workaround: Prepare ~/.local/share/chezmoi"
+      run: |
+        ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
     - uses: denoland/setup-deno@v1
       with:
         deno-version: v1.x
-    - run: |
+    - name: Install dependencies
+      run: |
         sudo curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-alpha-darwin-amd64 -o /usr/local/bin/goss
         sudo chmod +rx /usr/local/bin/goss
-    - run: |
-        deno run -A ./test/unix.ts
-        GOSS_USE_ALPHA=1 goss --gossfile test/goss/unix.yaml validate --format documentation
+    - name: Run test
+      run: |
+        ./install.sh
+        # Run script twice to test idempotency
+        ./install.sh
+        GOSS_USE_ALPHA=1 goss validate --format documentation
 
   test-windows:
     runs-on: windows-latest
     env:
-      SKIP_PACKAGE_INSTALLATION: 1
+      SKIP_SCOOP: "true"
     steps:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 1
-    - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
-    # Run script twice to test idempotency
-    - run: pwsh -ExecutionPolicy RemoteSigned -File ./build-env/bootstrap.ps1
+    - name: "Workaround: Prepare ~/.local/share/chezmoi"
+      run: |
+        New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
+        New-Item -ItemType SymbolicLink -Value (Get-Location) -Path "$env:USERPROFILE\.local\share\chezmoi"
+    - name: Install Chezmoi
+      run: |
+        Set-Location "$env:USERPROFILE\.local"
+        (Invoke-RestMethod -useb https://get.chezmoi.io/ps1) | pwsh -Command -
+        ls -l $env:USERPROFILE\.local
+        ls -l $env:USERPROFILE\.local\bin
+    - name: Run test
+      run: |
+        $env:Path += ";$env:USERPROFILE\.local\bin"
+        pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
+        # Run script twice to test idempotency
+        pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
 
   test-static:
     runs-on: ubuntu-latest
@@ -73,8 +85,10 @@ jobs:
     - uses: denoland/setup-deno@v1
       with:
         deno-version: v1.x
-    - run: sudo apt install -y zsh
-    - run: deno run -A ./test/static.ts
+    - name: Install dependencies
+      run: sudo apt install -y zsh
+    - name: Run test
+      run: deno run -A ./test/static.ts
 
   actionlint:
     runs-on: ubuntu-latest

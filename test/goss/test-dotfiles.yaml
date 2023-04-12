@@ -1,6 +1,7 @@
 file:
   ~/.gitconfig:
     exists: true
-    filetype: symlink
+    filetype: file
     contains:
-      - "name = mono"
+    - "name = mono"
+    - "email = mono@mono0x.net"
