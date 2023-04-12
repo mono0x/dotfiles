@@ -12,7 +12,7 @@ rcs='
   .gitconfig
 '
 for rc in $rcs; do
-  ln -sfn "$dotfiles_root/$rc" "$HOME/$rc"
+  ln -sfn "$dotfiles_root/conf/$rc" "$HOME/$rc"
 done
 ln -sfn "$dotfiles_root/conf/.gitignore.global" "$HOME/.gitignore"
 ln -sfn "$dotfiles_root/conf/.gitconfig.linux" "$HOME/.gitconfig.platform"
