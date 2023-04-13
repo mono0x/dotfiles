@@ -1,6 +1,0 @@
-#!/bin/sh
-if [ -n "$WSL_DISTRO_NAME" ]; then
-  exec /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe Get-Clipboard
-elif type pbpaste >/dev/null 2>&1; then
-  exec pbpaste
-fi

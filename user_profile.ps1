@@ -53,6 +53,7 @@ function which($cmd) {
   Get-Command $cmd -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
 }
 
+Set-Alias cz chezmoi
 Set-Alias g git
 function ga() { git add $args }
 function gd() { git di $args }

@@ -1,0 +1,22 @@
+{{ if eq (env "REMOTE_CONTAINERS") "true" -}}
+/.gitconfig
+{{ end -}}
+
+{{ if eq .chezmoi.os "windows" -}}
+.asdfrc
+.config/nvim
+.ideavimrc
+.npmrc
+.source-highlight
+.tigrc
+.tmux.conf
+.tool-versions
+.yarnrc.yml
+.zshenv
+.zshrc
+asdf.sh
+zinit.sh
+{{ else -}}
+AppData
+user_profile.ps1
+{{ end -}}

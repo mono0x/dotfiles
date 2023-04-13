@@ -2,14 +2,25 @@ import $ from "https://deno.land/x/dax/mod.ts";
 
 $.setPrintCommand(true);
 
-const __dirname = $.path.dirname($.path.fromFileUrl(import.meta.url));
+const homedir = Deno.env.get("HOME") ?? Deno.env.get("USERPROFILE") ??
+  Deno.env.get("HOMEPATH");
+if (!homedir) {
+  throw new Error("HOME is not set");
+}
 
-$.cd($.path.join(__dirname, ".."));
+const root = $.path.join(
+  $.path.dirname($.path.fromFileUrl(import.meta.url)),
+  "..",
+);
+$.cd(root);
 
 await $`shellcheck --version`;
-for await (const entry of $.fs.expandGlob("{bin,build-env}/**/*.sh")) {
-  await $`shellcheck ${entry.path}`;
+for await (const file of $.fs.expandGlob("{bin,src}/*.sh")) {
+  await $`shellcheck ${file.path}`;
 }
-await $`zsh -n conf/.zshenv conf/.zshrc`;
+await $`shellcheck ${$.path.join(root, "install.sh")}`;
 
+for (const file of ["src/dot_zshenv", "src/dot_zshrc"]) {
+  await $`zsh -n ${$.path.join(root, file)}`;
+}
 await $`deno lint`;

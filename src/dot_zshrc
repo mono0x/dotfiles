@@ -108,6 +108,7 @@ alias sudoe='sudo -e'
 alias tmux='TERM=screen-256color tmux'
 alias man='vs man'
 alias vi='nvim'
+alias cz='chezmoi'
 
 case "${OSTYPE}" in
 linux*)
