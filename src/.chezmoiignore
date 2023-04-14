@@ -15,6 +15,10 @@
 .zshenv
 .zshrc
 asdf.sh
+bin/copy
+bin/diff-highlight
+bin/mit
+bin/paste
 zinit.sh
 {{ else -}}
 AppData
