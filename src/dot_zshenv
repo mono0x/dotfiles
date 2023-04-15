@@ -19,8 +19,6 @@ darwin*)
   path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) $path)
   # sbin
   path=(/sbin(N-/) /usr/sbin(N-/) $path)
-  # Python
-  path=($HOME/Library/Python/3.7/bin(N-/) $path)
   ;;
 esac
 
