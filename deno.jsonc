@@ -1,5 +1,8 @@
 {
   "imports": {
     "https://deno.land/x/dax/": "https://deno.land/x/dax@0.31.0/"
+  },
+  "tasks": {
+    "watch": "sh -c \"fswatch -r -o -l 3 $(chezmoi source-path) | xargs -n1 -I'{}' chezmoi apply --verbose\""
   }
 }
