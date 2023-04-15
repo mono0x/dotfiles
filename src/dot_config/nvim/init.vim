@@ -1,6 +1,7 @@
 " .vimrc
+" vim: foldmethod=marker
 
-" Disable default plugins
+" Disable default plugins {{{
 " http://lambdalisue.hatenablog.com/entry/2015/12/25/000046
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
@@ -17,26 +18,31 @@ let g:loaded_netrw             = 1
 let g:loaded_netrwPlugin       = 1
 let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
+" }}}
 
-" matchit
+" matchit {{{
 if filereadable(expand('$VIMRUNTIME/macros/matchit.vim'))
   source $VIMRUNTIME/macros/matchit.vim
 endif
+" }}}
 
-" Base
+" Base {{{
 augroup vimrc_loading
   autocmd!
 augroup END
+" }}}
 
-" leader
+" leader {{{
 let g:mapleader = ' '
+" }}}
 
-" wrapping
+" wrapping {{{
 set textwidth=0
 " force textwidth=0
 autocmd vimrc_loading FileType text setlocal textwidth=0
+" }}}
 
-" Encoding
+" Encoding {{{
 set encoding=utf-8
 if has('win32')
   set termencoding=cp932
@@ -47,15 +53,17 @@ else
   set fileencodings=utf-8,cp932,euc-jp
 endif
 set fileformats=unix,dos,mac
+" }}}
 
-" Backup and history
+" Backup and history {{{
 set nobackup
 set noundofile
 set nowritebackup
 set noswapfile
 set history=100
+" }}}
 
-" Indent
+" Indent {{{
 set autoindent
 set expandtab
 set shiftround
@@ -65,14 +73,16 @@ set softtabstop=2
 set tabstop=8
 
 let g:vim_indent_cont=2
+" }}}
 
-" Search
+" Search {{{
 set hlsearch
 set ignorecase
 set incsearch
 set smartcase
+" }}}
 
-" Movements
+" Movements {{{
 noremap j gj
 noremap k gk
 noremap gj j
@@ -87,8 +97,9 @@ nnoremap Y y$
 imap <C-b> <Left>
 imap <C-f> <Right>
 imap <C-d> <Delete>
+" }}}
 
-" Appearances
+" Appearances {{{
 set colorcolumn=112
 set cursorline
 set display=lastline
@@ -121,8 +132,9 @@ augroup END
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
+" }}}
 
-" Edit
+" Edit {{{
 set backspace=indent,eol,start
 set infercase
 set scrolloff=10
@@ -148,8 +160,9 @@ if has('clipboard')
     set clipboard=unnamed
   endif
 endif
+" }}}
 
-" Window
+" Window {{{
 nnoremap <C-w>n :bn<CR>
 nnoremap <C-w>p :bp<CR>
 nnoremap <C-w>d :bd<CR>
@@ -169,13 +182,15 @@ function! s:good_width()
     vertical resize 84
   endif
 endfunction
+" }}}
 
-" IME
+" IME {{{
 set iminsert=0
 set imsearch=0
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+" }}}
 
-" Command-window
+" Command-window {{{
 nnoremap <sid>(command-line-enter) q:
 xnoremap <sid>(command-line-enter) q:
 nnoremap <sid>(command-line-norange) q:<C-u>
@@ -199,16 +214,18 @@ function! s:init_cmdwin()
 
   startinsert!
 endfunction
+" }}}
 
-" Terminal
+" Terminal {{{
 if has('nvim')
   tnoremap <silent> <Esc> <C-\><C-n>
 endif
+" }}}
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-" dein.vim
+" dein.vim {{{
 filetype off
 
 let s:cache = expand('~/.cache')
@@ -246,8 +263,9 @@ autocmd vimrc_loading VimEnter * call dein#call_hook('post_source')
 
 filetype plugin indent on
 syntax on
+" }}}
 
-if dein#tap('lightline.vim') "
+if dein#tap('lightline.vim') " {{{
   set noshowmode
 
   let g:lightline = {
@@ -281,4 +299,4 @@ if dein#tap('lightline.vim') "
   function! MyModified()
     return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
   endfunction
-endif
+endif " }}}
