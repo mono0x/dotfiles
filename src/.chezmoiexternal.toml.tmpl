@@ -1,0 +1,17 @@
+{{ if ne .chezmoi.os "windows" -}}
+[".asdf"]
+  type = "git-repo"
+  url = "https://github.com/asdf-vm/asdf.git"
+{{ end -}}
+
+{{ if ne .chezmoi.os "windows" -}}
+[".source-highlight/source-highlight-solarized"]
+  type = "git-repo"
+  url = "https://github.com/jrunning/source-highlight-solarized.git"
+{{ end -}}
+
+{{ if ne .chezmoi.os "windows" -}}
+[".zinit/bin"]
+  type = "git-repo"
+  url = "https://github.com/zdharma-continuum/zinit.git"
+{{ end -}}
