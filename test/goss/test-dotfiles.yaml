@@ -1,5 +1,5 @@
 file:
-  ~/.gitconfig:
+  ~/.config/git/config:
     exists: true
     filetype: file
     contains:
