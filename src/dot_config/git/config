@@ -49,7 +49,6 @@
   status = auto
   ui = auto
 [core]
-  excludesfile = ~/.gitignore
   autocrlf = false
   pager = LESS=-R less
   precomposeunicode = true
@@ -96,6 +95,6 @@
 
 # include {{{
 [include]
-  path = .gitconfig.platform
-  path = .gitconfig.local
+  path = conf.d/platform
+  path = conf.d/local
 # }}}
