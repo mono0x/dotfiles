@@ -2,7 +2,7 @@
 # vim: foldmethod=marker
 
 # zinit {{{
-source ~/.zinit/bin/zinit.zsh
+source "$HOME/.zinit/bin/zinit.zsh"
 
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
@@ -66,8 +66,4 @@ if (( $+commands[starship] )); then
   # eval "$(starship init zsh)"
   source <(starship init zsh --print-full-init)
 fi
-# }}}
-
-# Load local zshrc {{{
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 # }}}

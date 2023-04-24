@@ -147,7 +147,7 @@ export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # }}}
 
-# {{{
+# 1Password {{{
 # https://1password.community/discussion/128023/ssh-agent-on-windows-subsystem-for-linux
 if [ -n "${WSL_DISTRO_NAME:-}" ] \
   && type socat > /dev/null && type npiperelay.exe > /dev/null # check socat and npiperelay.exe are installed
@@ -172,12 +172,17 @@ fi
 # }}}
 
 # asdf-direnv {{{
-ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+local ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 [ -f "$ASDF_DIRENV_ZSHRC" ] && source "$ASDF_DIRENV_ZSHRC"
 # }}}
 
-# Dedup PATH
+# Dedup PATH {{{
 path=($path)
+# }}}
+
+# Load local zshrc {{{
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+# }}}
 
 # Compile {{{
 for rc in "$HOME/.zshrc" "$HOME/.zshrc.lazy"
