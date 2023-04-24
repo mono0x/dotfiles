@@ -1,2 +1,1 @@
 legacy_version_file = yes
-post_asdf_install_nodejs = source $ASDF_DIR/asdf.sh && asdf shell nodejs $1 && npm install -g yarn
