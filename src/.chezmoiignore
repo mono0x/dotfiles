@@ -14,6 +14,7 @@
 .yarnrc.yml
 .zshenv
 .zshrc
+.zshrc.lazy
 bin/copy
 bin/diff-highlight
 bin/mit

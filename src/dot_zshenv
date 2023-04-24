@@ -1,11 +1,15 @@
 # .zshenv
 # vim: foldmethod=marker
 
-# Start profiling {{{
-# ZPROF=1 zsh -i -c exit
-if [ -n "$ZPROF" ]; then
-  zmodload zsh/zprof && zprof
+# Start profile {{{
+if [ "$ZPROF" != "" ]
+then
+  zmodload zsh/zprof && zprof > /dev/null
 fi
+
+zsh-profiler() {
+  ZPROF=1 zsh -i -c zprof
+}
 # }}}
 
 # PATH {{{
@@ -22,9 +26,24 @@ darwin*)
   ;;
 esac
 
+path=($HOME/google-cloud-sdk/bin(N-/) $HOME/.krew/bin(N-/) $path)
+path=($HOME/bin(N-/) $path)
+# }}}
+
+# Environment variables {{{
 if [ ! -x "$EDITOR" ]; then
   export EDITOR=vim
 fi
+
+export LESS='-R'
+
+if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
+  export LANG=en_US.UTF-8
+fi
+if [[ -z "$LC_ALL" ]]; then
+  export LC_ALL=en_US.UTF-8
+fi
+# }}}
 
 # Homebrew {{{
 export HOMEBREW_NO_ANALYTICS=1
@@ -50,16 +69,6 @@ then
   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
   export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
   export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-fi
-# }}}
-
-path=($HOME/google-cloud-sdk/bin(N-/) $HOME/.krew/bin(N-/) $path)
-path=($HOME/bin(N-/) $path)
-if [[ $LANG != 'ja_JP.UTF-8' && $LANG != 'en_US.UTF-8' ]]; then
-  export LANG=en_US.UTF-8
-fi
-if [[ -z "$LC_ALL" ]]; then
-  export LC_ALL=en_US.UTF-8
 fi
 # }}}
 
