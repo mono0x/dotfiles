@@ -27,8 +27,8 @@ stty stop undef
 
 # History {{{
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=10000
-SAVEHIST=100000
+HISTSIZE=100000
+SAVEHIST=1000000
 
 setopt extended_glob
 setopt extended_history
