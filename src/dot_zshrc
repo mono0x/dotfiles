@@ -7,6 +7,7 @@ source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# https://www.m3tech.blog/entry/dotfiles-bonsai
 zinit wait lucid null for \
   atinit'source "$HOME/.zshrc.lazy"' \
   @'zdharma-continuum/null'
