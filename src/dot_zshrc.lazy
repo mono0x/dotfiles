@@ -171,9 +171,6 @@ then
 fi
 # }}}
 
-# Load local zshrc
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
 # asdf-direnv {{{
 ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 [ -f "$ASDF_DIRENV_ZSHRC" ] && source "$ASDF_DIRENV_ZSHRC"
@@ -183,11 +180,11 @@ ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 path=($path)
 
 # Compile {{{
-if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
-  zcompile ~/.zshrc
-fi
-
-if [ ! -f ~/.zshrc.lazy.zwc -o ~/.zshrc.lazy -nt ~/.zshrc.lazy.zwc ]; then
-  zcompile ~/.zshrc.lazy
-fi
+for rc in "$HOME/.zshrc" "$HOME/.zshrc.lazy"
+do
+  local zwc="$rc.zwc"
+  if [ ! -f "$zwc" -o "$rc" -nt "$zwc" ]; then
+    zcompile "$rc"
+  fi
+done
 # }}}

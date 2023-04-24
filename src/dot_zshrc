@@ -63,3 +63,7 @@ if (( $+commands[starship] )); then
   source <(starship init zsh --print-full-init)
 fi
 # }}}
+
+# Load local zshrc {{{
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+# }}}
