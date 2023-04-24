@@ -15,7 +15,7 @@
 # aliases {{{
 [alias]
   br = branch
-  ci = commit -v
+  ci = commit
   ch = cherry-pick
   co = checkout
   di = diff --ignore-space-change
@@ -48,6 +48,8 @@
   interactive = auto
   status = auto
   ui = auto
+[commit]
+  verbose = true
 [core]
   autocrlf = false
   pager = LESS=-R less
