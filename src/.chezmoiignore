@@ -5,7 +5,9 @@
 {{ if eq .chezmoi.os "windows" -}}
 .asdfrc
 .config/nvim
+.config/sheldon
 .config/tig
+.config/zsh
 .ideavimrc
 .npmrc
 .source-highlight
