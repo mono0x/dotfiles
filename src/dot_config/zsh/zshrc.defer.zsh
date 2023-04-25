@@ -1,42 +1,3 @@
-# .zshrc
-# vim: foldmethod=marker
-
-# zinit {{{
-if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
-  zinit ice wait"0" lucid
-  zinit snippet $HOME/google-cloud-sdk/completion.zsh.inc
-fi
-
-zinit ice wait"0" as"completion" lucid
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-zinit ice wait"0" as"completion" lucid
-zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
-
-# https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2894219
-_zicompinit_custom() {
-  setopt extendedglob local_options
-  autoload -Uz compinit
-  local zcd=${ZINIT[ZCOMPDUMP_PATH]:-${ZDOTDIR:-$HOME}/.zcompdump}
-  local zcdc="$zcd.zwc"
-  # Compile the completion dump to increase startup speed, if dump is newer or doesn't exist,
-  # in the background as this is doesn't affect the current session
-  if [[ -f "$zcd"(#qN.m+1) ]]; then
-        compinit -i -d "$zcd"
-        { rm -f "$zcdc" && zcompile "$zcd" } &!
-  else
-        compinit -C -d "$zcd"
-        { [[ ! -f "$zcdc" || "$zcd" -nt "$zcdc" ]] && rm -f "$zcdc" && zcompile "$zcd" } &!
-  fi
-}
-
-zinit wait lucid for \
- atinit"_zicompinit_custom; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions
-# }}}
-
 # Aliases {{{
 alias sudo="sudo "
 alias sudoe='sudo -e'
@@ -95,7 +56,8 @@ alias k='kubectl'
 # }}}
 
 # fzf {{{
-if (( $+commands[fzf] )); then
+if (( $+commands[fzf] ))
+then
   fzf-cd() {
     local selected_dir=$(ghq list | fzf --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
@@ -169,22 +131,4 @@ fi
 # asdf-direnv {{{
 local ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 [ -f "$ASDF_DIRENV_ZSHRC" ] && source "$ASDF_DIRENV_ZSHRC"
-# }}}
-
-# Dedup PATH {{{
-path=($path)
-# }}}
-
-# Load local zshrc {{{
-[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
-# }}}
-
-# Compile {{{
-for rc in "$HOME/.zshrc" "$HOME/.zshrc.lazy"
-do
-  local zwc="$rc.zwc"
-  if [ ! -f "$zwc" -o "$rc" -nt "$zwc" ]; then
-    zcompile "$rc"
-  fi
-done
 # }}}

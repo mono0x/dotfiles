@@ -2,11 +2,6 @@
   "deno.enable": true,
   "deno.importMap": "deno.jsonc",
   "deno.lint": true,
-  "files.associations": {
-    "dot_zshenv": "shellscript",
-    "dot_zshrc": "shellscript",
-    "dot_zshrc.lazy": "shellscript"
-  },
   "[json][jsonc][typescript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "denoland.vscode-deno"
