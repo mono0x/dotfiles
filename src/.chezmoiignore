@@ -5,10 +5,10 @@
 {{ if eq .chezmoi.os "windows" -}}
 .asdfrc
 .config/nvim
+.config/tig
 .ideavimrc
 .npmrc
 .source-highlight
-.tigrc
 .tmux.conf
 .tool-versions
 .yarnrc.yml
