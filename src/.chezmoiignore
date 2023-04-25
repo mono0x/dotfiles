@@ -4,11 +4,11 @@
 
 {{ if eq .chezmoi.os "windows" -}}
 .asdfrc
+.config/ideavim
 .config/nvim
 .config/sheldon
 .config/tig
 .config/zsh
-.ideavimrc
 .source-highlight
 .tmux.conf
 .tool-versions
