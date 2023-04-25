@@ -9,7 +9,6 @@
 .config/tig
 .config/zsh
 .ideavimrc
-.npmrc
 .source-highlight
 .tmux.conf
 .tool-versions
