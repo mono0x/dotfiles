@@ -10,7 +10,6 @@
 .config/tig
 .config/zsh
 .source-highlight
-.tmux.conf
 .tool-versions
 .yarnrc.yml
 .zshenv

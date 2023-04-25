@@ -1,7 +1,6 @@
 # Aliases {{{
 alias sudo="sudo "
 alias sudoe='sudo -e'
-alias tmux='TERM=screen-256color tmux'
 alias man='vs man'
 alias vi='nvim'
 alias cz='chezmoi'
@@ -69,33 +68,6 @@ then
   zle -N fzf-cd
   bindkey '^s' fzf-cd
 fi
-# }}}
-
-# Functions {{{
-# tmux
-() {
-
-vs() {
-  if [ -n "${TMUX}" ]; then
-    tmux split-window -h "exec $*"
-  else
-    command $*
-  fi
-}
-
-sp() {
-  if [ -n "${TMUX}" ]; then
-    tmux split-window -v "exec $*"
-  else
-    command $*
-  fi
-}
-
-quit() {
-  command osascript -e "quit app \"$1\""
-}
-
-}
 # }}}
 
 # LS_COLORS {{{
