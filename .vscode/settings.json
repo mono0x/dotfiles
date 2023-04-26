@@ -2,6 +2,9 @@
   "deno.enable": true,
   "deno.importMap": "deno.jsonc",
   "deno.lint": true,
+  "files.associations": {
+    "ignore": "ignore"
+  },
   "[json][jsonc][typescript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "denoland.vscode-deno"
