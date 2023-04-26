@@ -1,7 +1,6 @@
 # Aliases {{{
 alias sudo="sudo "
 alias sudoe='sudo -e'
-alias man='vs man'
 alias vi='nvim'
 alias cz='chezmoi'
 
