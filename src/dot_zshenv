@@ -90,7 +90,8 @@ export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export ASDF_DIR="$HOMEBREW_PREFIX/opt/asdf/libexec"
 export ASDF_DATA_DIR="$HOME/.asdf"
 
-[ -f "$ASDF_CONFIG_FILE" ] && source "$ASDF_CONFIG_FILE"
+local ASDF_SH="$ASDF_DIR/asdf.sh"
+[ -f "$ASDF_SH" ] && source "$ASDF_SH"
 # }}}
 
 export GOPATH=$HOME
