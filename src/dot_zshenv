@@ -33,8 +33,12 @@ darwin*)
   ;;
 esac
 
-path=($HOME/google-cloud-sdk/bin(N-/) $HOME/.krew/bin(N-/) $path)
-path=($HOME/bin(N-/) $path)
+path=(
+  $HOME/google-cloud-sdk/bin(N-/)
+  $HOME/.krew/bin(N-/)
+  $HOME/bin(N-/)
+  $path
+)
 # }}}
 
 # Environment variables {{{
@@ -81,7 +85,14 @@ fi
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 if [ -n "$HOMEBREW_PREFIX" ]
 then
-  fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+  path=(
+    $HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/)
+    $path
+  )
+  fpath=(
+    $HOMEBREW_PREFIX/share/zsh/site-functions(N-/)
+    $fpath
+  )
 fi
 # }}}
 
