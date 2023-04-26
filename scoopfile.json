@@ -10,6 +10,10 @@
     },
     {
       "Source": "main",
+      "Name": "delta"
+    },
+    {
+      "Source": "main",
       "Name": "exiftool"
     },
     {

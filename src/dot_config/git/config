@@ -52,9 +52,12 @@
   verbose = true
 [core]
   autocrlf = false
-  pager = LESS=-R less
+  pager = delta
   precomposeunicode = true
+[interactive]
+  diffFilter = delta --color-only
 [diff]
+  colorMoved = default
   algorithm = histogram
   compactionHeuristic = true
 [fetch]
@@ -62,6 +65,7 @@
 [grep]
   lineNumber = true
 [merge]
+  conflictstyle = diff3
   ff = false
   mergeoptions = --strategy-option=histogram
 [pull]
@@ -93,6 +97,10 @@
   protocol = https
 [ghq]
   root = ~/src
+[delta]
+  navigate = true
+  light = true
+  side-by-side = true
 # }}}
 
 # include {{{
