@@ -77,6 +77,12 @@ then
   export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
   export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 fi
+
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+if [ -n "$HOMEBREW_PREFIX" ]
+then
+  fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+fi
 # }}}
 
 # asdf {{{
