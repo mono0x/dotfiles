@@ -8,7 +8,6 @@
 .config/sheldon
 .config/tig
 .config/zsh
-.tool-versions
 .yarnrc.yml
 .zshenv
 .zshrc
