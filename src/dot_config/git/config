@@ -101,6 +101,7 @@
   navigate = true
   light = true
   side-by-side = true
+  syntax-theme = "Solarized (light)"
 # }}}
 
 # include {{{
