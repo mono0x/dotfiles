@@ -3,7 +3,6 @@
 {{ end -}}
 
 {{ if eq .chezmoi.os "windows" -}}
-.config/asdf
 .config/ideavim
 .config/nvim
 .config/sheldon

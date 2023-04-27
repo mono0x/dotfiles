@@ -98,8 +98,3 @@ then
   fi
 fi
 # }}}
-
-# asdf-direnv {{{
-local ASDF_DIRENV_ZSHRC="${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-[ -f "$ASDF_DIRENV_ZSHRC" ] && source "$ASDF_DIRENV_ZSHRC"
-# }}}
