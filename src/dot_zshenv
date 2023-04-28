@@ -61,51 +61,7 @@ if [[ -z "$LC_ALL" ]]; then
 fi
 # }}}
 
-# Homebrew {{{
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_AUTO_UPDATE=1
-
-# [ -e /home/linuxbrew/.linuxbrew/bin/brew ] && /home/linuxbrew/.linuxbrew/bin/brew shellenv
-if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]
-then
-  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
-  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
-  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
-  export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
-  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
-fi
-
-# [ -e /opt/homebrew/bin/brew ] && /opt/homebrew/bin/brew shellenv
-if [ -e /opt/homebrew/bin/brew ]
-then
-  export HOMEBREW_PREFIX="/opt/homebrew";
-  export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-  export HOMEBREW_REPOSITORY="/opt/homebrew";
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-  export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-fi
-
-# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
-if [ -n "$HOMEBREW_PREFIX" ]
-then
-  path=(
-    $HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/)
-    $path
-  )
-  fpath=(
-    $HOMEBREW_PREFIX/share/zsh/site-functions(N-/)
-    $fpath
-  )
-fi
-# }}}
-
-# rtx {{{
-if (( $+commands[rtx] ))
-then
-  eval "$(rtx activate zsh)"
-fi
-# }}}
+source "$XDG_CONFIG_HOME/zsh/zshenv.d/homebrew.zsh"
+source "$XDG_CONFIG_HOME/zsh/zshenv.d/rtx.zsh"
 
 export GOPATH=$HOME
