@@ -31,10 +31,8 @@ inline = "autoload -Uz compinit && zsh-defer compinit"
 github = "zdharma-continuum/fast-syntax-highlighting"
 
 [plugins.zshrc-defer]
-local = "~/.config/zsh"
-use = ["zshrc.defer.zsh"]
+local = "~/.config/zsh/zshrc.defer.d"
 
 [plugins.zshrc]
-local = "~/.config/zsh"
-use = ["zshrc.zsh"]
+local = "~/.config/zsh/zshrc.d"
 apply = ["source"]
