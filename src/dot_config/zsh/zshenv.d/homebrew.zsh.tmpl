@@ -10,11 +10,11 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 {{- if ne $prefix "" -}}
 {{- output (joinPath $prefix "/bin/brew") "shellenv" | trim -}}
-# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 path=(
   $HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/)
   $path
 )
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 fpath=(
   $HOMEBREW_PREFIX/share/zsh/site-functions(N-/)
   $fpath
