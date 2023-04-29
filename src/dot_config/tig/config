@@ -1,5 +1,4 @@
 set line-graphics = ascii
-set diff-highlight = true
 set diff-options = -m --first-parent
 set ignore-space = all
 set split-view-height = 80%
@@ -30,3 +29,6 @@ bind diff v !@hub browse -- commit/%(commit)
 
 # Revert
 bind main ! ?git revert %(commit)
+
+# Source
+source ~/.config/tig/platform

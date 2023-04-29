@@ -1,0 +1,9 @@
+{{ if eq .chezmoi.os "darwin" -}}
+{{   include "dot_config/tig/conf.d/.platform.darwin" -}}
+{{ end -}}
+{{ if eq .chezmoi.os "linux" -}}
+{{   include "dot_config/tig/conf.d/.platform.linux" -}}
+{{ end }}
+{{ if eq .chezmoi.os "windows" -}}
+{{   include "dot_config/tig/conf.d/.platform.windows" -}}
+{{ end -}}
