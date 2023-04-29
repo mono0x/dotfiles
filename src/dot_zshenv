@@ -10,5 +10,3 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 source "$XDG_CONFIG_HOME/zsh/zshenv.d/profiler.zsh"
 source "$XDG_CONFIG_HOME/zsh/zshenv.d/env.zsh"
-source "$XDG_CONFIG_HOME/zsh/zshenv.d/homebrew.zsh"
-source "$XDG_CONFIG_HOME/zsh/zshenv.d/rtx.zsh"

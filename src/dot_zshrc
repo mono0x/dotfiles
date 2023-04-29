@@ -1,6 +1,8 @@
 # .zshrc
 # vim: foldmethod=marker
 
+source "$XDG_CONFIG_HOME/zsh/homebrew.zsh"
+
 if (( $+commands[sheldon] ))
 then
   eval "$(sheldon source)"
