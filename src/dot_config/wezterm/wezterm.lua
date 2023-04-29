@@ -5,10 +5,12 @@ local config = {
   font = wezterm.font('HackGen Console NF'),
   initial_cols = 120,
   initial_rows = 40,
+
+  check_for_updates = false,
 }
 
 if wezterm.target_triple:find('windows') then
-  local pwsh = 'C:\\Program Files\\Powershell\\7\\pwsh.exe' 
+  local pwsh = 'C:\\Program Files\\Powershell\\7\\pwsh.exe'
   config.default_prog = { pwsh }
   config.launch_menu = {
     {
