@@ -1,15 +1,28 @@
 local wezterm = require 'wezterm'
 
-local config = {
-  color_scheme = "Builtin Solarized Light",
-  font = wezterm.font('HackGen Console NF'),
-  initial_cols = 120,
-  initial_rows = 40,
+local is_windows = wezterm.target_triple:find('windows')
+local is_darwin = wezterm.target_triple:find('darwin')
 
-  check_for_updates = false,
+local config = {}
+
+-- Preferences
+config.check_for_updates = false
+
+-- Appearances
+config.color_scheme = "Builtin Solarized Light"
+config.initial_cols = 120
+config.initial_rows = 40
+config.font = wezterm.font_with_fallback {
+  'HackGen Console NF',
 }
+if is_darwin then
+  config.font_size = 14.0
+else
+  config.font_size = 12.0
+end
 
-if wezterm.target_triple:find('windows') then
+-- Programs
+if is_windows then
   local pwsh = 'C:\\Program Files\\Powershell\\7\\pwsh.exe'
   config.default_prog = { pwsh }
   config.launch_menu = {
@@ -22,8 +35,6 @@ if wezterm.target_triple:find('windows') then
       args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
     },
   }
-elseif wezterm.target_triple:find('darwin') then
-  config.font_size = 14.0
 end
 
 return config
