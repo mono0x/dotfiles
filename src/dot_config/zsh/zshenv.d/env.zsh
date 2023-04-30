@@ -15,6 +15,7 @@ path=(
   $HOME/google-cloud-sdk/bin(N-/)
   $HOME/.krew/bin(N-/)
   $HOME/bin(N-/)
+  /Applications/WezTerm.app/Contents/MacOS(N-/)
   $path
 )
 

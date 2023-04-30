@@ -1,0 +1,3 @@
+{{- if lookPath "/Applications/WezTerm.app/Contents/MacOS/wezterm" -}}
+{{- output "/Applications/WezTerm.app/Contents/MacOS/wezterm" "shell-completion" "--shell" "zsh" | trim -}}
+{{- end -}}
