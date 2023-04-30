@@ -3,6 +3,7 @@
     "denoland.vscode-deno",
     "editorconfig.editorconfig",
     "ms-vscode.powershell",
+    "sumneko.lua",
     "tamasfe.even-better-toml"
   ]
 }
