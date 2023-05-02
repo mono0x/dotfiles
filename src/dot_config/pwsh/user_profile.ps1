@@ -65,17 +65,6 @@ function gs() { git status $args }
 Set-Alias grep rg
 function ll { uutils ls -l $args }
 
-# Deno
-if (Get-Command deno -ErrorAction SilentlyContinue) {
-  deno completions powershell | Out-String | Invoke-Expression
-}
-
-# Starship
-if (Get-Command starship -ErrorAction SilentlyContinue) {
-  starship init powershell | Out-String | Invoke-Expression
-}
-
-# WezTerm
-if (Get-Command wezterm -ErrorAction SilentlyContinue) {
-  wezterm shell-completion --shell power-shell | Out-String | Invoke-Expression
-}
+. $env:USERPROFILE\.config\pwsh\conf.d\deno.ps1
+. $env:USERPROFILE\.config\pwsh\conf.d\starship.ps1
+. $env:USERPROFILE\.config\pwsh\conf.d\wezterm.ps1
