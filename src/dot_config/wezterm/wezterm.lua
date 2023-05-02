@@ -70,12 +70,24 @@ if config.launch_menu ~= nil then
         args = v.args,
       },
     })
+    table.insert(config.keys, {
+      key = numbers_with_shift[i],
+      mods = 'SUPER|SHIFT',
+      action = act.SpawnCommandInNewTab {
+        args = v.args,
+      },
+    })
   end
 else
   table.insert(config.keys, {
     key = numbers_with_shift[1],
     mods = 'CTRL|SHIFT',
-    action = act.SpanwInNewTab,
+    action = act.SpawnTab 'CurrentPaneDomain',
+  })
+  table.insert(config.keys, {
+    key = numbers_with_shift[1],
+    mods = 'SUPER|SHIFT',
+    action = act.SpawnTab 'CurrentPaneDomain',
   })
 end
 
