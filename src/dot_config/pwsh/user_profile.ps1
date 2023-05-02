@@ -74,3 +74,8 @@ if (Get-Command deno -ErrorAction SilentlyContinue) {
 if (Get-Command starship -ErrorAction SilentlyContinue) {
   starship init powershell | Out-String | Invoke-Expression
 }
+
+# WezTerm
+if (Get-Command wezterm -ErrorAction SilentlyContinue) {
+  wezterm shell-completion --shell power-shell | Out-String | Invoke-Expression
+}
