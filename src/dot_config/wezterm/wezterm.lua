@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 local is_windows = wezterm.target_triple:find('windows')
 local is_darwin = wezterm.target_triple:find('darwin')
@@ -35,6 +36,47 @@ if is_windows then
       args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
     },
   }
+  config.keys = {
+    {
+      key = '!', -- Shift+1
+      mods = 'CTRL|SHIFT',
+      action = act.SpawnCommandInNewTab {
+        args = { pwsh },
+      },
+    },
+    {
+      key = '"', -- Shift+2
+      mods = 'CTRL|SHIFT',
+      action = act.SpawnCommandInNewTab {
+        args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
+      },
+    },
+  }
+end
+
+-- Keys
+config.keys = {}
+-- config.debug_key_events = true
+
+local numbers_with_shift = {
+  '!', '"', '#', '$', '%', '&', "'", '(', ')',
+}
+if config.launch_menu ~= nil then
+  for i, v in ipairs(config.launch_menu) do
+    table.insert(config.keys, {
+      key = numbers_with_shift[i],
+      mods = 'CTRL|SHIFT',
+      action = act.SpawnCommandInNewTab {
+        args = v.args,
+      },
+    })
+  end
+else
+  table.insert(config.keys, {
+    key = numbers_with_shift[1],
+    mods = 'CTRL|SHIFT',
+    action = act.SpanwInNewTab,
+  })
 end
 
 return config
