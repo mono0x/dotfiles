@@ -36,22 +36,6 @@ if is_windows then
       args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
     },
   }
-  config.keys = {
-    {
-      key = '!', -- Shift+1
-      mods = 'CTRL|SHIFT',
-      action = act.SpawnCommandInNewTab {
-        args = { pwsh },
-      },
-    },
-    {
-      key = '"', -- Shift+2
-      mods = 'CTRL|SHIFT',
-      action = act.SpawnCommandInNewTab {
-        args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
-      },
-    },
-  }
 end
 
 -- Keys
