@@ -24,17 +24,20 @@ end
 
 -- Programs
 if is_windows then
-  local pwsh = 'C:\\Program Files\\Powershell\\7\\pwsh.exe'
-  config.default_prog = { pwsh }
+  config.default_prog = { 'pwsh' }
   config.launch_menu = {
     {
       label = 'pwsh',
-      args = { pwsh },
+      args = { 'pwsh' },
     },
     {
       label = 'Ubuntu-20.04',
       args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
     },
+    {
+      label = 'nu',
+      args = { 'nu' },
+    }
   }
 end
 
