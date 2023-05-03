@@ -23,6 +23,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "TheNuProjectContributors.vscode-nushell-lang",
         "denoland.vscode-deno",
         "editorconfig.editorconfig",
         "ms-vscode.powershell",
