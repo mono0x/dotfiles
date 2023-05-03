@@ -24,20 +24,20 @@ end
 
 -- Programs
 if is_windows then
-  config.default_prog = { 'pwsh' }
+  config.default_prog = { 'nu' }
   config.launch_menu = {
     {
-      label = 'pwsh',
-      args = { 'pwsh' },
+      label = 'nu',
+      args = { 'nu' },
     },
     {
       label = 'Ubuntu-20.04',
       args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
     },
     {
-      label = 'nu',
-      args = { 'nu' },
-    }
+      label = 'pwsh',
+      args = { 'pwsh' },
+    },
   }
 end
 
