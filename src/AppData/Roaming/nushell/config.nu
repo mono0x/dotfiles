@@ -538,3 +538,5 @@ let-env config = {
     }
   ]
 }
+
+source ~/AppData/Roaming/nushell/starship.nu
