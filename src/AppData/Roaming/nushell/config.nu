@@ -539,4 +539,14 @@ let-env config = {
   ]
 }
 
+alias cz = chezmoi
+alias g = git
+alias ga = git add
+alias gd = git di
+alias gf = git fetch --all
+alias gg = git grep -H --heading -I --line-number --break --show-function
+alias gl = git log
+alias gs = git status
+alias grep = rg
+
 source ~/AppData/Roaming/nushell/starship.nu
