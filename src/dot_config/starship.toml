@@ -13,12 +13,16 @@ $cmd_duration\
 $line_break\
 $character"""
 
-[directory]
-style = "blue"
-
 [shell]
 disabled = false
+format = '[$indicator]($style)'
+style = "cyan bold"
+nu_indicator = "nu "
+powershell_indicator = "pwsh "
 zsh_indicator = ""
+
+[directory]
+style = "blue"
 
 [character]
 success_symbol = "[❯](purple)"
