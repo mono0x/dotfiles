@@ -383,5 +383,6 @@ alias gg = git grep -H --heading -I --line-number --break --show-function
 alias gl = git log
 alias gs = git status
 alias grep = rg
+alias ll = ls -l
 
 source ~/AppData/Roaming/nushell/starship.nu
