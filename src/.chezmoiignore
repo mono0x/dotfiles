@@ -3,11 +3,11 @@
 {{ end -}}
 
 {{ if eq .chezmoi.os "windows" -}}
-.config/bat
-.config/ideavim
-.config/nvim
-.config/sheldon
-.config/zsh
+.config/*
+!.config/git
+!.config/pwsh
+!.config/tig
+!.config/wezterm
 .yarnrc.yml
 .zshenv
 .zshrc
@@ -17,5 +17,5 @@ bin/mit
 bin/paste
 {{ else -}}
 .config/pwsh
-AppData
+AppData/*
 {{ end -}}
