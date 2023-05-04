@@ -15,12 +15,15 @@ const root = $.path.join(
 $.cd(root);
 
 await $`shellcheck --version`;
-for await (const file of $.fs.expandGlob("{bin,src}/*.sh")) {
+for await (const file of $.fs.expandGlob("{bin,src}/**/*.sh")) {
   await $`shellcheck ${file.path}`;
 }
 await $`shellcheck ${$.path.join(root, "install.sh")}`;
 
 for (const file of ["src/dot_zshenv", "src/dot_zshrc"]) {
   await $`zsh -n ${$.path.join(root, file)}`;
+}
+for await (const file of $.fs.expandGlob("src/**/*.zsh")) {
+  await $`zsh -n ${file.path}`;
 }
 await $`deno lint`;
