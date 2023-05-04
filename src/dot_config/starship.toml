@@ -16,7 +16,7 @@ $character"""
 [shell]
 disabled = false
 format = '[$indicator]($style)'
-style = "cyan bold"
+style = "green"
 nu_indicator = "nu "
 powershell_indicator = "pwsh "
 zsh_indicator = ""
@@ -50,6 +50,8 @@ style = "bright-black"
 [kubernetes]
 disabled = false
 format = '[$symbol$context( \($namespace\))]($style) '
+style = "cyan"
+symbol = ""
 
 [cmd_duration]
 format = "[$duration]($style) "
