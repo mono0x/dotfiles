@@ -1,6 +1,7 @@
 format = """
 $username\
 $hostname\
+$shell\
 $directory\
 $git_branch\
 $git_state\
@@ -12,6 +13,10 @@ $character"""
 
 [directory]
 style = "blue"
+
+[shell]
+disabled = false
+zsh_indicator = ""
 
 [character]
 success_symbol = "[❯](purple)"
