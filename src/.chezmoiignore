@@ -4,6 +4,7 @@
 
 {{ if eq .chezmoi.os "windows" -}}
 .config/*
+!.config/chezmoi
 !.config/git
 !.config/pwsh
 !.config/tig
