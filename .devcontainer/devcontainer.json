@@ -26,6 +26,7 @@
         "TheNuProjectContributors.vscode-nushell-lang",
         "denoland.vscode-deno",
         "editorconfig.editorconfig",
+        "github.vscode-github-actions",
         "ms-vscode.powershell",
         "sumneko.lua",
         "tamasfe.even-better-toml"
