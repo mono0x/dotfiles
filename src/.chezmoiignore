@@ -12,8 +12,6 @@
 !.config/wezterm
 .yarnrc.yml
 .zshenv
-.zshrc
-.zshrc.lazy
 bin/*
 goss.sh
 {{ else -}}
