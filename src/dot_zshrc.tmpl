@@ -1,0 +1,8 @@
+# Homebrew
+{{ includeTemplate ".homebrew.zsh.tmpl" . }}
+
+# Sheldon
+if (( $+commands[sheldon] ))
+then
+  eval "$(sheldon source)"
+fi
