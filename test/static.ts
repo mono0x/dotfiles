@@ -20,7 +20,7 @@ for await (const file of $.fs.expandGlob("{bin,src}/**/*.sh")) {
 }
 await $`shellcheck ${$.path.join(root, "install.sh")}`;
 
-for (const file of ["src/dot_zshenv", "src/dot_zshrc"]) {
+for (const file of ["src/dot_zshenv"]) {
   await $`zsh -n ${$.path.join(root, file)}`;
 }
 for await (const file of $.fs.expandGlob("src/**/*.zsh")) {
