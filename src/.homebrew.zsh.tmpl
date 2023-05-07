@@ -2,9 +2,9 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 {{- $prefix := "" -}}
-{{- if lookPath "/home/linuxbrew/.linuxbrew/bin/brew" -}}
+{{- if stat "/home/linuxbrew/.linuxbrew/bin/brew" -}}
 {{- $prefix = "/home/linuxbrew/.linuxbrew" -}}
-{{- else if lookPath "/opt/homebrew/bin/brew" -}}
+{{- else if stat "/opt/homebrew/bin/brew" -}}
 {{- $prefix = "/opt/homebrew" -}}
 {{- end -}}
 
