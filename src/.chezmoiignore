@@ -17,6 +17,7 @@
 bin/copy
 bin/mit
 bin/paste
+run_after_goss.sh
 {{ else -}}
 .config/pwsh
 AppData/*
