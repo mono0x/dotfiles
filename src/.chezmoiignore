@@ -14,9 +14,7 @@
 .zshenv
 .zshrc
 .zshrc.lazy
-bin/copy
-bin/mit
-bin/paste
+bin/*
 goss.sh
 {{ else -}}
 .config/pwsh
