@@ -8,8 +8,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 {{- $prefix = "/opt/homebrew" -}}
 {{- end -}}
 
-{{- if ne $prefix "" -}}
-{{- output (joinPath $prefix "/bin/brew") "shellenv" | trim -}}
+{{- if and (ne $prefix "") (lookPath "zsh") -}}
+{{ output "zsh" "-c" (printf "'%s' shellenv" (joinPath $prefix "/bin/brew")) | trim }}
 path=(
   $HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/)
   $path
