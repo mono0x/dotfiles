@@ -5,3 +5,16 @@ file:
     contains:
     - "name = mono"
     - "email = mono@mono0x.net"
+
+  ~/.zshenv:
+    exists: true
+    filetype: file
+    contains:
+    - export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+  ~/.zshrc:
+    exists: false
+  ~/.config/zsh/.zshrc:
+    exists: true
+    filetype: file
+    contains:
+    - eval "$(sheldon source)"
