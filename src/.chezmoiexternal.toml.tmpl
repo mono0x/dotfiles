@@ -3,3 +3,10 @@
   type = "file"
   url = "https://raw.githubusercontent.com/nushell/nu_scripts/main/themes/themes/solarized-light.nu"
 {{- end -}}
+
+{{- if eq .chezmoi.os "darwin" -}}
+["bin/goss"]
+  type = "file"
+  url = "https://github.com/goss-org/goss/releases/download/v0.3.22/goss-alpha-darwin-amd64"
+  executable = true
+{{- end -}}
