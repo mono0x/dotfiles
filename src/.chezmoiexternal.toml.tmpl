@@ -4,9 +4,17 @@
   url = "https://raw.githubusercontent.com/nushell/nu_scripts/main/themes/themes/solarized-light.nu"
 {{- end -}}
 
+{{- $goss := "" -}}
 {{- if eq .chezmoi.os "darwin" -}}
+{{-   $goss = "goss-alpha-darwin-amd64" -}}
+{{- else if eq .chezmoi.os "linux" -}}
+{{-   $goss = "goss-linux-amd64" -}}
+{{- else if eq .chezmoi.os "windows" -}}
+{{-   $goss = "goss-alpha-windows-amd64" -}}
+{{- end -}}
+{{- if ne $goss "" -}}
 ["bin/goss"]
   type = "file"
-  url = "https://github.com/goss-org/goss/releases/download/v0.3.22/goss-alpha-darwin-amd64"
+  url = "https://github.com/goss-org/goss/releases/download/v0.3.22/{{ $goss }}"
   executable = true
 {{- end -}}
