@@ -1,5 +1,5 @@
 [credential]
-  helper = wincred
+  helper = ~/scoop/apps/git/current/mingw64/bin/git-credential-manager.exe
 
 [core]
   editor = code --wait

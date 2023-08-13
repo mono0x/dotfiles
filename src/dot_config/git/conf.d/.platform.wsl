@@ -1,0 +1,5 @@
+[core]
+  editor = nvim
+
+[credential]
+  helper = /mnt/c/Users/mono/scoop/apps/git/current/mingw64/bin/git-credential-manager.exe

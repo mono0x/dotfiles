@@ -48,4 +48,5 @@ if OS.mac?
   brew "wget"
 
   cask "1password-cli"
+  cask "git-credential-manager"
 end

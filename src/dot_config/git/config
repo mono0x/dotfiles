@@ -80,7 +80,8 @@
 # instead of {{{
 [url "https://github.com/"]
   insteadof = "git@github.com:"
-  insteadof = "ssh://git@github.com:"
+  insteadof = "ssh://git@github.com/"
+  insteadof = "git://github.com/"
 # }}}
 
 # external commands {{{
