@@ -8,7 +8,7 @@
 {{   else -}}
 {{     include "dot_config/git/conf.d/.platform.linux" -}}
 {{   end -}}
-{{ end }}
+{{ end -}}
 {{ if eq .chezmoi.os "windows" -}}
-{{   include "dot_config/git/conf.d/.platform.windows" -}}
+{{   includeTemplate "dot_config/git/conf.d/.platform.windows.tmpl" . -}}
 {{ end -}}

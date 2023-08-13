@@ -1,8 +1,0 @@
-[credential]
-  helper = ~/scoop/apps/git/current/mingw64/bin/git-credential-manager.exe
-
-[core]
-  editor = code --wait
-  preloadindex = true
-  fscache = true
-  symlinks = true
