@@ -1,5 +1,0 @@
-[core]
-  editor = nvim
-
-[credential]
-  helper = git-credential-manager
