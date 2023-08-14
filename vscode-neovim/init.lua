@@ -26,7 +26,7 @@ if not string.find(vim.api.nvim_get_option('runtimepath'), '/dein.vim') then
   local dein_dir = vim.fn.fnamemodify('dein.vim', ':p')
   if vim.fn.isdirectory(dein_dir) == 0 then
     dein_dir = dein_root_dir .. '/repos/github.com/Shougo/dein.vim'
-    if vim.fn.isdirectory(a) == 0 then
+    if vim.fn.isdirectory(dein_dir) == 0 then
       os.execute('git clone https://github.com/Shougo/dein.vim ' .. dein_dir)
     end
   end
@@ -39,7 +39,7 @@ if vim.call('dein#min#load_state', dein_root_dir) ~= 0 then
   local dein_toml = dein_toml_dir .. 'dein.toml'
   local dein_lazy_toml = dein_toml_dir .. 'dein_lazy.toml'
 
-  vim.call('dein#begin', dein_root_dir, { dein_lua, dein_toml, dein_lazy })
+  vim.call('dein#begin', dein_root_dir, { dein_lua, dein_toml, dein_lazy_toml })
   vim.call('dein#load_toml', dein_toml, { lazy = false })
   vim.call('dein#load_toml', dein_lazy_toml, { lazy = true })
   vim.call('dein#end')
