@@ -1,5 +1,5 @@
 if ($PSVersionTable["PSEdition"] -ne "Core") {
-  Write-Warning "This script requires PowerShell Core."
+  Write-Host "This script requires PowerShell Core. Skip."
   return
 }
 
