@@ -27,12 +27,12 @@ if is_windows then
   config.default_prog = { 'pwsh' }
   config.launch_menu = {
     {
-      label = 'Ubuntu-20.04',
-      args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
-    },
-    {
       label = 'pwsh',
       args = { 'pwsh' },
+    },
+    {
+      label = 'Ubuntu-20.04',
+      args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
     },
   }
 end
