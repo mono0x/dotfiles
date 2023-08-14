@@ -1,9 +1,3 @@
-{{ if eq .chezmoi.os "windows" -}}
-["AppData/Roaming/nushell/solarized-light.nu"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/nushell/nu_scripts/main/themes/themes/solarized-light.nu"
-{{ end -}}
-
 {{- $goss := "" -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $goss = "goss-alpha-darwin-amd64" -}}

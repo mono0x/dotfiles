@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "TheNuProjectContributors.vscode-nushell-lang",
     "denoland.vscode-deno",
     "editorconfig.editorconfig",
     "github.vscode-github-actions",

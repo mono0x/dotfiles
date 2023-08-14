@@ -20,9 +20,6 @@
           "PackageIdentifier": "Microsoft.PowerShell"
         },
         {
-          "PackageIdentifier": "Nushell.Nushell"
-        },
-        {
           "PackageIdentifier": "wez.wezterm"
         }
       ],
