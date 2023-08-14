@@ -17,4 +17,5 @@ goss.sh
 {{ else -}}
 .config/pwsh
 AppData/*
+run_onchange_registry.ps1
 {{ end -}}
