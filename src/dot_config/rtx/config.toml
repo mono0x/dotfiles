@@ -1,0 +1,2 @@
+[env]
+RTX_PYTHON_DEFAULT_PACKAGES_FILE = "~/.config/rtx/default-python-packsges"
