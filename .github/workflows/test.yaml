@@ -20,7 +20,10 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt install -y zsh
-        sudo curl -fsSL https://goss.rocks/install | sh
+    - name: Install goss
+      run: |
+        sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss
+        sudo chmod +rx /usr/local/bin/goss
     - name: Run test
       run: |
         ./install.sh
@@ -40,7 +43,7 @@ jobs:
     - uses: denoland/setup-deno@v1
       with:
         deno-version: v1.x
-    - name: Install dependencies
+    - name: Install goss
       run: |
         sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-darwin-amd64 -o /usr/local/bin/goss
         sudo chmod +rx /usr/local/bin/goss
