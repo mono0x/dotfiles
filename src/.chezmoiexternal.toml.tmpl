@@ -1,14 +1,14 @@
 {{- $goss := "" -}}
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   $goss = "goss-alpha-darwin-amd64" -}}
+{{-   $goss = "goss-darwin-amd64" -}}
 {{- else if eq .chezmoi.os "linux" -}}
 {{-   $goss = "goss-linux-amd64" -}}
 {{- else if eq .chezmoi.os "windows" -}}
-{{-   $goss = "goss-alpha-windows-amd64" -}}
+{{-   $goss = "goss-windows-amd64" -}}
 {{- end -}}
 {{ if ne $goss "" -}}
 ["bin/goss"]
   type = "file"
-  url = "https://github.com/goss-org/goss/releases/download/v0.3.22/{{ $goss }}"
+  url = "https://github.com/goss-org/goss/releases/latest/download/{{ $goss }}"
   executable = true
 {{ end -}}
