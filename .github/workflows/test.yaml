@@ -42,7 +42,7 @@ jobs:
         deno-version: v1.x
     - name: Install dependencies
       run: |
-        sudo curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-alpha-darwin-amd64 -o /usr/local/bin/goss
+        sudo curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-darwin-amd64 -o /usr/local/bin/goss
         sudo chmod +rx /usr/local/bin/goss
     - name: Run test
       run: |
