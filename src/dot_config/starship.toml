@@ -33,8 +33,10 @@ format = "[$branch]($style)"
 style = "bright-black"
 
 [git_status]
+# show '*' if conflicted, untracked, modified, staged, renamed, or deleted
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 style = "cyan"
+# zero width space for conditonal formatting
 conflicted = "​"
 untracked = "​"
 modified = "​"
