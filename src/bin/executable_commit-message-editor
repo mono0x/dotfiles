@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+
+if [ "$TERM_PROGRAM" = 'vscode' ] && [ -x "$(command -v code)" ]
+then
+  exec code --wait "$@"
+elif [ -x "$(command -v nvim)" ]
+then
+  exec nvim "$@"
+else
+  exec vim "$@"
+fi

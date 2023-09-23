@@ -1,2 +1,2 @@
 [core]
-  editor = nvim
+  editor = commit-message-editor
