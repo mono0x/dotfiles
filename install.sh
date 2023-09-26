@@ -28,6 +28,7 @@ install_unix() {
   then
     ${SUDO} apt-get install -y \
       build-essential \
+      language-pack-en \
       libssl-dev \
       pkg-config \
       zsh
