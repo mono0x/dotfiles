@@ -16,6 +16,7 @@ bin/*
 goss.sh
 {{ else -}}
 .config/pwsh
+.wslconfig
 AppData/*
 registry.ps1
 {{ end -}}
