@@ -37,6 +37,7 @@ install_unix() {
   fi
 
   (brew list chezmoi > /dev/null 2>&1) || brew install chezmoi
+  (brew list zsh > /dev/null 2>&1) || brew install zsh
   chezmoi init --apply --verbose mono0x
 }
 
