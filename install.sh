@@ -45,7 +45,7 @@ install_unix() {
     ;;
   esac
 
-  if [ ! -e "$homebrew_prefix/bin/brew" ]
+  if ! (command -v "$homebrew_prefix/bin/brew" > /dev/null 2>&1)
   then
     echo "Installing Homebrew..." >&2
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
