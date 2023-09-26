@@ -33,19 +33,22 @@ install_unix() {
       zsh
   fi
 
-  if ! (command -v brew > /dev/null 2>&1)
+  homebrew_prefix=""
+  case "$(uname)" in
+  Darwin)
+    homebrew_prefix="/opt/homebrew"
+    ;;
+
+  Linux)
+    homebrew_prefix="/home/linuxbrew/.linuxbrew"
+    ;;
+  esac
+
+  if [ ! -e "$homebrew_prefix/bin/brew" ]
   then
     echo "Installing Homebrew..." >&2
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-    case "$(uname)" in
-    Darwin)
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-      ;;
-    Linux)
-      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-      ;;
-    esac
+    eval "$($homebrew_prefix/bin/brew shellenv)"
   else
     echo "Homebrew is already installed." >&2
   fi
@@ -56,6 +59,7 @@ install_unix() {
   fi
 
   brew_install chezmoi
+  brew_install sheldon
 
   echo "Applying dotfiles..." >&2
   chezmoi init --apply --verbose mono0x

@@ -1,4 +1,3 @@
-tap "1password/tap"
 tap "homebrew/bundle"
 tap "homebrew/core"
 
@@ -33,6 +32,8 @@ brew "zsh"
 brew "zx"
 
 if OS.mac?
+  tap "1password/tap"
+
   brew "autoconf"
   brew "automake"
   brew "cmake"

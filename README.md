@@ -12,6 +12,13 @@ chsh -s /opt/homebrew/bin/zsh # Darwin
 chsh -s /usr/bin/zsh # Ubuntu
 ```
 
+Reopen the shell.
+
+```sh
+cd ~/.local/share/chezmoi
+brew bundle
+```
+
 ### Windows
 
 ```powershell
