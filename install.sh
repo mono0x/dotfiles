@@ -49,10 +49,11 @@ install_unix() {
   then
     echo "Installing Homebrew..." >&2
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    eval "$($homebrew_prefix/bin/brew shellenv)"
   else
     echo "Homebrew is already installed." >&2
   fi
+
+  [ -z "${HOMEBREW_PREFIX}" ] && eval "$($homebrew_prefix/bin/brew shellenv)"
 
   if [ "$(uname)" = "Darwin" ]
   then
