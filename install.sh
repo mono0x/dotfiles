@@ -5,6 +5,18 @@ install_devcontainers() {
   sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose mono0x
 }
 
+brew_install() {
+  package="$1"
+
+  if ! (brew list "$package" > /dev/null 2>&1)
+  then
+    echo "Installing $package..." >&2
+    brew install "$package"
+  else
+    echo "$package is already installed." >&2
+  fi
+}
+
 install_unix() {
   SUDO=''
   if [ "$(id -u)" -ne 0 ]
@@ -12,20 +24,14 @@ install_unix() {
     SUDO='sudo'
   fi
 
-  case "$(uname)" in
-  Linux)
+  if [ "$(uname)" = "Linux" ]
+  then
     ${SUDO} apt-get install -y \
       build-essential \
       libssl-dev \
       pkg-config \
       zsh
-    if [ "${SHELL}" != "/usr/bin/zsh" ]
-    then
-      echo "Changing the default shell..." >&2
-      chsh -s /usr/bin/zsh
-    fi
-    ;;
-  esac
+  fi
 
   if ! (command -v brew > /dev/null 2>&1)
   then
@@ -44,13 +50,12 @@ install_unix() {
     echo "Homebrew is already installed." >&2
   fi
 
-  if ! (brew list chezmoi > /dev/null 2>&1)
+  if [ "$(uname)" = "Darwin" ]
   then
-    echo "Installing chezmoi..." >&2
-    brew install chezmoi
-  else
-    echo "chezmoi is already installed." >&2
+    brew_install zsh
   fi
+
+  brew_install chezmoi
 
   echo "Applying dotfiles..." >&2
   chezmoi init --apply --verbose mono0x
