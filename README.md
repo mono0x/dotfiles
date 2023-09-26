@@ -19,6 +19,12 @@ cd ~/.local/share/chezmoi
 brew bundle
 ```
 
+Reopen the shell.
+
+```sh
+chezmoi update
+```
+
 ### Windows
 
 ```powershell
