@@ -17,7 +17,13 @@ install_unix() {
     ${SUDO} apt-get install -y \
       build-essential \
       libssl-dev \
-      pkg-config
+      pkg-config \
+      zsh
+    if [ "${SHELL}" != "/usr/bin/zsh" ]
+    then
+      echo "Changing the default shell..." >&2
+      chsh -s /usr/bin/zsh
+    fi
     ;;
   esac
 
@@ -38,16 +44,13 @@ install_unix() {
     echo "Homebrew is already installed." >&2
   fi
 
-  for package in chezmoi zsh
-  do
-    if ! (brew list "$package" > /dev/null 2>&1)
-    then
-      echo "Installing $package..." >&2
-      brew install "$package"
-    else
-      echo "$package is already installed." >&2
-    fi
-  done
+  if ! (brew list chezmoi > /dev/null 2>&1)
+  then
+    echo "Installing chezmoi..." >&2
+    brew install chezmoi
+  else
+    echo "chezmoi is already installed." >&2
+  fi
 
   echo "Applying dotfiles..." >&2
   chezmoi init --apply --verbose mono0x
