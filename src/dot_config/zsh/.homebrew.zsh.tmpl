@@ -1,22 +1,25 @@
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-{{- $prefix := "" -}}
-{{- if stat "/home/linuxbrew/.linuxbrew/bin/brew" -}}
-{{- $prefix = "/home/linuxbrew/.linuxbrew" -}}
-{{- else if stat "/opt/homebrew/bin/brew" -}}
-{{- $prefix = "/opt/homebrew" -}}
-{{- end -}}
+{{ $prefix := "" -}}
+{{ if stat "/home/linuxbrew/.linuxbrew/bin/brew" -}}
+{{ $prefix = "/home/linuxbrew/.linuxbrew" -}}
+{{ else if stat "/opt/homebrew/bin/brew" -}}
+{{ $prefix = "/opt/homebrew" -}}
+{{ end -}}
 
-{{- if ne $prefix "" -}}
+{{ if ne $prefix "" -}}
+# brew shellenv zsh
 {{ output (joinPath $prefix "/bin/brew") "shellenv" "zsh" | trim }}
+
 path=(
   $HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/)
   $path
 )
+
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 fpath=(
   $HOMEBREW_PREFIX/share/zsh/site-functions(N-/)
   $fpath
 )
-{{- end -}}
+{{ end -}}
