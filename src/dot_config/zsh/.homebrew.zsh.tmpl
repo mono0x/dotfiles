@@ -10,7 +10,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 {{ if ne $prefix "" -}}
 # brew shellenv zsh
-{{ output (joinPath $prefix "/bin/brew") "shellenv" "zsh" | trim }}
+{{ output "env" "-i" (print "HOME=" .chezmoi.homeDir) (joinPath $prefix "/bin/brew") "shellenv" "zsh" | trim }}
 
 path=(
   $HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/)
