@@ -34,10 +34,22 @@ install_unix() {
       eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
       ;;
     esac
+  else
+    echo "Homebrew is already installed." >&2
   fi
 
-  (brew list chezmoi > /dev/null 2>&1) || brew install chezmoi
-  (brew list zsh > /dev/null 2>&1) || brew install zsh
+  for package in chezmoi zsh
+  do
+    if ! (brew list "$package" > /dev/null 2>&1)
+    then
+      echo "Installing $package..." >&2
+      brew install "$package"
+    else
+      echo "$package is already installed." >&2
+    fi
+  done
+
+  echo "Applying dotfiles..." >&2
   chezmoi init --apply --verbose mono0x
 }
 
