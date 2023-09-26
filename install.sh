@@ -34,18 +34,18 @@ install_unix() {
       zsh
   fi
 
-  homebrew_prefix=""
+  prefix=""
   case "$(uname)" in
   Darwin)
-    homebrew_prefix="/opt/homebrew"
+    prefix="/opt/homebrew"
     ;;
 
   Linux)
-    homebrew_prefix="/home/linuxbrew/.linuxbrew"
+    prefix="/home/linuxbrew/.linuxbrew"
     ;;
   esac
 
-  if ! (command -v "$homebrew_prefix/bin/brew" > /dev/null 2>&1)
+  if ! (command -v "$prefix/bin/brew" > /dev/null 2>&1)
   then
     echo "Installing Homebrew..." >&2
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -53,7 +53,7 @@ install_unix() {
     echo "Homebrew is already installed." >&2
   fi
 
-  [ -z "${HOMEBREW_PREFIX}" ] && eval "$($homebrew_prefix/bin/brew shellenv)"
+  [ -z "${HOMEBREW_PREFIX}" ] && eval "$($prefix/bin/brew shellenv)"
 
   if [ "$(uname)" = "Darwin" ]
   then
