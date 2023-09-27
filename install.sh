@@ -48,7 +48,7 @@ install_unix() {
   if ! (command -v "$prefix/bin/brew" > /dev/null 2>&1)
   then
     echo "Installing Homebrew..." >&2
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
     echo "Homebrew is already installed." >&2
   fi
