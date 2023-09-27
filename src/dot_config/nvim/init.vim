@@ -216,6 +216,35 @@ function! s:init_cmdwin()
 endfunction
 " }}}
 
+" Surround {{{
+let g:surround_no_mappings = 1
+
+nmap <unique> ds     <Plug>Dsurround
+nmap <unique> cs     <Plug>Csurround
+nmap <unique> ys     <Plug>Ysurround
+nmap <unique> yS     <Plug>Ysurround$
+nmap <unique> yss    <Plug>Yssurround
+nmap <unique> ygs    <Plug>Ygsurround
+nmap <unique> ygS    <Plug>Ygsurround$
+nmap <unique> ygss   <Plug>Ygssurround
+nmap <unique> ygsgs  <Plug>Ygssurround
+xmap <unique> s      <Plug>Vsurround
+xmap <unique> S      <Plug>VSurround
+xmap <unique> gs     <Plug>Vgsurround
+xmap <unique> gS     <Plug>VgSurround
+imap <unique> <C-S>  <Plug>Isurround
+imap <unique> <C-G>s <Plug>Isurround
+imap <unique> <C-G>S <Plug>ISurround
+" }}}
+
+" solarized {{{
+set background=light
+let g:solarized_termcolors=16
+let g:solarized_termtrans=1
+let g:solarized_italic=0
+autocmd vimrc_loading VimEnter * nested colorscheme solarized
+" }}}
+
 " Terminal {{{
 if has('nvim')
   tnoremap <silent> <Esc> <C-\><C-n>
@@ -225,78 +254,39 @@ endif
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-" dein.vim {{{
-filetype off
-
-let s:cache = expand('~/.cache')
-if !isdirectory(s:cache)
-  call mkdir(s:cache, 'p')
-endif
-
-if &runtimepath !~# '/dein.vim'
-  let s:dein_dir = fnamemodify('dein.vim', ':p')
-  if !isdirectory(s:dein_dir)
-    let s:dein_dir = s:cache . '/dein/repos/github.com/Shougo/dein.vim'
-    if !isdirectory(s:dein_dir)
-      execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
-    endif
-  endif
-  execute 'set runtimepath^=' . s:dein_dir
-endif
-
-let s:path = s:cache . '/dein'
-if dein#min#load_state(s:path)
-  let s:base_dir = fnamemodify($MYVIMRC, ':h') . '/'
-  let s:toml = s:base_dir . 'dein.toml'
-  let s:lazy_toml = s:base_dir . 'dein_lazy.toml'
-
-  call dein#begin(s:path, [ $MYVIMRC, s:toml, s:lazy_toml, ])
-
-  call dein#load_toml(s:toml, { 'lazy': 0 })
-  call dein#load_toml(s:lazy_toml, { 'lazy': 1 })
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-autocmd vimrc_loading VimEnter * call dein#call_hook('post_source')
-
 filetype plugin indent on
 syntax on
-" }}}
 
-if dein#tap('lightline.vim') " {{{
-  set noshowmode
+set noshowmode
 
-  let g:lightline = {
-    \   'colorscheme': 'solarized',
-    \   'active': {
-    \     'left': [
-    \       [ 'mode', 'paste', ],
-    \       [ 'fugitive', 'readonly', 'filename', ],
-    \     ],
-    \     'right': [
-    \        [ 'lineinfo' ],
-    \        [ 'percent' ],
-    \        [ 'fileformat', 'fileencoding', 'filetype' ]
-    \     ],
-    \   },
-    \   'component_function': {
-    \     'fugitive': 'MyFugitive',
-    \     'filename': 'MyFilename',
-    \   },
-    \ }
+let g:lightline = {
+  \   'colorscheme': 'solarized',
+  \   'active': {
+  \     'left': [
+  \       [ 'mode', 'paste', ],
+  \       [ 'fugitive', 'readonly', 'filename', ],
+  \     ],
+  \     'right': [
+  \        [ 'lineinfo' ],
+  \        [ 'percent' ],
+  \        [ 'fileformat', 'fileencoding', 'filetype' ]
+  \     ],
+  \   },
+  \   'component_function': {
+  \     'fugitive': 'MyFugitive',
+  \     'filename': 'MyFilename',
+  \   },
+  \ }
 
-  function! MyFugitive()
-    return exists('*fugitive#head') && strlen(fugitive#head()) ? fugitive#head() : ''
-  endfunction
+function! MyFugitive()
+  return exists('*fugitive#head') && strlen(fugitive#head()) ? fugitive#head() : ''
+endfunction
 
-  function! MyFilename()
-    return ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-      \ ('' != MyModified() ? ' ' . MyModified() : '')
-  endfunction
+function! MyFilename()
+  return ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+    \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
 
-  function! MyModified()
-    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-  endfunction
-endif " }}}
+function! MyModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction

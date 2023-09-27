@@ -1,3 +1,5 @@
+{{- $refreshPeriod := "168h" -}}
+
 {{- $goss := "" -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $goss = "goss-darwin-amd64" -}}
@@ -11,4 +13,40 @@
   type = "file"
   url = "https://github.com/goss-org/goss/releases/latest/download/{{ $goss }}"
   executable = true
+  refreshPeriod = "{{ $refreshPeriod }}"
 {{ end -}}
+
+{{- $nvim := "" -}}
+{{- if eq .chezmoi.os "windows" -}}
+{{-   $nvim = "AppData/Local/nvim" -}}
+{{- else -}}
+{{-   $nvim = ".config/nvim" -}}
+{{- end -}}
+
+["{{ $nvim }}/pack/vendor/start/lightline.vim"]
+  type = "git-repo"
+  url = "https://github.com/itchyny/lightline.vim"
+  refreshPeriod = "{{ $refreshPeriod }}"
+  clone.args = ["--depth", "1"]
+  pull.args = ["--ff-only"]
+
+["{{ $nvim }}/pack/vendor/start/vim-colors-solarized"]
+  type = "git-repo"
+  url = "https://github.com/altercation/vim-colors-solarized"
+  refreshPeriod = "{{ $refreshPeriod }}"
+  clone.args = ["--depth", "1"]
+  pull.args = ["--ff-only"]
+
+["{{ $nvim }}/pack/vendor/start/vim-fugitive"]
+  type = "git-repo"
+  url = "https://github.com/tpope/vim-fugitive"
+  refreshPeriod = "{{ $refreshPeriod }}"
+  clone.args = ["--depth", "1"]
+  pull.args = ["--ff-only"]
+
+["{{ $nvim }}/pack/vendor/start/vim-surround"]
+  type = "git-repo"
+  url = "https://github.com/anyakichi/vim-surround"
+  refreshPeriod = "{{ $refreshPeriod }}"
+  clone.args = ["--depth", "1"]
+  pull.args = ["--ff-only"]
