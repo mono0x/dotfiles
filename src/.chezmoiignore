@@ -13,6 +13,7 @@
 .yarnrc.yml
 .zshenv
 bin/*
+brew.sh
 goss.sh
 {{ else -}}
 .config/pwsh

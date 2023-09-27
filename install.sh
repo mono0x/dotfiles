@@ -55,13 +55,7 @@ install_unix() {
 
   [ -z "${HOMEBREW_PREFIX:-""}" ] && eval "$($prefix/bin/brew shellenv)"
 
-  if [ "$(uname)" = "Darwin" ]
-  then
-    brew_install zsh
-  fi
-
   brew_install chezmoi
-  brew_install sheldon
 
   echo "Applying dotfiles..." >&2
   chezmoi init --apply --verbose mono0x
