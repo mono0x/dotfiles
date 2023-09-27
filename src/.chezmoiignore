@@ -1,7 +1,6 @@
 {{ if eq (env "REMOTE_CONTAINERS") "true" -}}
-/.config/git
-/01_brew.sh
-/02_rtx.sh
+.config/git
+brew.sh
 {{ else -}}
 {{ end -}}
 
@@ -12,11 +11,11 @@
 !.config/starship.toml
 !.config/tig
 !.config/wezterm
-*.sh
 .config/*
 .yarnrc.yml
 .zshenv
 bin/*
+brew.sh
 {{ else -}}
 .config/pwsh
 .wslconfig
