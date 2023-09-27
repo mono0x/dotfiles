@@ -3,18 +3,17 @@
 {{ end -}}
 
 {{ if eq .chezmoi.os "windows" -}}
-.config/*
 !.config/chezmoi
 !.config/git
 !.config/pwsh
 !.config/starship.toml
 !.config/tig
 !.config/wezterm
+*.sh
+.config/*
 .yarnrc.yml
 .zshenv
 bin/*
-brew.sh
-goss.sh
 {{ else -}}
 .config/pwsh
 .wslconfig
