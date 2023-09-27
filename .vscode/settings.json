@@ -3,7 +3,12 @@
   "deno.importMap": "deno.jsonc",
   "deno.lint": true,
   "files.associations": {
-    "ignore": "ignore"
+    "**/src/dot_config/git/conf.d/*.*": "ini",
+    "**/src/dot_config/git/config": "ini",
+    "**/src/dot_config/git/ignore": "ignore",
+    "*.toml.tmpl": "toml",
+    "*.zsh.tmpl": "shellscript",
+    "dot_zshrc.tmpl": "shellscript"
   },
   "[json][jsonc][typescript]": {
     "editor.formatOnSave": true,
