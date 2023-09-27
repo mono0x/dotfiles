@@ -1,5 +1,8 @@
 {{ if eq (env "REMOTE_CONTAINERS") "true" -}}
-/.gitconfig
+/.config/git
+/01_brew.sh
+/02_rtx.sh
+{{ else -}}
 {{ end -}}
 
 {{ if eq .chezmoi.os "windows" -}}
