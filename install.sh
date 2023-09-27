@@ -53,9 +53,7 @@ install_unix() {
     echo "Homebrew is already installed." >&2
   fi
 
-  set +u
-  [ -z "${HOMEBREW_PREFIX}" ] && eval "$($prefix/bin/brew shellenv)"
-  set -u
+  [ -z "${HOMEBREW_PREFIX:-""}" ] && eval "$($prefix/bin/brew shellenv)"
 
   if [ "$(uname)" = "Darwin" ]
   then
