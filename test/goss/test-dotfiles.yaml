@@ -18,3 +18,13 @@ file:
     filetype: file
     contents:
     - eval "$(sheldon source)"
+  ~/.config/zsh/zshrc.d/starship.zsh:
+    exists: true
+    filetype: file
+    contents:
+    - "prompt_starship_precmd() {"
+  ~/.config/zsh/zshrc.defer.d/rtx.zsh:
+    exists: true
+    filetype: file
+    contents:
+    - "rtx() {"
