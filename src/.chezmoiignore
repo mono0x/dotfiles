@@ -16,6 +16,7 @@ brew.sh
 .zshenv
 bin/*
 brew.sh
+goss.sh
 {{ else -}}
 .config/pwsh
 .wslconfig
