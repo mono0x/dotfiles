@@ -8,6 +8,7 @@ local config = {}
 
 -- Preferences
 config.check_for_updates = false
+config.window_close_confirmation = "NeverPrompt"
 
 -- Appearances
 config.color_scheme = "Builtin Solarized Light"
