@@ -1,4 +1,8 @@
 #!/bin/sh
 set -eu
-cd "${CHEZMOI_SOURCE_DIR:-$(dirname "$0")}/.."
-brew bundle --no-upgrade
+
+if command -v brew > /dev/null 2>&1
+then
+  cd "${CHEZMOI_SOURCE_DIR:-$(dirname "$0")}/.."
+  brew bundle --no-upgrade
+fi

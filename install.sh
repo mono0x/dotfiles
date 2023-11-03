@@ -1,74 +1,7 @@
 #!/bin/sh
-set -eu
+set -eux
 
-install_devcontainers() {
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose mono0x
-}
-
-brew_install() {
-  package="$1"
-
-  if ! (brew list "$package" > /dev/null 2>&1)
-  then
-    echo "Installing $package..." >&2
-    brew install "$package"
-  else
-    echo "$package is already installed." >&2
-  fi
-}
-
-install_unix() {
-  SUDO=''
-  if [ "$(id -u)" -ne 0 ]
-  then
-    SUDO='sudo'
-  fi
-
-  if [ "$(uname)" = "Linux" ]
-  then
-    ${SUDO} apt-get install -y \
-      build-essential \
-      language-pack-en \
-      libssl-dev \
-      pkg-config \
-      zsh
-  fi
-
-  prefix=""
-  case "$(uname)" in
-  Darwin)
-    prefix="/opt/homebrew"
-    ;;
-
-  Linux)
-    prefix="/home/linuxbrew/.linuxbrew"
-    ;;
-  esac
-
-  if ! (command -v "$prefix/bin/brew" > /dev/null 2>&1)
-  then
-    echo "Installing Homebrew..." >&2
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  else
-    echo "Homebrew is already installed." >&2
-  fi
-
-  [ -z "${HOMEBREW_PREFIX:-""}" ] && eval "$($prefix/bin/brew shellenv)"
-
-  brew_install chezmoi
-
-  echo "Applying dotfiles..." >&2
-  chezmoi init --apply --verbose mono0x
-}
-
-case "$(uname)" in
-Darwin|Linux)
-  ;;
-*)
-  echo "Only Darwin or Linux is supported." >&2
-  return 1
-  ;;
-esac
+cd "$(dirname "$0")"
 
 if ! (command -v git > /dev/null 2>&1)
 then
@@ -79,8 +12,43 @@ fi
 if [ "${REMOTE_CONTAINERS:-}" = "true" ]
 then
   echo "Running in a remote container." >&2
-  install_devcontainers
-  return 0
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose mono0x
+  exit
 fi
 
-install_unix
+HOMEBREW_INSTALL=""
+case "$(uname)" in
+Darwin)
+  HOMEBREW_INSTALL="/opt/homebrew"
+  ;;
+
+Linux)
+  HOMEBREW_INSTALL="/home/linuxbrew/.linuxbrew"
+  ;;
+esac
+DENO_INSTALL="$HOME/.local"
+CHEZMOI_INSTALL="$HOME/.local/bin"
+
+command -v "$HOMEBREW_INSTALL/bin/brew" > /dev/null 2>&1 || \
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+command -v "$DENO_INSTALL/bin/deno" > /dev/null 2>&1 || \
+  DENO_INSTALL="$DENO_INSTALL" sh -c "$(curl -fsSL https://deno.land/x/install/install.sh)"
+
+command -v "$CHEZMOI_INSTALL/chezmoi" > /dev/null 2>&1 || \
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$CHEZMOI_INSTALL"
+
+if [ "$(uname)" = "Linux" ]
+then
+  "$DENO_INSTALL/bin/deno" run -A _install/apt-install.ts \
+    build-essential \
+    language-pack-en \
+    libssl-dev \
+    pkg-config \
+    zsh
+fi
+
+env -i HOME="$HOME" sh <<EOS
+  eval "$($HOMEBREW_INSTALL/bin/brew shellenv)"
+  [ -d "$HOME/.local/share/chezmoi" ] || "$CHEZMOI_INSTALL/chezmoi" init --verbose --apply mono0x
+EOS
