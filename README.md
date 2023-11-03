@@ -12,19 +12,6 @@ chsh -s /opt/homebrew/bin/zsh # Darwin
 chsh -s /usr/bin/zsh # Ubuntu
 ```
 
-Reopen the shell.
-
-```sh
-cd ~/.local/share/chezmoi
-brew bundle
-```
-
-Reopen the shell.
-
-```sh
-chezmoi update
-```
-
 ### Windows
 
 ```powershell
@@ -38,8 +25,8 @@ Add the following settings to the `settings.json`.
 
 ```json
 {
-    "dotfiles.repository": "mono0x/dotfiles",
-    "dotfiles.targetPath": "~/.local/share/chezmoi",
-    "dotfiles.installCommand": "~/.local/share/chezmoi/install.sh",
+  "dotfiles.repository": "mono0x/dotfiles",
+  "dotfiles.targetPath": "~/.local/share/chezmoi",
+  "dotfiles.installCommand": "~/.local/share/chezmoi/install.sh"
 }
 ```
