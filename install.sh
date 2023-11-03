@@ -29,6 +29,12 @@ esac
 DENO_INSTALL="$HOME/.local"
 CHEZMOI_INSTALL="$HOME/.local/bin"
 
+SCOOP_SHIM_DIR=""
+if command -v scoop > /dev/null 2>&1
+then
+  SCOOP_SHIM_DIR="$(dirname "$(which scoop)")"
+fi
+
 command -v "$HOMEBREW_INSTALL/bin/brew" > /dev/null 2>&1 || \
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -48,7 +54,8 @@ then
     zsh
 fi
 
-env -i HOME="$HOME" sh <<EOS
+env -i HOME="$HOME" bash --noprofile --norc <<EOS
+  export PATH="\$PATH:$SCOOP_SHIM_DIR"
   eval "$($HOMEBREW_INSTALL/bin/brew shellenv)"
-  [ -d "$HOME/.local/share/chezmoi" ] || "$CHEZMOI_INSTALL/chezmoi" init --verbose --apply mono0x
+  "$CHEZMOI_INSTALL/chezmoi" init --verbose --apply mono0x
 EOS
