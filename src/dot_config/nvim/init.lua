@@ -1,4 +1,5 @@
 -- init.lua
+---@diagnostic disable: inject-field
 
 -- Disable default plugins
 vim.g.loaded_gzip = 1

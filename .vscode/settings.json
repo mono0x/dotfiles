@@ -14,7 +14,7 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
-  "Lua.diagnostics.globals": [
-    "vim"
-  ]
+  "files.exclude": {
+    "third_party": true
+  }
 }
