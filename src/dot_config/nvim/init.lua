@@ -44,11 +44,7 @@ vim.opt.encoding = 'utf-8'
 if vim.fn.has('win32') then
   vim.opt.termencoding = 'cp932'
 end
-if vim.fn.has('kaoriya') then
-  vim.opt.fileencodings = 'guess'
-else
-  vim.opt.fileencodings = 'utf-8,cp932,euc-jp'
-end
+vim.opt.fileencodings = 'utf-8,cp932,euc-jp'
 vim.opt.fileformats = 'unix,dos,mac'
 
 -- Backup and history
