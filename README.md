@@ -7,7 +7,10 @@
 ### Darwin / Ubuntu
 
 ```sh
-sudo apt-get install unzip # Ubuntu
+# Ubuntu
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install -y unzip
 
 git clone https://github.com/mono0x/dotfiles ~/.local/share/chezmoi
 ~/.local/share/chezmoi/install.sh
