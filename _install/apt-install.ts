@@ -2,13 +2,11 @@ import $ from "https://deno.land/x/dax/mod.ts";
 
 $.setPrintCommand(true);
 
-const packages = [
-  "build-essential",
-  "language-pack-en",
-  "libssl-dev",
-  "pkg-config",
-  "zsh",
-];
+const packages = Deno.args;
+if (packages.length === 0) {
+  console.error("No packages specified");
+  Deno.exit(1);
+}
 
 const installed = new Set(
   (await $`dpkg --get-selections`.lines())
