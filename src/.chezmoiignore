@@ -11,15 +11,15 @@ brew.sh
 !.config/starship.toml
 !.config/tig
 !.config/wezterm
-.config/*
+.config
 .yarnrc.yml
 .zshenv
-bin/*
+bin
 brew.sh
 goss.sh
 {{ else -}}
 .config/pwsh
 .wslconfig
-AppData/*
+AppData
 registry.ps1
 {{ end -}}
