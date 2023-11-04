@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eux
+set -eu
 
 cd "$(dirname "$0")"
 
@@ -36,7 +36,7 @@ then
 fi
 
 command -v "$HOMEBREW_INSTALL/bin/brew" > /dev/null 2>&1 || \
-  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 command -v "$DENO_INSTALL/bin/deno" > /dev/null 2>&1 || \
   DENO_INSTALL="$DENO_INSTALL" sh -c "$(curl -fsSL https://deno.land/x/install/install.sh)"

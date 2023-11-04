@@ -7,7 +7,11 @@
 ### Darwin / Ubuntu
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mono0x/dotfiles/main/install.sh)"
+sudo apt-get install unzip # Ubuntu
+
+git clone https://github.com/mono0x/dotfiles ~/.local/share/chezmoi
+~/.local/share/chezmoi/install.sh
+
 chsh -s /opt/homebrew/bin/zsh # Darwin
 chsh -s /usr/bin/zsh # Ubuntu
 ```
