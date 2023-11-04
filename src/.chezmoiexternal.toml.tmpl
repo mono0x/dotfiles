@@ -6,7 +6,7 @@
 {{- else if eq .chezmoi.os "linux" -}}
 {{-   $goss = "goss-linux-amd64" -}}
 {{- else if eq .chezmoi.os "windows" -}}
-{{-   $goss = "goss-windows-amd64" -}}
+{{-   $goss = "goss-windows-amd64.exe" -}}
 {{- end -}}
 {{ if ne $goss "" -}}
 ["bin/goss"]
