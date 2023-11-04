@@ -30,16 +30,16 @@
   clone.args = ["--depth", "1"]
   pull.args = ["--ff-only"]
 
-["{{ $nvim }}/pack/vendor/start/lightline.vim"]
+["{{ $nvim }}/pack/vendor/start/lualine.nvim"]
   type = "git-repo"
-  url = "https://github.com/itchyny/lightline.vim"
+  url = "https://github.com/nvim-lualine/lualine.nvim"
   refreshPeriod = "{{ $refreshPeriod }}"
   clone.args = ["--depth", "1"]
   pull.args = ["--ff-only"]
 
-["{{ $nvim }}/pack/vendor/start/vim-colors-solarized"]
+["{{ $nvim }}/pack/vendor/start/solarized.nvim"]
   type = "git-repo"
-  url = "https://github.com/altercation/vim-colors-solarized"
+  url = "https://github.com/shaunsingh/solarized.nvim"
   refreshPeriod = "{{ $refreshPeriod }}"
   clone.args = ["--depth", "1"]
   pull.args = ["--ff-only"]
