@@ -290,3 +290,7 @@ endfunction
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
+
+let g:copilot_filetypes = {
+  \   'gitcommit': v:true,
+  \ }
