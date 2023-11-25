@@ -6,6 +6,5 @@ experimental = true
 
 [tools]
 deno = "latest"
-go = "latest"
 node = "lts"
-rust = "latest"
+python = "latest"
