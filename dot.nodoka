@@ -1,4 +1,5 @@
 # 〠 for encoding detection
+# https://appletllc.com/web/nodoka-doc/MANUAL-ja.html
 include "109.nodoka"
 
 def key Eisu = 0x71
