@@ -60,6 +60,9 @@
   colorMoved = default
   algorithm = histogram
   compactionHeuristic = true
+[diff "lockb"]
+  textconv = bun
+  binary = true
 [fetch]
   prune = true
 [grep]
