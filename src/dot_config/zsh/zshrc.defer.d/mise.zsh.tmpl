@@ -1,0 +1,3 @@
+{{- if lookPath "mise" -}}
+{{ output "env" "MISE_TRUSTED_CONFIG_PATHS=~/.config/mise/config.toml" "mise" "activate" "zsh" | trim }}
+{{- end -}}
