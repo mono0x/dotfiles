@@ -1,5 +1,2 @@
 [env]
 MISE_PYTHON_DEFAULT_PACKAGES_FILE = "~/.config/mise/default-python-packsges"
-
-[settings]
-experimental = true
