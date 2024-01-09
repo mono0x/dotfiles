@@ -8,6 +8,8 @@
     "**/src/dot_config/git/ignore": "ignore",
     "*.toml.tmpl": "toml",
     "*.zsh.tmpl": "shellscript",
+    "dot_zprofile": "shellscript",
+    "dot_zshenv": "shellscript",
     "dot_zshrc.tmpl": "shellscript"
   },
   "[json][jsonc][typescript]": {

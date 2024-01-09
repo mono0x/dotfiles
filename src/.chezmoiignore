@@ -13,6 +13,7 @@ brew.sh
 !.config/wezterm
 .config
 .yarnrc.yml
+.zprofile
 .zshenv
 bin
 brew.sh

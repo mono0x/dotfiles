@@ -1,0 +1,2 @@
+# https://mise.jdx.dev/ide-integration.html
+export PATH="$HOME/.local/share/mise/shims:$PATH"
