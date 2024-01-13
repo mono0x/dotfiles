@@ -28,6 +28,11 @@
     "https://json.schemastore.org/github-action.json": [
       "action.yaml",
       "action.yml"
+    ],
+
+    "https://raw.githubusercontent.com/goss-org/goss/master/docs/goss-json-schema.yaml": [
+      "goss.yaml",
+      "test/goss/*.yaml"
     ]
   }
 }
