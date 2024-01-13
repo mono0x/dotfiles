@@ -18,5 +18,16 @@
   },
   "files.exclude": {
     "third_party": true
+  },
+  "yaml.schemas": {
+    // https://github.com/github/vscode-github-actions/issues/195#issuecomment-1570218818
+    "https://json.schemastore.org/github-workflow.json": [
+      "*.github/workflows/*.yaml",
+      "*.github/workflows/*.yml"
+    ],
+    "https://json.schemastore.org/github-action.json": [
+      "action.yaml",
+      "action.yml"
+    ]
   }
 }

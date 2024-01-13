@@ -2,8 +2,8 @@
   "recommendations": [
     "denoland.vscode-deno",
     "editorconfig.editorconfig",
-    "github.vscode-github-actions",
     "ms-vscode.powershell",
+    "redhat.vscode-yaml",
     "sumneko.lua",
     "tamasfe.even-better-toml"
   ]
