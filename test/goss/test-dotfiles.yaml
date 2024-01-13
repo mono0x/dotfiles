@@ -3,28 +3,28 @@ file:
     exists: true
     filetype: file
     contents:
-    - "name = mono"
-    - "email = mono@mono0x.net"
+      - "name = mono"
+      - "email = mono@mono0x.net"
 
   ~/.zshenv:
     exists: true
     filetype: file
     contents:
-    - export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+      - export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
   ~/.zshrc:
     exists: false
   ~/.config/zsh/.zshrc:
     exists: true
     filetype: file
     contents:
-    - eval "$(sheldon source)"
+      - eval "$(sheldon source)"
   ~/.config/zsh/zshrc.d/starship.zsh:
     exists: true
     filetype: file
     contents:
-    - "prompt_starship_precmd() {"
+      - "prompt_starship_precmd() {"
   ~/.config/zsh/zshrc.defer.d/mise.zsh:
     exists: true
     filetype: file
     contents:
-    - "mise() {"
+      - "mise() {"

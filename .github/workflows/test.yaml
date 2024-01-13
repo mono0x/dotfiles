@@ -2,107 +2,107 @@ name: test
 on:
   push:
     branches:
-    - "*"
+      - "*"
 
 jobs:
   test-linux:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
-    - name: "Workaround: Prepare ~/.local/share/chezmoi"
-      run: |
-        ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
-    - uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.x
-    - name: Install dependencies
-      run: |
-        sudo apt install -y zsh
-    - name: Install goss
-      run: |
-        sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss
-        sudo chmod +rx /usr/local/bin/goss
-    - name: Run test
-      run: |
-        ./install.sh
-        # Run script twice to test idempotency
-        ./install.sh
-        goss validate --format documentation
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: "Workaround: Prepare ~/.local/share/chezmoi"
+        run: |
+          ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Install dependencies
+        run: |
+          sudo apt install -y zsh
+      - name: Install goss
+        run: |
+          sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss
+          sudo chmod +rx /usr/local/bin/goss
+      - name: Run test
+        run: |
+          ./install.sh
+          # Run script twice to test idempotency
+          ./install.sh
+          goss validate --format documentation
 
   test-macos:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
-    - name: "Workaround: Prepare ~/.local/share/chezmoi"
-      run: |
-        ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
-    - uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.x
-    - name: Install goss
-      run: |
-        sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-darwin-amd64 -o /usr/local/bin/goss
-        sudo chmod +rx /usr/local/bin/goss
-    - name: Run test
-      run: |
-        ./install.sh
-        # Run script twice to test idempotency
-        ./install.sh
-        GOSS_USE_ALPHA=1 goss validate --format documentation
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: "Workaround: Prepare ~/.local/share/chezmoi"
+        run: |
+          ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Install goss
+        run: |
+          sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-darwin-amd64 -o /usr/local/bin/goss
+          sudo chmod +rx /usr/local/bin/goss
+      - name: Run test
+        run: |
+          ./install.sh
+          # Run script twice to test idempotency
+          ./install.sh
+          GOSS_USE_ALPHA=1 goss validate --format documentation
 
   test-windows:
     runs-on: windows-latest
     env:
       SKIP_SCOOP: "true"
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
-    - name: "Workaround: Prepare ~/.local/share/chezmoi"
-      run: |
-        New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
-        New-Item -ItemType SymbolicLink -Value (Get-Location) -Path "$env:USERPROFILE\.local\share\chezmoi"
-    - name: Install Chezmoi
-      run: |
-        Set-Location "$env:USERPROFILE\.local"
-        (Invoke-RestMethod -useb https://get.chezmoi.io/ps1) | pwsh -Command -
-        ls -l $env:USERPROFILE\.local
-        ls -l $env:USERPROFILE\.local\bin
-    - name: Run test
-      run: |
-        $env:Path += ";$env:USERPROFILE\.local\bin"
-        pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
-        # Run script twice to test idempotency
-        pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: "Workaround: Prepare ~/.local/share/chezmoi"
+        run: |
+          New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
+          New-Item -ItemType SymbolicLink -Value (Get-Location) -Path "$env:USERPROFILE\.local\share\chezmoi"
+      - name: Install Chezmoi
+        run: |
+          Set-Location "$env:USERPROFILE\.local"
+          (Invoke-RestMethod -useb https://get.chezmoi.io/ps1) | pwsh -Command -
+          ls -l $env:USERPROFILE\.local
+          ls -l $env:USERPROFILE\.local\bin
+      - name: Run test
+        run: |
+          $env:Path += ";$env:USERPROFILE\.local\bin"
+          pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
+          # Run script twice to test idempotency
+          pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
 
   test-static:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
-    - uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.x
-    - name: Install dependencies
-      run: sudo apt install -y zsh
-    - name: Run test
-      run: deno run -A ./test/static.ts
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Install dependencies
+        run: sudo apt install -y zsh
+      - name: Run test
+        run: deno run -A ./test/static.ts
 
   actionlint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
-    - name: Download actionlint
-      id: get_actionlint
-      run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
-      shell: bash
-    - name: Check workflow files
-      run: ${{ steps.get_actionlint.outputs.executable }} -color
-      shell: bash
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Download actionlint
+        id: get_actionlint
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+        shell: bash
+      - name: Check workflow files
+        run: ${{ steps.get_actionlint.outputs.executable }} -color
+        shell: bash
