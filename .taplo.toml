@@ -1,0 +1,4 @@
+[formatting]
+  column_width = 120
+  align_comments = false
+  indent_entries = true
