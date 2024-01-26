@@ -17,7 +17,7 @@ keymap Global
     mod Windows += LAlt
     key *LWindows = *LAlt
 
-    key U-Eisu = D-無変換 U-無変換
+    key U-*IC-Eisu = D-無変換 U-無変換
     key U-Kana = D-変換 U-変換
   endif
 
