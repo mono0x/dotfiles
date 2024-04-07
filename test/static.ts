@@ -1,6 +1,6 @@
-import * as path from "https://deno.land/std/path/mod.ts";
-import * as fs from "https://deno.land/std/fs/mod.ts";
-import $ from "https://deno.land/x/dax/mod.ts";
+import $ from "@david/dax";
+import * as fs from "@std/fs";
+import * as path from "@std/path";
 
 $.setPrintCommand(true);
 
