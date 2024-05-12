@@ -28,4 +28,5 @@ for (const file of ["src/dot_zshenv"]) {
 for await (const file of fs.expandGlob("src/**/*.zsh")) {
   await $`zsh -n ${file.path}`;
 }
+await $`deno fmt --check`;
 await $`deno lint`;
