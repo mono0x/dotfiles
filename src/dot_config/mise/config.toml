@@ -1,2 +1,5 @@
 [env]
-MISE_PYTHON_DEFAULT_PACKAGES_FILE = "~/.config/mise/default-python-packsges"
+  MISE_PYTHON_DEFAULT_PACKAGES_FILE = "~/.config/mise/default-python-packsges"
+
+[tools]
+  usage = "latest"
