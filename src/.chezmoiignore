@@ -16,11 +16,10 @@ brew.sh
 .zprofile
 .zshenv
 bin
-brew.sh
-goss.sh
+.chezmoiscripts/*.sh
 {{ else -}}
 .config/pwsh
 .wslconfig
 AppData
-registry.ps1
+.chezmoiscripts/*.ps1
 {{ end -}}
