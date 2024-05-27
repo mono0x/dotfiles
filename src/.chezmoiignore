@@ -11,15 +11,16 @@ brew.sh
 !.config/starship.toml
 !.config/tig
 !.config/wezterm
+.chezmoiscripts/*.sh
+.chezmoiscripts/*.zsh
 .config
 .yarnrc.yml
 .zprofile
 .zshenv
 bin
-.chezmoiscripts/*.sh
 {{ else -}}
+.chezmoiscripts/*.ps1
 .config/pwsh
 .wslconfig
 AppData
-.chezmoiscripts/*.ps1
 {{ end -}}
