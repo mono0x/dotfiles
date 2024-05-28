@@ -71,7 +71,8 @@ async function setupUnix(os: "linux" | "darwin") {
 
   const chezomiBinDir = path.join(homeDir, ".local", "bin");
   if (!await fs.exists(path.join(chezomiBinDir, "chezmoi"))) {
-    await $`sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ${chezomiBinDir}`;
+    await $`sh`
+      .stdinText(`sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ${chezomiBinDir}`);
   }
 
   if (!await fs.exists(path.join(homebrewDir, "bin", "brew"))) {
