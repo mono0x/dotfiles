@@ -8,5 +8,5 @@ then
   then
     export HOMEBREW_BUNDLE_CASK_SKIP=1
   fi
-  brew bundle --no-upgrade
+  HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --no-upgrade
 fi
