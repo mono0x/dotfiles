@@ -2,8 +2,8 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "jsr:@david/dax@^0.40.0": "jsr:@david/dax@0.40.0",
-      "jsr:@david/which@0.3": "jsr:@david/which@0.3.0",
+      "jsr:@david/dax@^0.41.0": "jsr:@david/dax@0.41.0",
+      "jsr:@david/which@^0.4.1": "jsr:@david/which@0.4.1",
       "jsr:@std/assert@^0.221.0": "jsr:@std/assert@0.221.0",
       "jsr:@std/bytes@^0.221.0": "jsr:@std/bytes@0.221.0",
       "jsr:@std/fmt@^0.221.0": "jsr:@std/fmt@0.221.0",
@@ -16,10 +16,10 @@
       "jsr:@std/streams@0.221.0": "jsr:@std/streams@0.221.0"
     },
     "jsr": {
-      "@david/dax@0.40.0": {
-        "integrity": "1e0534a437e1d6c915979f19a3d048e5e2ce2a91176555a0ea1e89d929187279",
+      "@david/dax@0.41.0": {
+        "integrity": "9e1ecf66a0415962cc8ad3ba4e3fa93ce0f1a1cc797dd95c36fdfb6977dc7fc8",
         "dependencies": [
-          "jsr:@david/which@0.3",
+          "jsr:@david/which@^0.4.1",
           "jsr:@std/fmt@^0.221.0",
           "jsr:@std/fs@0.221.0",
           "jsr:@std/io@0.221.0",
@@ -27,8 +27,8 @@
           "jsr:@std/streams@0.221.0"
         ]
       },
-      "@david/which@0.3.0": {
-        "integrity": "6bdb62c40ac90edcf328e854fa8103a8db21e7c326089cbe3c3a1cf7887d3204"
+      "@david/which@0.4.1": {
+        "integrity": "896a682b111f92ab866cc70c5b4afab2f5899d2f9bde31ed00203b9c250f225e"
       },
       "@std/assert@0.221.0": {
         "integrity": "a5f1aa6e7909dbea271754fd4ab3f4e687aeff4873b4cef9a320af813adb489a"
@@ -69,7 +69,7 @@
   "remote": {},
   "workspace": {
     "dependencies": [
-      "jsr:@david/dax@^0.40.0",
+      "jsr:@david/dax@^0.41.0",
       "jsr:@std/fs@^0.221.0",
       "jsr:@std/path@^0.221.0"
     ]
