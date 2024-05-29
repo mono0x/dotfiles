@@ -106,21 +106,11 @@ async function setupWindows() {
 
   if (!await $.which("scoop")) {
     await $`pwsh -noprofile -noninteractive -`
-      .stdinText(`Invoke-RestMethod get.scoop.sh | Invoke-Expression`);
-    await $`scoop install chezmoi git`;
+      .stdinText(`
+        Invoke-RestMethod get.scoop.sh | Invoke-Expression
+        scoop install chezmoi git
+      `);
   }
-
-  /*
-  const chezmoiBinDir = path.join(homeDir, ".local", "bin");
-  const chezmoi = path.join(chezmoiBinDir, "chezmoi.exe");
-
-  if (!await fs.exists(chezmoi)) {
-    await $`pwsh -noprofile -noninteractive -`
-      .stdinText(
-        `iex "&{$(irm 'https://get.chezmoi.io/ps1')} -b '${chezmoiBinDir}'"`,
-      );
-  }
-  */
 
   const chezmoi = await $.which("chezmoi");
   await $`pwsh -noprofile -noninteractive -`

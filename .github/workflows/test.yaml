@@ -62,15 +62,8 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
           New-Item -ItemType SymbolicLink -Value (Get-Location) -Path "$env:USERPROFILE\.local\share\chezmoi"
-      - name: Install Chezmoi
-        run: |
-          Set-Location "$env:USERPROFILE\.local"
-          (Invoke-RestMethod -useb https://get.chezmoi.io/ps1) | pwsh -Command -
-          ls -l $env:USERPROFILE\.local
-          ls -l $env:USERPROFILE\.local\bin
       - name: Run test
         run: |
-          $env:Path += ";$env:USERPROFILE\.local\bin"
           pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
           # Run script twice to test idempotency
           pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
