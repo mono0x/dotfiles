@@ -109,13 +109,13 @@ async function setupWindows() {
       .stdinText(`
         Invoke-RestMethod get.scoop.sh | Invoke-Expression
         scoop install chezmoi git
-      `);
+      `)
+      .exportEnv();
   }
 
-  const chezmoi = await $.which("chezmoi");
   await $`pwsh -noprofile -noninteractive -`
     .stdinText(`
-      . "${chezmoi}" init --verbose --apply ${account}
+      chezmoi init --verbose --apply ${account}
     `);
 }
 
