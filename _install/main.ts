@@ -104,18 +104,20 @@ async function setupWindows() {
     Deno.exit(1);
   }
 
-  if (!await $.which("scoop")) {
+  const scoop = path.join(homeDir, "scoop", "shims", "scoop.ps1");
+
+  if (!await fs.exists(scoop)) {
     await $`pwsh -noprofile -noninteractive -`
       .stdinText(`
         Invoke-RestMethod get.scoop.sh | Invoke-Expression
         scoop install chezmoi git
-      `)
-      .exportEnv();
+      `);
   }
 
+  const chezmoi = (await $`${scoop} which chezmoi`).stdout.trim();
   await $`pwsh -noprofile -noninteractive -`
     .stdinText(`
-      chezmoi init --verbose --apply ${account}
+      "${chezmoi}" init --verbose --apply ${account}
     `);
 }
 
