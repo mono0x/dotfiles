@@ -4,6 +4,8 @@ import * as path from "@std/path";
 
 $.setPrintCommand(true);
 
+const account = "mono0x";
+
 if (
   !(Deno.build.os === "linux" || Deno.build.os === "darwin" ||
     Deno.build.os === "windows")
@@ -33,7 +35,7 @@ switch (Deno.build.os) {
 }
 
 async function setupRemoteContainer() {
-  await $`sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose mono0x`;
+  await $`sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose ${account}`;
 }
 
 async function setupUnix(os: "linux" | "darwin") {
@@ -62,6 +64,7 @@ async function setupUnix(os: "linux" | "darwin") {
   const homebrewDir = os === "linux"
     ? "/home/linuxbrew/.linuxbrew"
     : "/opt/homebrew";
+  const brew = path.join(homebrewDir, "bin", "brew");
 
   const homeDir = Deno.env.get("HOME");
   if (!homeDir) {
@@ -70,20 +73,21 @@ async function setupUnix(os: "linux" | "darwin") {
   }
 
   const chezomiBinDir = path.join(homeDir, ".local", "bin");
-  if (!await fs.exists(path.join(chezomiBinDir, "chezmoi"))) {
+  const chezmoi = path.join(chezomiBinDir, "chezmoi");
+  if (!await fs.exists(chezmoi)) {
     await $`sh`
       .stdinText(`sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ${chezomiBinDir}`);
   }
 
-  if (!await fs.exists(path.join(homebrewDir, "bin", "brew"))) {
+  if (!await fs.exists(brew)) {
     await $`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`;
   }
 
   await $`/bin/bash --noprofile --norc`
     .stdinText(`
       export PATH=$PATH:${scoopShimDir}
-      eval $("${homebrewDir}/bin/brew" shellenv)
-      "${chezomiBinDir}/chezmoi" init --verbose --apply mono0x
+      eval $("${brew}" shellenv)
+      "${chezmoi}" init --verbose --apply ${account}
     `)
     .clearEnv()
     .env({
@@ -93,6 +97,36 @@ async function setupUnix(os: "linux" | "darwin") {
 
 async function setupWindows() {
   // TODO
+
+  const homeDir = Deno.env.get("USERPROFILE");
+  if (!homeDir) {
+    console.error("USERPROFILE environment variable not set");
+    Deno.exit(1);
+  }
+
+  if (!await $.which("scoop")) {
+    await $`pwsh -noprofile -noninteractive -`
+      .stdinText(`Invoke-RestMethod get.scoop.sh | Invoke-Expression`);
+    await $`scoop install chezmoi git`;
+  }
+
+  /*
+  const chezmoiBinDir = path.join(homeDir, ".local", "bin");
+  const chezmoi = path.join(chezmoiBinDir, "chezmoi.exe");
+
+  if (!await fs.exists(chezmoi)) {
+    await $`pwsh -noprofile -noninteractive -`
+      .stdinText(
+        `iex "&{$(irm 'https://get.chezmoi.io/ps1')} -b '${chezmoiBinDir}'"`,
+      );
+  }
+  */
+
+  const chezmoi = await $.which("chezmoi");
+  await $`pwsh -noprofile -noninteractive -`
+    .stdinText(`
+      . "${chezmoi}" init --verbose --apply ${account}
+    `);
 }
 
 async function aptInstall(packages: string[]) {

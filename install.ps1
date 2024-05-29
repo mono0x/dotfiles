@@ -1,13 +1,11 @@
 $ErrorActionPreference = "Stop"
 
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Set-Location (Split-Path -Parent $PSCommandPath)
 
-if ($env:SKIP_SCOOP -ne "true") {
-  if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
-    Invoke-RestMethod get.scoop.sh | Invoke-Expression
-  }
-  scoop install git
-  scoop install chezmoi
+$env:DENO_INSTALL = "$env:USERPROFILE\.local"
+if (-not (Test-Path "$env:DENO_INSTALL\bin\deno.exe")) {
+  New-Item -ItemType Directory -Force -Path $env:DENO_INSTALL
+  Invoke-RestMethod https://deno.land/install.ps1 | Invoke-Expression
 }
 
-chezmoi init --apply --verbose mono0x
+. "$env:DENO_INSTALL\bin\deno.exe" run -A _install/main.ts
