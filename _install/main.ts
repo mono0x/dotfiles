@@ -92,6 +92,7 @@ async function setupUnix(os: "linux" | "darwin") {
     `)
     .clearEnv()
     .env({
+      GITHUB_ACTIONS: Deno.env.get("GITHUB_ACTIONS"),
       HOME: homeDir,
     });
 }
