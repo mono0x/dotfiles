@@ -14,9 +14,16 @@ if (
   Deno.exit(1);
 }
 
-// const ci = Deno.env.get("GITHUB_ACTIONS") === "true";
+const ci = Deno.env.get("GITHUB_ACTIONS") === "true";
 const remoteContainers = Deno.env.get("REMOTE_CONTAINERS") === "true";
 const wsl = !!Deno.env.get("WSL_DISTRO_NAME");
+
+console.log(`
+  OS: ${Deno.build.os}
+  CI: ${ci}
+  Remote Containers: ${remoteContainers}
+  WSL: ${wsl}
+`);
 
 if (remoteContainers) {
   await setupRemoteContainer();
