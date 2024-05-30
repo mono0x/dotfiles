@@ -104,9 +104,8 @@ async function setupWindows() {
     Deno.exit(1);
   }
 
-  const scoop = path.join(homeDir, "scoop", "shims", "scoop.ps1");
-
-  if (!await fs.exists(scoop)) {
+  const scoopShimDir = path.join(homeDir, "scoop", "shims");
+  if (!await fs.exists(scoopShimDir)) {
     await $`pwsh -noprofile -noninteractive -`
       .stdinText(`
         Invoke-RestMethod get.scoop.sh | Invoke-Expression
@@ -114,10 +113,10 @@ async function setupWindows() {
       `);
   }
 
-  const chezmoi = (await $`${scoop} which chezmoi`).stdout.trim();
+  const chezmoi = path.join(scoopShimDir, "chezmoi.exe");
   await $`pwsh -noprofile -noninteractive -`
     .stdinText(`
-      "${chezmoi}" init --verbose --apply ${account}
+      . "${chezmoi}" init --verbose --apply ${account}
     `);
 }
 
