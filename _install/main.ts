@@ -72,13 +72,6 @@ async function setupUnix(os: "linux" | "darwin") {
     Deno.exit(1);
   }
 
-  const chezomiBinDir = path.join(homeDir, ".local", "bin");
-  const chezmoi = path.join(chezomiBinDir, "chezmoi");
-  if (!await fs.exists(chezmoi)) {
-    await $`sh`
-      .stdinText(`sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ${chezomiBinDir}`);
-  }
-
   if (!await fs.exists(brew)) {
     await $`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`;
   }
@@ -87,7 +80,8 @@ async function setupUnix(os: "linux" | "darwin") {
     .stdinText(`
       export PATH=$PATH:${scoopShimDir}
       eval $("${brew}" shellenv)
-      "${chezmoi}" init --verbose --apply ${account}
+      BREW_NO_AUTO_UPDATE=1 "${brew}" install chezmoi
+      chezmoi init --verbose --apply ${account}
     `)
     .clearEnv()
     .env({
