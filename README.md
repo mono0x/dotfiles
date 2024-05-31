@@ -4,7 +4,15 @@
 
 ## Setup
 
-### Darwin / Ubuntu
+### Darwin
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mono0x/dotfiles/main/install.sh)"
+
+chsh -s /opt/homebrew/bin/zsh
+```
+
+### Ubuntu
 
 ```sh
 # Ubuntu
@@ -12,11 +20,9 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y unzip
 
-git clone https://github.com/mono0x/dotfiles ~/.local/share/chezmoi
-~/.local/share/chezmoi/install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mono0x/dotfiles/main/install.sh)"
 
-chsh -s /opt/homebrew/bin/zsh # Darwin
-chsh -s /usr/bin/zsh # Ubuntu
+chsh -s /usr/bin/zsh
 ```
 
 ### Windows
