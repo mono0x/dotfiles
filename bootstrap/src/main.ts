@@ -3,6 +3,7 @@ import * as fs from "@std/fs";
 import * as path from "@std/path";
 
 $.setPrintCommand(true);
+$.cd(path.resolve(import.meta.dirname!, "..", ".."));
 
 const account = "mono0x";
 
@@ -17,6 +18,18 @@ if (
 const ci = Deno.env.get("GITHUB_ACTIONS") === "true";
 const remoteContainers = Deno.env.get("REMOTE_CONTAINERS") === "true";
 const wsl = !!Deno.env.get("WSL_DISTRO_NAME");
+
+if (!ci) {
+  if (
+    !await $.confirm({
+      message:
+        "This script will install chezmoi and apply the dotfiles. Continue?",
+      default: false,
+    })
+  ) {
+    Deno.exit(0);
+  }
+}
 
 console.log(`
   OS: ${Deno.build.os}

@@ -1,20 +1,43 @@
-name: test
+name: CI
 on:
   push:
     branches:
       - "*"
+    tags:
 
 jobs:
-  test-linux:
+  build:
     runs-on: ubuntu-latest
+    outputs:
+      build-cache-primary-key: ${{ steps.save-build-cache.outputs.cache-primary-key }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - uses: jdx/mise-action@v2
+      - name: Build
+        run: |
+          deno task build
+      - uses: actions/cache/save@v4
+        id: save-build-cache
+        with:
+          path: bootstrap/_build
+          key: build-${{ hashFiles('deno.lock', 'bootstrap/src/**') }}
+
+  test-linux:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/cache/restore@v4
+        with:
+          path: bootstrap/_build
+          key: ${{ needs.build.outputs.build-cache-primary-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
-      - uses: jdx/mise-action@v2
       - name: Install dependencies
         run: |
           sudo apt install -y zsh
@@ -24,49 +47,56 @@ jobs:
           sudo chmod +rx /usr/local/bin/goss
       - name: Run test
         run: |
-          ./install.sh
+          ./bootstrap/_build/bootstrap-x86_64-unknown-linux-gnu
           # Run script twice to test idempotency
-          ./install.sh
+          ./bootstrap/_build/bootstrap-x86_64-unknown-linux-gnu
           goss validate --format documentation
 
   test-macos:
     runs-on: macos-latest
+    needs: build
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - uses: actions/cache/restore@v4
+        with:
+          path: bootstrap/_build
+          key: ${{ needs.build.outputs.build-cache-primary-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
-      - uses: jdx/mise-action@v2
       - name: Install goss
         run: |
           sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-darwin-amd64 -o /usr/local/bin/goss
           sudo chmod +rx /usr/local/bin/goss
       - name: Run test
         run: |
-          ./install.sh
+          ./bootstrap/_build/boostrap-x86_64-apple-darwin
           # Run script twice to test idempotency
-          ./install.sh
+          ./bootstrap/_build/boostrap-x86_64-apple-darwin
           GOSS_USE_ALPHA=1 goss validate --format documentation
 
   test-windows:
     runs-on: windows-latest
-    env:
-      SKIP_SCOOP: "true"
+    needs: build
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - uses: actions/cache/restore@v4
+        with:
+          path: bootstrap/_build
+          key: ${{ needs.build.outputs.build-cache-primary-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
           New-Item -ItemType SymbolicLink -Value (Get-Location) -Path "$env:USERPROFILE\.local\share\chezmoi"
       - name: Run test
         run: |
-          pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
+          .\bootstrap\_build\bootstrap-x86_64-pc-windows-msvc.exe
           # Run script twice to test idempotency
-          pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
+          .\bootstrap\_build\bootstrap-x86_64-pc-windows-msvc.exe
 
   test-static:
     runs-on: ubuntu-latest
@@ -93,3 +123,23 @@ jobs:
       - name: Check workflow files
         run: ${{ steps.get_actionlint.outputs.executable }} -color
         shell: bash
+
+  release:
+    needs:
+      [build, test-linux, test-macos, test-windows, test-static, actionlint]
+    runs-on: ubuntu-latest
+    if: github.ref == "refs/heads/main"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/cache/restore@v4
+        with:
+          path: bootstrap/_build
+          key: ${{ needs.build.outputs.build-cache-primary-key }}
+      - id: generate-version
+        run: |
+          echo "version=v$(date --utc '+%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.generate-version.outputs.version }}
