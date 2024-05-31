@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      build-cache-key: ${{ steps.generate-cache-key.outputs.build-cache-key
+      build-cache-key: ${{ steps.generate-cache-key.outputs.build-cache-key }}
     steps:
       - uses: actions/checkout@v4
         with:
