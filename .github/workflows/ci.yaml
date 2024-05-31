@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      build-cache-primary-key: ${{ steps.save-build-cache.outputs.cache-primary-key }}
+      build-cache-key: ${{ steps.generate-cache-key.outputs.build-cache-key
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,11 +17,14 @@ jobs:
       - name: Build
         run: |
           deno task build
+      - id: generate-cache-key
+        run: |
+          echo "build-cache-key=build-${{ hashFiles('deno.lock', 'bootstrap/src/**') }}" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/save@v4
         id: save-build-cache
         with:
           path: bootstrap/_build
-          key: build-${{ hashFiles('deno.lock', 'bootstrap/src/**') }}
+          key: ${{ steps.generate-cache-key.outputs.build-cache-key }}
 
   test-linux:
     runs-on: ubuntu-latest
@@ -33,7 +36,7 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: bootstrap/_build
-          key: ${{ needs.build.outputs.build-cache-primary-key }}
+          key: ${{ needs.build.outputs.build-cache-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
@@ -61,7 +64,7 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: bootstrap/_build
-          key: ${{ needs.build.outputs.build-cache-primary-key }}
+          key: ${{ needs.build.outputs.build-cache-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
@@ -86,7 +89,7 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: bootstrap/_build
-          key: ${{ needs.build.outputs.build-cache-primary-key }}
+          key: ${{ needs.build.outputs.build-cache-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
@@ -135,10 +138,10 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: bootstrap/_build
-          key: ${{ needs.build.outputs.build-cache-primary-key }}
+          key: ${{ needs.build.outputs.build-cache-key }}
       - id: generate-version
         run: |
-          echo "version=v$(date --utc '+%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+          echo "version=v$(date --utc '+%Y%m%d%H%M%S')" >> "$GITHUB_OUTPUT"
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.generate-version.outputs.version }}
