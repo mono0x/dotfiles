@@ -3,7 +3,6 @@ import * as fs from "@std/fs";
 import * as path from "@std/path";
 
 $.setPrintCommand(true);
-$.cd(path.resolve(import.meta.dirname!, "..", ".."));
 
 const account = "mono0x";
 
