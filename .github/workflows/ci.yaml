@@ -5,30 +5,8 @@ on:
       - "*"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    outputs:
-      build-cache-key: ${{ steps.generate-cache-key.outputs.build-cache-key }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - uses: jdx/mise-action@v2
-      - name: Build
-        run: |
-          deno task build
-      - id: generate-cache-key
-        run: |
-          echo "build-cache-key=build-${{ hashFiles('deno.lock', 'bootstrap/src/**') }}" >> "$GITHUB_OUTPUT"
-      - uses: actions/cache/save@v4
-        id: save-build-cache
-        with:
-          path: bootstrap/_build
-          key: ${{ steps.generate-cache-key.outputs.build-cache-key }}
-
   test-linux:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,16 +25,16 @@ jobs:
         run: |
           sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss
           sudo chmod +rx /usr/local/bin/goss
+      - uses: jdx/mise-action@v2
       - name: Run test
         run: |
-          ./bootstrap/_build/bootstrap-x86_64-unknown-linux-gnu
+          deno task bootstrap
           # Run script twice to test idempotency
-          ./bootstrap/_build/bootstrap-x86_64-unknown-linux-gnu
+          deno task bootstrap
           goss validate --format documentation
 
   test-macos:
     runs-on: macos-latest
-    needs: build
     steps:
       - uses: actions/checkout@v4
         with:
@@ -72,19 +50,16 @@ jobs:
         run: |
           sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-darwin-amd64 -o /usr/local/bin/goss
           sudo chmod +rx /usr/local/bin/goss
+      - uses: jdx/mise-action@v2
       - name: Run test
         run: |
-          ls .
-          ls bootstrap
-          ls bootstrap/_build
-          ./bootstrap/_build/bootstrap-x86_64-apple-darwin
+          deno task bootstrap
           # Run script twice to test idempotency
-          ./bootstrap/_build/bootstrap-x86_64-apple-darwin
+          deno task bootstrap
           GOSS_USE_ALPHA=1 goss validate --format documentation
 
   test-windows:
     runs-on: windows-latest
-    needs: build
     steps:
       - uses: actions/checkout@v4
         with:
@@ -97,14 +72,14 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
           New-Item -ItemType SymbolicLink -Value (Get-Location) -Path "$env:USERPROFILE\.local\share\chezmoi"
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
       - name: Run test
         run: |
-          ls .
-          ls bootstrap
-          ls bootstrap/_build
-          . .\bootstrap\_build\bootstrap-x86_64-pc-windows-msvc.exe
+          deno task bootstrap
           # Run script twice to test idempotency
-          . .\bootstrap\_build\bootstrap-x86_64-pc-windows-msvc.exe
+          deno task bootstrap
 
   test-static:
     runs-on: ubuntu-latest
@@ -133,21 +108,22 @@ jobs:
         shell: bash
 
   release:
-    needs:
-      [build, test-linux, test-macos, test-windows, test-static, actionlint]
+    needs: [test-linux, test-macos, test-windows, test-static, actionlint]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - uses: actions/cache/restore@v4
-        with:
-          path: bootstrap/_build
-          key: ${{ needs.build.outputs.build-cache-key }}
+      - uses: jdx/mise-action@v2
+      - name: Build
+        run: |
+          deno task build
       - id: generate-version
         run: |
           echo "version=v$(date --utc '+%Y%m%d%H%M%S')" >> "$GITHUB_OUTPUT"
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.generate-version.outputs.version }}
+          files: |
+            bootstrap/_build/*

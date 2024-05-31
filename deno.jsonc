@@ -8,6 +8,7 @@
     "@std/path": "jsr:@std/path@^0.221.0"
   },
   "tasks": {
+    "bootstrap": "deno run -A bootstrap/bootstrap.ts",
     "build": "deno run -A bootstrap/build.ts",
     "watch": "sh -c 'fswatch -r -o -l 3 \"$(chezmoi source-path)\" | xargs -n1 -I{} chezmoi apply --verbose'"
   }
