@@ -74,9 +74,9 @@ jobs:
           sudo chmod +rx /usr/local/bin/goss
       - name: Run test
         run: |
-          ./bootstrap/_build/boostrap-x86_64-apple-darwin
+          ./bootstrap/_build/bootstrap-x86_64-apple-darwin
           # Run script twice to test idempotency
-          ./bootstrap/_build/boostrap-x86_64-apple-darwin
+          ./bootstrap/_build/bootstrap-x86_64-apple-darwin
           GOSS_USE_ALPHA=1 goss validate --format documentation
 
   test-windows:
@@ -96,9 +96,9 @@ jobs:
           New-Item -ItemType SymbolicLink -Value (Get-Location) -Path "$env:USERPROFILE\.local\share\chezmoi"
       - name: Run test
         run: |
-          .\bootstrap\_build\bootstrap-x86_64-pc-windows-msvc.exe
+          . .\bootstrap\_build\bootstrap-x86_64-pc-windows-msvc.exe
           # Run script twice to test idempotency
-          .\bootstrap\_build\bootstrap-x86_64-pc-windows-msvc.exe
+          . .\bootstrap\_build\bootstrap-x86_64-pc-windows-msvc.exe
 
   test-static:
     runs-on: ubuntu-latest
