@@ -11,10 +11,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - uses: actions/cache/restore@v4
-        with:
-          path: bootstrap/_build
-          key: ${{ needs.build.outputs.build-cache-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
@@ -39,10 +35,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - uses: actions/cache/restore@v4
-        with:
-          path: bootstrap/_build
-          key: ${{ needs.build.outputs.build-cache-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
@@ -64,10 +56,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - uses: actions/cache/restore@v4
-        with:
-          path: bootstrap/_build
-          key: ${{ needs.build.outputs.build-cache-key }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
