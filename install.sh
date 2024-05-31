@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-$dir="$(mktemp --tmpdir -d dotfiles.XXXXXX)"
+dir="$(mktemp --tmpdir -d dotfiles.XXXXXX)"
 cd "$dir"
 trap '{ rm -f -- "$dir"; }' EXIT
 
