@@ -11,7 +11,10 @@ else
   deno="$DENO_INSTALL/bin/deno"
 fi
 
-prefix="."
-[ "${GITHUB_ACTIONS:-}" = "true" ] && prefix="https://raw.githubusercontent.com/mono0x/dotfiles"
+prefix="$(dirname "$0")"
+if [ ! -f "$prefix/install/main.ts" ]
+then
+  prefix="https://raw.githubusercontent.com/mono0x/dotfiles"
+fi
 
 exec "$deno" run --config "$prefix/deno.jsonc" --lock "$prefix/deno.lock" -A "$prefix/install/main.ts"
