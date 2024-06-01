@@ -12,15 +12,9 @@ else
 fi
 
 prefix="$(dirname "$0")"
-if [ ! -f "$prefix/install/main.ts" ]
+if [ ! -f "$prefix/install.ts" ]
 then
-  dir="$(mktemp --tmpdir -d dotfiles.XXXXXX)"
-  mkdir -p "$dir/install"
-  for file in install/main.ts deno.jsonc deno.lock
-  do
-    curl -fsSL "https://raw.githubusercontent.com/mono0x/dotfiles/main/$file" -o "$dir/$file"
-  done
-  prefix="$dir"
+  prefix="https://raw.githubusercontent.com/mono0x/dotfiles/main/"
 fi
 
-exec "$deno" run --config "$prefix/deno.jsonc" --lock "$prefix/deno.lock" -A "$prefix/install/main.ts"
+exec "$deno" run -A "$prefix/install.ts"

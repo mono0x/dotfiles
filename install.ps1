@@ -1,12 +1,5 @@
 $ErrorActionPreference = "Stop"
 
-# https://stackoverflow.com/questions/34559553/create-a-temporary-directory-in-powershell
-function New-TemporaryDirectory {
-  $parent = [System.IO.Path]::GetTempPath()
-  $name = [System.IO.Path]::GetRandomFileName()
-  New-Item -ItemType Directory -Path (Join-Path $parent $name)
-}
-
 $deno = "deno"
 if (-not (Get-Command deno -ErrorAction SilentlyContinue)) {
   $env:DENO_INSTALL = "$env:USERPROFILE\.local"
@@ -16,13 +9,8 @@ if (-not (Get-Command deno -ErrorAction SilentlyContinue)) {
 
 
 $prefix = Split-Path -Parent $PSCommandPath
-if (-not (Test-Path "$prefix\install\main.ts")) {
-  $dir = New-TemporaryDirectory
-  New-Item -ItemType Directory -Force -Path "$dir\install"
-  foreach ($file in "install/main.ts", "deno.jsonc", "deno.lock") {
-    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mono0x/dotfiles/main/$file" -OutFile "$dir\$file"
-  }
-  $prefix = $dir
+if (-not (Test-Path "$prefix\install.ts")) {
+  $prefix = "https://raw.githubusercontent.com/mono0x/dotfiles/main/"
 }
 
-. "$deno" run -A --config "$prefix/deno.jsonc" --lock "$prefix/deno.lock" "$prefix/install/main.ts"
+. "$deno" run -A "$prefix/install.ts"
