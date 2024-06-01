@@ -7,11 +7,13 @@ function New-TemporaryDirectory {
   New-Item -ItemType Directory -Path (Join-Path $parent $name)
 }
 
-$env:DENO_INSTALL = "$env:USERPROFILE\.local"
-if (-not (Test-Path "$env:DENO_INSTALL\bin\deno.exe")) {
-  New-Item -ItemType Directory -Force -Path $env:DENO_INSTALL
+$deno = "deno"
+if (-not (Get-Command deno -ErrorAction SilentlyContinue)) {
+  $env:DENO_INSTALL = "$env:USERPROFILE\.local"
   Invoke-RestMethod https://deno.land/install.ps1 | Invoke-Expression
+  $deno = "$env:DENO_INSTALL\bin\deno.exe"
 }
+
 
 $prefix = Split-Path -Parent $PSCommandPath
 if (-not (Test-Path "$prefix\install\main.ts")) {
@@ -23,4 +25,4 @@ if (-not (Test-Path "$prefix\install\main.ts")) {
   $prefix = $dir
 }
 
-. "$env:DENO_INSTALL\bin\deno.exe" run -A --config "$prefix/deno.jsonc" --lock "$prefix/deno.lock" "$prefix/install/main.ts"
+. "$deno" run -A --config "$prefix/deno.jsonc" --lock "$prefix/deno.lock" "$prefix/install/main.ts"
