@@ -94,7 +94,7 @@ async function setupUnix(os: "linux" | "darwin") {
     .stdinText(`
       export PATH=$PATH:${scoopShimDir}
       eval $("${brew}" shellenv)
-      BREW_NO_AUTO_UPDATE=1 "${brew}" install chezmoi
+      HOMEBREW_NO_AUTO_UPDATE=1 "${brew}" install chezmoi
       chezmoi init --verbose --apply ${account}
     `)
     .clearEnv()
