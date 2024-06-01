@@ -1,8 +1,6 @@
 #!/bin/sh
 set -eu
 
-cd "$(dirname "$0")"
-
 deno=""
 if command -v deno > /dev/null 2>&1
 then
