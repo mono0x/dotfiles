@@ -8,8 +8,8 @@ if (-not (Test-Path "$env:DENO_INSTALL\bin\deno.exe")) {
   Invoke-RestMethod https://deno.land/install.ps1 | Invoke-Expression
 }
 
-$url = $env:GITHUB_ACTIONS -eq "true" `
-  ?  ".\install\main.ts" `
-  : "https://raw.githubusercontent.com/mono0x/dotfiles/main/install/main.ts"
+$prefix = $env:GITHUB_ACTIONS -eq "true" `
+  ?  "." `
+  : "https://raw.githubusercontent.com/mono0x/dotfiles/main/"
 
-. "$env:DENO_INSTALL\bin\deno.exe" run -A "$url"
+. "$env:DENO_INSTALL\bin\deno.exe" run -A --config "$prefix/deno.jsonc" --lock "$prefix/deno.lock" "$prefix/install/main.ts"

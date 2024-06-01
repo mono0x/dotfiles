@@ -3,16 +3,17 @@ set -eu
 
 cd "$(dirname "$0")"
 
-DENO_INSTALL="$HOME/.local"
-command -v "$DENO_INSTALL/bin/deno" > /dev/null 2>&1 || \
-  DENO_INSTALL="$DENO_INSTALL" sh -c "$(curl -fsSL https://deno.land/x/install/install.sh)"
-
-
-if [ "${GITHUB_ACTIONS:-}" = "true" ]
+deno=""
+if command -v deno > /dev/null 2>&1
 then
-  url="install/main.ts"
+  deno="deno"
 else
-  url="https://raw.githubusercontent.com/mono0x/dotfiles/main/install/main.ts"
+  DENO_INSTALL="$HOME/.local"
+  DENO_INSTALL="$DENO_INSTALL" sh -c "$(curl -fsSL https://deno.land/x/install/install.sh)"
+  deno="$DENO_INSTALL/bin/deno"
 fi
 
-exec "$DENO_INSTALL/bin/deno" run -A "$url"
+prefix="."
+[ "${GITHUB_ACTIONS:-}" = "true" ] && prefix="https://raw.githubusercontent.com/mono0x/dotfiles"
+
+exec "$deno" run --config "$prefix/deno.jsonc" --lock "$prefix/deno.lock" -A "$prefix/install/main.ts"
