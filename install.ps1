@@ -8,4 +8,4 @@ if (-not (Test-Path "$env:DENO_INSTALL\bin\deno.exe")) {
   Invoke-RestMethod https://deno.land/install.ps1 | Invoke-Expression
 }
 
-. "$env:DENO_INSTALL\bin\deno.exe" run -A bootstrap/src/main.ts
+. "$env:DENO_INSTALL\bin\deno.exe" run -A _install/main.ts

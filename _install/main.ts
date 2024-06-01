@@ -18,18 +18,6 @@ const ci = Deno.env.get("GITHUB_ACTIONS") === "true";
 const remoteContainers = Deno.env.get("REMOTE_CONTAINERS") === "true";
 const wsl = !!Deno.env.get("WSL_DISTRO_NAME");
 
-if (!ci) {
-  if (
-    !await $.confirm({
-      message:
-        "This script will install chezmoi and apply the dotfiles. Continue?",
-      default: false,
-    })
-  ) {
-    Deno.exit(0);
-  }
-}
-
 console.log(`
   OS: ${Deno.build.os}
   CI: ${ci}
@@ -106,7 +94,7 @@ async function setupUnix(os: "linux" | "darwin") {
     .stdinText(`
       export PATH=$PATH:${scoopShimDir}
       eval $("${brew}" shellenv)
-      HOMEBREW_NO_AUTO_UPDATE=1 "${brew}" install chezmoi
+      BREW_NO_AUTO_UPDATE=1 "${brew}" install chezmoi
       chezmoi init --verbose --apply ${account}
     `)
     .clearEnv()

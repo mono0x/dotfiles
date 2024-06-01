@@ -1,26 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 set -eu
 
-dir="$(mktemp --tmpdir -d dotfiles.XXXXXX)"
-cd "$dir"
-trap '{ rm -f -- "$dir"; }' EXIT
+cd "$(dirname "$0")"
 
-target=""
-case "$(uname)" in
-  Darwin)
-    target="aarch64-apple-darwin"
-    ;;
-  Linux)
-    target="x86_64-unknown-linux-gnu"
-    ;;
-esac
-if [ -z "$target" ]; then
-  echo "Unsupported platform: $(uname)"
-  exit 1
-fi
-url="https://github.com/mono0x/dotfiles/releases/latest/download/bootstrap-$target"
+DENO_INSTALL="$HOME/.local"
+command -v "$DENO_INSTALL/bin/deno" > /dev/null 2>&1 || \
+  DENO_INSTALL="$DENO_INSTALL" sh -c "$(curl -fsSL https://deno.land/x/install/install.sh)"
 
-curl -L -o bootstrap "$url"
-chmod +x bootstrap
-
-./bootstrap
+exec "$DENO_INSTALL/bin/deno" run -A _install/main.ts
