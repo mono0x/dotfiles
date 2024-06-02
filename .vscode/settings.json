@@ -29,8 +29,7 @@
       "action.yaml",
       "action.yml"
     ],
-
-    "https://raw.githubusercontent.com/goss-org/goss/master/docs/goss-json-schema.yaml": [
+    "https://raw.githubusercontent.com/goss-org/goss/master/docs/schema.yaml": [
       "goss.yaml",
       "test/goss/*.yaml"
     ]
