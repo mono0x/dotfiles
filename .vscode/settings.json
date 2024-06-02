@@ -33,5 +33,21 @@
       "goss.yaml",
       "test/goss/*.yaml"
     ]
-  }
+  },
+  "Lua.diagnostics.libraryFiles": "Enable",
+  "Lua.workspace.library": [
+    "third_party/neodev.nvim/types/stable/alias.lua",
+    "third_party/neodev.nvim/types/stable/api.lua",
+    "third_party/neodev.nvim/types/stable/cmd.lua",
+    "third_party/neodev.nvim/types/stable/lpeg.lua",
+    "third_party/neodev.nvim/types/stable/lua.lua",
+    "third_party/neodev.nvim/types/stable/options.1.lua",
+    "third_party/neodev.nvim/types/stable/options.2.lua",
+    "third_party/neodev.nvim/types/stable/options.3.lua",
+    "third_party/neodev.nvim/types/stable/options.lua",
+    "third_party/neodev.nvim/types/stable/uv.lua",
+    "third_party/neodev.nvim/types/stable/vim.fn.1.lua",
+    "third_party/neodev.nvim/types/stable/vim.fn.lua",
+    "third_party/neodev.nvim/types/stable/vim.lua"
+  ]
 }
