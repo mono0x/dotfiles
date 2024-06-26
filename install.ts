@@ -85,7 +85,10 @@ async function setupUnix(os: "linux" | "darwin") {
   console.log("Installing Homebrew");
 
   if (!await fs.exists(brew)) {
-    await $`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`;
+    await $`/bin/bash`
+      .stdinText(`
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      `);
   }
 
   console.log("Installing and initializing chezmoi");
