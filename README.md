@@ -12,10 +12,16 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y unzip
 
+# Common
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mono0x/dotfiles/main/install.sh)"
 
-chsh -s /opt/homebrew/bin/zsh # Darwin
-chsh -s /usr/bin/zsh # Ubuntu
+# Ubuntu
+chsh -s /usr/bin/zsh
+
+# Darwin
+sudo vi /etc/shells
+# Append /opt/homebrew/bin/zsh
+chsh -s /opt/homebrew/bin/zsh
 ```
 
 ### Windows
