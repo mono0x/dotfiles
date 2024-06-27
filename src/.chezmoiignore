@@ -1,7 +1,9 @@
-{{ if eq (env "REMOTE_CONTAINERS") "true" -}}
+{{ $remoteContainer := eq (env "REMOTE_CONTAINERS") "true" -}}
+{{ $unix := or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux") -}}
+
+{{ if $remoteContainer -}}
+.chezmoiscripts/unix/brew.sh
 .config/git
-brew.sh
-{{ else -}}
 {{ end -}}
 
 {{ if eq .chezmoi.os "windows" -}}
@@ -11,16 +13,23 @@ brew.sh
 !.config/starship.toml
 !.config/tig
 !.config/wezterm
-.chezmoiscripts/*.sh
-.chezmoiscripts/*.zsh
 .config
 .yarnrc.yml
 .zprofile
 .zshenv
 bin
 {{ else -}}
-.chezmoiscripts/*.ps1
 .config/pwsh
 .wslconfig
 AppData
+{{ end -}}
+
+{{ if ne .chezmoi.os "darwin" -}}
+.chezmoiscripts/darwin/*
+{{ end -}}
+{{ if not $unix -}}
+.chezmoiscripts/unix/*
+{{ end -}}
+{{ if ne .chezmoi.os "windows" -}}
+.chezmoiscripts/windows/*
 {{ end -}}
