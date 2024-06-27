@@ -40,9 +40,6 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Encoding
 vim.opt.encoding = 'utf-8'
-if vim.fn.has('win32') then
-  vim.opt.termencoding = 'cp932'
-end
 vim.opt.fileencodings = 'utf-8,cp932,euc-jp'
 vim.opt.fileformats = 'unix,dos,mac'
 
