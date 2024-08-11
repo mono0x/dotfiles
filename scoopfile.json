@@ -58,6 +58,10 @@
     },
     {
       "Source": "main",
+      "Name": "sed"
+    },
+    {
+      "Source": "main",
       "Name": "starship"
     },
     {
