@@ -48,5 +48,7 @@ alias gd='git di'
 alias gf='git fetch --all'
 alias gg='git grep -H --heading -I --line-number --break --show-function'
 alias gl='git log'
+# https://zenn.dev/tatsugon/articles/default-git-checkout-main-or-master
+alias gm='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
 alias gs='git status'
 alias k='kubectl'
