@@ -13,7 +13,7 @@
 !.config/starship.toml
 !.config/tig
 !.config/wezterm
-.config
+.config/*
 .yarnrc.yml
 .zprofile
 .zshenv
