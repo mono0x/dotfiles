@@ -61,6 +61,8 @@ function gf() { git fetch --all $args }
 function gg() { git grep -H --heading -I --line-number --break --show-function $args }
 Remove-Alias -Force gl
 function gl() { git log $args }
+Remove-Alias -Force gm
+function gm() { git checkout (git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@") }
 function gs() { git status $args }
 Set-Alias grep rg
 function ll { uutils ls -l $args }
