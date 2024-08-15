@@ -5,10 +5,9 @@ local act = wezterm.action
 local is_windows = wezterm.target_triple:find('windows')
 local is_darwin = wezterm.target_triple:find('darwin')
 
--- config.keys doesn't work with wezterm.config_builder()...
--- local config = wezterm.config_builder()
 ---@type Config
-local config = {}
+local config = wezterm.config_builder()
+config:set_strict_mode(true)
 
 -- Preferences
 config.check_for_updates = false
