@@ -1,10 +1,11 @@
+---@type Wezterm
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
 local is_windows = wezterm.target_triple:find('windows')
 local is_darwin = wezterm.target_triple:find('darwin')
 
-local config = {}
+local config = wezterm.config_builder()
 
 -- Preferences
 config.check_for_updates = false

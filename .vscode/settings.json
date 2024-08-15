@@ -48,6 +48,17 @@
     "third_party/neodev.nvim/types/stable/uv.lua",
     "third_party/neodev.nvim/types/stable/vim.fn.1.lua",
     "third_party/neodev.nvim/types/stable/vim.fn.lua",
-    "third_party/neodev.nvim/types/stable/vim.lua"
+    "third_party/neodev.nvim/types/stable/vim.lua",
+    "third_party/wezterm-types/types/init.lua",
+    "third_party/wezterm-types/types/config/init.lua",
+    "third_party/wezterm-types/types/enum/init.lua",
+    "third_party/wezterm-types/types/events/init.lua",
+    "third_party/wezterm-types/types/objects/init.lua",
+    "third_party/wezterm-types/types/wezterm/init.lua",
+    "third_party/wezterm-types/types/wezterm/color/init.lua",
+    "third_party/wezterm-types/types/wezterm/gui/init.lua",
+    "third_party/wezterm-types/types/wezterm/mux/init.lua",
+    "third_party/wezterm-types/types/wezterm/procinfo/init.lua",
+    "third_party/wezterm-types/types/wezterm/time/init.lua"
   ]
 }
