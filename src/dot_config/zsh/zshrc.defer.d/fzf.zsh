@@ -1,9 +1,12 @@
 if (( $+commands[fzf] ))
 then
   fzf-cd() {
-    local selected_dir=$(ghq list | fzf --query "$LBUFFER")
+    local selected_dir=$((
+      ghq list --full-path
+      echo "$HOME/.local/share/chezmoi"
+    ) | sort | fzf --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
-      BUFFER="cd ${GOPATH}/src/${selected_dir}"
+      BUFFER="cd ${selected_dir}"
       zle accept-line
     fi
     zle redisplay
