@@ -3,4 +3,4 @@
 	url = https://github.com/folke/neodev.nvim
 [submodule "third_party/wezterm-types"]
 	path = third_party/wezterm-types
-	url = https://github.com/justinsgithub/wezterm-types
+	url = https://github.com/sudo-tee/wezterm-types
