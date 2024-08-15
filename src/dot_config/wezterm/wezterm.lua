@@ -39,10 +39,6 @@ if is_windows then
       label = 'Ubuntu-20.04',
       args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-20.04' },
     },
-    {
-      label = 'Ubuntu-22.04',
-      args = { 'wsl.exe', '~', '--distribution', 'Ubuntu-22.04' },
-    },
   }
 end
 
