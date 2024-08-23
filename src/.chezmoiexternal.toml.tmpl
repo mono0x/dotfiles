@@ -1,13 +1,14 @@
-{{- $refreshPeriod := "168h" -}}
+{{ $refreshPeriod := "168h" -}}
 
-{{- $goss := "" -}}
-{{- if eq .chezmoi.os "darwin" -}}
-{{-   $goss = "goss-darwin-amd64" -}}
-{{- else if eq .chezmoi.os "linux" -}}
-{{-   $goss = "goss-linux-amd64" -}}
-{{- else if eq .chezmoi.os "windows" -}}
-{{-   $goss = "goss-windows-amd64.exe" -}}
-{{- end -}}
+{{ $goss := "" -}}
+{{ if eq .chezmoi.os "darwin" -}}
+{{   $goss = "goss-darwin-amd64" -}}
+{{ else if eq .chezmoi.os "linux" -}}
+{{   $goss = "goss-linux-amd64" -}}
+{{ else if eq .chezmoi.os "windows" -}}
+{{   $goss = "goss-windows-amd64.exe" -}}
+{{ end -}}
+
 {{ if ne $goss "" -}}
 ["bin/goss"]
   type = "file"
@@ -16,12 +17,12 @@
   refreshPeriod = "{{ $refreshPeriod }}"
 {{ end -}}
 
-{{- $nvim := "" -}}
-{{- if eq .chezmoi.os "windows" -}}
-{{-   $nvim = "AppData/Local/nvim" -}}
-{{- else -}}
-{{-   $nvim = ".config/nvim" -}}
-{{- end -}}
+{{ $nvim := "" -}}
+{{ if eq .chezmoi.os "windows" -}}
+{{   $nvim = "AppData/Local/nvim" -}}
+{{ else -}}
+{{   $nvim = ".config/nvim" -}}
+{{ end -}}
 
 ["{{ $nvim }}/pack/vendor/start/copilot.vim"]
   type = "git-repo"
