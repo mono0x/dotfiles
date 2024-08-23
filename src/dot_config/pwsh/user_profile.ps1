@@ -30,6 +30,21 @@ Set-PSReadLineOption `
 Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineOption -Colors @{
+  "Command"            = "#268bd2" # Blue
+  "Parameter"          = "#2aa198" # Cyan
+  "Variable"           = "#b58900" # Yellow
+  "String"             = "#2aa198" # Cyan
+  "Operator"           = "#859900" # Green
+  "Number"             = "#d33682" # Magenta
+  "Member"             = "#6c71c4" # Violet
+  "Comment"            = "#93a1a1" # Base1
+  "Keyword"            = "#859900" # Green
+  "Type"               = "#b58900" # Yellow
+  "Default"            = "#839496" # Base0
+  "Error"              = "#dc322f" # Red
+  "ContinuationPrompt" = "#cb4b16" # Orange
+}
 
 # Remove default aliases to use coreutils-uutils
 # https://secondlife.hatenablog.jp/entry/2020/08/17/070735
