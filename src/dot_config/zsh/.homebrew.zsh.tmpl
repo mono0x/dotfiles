@@ -1,5 +1,4 @@
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_AUTO_UPDATE=1
+# https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
 
 {{ $prefix := "" -}}
 {{ if stat "/home/linuxbrew/.linuxbrew/bin/brew" -}}
@@ -9,10 +8,21 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 {{ end -}}
 
 {{ if ne $prefix "" -}}
-# brew shellenv zsh
-{{ output "env" "-i" (print "HOME=" .chezmoi.homeDir) (joinPath $prefix "/bin/brew") "shellenv" "zsh" | trim }}
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+export HOMEBREW_PREFIX="{{ $prefix }}"
+export HOMEBREW_CELLAR="{{ $prefix }}/Cellar"
+export HOMEBREW_REPOSITORY="{{ $prefix }}/homebrew"
+
+infopath=(
+  $HOMEBREW_PREFIX/share/info(N-/)
+  $infopath
+)
 
 path=(
+  $HOMEBREW_PREFIX/bin(N-/)
+  $HOMEBREW_PREFIX/sbin(N-/)
   $HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/)
   $path
 )
