@@ -31,19 +31,20 @@ Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineOption -Colors @{
-  "Command"            = "#268bd2" # Blue
-  "Parameter"          = "#2aa198" # Cyan
-  "Variable"           = "#b58900" # Yellow
-  "String"             = "#2aa198" # Cyan
-  "Operator"           = "#859900" # Green
-  "Number"             = "#d33682" # Magenta
-  "Member"             = "#6c71c4" # Violet
-  "Comment"            = "#93a1a1" # Base1
-  "Keyword"            = "#859900" # Green
-  "Type"               = "#b58900" # Yellow
-  "Default"            = "#839496" # Base0
-  "Error"              = "#dc322f" # Red
-  "ContinuationPrompt" = "#cb4b16" # Orange
+  Command            = "`e[34m"   # Blue
+  Comment            = "`e[32m"   # Green
+  ContinuationPrompt = "`e[33m"   # Yellow
+  Default            = "`e[30m"   # Black
+  Emphasis           = "`e[1;30m" # Bold Black
+  Error              = "`e[31m"   # Red
+  Keyword            = "`e[35m"   # Magenta
+  Member             = "`e[36m"   # Cyan
+  Number             = "`e[33m"   # Yellow
+  Operator           = "`e[30m"   # Black
+  Parameter          = "`e[36m"   # Cyan
+  String             = "`e[31m"   # Red
+  Type               = "`e[32m"   # Green
+  Variable           = "`e[33m"   # Yellow
 }
 
 # Remove default aliases to use coreutils-uutils
