@@ -16,6 +16,7 @@
 [alias]
   br = branch
   ci = commit
+  cim = !"git commit --template=$(for i in $(git --rev-parse --show-toplevel)/git-co-authors.txt ${HOME}/git-co-authors.txt; do [ -f $i ] && echo $i && break; done)"
   ch = cherry-pick
   co = checkout
   di = diff --ignore-space-change
