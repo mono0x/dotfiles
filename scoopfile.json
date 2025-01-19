@@ -22,6 +22,10 @@
     },
     {
       "Source": "main",
+      "Name": "fd"
+    },
+    {
+      "Source": "main",
       "Name": "ffmpeg"
     },
     {
