@@ -12,7 +12,7 @@
     "dot_zshenv": "shellscript",
     "dot_zshrc.tmpl": "shellscript"
   },
-  "[json][jsonc][typescript]": {
+  "[json][jsonc][typescript][yaml]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
