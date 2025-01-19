@@ -84,5 +84,6 @@ Set-Alias grep rg
 function ll { uutils ls -l $args }
 
 . $env:USERPROFILE\.config\pwsh\conf.d\deno.ps1
+. $env:USERPROFILE\.config\pwsh\conf.d\op.ps1
 . $env:USERPROFILE\.config\pwsh\conf.d\starship.ps1
 . $env:USERPROFILE\.config\pwsh\conf.d\wezterm.ps1
