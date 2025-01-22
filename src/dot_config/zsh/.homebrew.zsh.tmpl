@@ -13,5 +13,9 @@
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 {{ output $brew "shellenv" "zsh" | trim }}
+path=(
+  $HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/)
+  $path
+)
 {{ end -}}
 {{ end -}}
