@@ -13,6 +13,7 @@ jobs:
           fetch-depth: 1
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
+          mkdir -p "$HOME/.local/share"
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
       - uses: jdx/mise-action@v2
       - name: Install dependencies
@@ -37,6 +38,7 @@ jobs:
           fetch-depth: 1
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
+          mkdir -p "$HOME/.local/share"
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
       - uses: jdx/mise-action@v2
       - name: Install goss
