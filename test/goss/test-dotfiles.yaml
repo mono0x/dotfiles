@@ -16,8 +16,6 @@ file:
   ~/.config/zsh/.zshrc:
     exists: true
     filetype: file
-    contents:
-      - eval "$(sheldon source)"
   ~/.config/zsh/zshrc.d/starship.zsh:
     exists: true
     filetype: file

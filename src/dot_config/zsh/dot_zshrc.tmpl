@@ -2,7 +2,6 @@
 {{ includeTemplate "dot_config/zsh/.homebrew.zsh.tmpl" . }}
 
 # Sheldon
-if (( $+commands[sheldon] ))
-then
-  eval "$(sheldon source)"
-fi
+{{ if lookPath "sheldon" -}}
+{{ output "sheldon" "source" | trim -}}
+{{ end -}}
