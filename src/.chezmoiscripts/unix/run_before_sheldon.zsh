@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 if (( $+commands[sheldon] ))
 then
-  sheldon lock
+  sheldon lock --update
 fi
