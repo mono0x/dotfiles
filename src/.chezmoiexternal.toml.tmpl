@@ -58,3 +58,10 @@
   refreshPeriod = "{{ $refreshPeriod }}"
   clone.args = ["--depth", "1"]
   pull.args = ["--ff-only"]
+
+{{ if ne .chezmoi.os "windows" -}}
+[".config/zsh/functions/_bun"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/oven-sh/bun/main/completions/bun.zsh"
+  refreshPeriod = "{{ $refreshPeriod }}"
+{{ end -}}
