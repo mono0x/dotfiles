@@ -17,6 +17,8 @@ keymap Global
 
   key IC-C-S-H = C-Backspace
 
+  key ReverseSolidus = S-ReverseSolidus
+
   # 削除
   key C-D = Delete
   key C-S-D = S-Delete
