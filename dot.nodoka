@@ -7,6 +7,7 @@ def key Kana = 0x72
 def key E0RightShift = E0-0x36
 
 keymap Global
+  # Windows emulation on HHKB Pro JP with SW1 and SW5 enabled
   if ( HHKB_MAC )
     # LAlt <-> LWindows
     mod Windows -= LWindows
@@ -19,6 +20,8 @@ keymap Global
 
     key U-*IC-Eisu = D-無変換 U-無変換
     key U-Kana = D-変換 U-変換
+
+    key ReverseSolidus = S-ReverseSolidus
   endif
 
   # Caps -> Ctrl
@@ -30,8 +33,6 @@ keymap Global
   key *E0RightShift = *LShift
 
   key IC-C-S-H = C-Backspace
-
-  key ReverseSolidus = S-ReverseSolidus
 
   # 削除
   key C-D = Delete
