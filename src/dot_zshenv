@@ -28,6 +28,7 @@ path=(
   $HOME/.krew/bin(N-/)
   $HOME/bin(N-/)
   /Applications/WezTerm.app/Contents/MacOS(N-/)
+  "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"(N-/)
   "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"(N-/)
   $path
 )
