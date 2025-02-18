@@ -52,4 +52,5 @@ if OS.mac?
 
   cask "1password-cli"
   cask "git-credential-manager"
+  cask "wezterm"
 end
