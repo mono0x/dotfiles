@@ -10,13 +10,14 @@
 {{ if ne $prefix "" -}}
 {{ $brew := joinPath $prefix "bin/brew"  -}}
 {{ if lookPath $brew -}}
-export HOMEBREW_PREFIX="{{ $prefix }}"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
-{{ $shellenv := output $brew "shellenv" "zsh" | trim -}}
-{{/* Remove existing PATH settings */ -}}
-{{ $pattern := "(?m)^(?:export\\s+)?PATH=.*(?:\r?\n|$)" -}}
-{{ regexReplaceAllLiteral $pattern $shellenv "" }}
+export HOMEBREW_PREFIX="{{ $prefix }}";
+export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
+export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX";
+fpath[1,0]="$HOMEBREW_PREFIX/share/zsh/site-functions";
+[ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
+export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
 path=(
   $HOMEBREW_PREFIX/bin(N-/)
   $HOMEBREW_PREFIX/sbin(N-/)
