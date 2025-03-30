@@ -43,11 +43,15 @@
 # }}}
 
 # settings {{{
+[branch]
+  sort = -committerdate
 [color]
   branch = auto
   diff = auto
   interactive = auto
   status = auto
+  ui = auto
+[column]
   ui = auto
 [commit]
   verbose = true
@@ -55,16 +59,24 @@
   autocrlf = false
   pager = delta
   precomposeunicode = true
+  fsmonitor = true
+  untrackedCache = true
 [interactive]
   diffFilter = delta --color-only
 [diff]
   colorMoved = default
   algorithm = histogram
   compactionHeuristic = true
+  mnemonicPrefix = true
+  renames = true
 [fetch]
   prune = true
+  pruneTags = true
+  all = true
 [grep]
   lineNumber = true
+[help]
+  autocorrect = prompt
 [merge]
   conflictstyle = diff3
   ff = false
@@ -74,8 +86,14 @@
 [push]
   default = simple
 [rebase]
-  autosquash = true
-  autostash = true
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[tag]
+  sort = version:refname
 # }}}
 
 # instead of {{{
