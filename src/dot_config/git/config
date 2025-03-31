@@ -59,7 +59,6 @@
   autocrlf = false
   pager = delta
   precomposeunicode = true
-  fsmonitor = true
   untrackedCache = true
 [interactive]
   diffFilter = delta --color-only
