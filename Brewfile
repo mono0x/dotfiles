@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-
 brew "bat"
 brew "chezmoi"
 brew "colordiff"
