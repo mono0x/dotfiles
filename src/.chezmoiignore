@@ -26,6 +26,7 @@ AppData
 
 {{ if ne .chezmoi.os "darwin" -}}
 .chezmoiscripts/darwin/*
+Library/*
 {{ end -}}
 {{ if not $unix -}}
 .chezmoiscripts/unix/*
