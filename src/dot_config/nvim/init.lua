@@ -147,6 +147,7 @@ xmap <unique> s      <Plug>Vsurround
 xmap <unique> S      <Plug>VSurround
 xmap <unique> gs     <Plug>Vgsurround
 xmap <unique> gS     <Plug>VgSurround
+" On Neovim 0.11, <C-S> is conflicted with the default mapping
 iunmap <unique> <C-S>
 imap <unique> <C-S>  <Plug>Isurround
 imap <unique> <C-G>s <Plug>Isurround
