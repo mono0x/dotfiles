@@ -30,11 +30,6 @@
   "files.autoSave": "onFocusChange",
   "files.autoSaveWorkspaceFilesOnly": true,
   "files.insertFinalNewline": true,
-  "github.copilot.chat.edits.codesearch.enabled": true,
-  "github.copilot.editor.enableAutoCompletions": true,
-  "github.copilot.enable": {
-    "*": true
-  },
   "redhat.telemetry.enabled": false,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.minimumContrastRatio": 1,
