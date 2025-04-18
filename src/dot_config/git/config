@@ -71,7 +71,6 @@
 [fetch]
   prune = true
   pruneTags = true
-  all = true
 [grep]
   lineNumber = true
 [help]
