@@ -147,7 +147,6 @@ xmap <unique> s      <Plug>Vsurround
 xmap <unique> S      <Plug>VSurround
 xmap <unique> gs     <Plug>Vgsurround
 xmap <unique> gS     <Plug>VgSurround
-imap <unique> <C-S>  <Plug>Isurround
 imap <unique> <C-G>s <Plug>Isurround
 imap <unique> <C-G>S <Plug>ISurround
 ]])
