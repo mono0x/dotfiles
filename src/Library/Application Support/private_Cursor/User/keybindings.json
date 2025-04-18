@@ -1,14 +1,14 @@
 // Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "cmd+i",
-        "command": "composerMode.agent"
-    },
-    {
-        // Visual Studio Code＋Vimプラグインでctrl-[のキーバインディングを変更する
-        // https://android.gcreate.jp/customize_keymapping_vim/
-        "key": "ctrl+]",
-        "command": "extension.vim_escape",
-        "when": "editorTextFocus"
-    }
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    // Visual Studio Code＋Vimプラグインでctrl-[のキーバインディングを変更する
+    // https://android.gcreate.jp/customize_keymapping_vim/
+    "key": "ctrl+]",
+    "command": "extension.vim_escape",
+    "when": "editorTextFocus"
+  }
 ]
