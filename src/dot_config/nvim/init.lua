@@ -148,7 +148,7 @@ xmap <unique> S      <Plug>VSurround
 xmap <unique> gs     <Plug>Vgsurround
 xmap <unique> gS     <Plug>VgSurround
 " On Neovim 0.11, <C-S> is conflicted with the default mapping
-if maparg('<C-S>', 'i') != '' then
+if maparg('<C-S>', 'i') != ''
   iunmap <unique> <C-S>
 end
 imap <unique> <C-S>  <Plug>Isurround
