@@ -24,13 +24,6 @@ sudo vi /etc/shells
 chsh -s /opt/homebrew/bin/zsh
 ```
 
-### Windows
-
-```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod https://raw.githubusercontent.com/mono0x/dotfiles/main/install.ps1 | Invoke-Expression
-```
-
 ### Devcontainers
 
 Add the following settings to the `settings.json`.

@@ -5,8 +5,6 @@
 {{   $goss = "goss-darwin-amd64" -}}
 {{ else if eq .chezmoi.os "linux" -}}
 {{   $goss = "goss-linux-amd64" -}}
-{{ else if eq .chezmoi.os "windows" -}}
-{{   $goss = "goss-windows-amd64.exe" -}}
 {{ end -}}
 
 {{ if ne $goss "" -}}
@@ -17,12 +15,7 @@
   refreshPeriod = "{{ $refreshPeriod }}"
 {{ end -}}
 
-{{ $nvim := "" -}}
-{{ if eq .chezmoi.os "windows" -}}
-{{   $nvim = "AppData/Local/nvim" -}}
-{{ else -}}
-{{   $nvim = ".config/nvim" -}}
-{{ end -}}
+{{ $nvim := ".config/nvim" -}}
 
 ["{{ $nvim }}/pack/vendor/start/copilot.vim"]
   type = "git-repo"
@@ -59,9 +52,7 @@
   clone.args = ["--depth", "1"]
   pull.args = ["--ff-only"]
 
-{{ if ne .chezmoi.os "windows" -}}
 [".config/zsh/functions/_bun"]
   type = "file"
   url = "https://raw.githubusercontent.com/oven-sh/bun/main/completions/bun.zsh"
   refreshPeriod = "{{ $refreshPeriod }}"
-{{ end -}}

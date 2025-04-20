@@ -7,8 +7,7 @@ $.setPrintCommand(true);
 const account = "mono0x";
 
 if (
-  !(Deno.build.os === "linux" || Deno.build.os === "darwin" ||
-    Deno.build.os === "windows")
+  !(Deno.build.os === "linux" || Deno.build.os === "darwin")
 ) {
   console.error(`Unsupported OS: ${Deno.build.os}`);
   Deno.exit(1);
@@ -16,13 +15,11 @@ if (
 
 const ci = Deno.env.get("GITHUB_ACTIONS") === "true";
 const remoteContainers = Deno.env.get("REMOTE_CONTAINERS") === "true";
-const wsl = !!Deno.env.get("WSL_DISTRO_NAME");
 
 console.log(`
   OS: ${Deno.build.os}
   CI: ${ci}
   Remote Containers: ${remoteContainers}
-  WSL: ${wsl}
 `);
 
 if (remoteContainers) {
@@ -34,10 +31,6 @@ switch (Deno.build.os) {
   case "linux":
   case "darwin":
     await setupUnix(Deno.build.os);
-    break;
-
-  case "windows":
-    await setupWindows();
     break;
 }
 
@@ -71,12 +64,6 @@ async function setupUnix(os: "linux" | "darwin") {
     ]);
   }
 
-  const scoopShimDir = await (async () => {
-    if (!wsl) return;
-    const scoop = await $.which("scoop");
-    return scoop && path.dirname(scoop);
-  })();
-
   const homebrewDir = os === "linux"
     ? "/home/linuxbrew/.linuxbrew"
     : "/opt/homebrew";
@@ -95,7 +82,6 @@ async function setupUnix(os: "linux" | "darwin") {
 
   await $`/bin/bash --noprofile --norc`
     .stdinText(`
-      export PATH=$PATH:${scoopShimDir}
       eval $("${brew}" shellenv)
       HOMEBREW_NO_AUTO_UPDATE=1 "${brew}" install chezmoi
       chezmoi init --verbose --apply ${account}
@@ -105,33 +91,6 @@ async function setupUnix(os: "linux" | "darwin") {
       GITHUB_ACTIONS: Deno.env.get("GITHUB_ACTIONS"),
       HOME: homeDir,
     });
-}
-
-async function setupWindows() {
-  const homeDir = Deno.env.get("USERPROFILE");
-  if (!homeDir) {
-    console.error("USERPROFILE environment variable not set");
-    Deno.exit(1);
-  }
-
-  console.log("Installing scoop");
-
-  const scoopShimDir = path.join(homeDir, "scoop", "shims");
-  if (!await fs.exists(scoopShimDir)) {
-    await $`pwsh -noprofile -noninteractive -`
-      .stdinText(`
-        Invoke-RestMethod get.scoop.sh | Invoke-Expression
-        scoop install chezmoi git
-      `);
-  }
-
-  console.log("Initializing chezmoi");
-
-  const chezmoi = path.join(scoopShimDir, "chezmoi.exe");
-  await $`pwsh -noprofile -noninteractive -`
-    .stdinText(`
-      . "${chezmoi}" init --verbose --apply ${account}
-    `);
 }
 
 async function aptInstall(packages: string[]) {

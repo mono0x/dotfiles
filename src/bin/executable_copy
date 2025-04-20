@@ -1,7 +1,5 @@
 #!/bin/sh
-if [ -n "$WSL_DISTRO_NAME" ]; then
-  exec /mnt/c/Windows/System32/clip.exe
-elif type pbcopy >/dev/null 2>&1; then
+if type pbcopy >/dev/null 2>&1; then
   exec pbcopy
 elif type xclip >/dev/null 2>&1; then
   exec xclip -sel c

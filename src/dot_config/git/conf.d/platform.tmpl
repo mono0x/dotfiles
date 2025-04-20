@@ -2,13 +2,5 @@
 {{   includeTemplate "dot_config/git/conf.d/.platform.darwin.tmpl" . -}}
 {{ end -}}
 {{ if eq .chezmoi.os "linux" -}}
-{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
-{{/* https://www.chezmoi.io/user-guide/machines/windows/#detect-windows-subsystem-for-linux-wsl */}}
-{{     include "dot_config/git/conf.d/.platform.wsl" -}}
-{{   else -}}
-{{     include "dot_config/git/conf.d/.platform.linux" -}}
-{{   end -}}
-{{ end -}}
-{{ if eq .chezmoi.os "windows" -}}
-{{   includeTemplate "dot_config/git/conf.d/.platform.windows.tmpl" . -}}
+{{   include "dot_config/git/conf.d/.platform.linux" -}}
 {{ end -}}

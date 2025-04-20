@@ -1,3 +1,0 @@
-[experimental]
-autoMemoryReclaim=gradual
-sparseVhd=true

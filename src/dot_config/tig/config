@@ -29,6 +29,3 @@ bind diff v !@hub browse -- commit/%(commit)
 
 # Revert
 bind main ! ?git revert %(commit)
-
-# Source
-source ~/.config/tig/conf.d/platform

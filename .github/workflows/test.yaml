@@ -55,24 +55,6 @@ jobs:
           ./install.sh
           GOSS_USE_ALPHA=1 goss validate --format documentation
 
-  test-windows:
-    runs-on: windows-latest
-    env:
-      SKIP_SCOOP: "true"
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          fetch-depth: 1
-      - name: "Workaround: Prepare ~/.local/share/chezmoi"
-        run: |
-          New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\share"
-          New-Item -ItemType SymbolicLink -Value (Get-Location) -Path "$env:USERPROFILE\.local\share\chezmoi"
-      - name: Run test
-        run: |
-          pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
-          # Run script twice to test idempotency
-          pwsh -ExecutionPolicy RemoteSigned -File ./install.ps1
-
   test-static:
     runs-on: ubuntu-latest
     steps:
