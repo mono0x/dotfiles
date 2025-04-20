@@ -33,6 +33,7 @@
   "redhat.telemetry.enabled": false,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.minimumContrastRatio": 1,
+  "terminal.integrated.suggest.enabled": true,
   "vim.handleKeys": {
     "<C-p>": false
   },
