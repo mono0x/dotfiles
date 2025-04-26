@@ -16,11 +16,6 @@ file:
   ~/.config/zsh/.zshrc:
     exists: true
     filetype: file
-  ~/.config/zsh/zshrc.d/starship.zsh:
-    exists: true
-    filetype: file
-    contents:
-      - "prompt_starship_precmd() {"
   ~/.config/zsh/zshrc.defer.d/mise.zsh:
     exists: true
     filetype: file
