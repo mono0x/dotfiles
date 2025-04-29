@@ -1,6 +1,6 @@
 {
   "fmt": {
-    "exclude": ["third_party"]
+    "exclude": ["karabiner", "third_party"]
   },
   "imports": {
     "@david/dax": "jsr:@david/dax@^0.42.0",
