@@ -6,6 +6,10 @@ file:
       - "name = mono"
       - "email = mono@mono0x.net"
 
+  ~/.config/karabiner:
+    exists: true
+    filetype: symlink
+
   ~/.zshenv:
     exists: true
     filetype: file
