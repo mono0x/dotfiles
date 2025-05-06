@@ -19,41 +19,4 @@ config.font = wezterm.font_with_fallback {
 }
 config.font_size = 14.0
 
--- Keys
-config.keys = {}
--- config.debug_key_events = true
-
-local numbers_with_shift = {
-  '!', '"', '#', '$', '%', '&', "'", '(', ')',
-}
-if config.launch_menu ~= nil then
-  for i, v in ipairs(config.launch_menu) do
-    table.insert(config.keys, {
-      key = numbers_with_shift[i],
-      mods = 'CTRL|SHIFT',
-      action = act.SpawnCommandInNewTab {
-        args = v.args,
-      },
-    })
-    table.insert(config.keys, {
-      key = numbers_with_shift[i],
-      mods = 'SUPER|SHIFT',
-      action = act.SpawnCommandInNewTab {
-        args = v.args,
-      },
-    })
-  end
-else
-  table.insert(config.keys, {
-    key = numbers_with_shift[1],
-    mods = 'CTRL|SHIFT',
-    action = act.SpawnTab 'CurrentPaneDomain',
-  })
-  table.insert(config.keys, {
-    key = numbers_with_shift[1],
-    mods = 'SUPER|SHIFT',
-    action = act.SpawnTab 'CurrentPaneDomain',
-  })
-end
-
 return config
