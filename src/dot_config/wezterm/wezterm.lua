@@ -1,9 +1,8 @@
 ---@type Wezterm
 local wezterm = require 'wezterm'
-local act = wezterm.action
 
----@type Config
 local config = wezterm.config_builder()
+---@diagnostic disable-next-line: undefined-field
 config:set_strict_mode(true)
 
 -- Preferences
