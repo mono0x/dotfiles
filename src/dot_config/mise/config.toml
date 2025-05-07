@@ -1,12 +1,12 @@
 [tools]
-  node = "22"
-  "npm:@anthropic-ai/claude-code" = "latest"
-  python = "latest"
-  usage = "latest"
-  uv = "latest"
+node = "22"
+"npm:@anthropic-ai/claude-code" = "latest"
+python = "latest"
+usage = "latest"
+uv = "latest"
 
 [settings]
-  experimental = true
+experimental = true
 
 [settings.pipx]
-  uvx = true
+uvx = true

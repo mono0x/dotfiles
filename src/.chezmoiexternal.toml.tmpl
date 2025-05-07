@@ -9,50 +9,50 @@
 
 {{ if ne $goss "" -}}
 ["bin/goss"]
-  type = "file"
-  url = "https://github.com/goss-org/goss/releases/latest/download/{{ $goss }}"
-  executable = true
-  refreshPeriod = "{{ $refreshPeriod }}"
+type = "file"
+url = "https://github.com/goss-org/goss/releases/latest/download/{{ $goss }}"
+executable = true
+refreshPeriod = "{{ $refreshPeriod }}"
 {{ end -}}
 
 {{ $nvim := ".config/nvim" -}}
 
 ["{{ $nvim }}/pack/vendor/start/copilot.vim"]
-  type = "git-repo"
-  url = "https://github.com/github/copilot.vim"
-  refreshPeriod = "{{ $refreshPeriod }}"
-  clone.args = ["--depth", "1"]
-  pull.args = ["--ff-only"]
+type = "git-repo"
+url = "https://github.com/github/copilot.vim"
+refreshPeriod = "{{ $refreshPeriod }}"
+clone.args = ["--depth", "1"]
+pull.args = ["--ff-only"]
 
 ["{{ $nvim }}/pack/vendor/start/lualine.nvim"]
-  type = "git-repo"
-  url = "https://github.com/nvim-lualine/lualine.nvim"
-  refreshPeriod = "{{ $refreshPeriod }}"
-  clone.args = ["--depth", "1"]
-  pull.args = ["--ff-only"]
+type = "git-repo"
+url = "https://github.com/nvim-lualine/lualine.nvim"
+refreshPeriod = "{{ $refreshPeriod }}"
+clone.args = ["--depth", "1"]
+pull.args = ["--ff-only"]
 
 ["{{ $nvim }}/pack/vendor/start/solarized.nvim"]
-  type = "git-repo"
-  url = "https://github.com/shaunsingh/solarized.nvim"
-  refreshPeriod = "{{ $refreshPeriod }}"
-  clone.args = ["--depth", "1"]
-  pull.args = ["--ff-only"]
+type = "git-repo"
+url = "https://github.com/shaunsingh/solarized.nvim"
+refreshPeriod = "{{ $refreshPeriod }}"
+clone.args = ["--depth", "1"]
+pull.args = ["--ff-only"]
 
 ["{{ $nvim }}/pack/vendor/start/vim-fugitive"]
-  type = "git-repo"
-  url = "https://github.com/tpope/vim-fugitive"
-  refreshPeriod = "{{ $refreshPeriod }}"
-  clone.args = ["--depth", "1"]
-  pull.args = ["--ff-only"]
+type = "git-repo"
+url = "https://github.com/tpope/vim-fugitive"
+refreshPeriod = "{{ $refreshPeriod }}"
+clone.args = ["--depth", "1"]
+pull.args = ["--ff-only"]
 
 ["{{ $nvim }}/pack/vendor/start/vim-surround"]
-  type = "git-repo"
-  url = "https://github.com/anyakichi/vim-surround"
-  refreshPeriod = "{{ $refreshPeriod }}"
-  clone.args = ["--depth", "1"]
-  pull.args = ["--ff-only"]
+type = "git-repo"
+url = "https://github.com/anyakichi/vim-surround"
+refreshPeriod = "{{ $refreshPeriod }}"
+clone.args = ["--depth", "1"]
+pull.args = ["--ff-only"]
 
 [".config/zsh/functions/_bun"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/oven-sh/bun/main/completions/bun.zsh"
-  refreshPeriod = "{{ $refreshPeriod }}"
+type = "file"
+url = "https://raw.githubusercontent.com/oven-sh/bun/main/completions/bun.zsh"
+refreshPeriod = "{{ $refreshPeriod }}"
