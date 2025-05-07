@@ -23,4 +23,9 @@ Desktop.ini
 #
 # General
 #
+
+# Kotlin
 .kotlin/
+
+# Visual Studio Code
+*.code-workspace
