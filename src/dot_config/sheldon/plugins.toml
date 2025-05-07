@@ -33,6 +33,11 @@ github = "zdharma-continuum/fast-syntax-highlighting"
 [plugins.ni]
 github = "azu/ni.zsh"
 
+[plugins.pure]
+github = "sindresorhus/pure"
+use = ["async.zsh", "pure.zsh"]
+apply = ["source"]
+
 [plugins.zshrc-defer]
 local = "~/.config/zsh/zshrc.defer.d"
 
