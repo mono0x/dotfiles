@@ -85,6 +85,15 @@
                             "to": [{ "key_code": "japanese_kana" }]
                         }
                     ]
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 50475,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "mouse_flip_vertical_wheel": true
                 }
             ],
             "name": "Default profile",
