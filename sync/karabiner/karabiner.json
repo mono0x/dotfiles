@@ -162,6 +162,10 @@
                         {
                             "from": { "key_code": "japanese_pc_xfer" },
                             "to": [{ "key_code": "japanese_kana" }]
+                        },
+                        {
+                            "from": { "key_code": "right_option" },
+                            "to": [{ "key_code": "fn" }]
                         }
                     ]
                 },
