@@ -1,6 +1,6 @@
-import $ from "jsr:@david/dax@^0.42.0";
-import * as fs from "jsr:@std/fs@^0.224.0";
-import * as path from "jsr:@std/path@^0.224.0";
+import $ from "jsr:@david/dax@^0.43.1";
+import * as fs from "jsr:@std/fs@^1.0.0";
+import * as path from "jsr:@std/path@^1.0.0";
 
 $.setPrintCommand(true);
 
