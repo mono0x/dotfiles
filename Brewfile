@@ -43,6 +43,7 @@ if OS.mac?
   brew "gnu-sed"
   brew "grep"
   brew "gzip"
+  brew "libyaml" # ruby
   brew "rsync"
   brew "unzip"
   brew "wget"
