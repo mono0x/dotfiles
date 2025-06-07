@@ -94,7 +94,12 @@
                                     "key_code": "escape",
                                     "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
                                 },
-                                "to": [{ "shell_command": "sleep 1 && pmset sleepnow" }],
+                                "to_after_key_up": [
+                                    {
+                                        "consumer_key_code": "eject",
+                                        "modifiers": ["option", "command"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
