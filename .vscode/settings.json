@@ -31,7 +31,7 @@
     ],
     // https://github.com/pqrs-org/Karabiner-Elements/issues/1918#issuecomment-1768131792
     "https://raw.githubusercontent.com/chrisgrieser/.config/refs/heads/main/karabiner/assets/complex_modifications/schema/karabiner-mod-schema.json": [
-      "karabiner/karabiner.json"
+      "sync/karabiner/karabiner.json"
     ],
     "https://raw.githubusercontent.com/goss-org/goss/master/docs/schema.yaml": [
       "goss.yaml",
