@@ -83,7 +83,7 @@
                         ]
                     },
                     {
-                        "description": "Global Hotkeys with Virtual Modifier",
+                        "description": "Change mod1+z to f16, mod1+x to f17, and mod1+c to f18",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -120,7 +120,12 @@
                                 "from": { "key_code": "c" },
                                 "to": [{ "key_code": "f18" }],
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change mod1+escape to sleep",
+                        "manipulators": [
                             {
                                 "conditions": [
                                     {
