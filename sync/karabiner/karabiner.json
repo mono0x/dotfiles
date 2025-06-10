@@ -90,19 +90,6 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                        "description": "Change hyper+escape to sleep",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "escape",
-                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
-                                },
-                                "to_after_key_up": [{ "software_function": { "iokit_power_management_sleep_system": { "delay_milliseconds": 0 } } }],
-                                "type": "basic"
-                            }
-                        ]
                     }
                 ]
             },
