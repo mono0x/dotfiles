@@ -32,7 +32,7 @@
                         ]
                     },
                     {
-                        "description": "Virutal Modifier",
+                        "description": "Hyper Key",
                         "manipulators": [
                             {
                                 "from": {
@@ -41,18 +41,8 @@
                                 },
                                 "to": [
                                     {
-                                        "set_variable": {
-                                            "name": "mod1",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "mod1",
-                                            "value": 0
-                                        }
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -64,18 +54,8 @@
                                 },
                                 "to": [
                                     {
-                                        "set_variable": {
-                                            "name": "mod1",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "mod1",
-                                            "value": 0
-                                        }
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -83,58 +63,42 @@
                         ]
                     },
                     {
-                        "description": "Change mod1+z to f16, mod1+x to f17, and mod1+c to f18",
+                        "description": "Change hyper+z to f16, hyper+x to f17, and hyper+c to f18",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "mod1",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": { "key_code": "z" },
+                                "from": {
+                                    "key_code": "z",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
                                 "to": [{ "key_code": "f16" }],
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "name": "mod1",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": { "key_code": "x" },
+                                "from": {
+                                    "key_code": "x",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
                                 "to": [{ "key_code": "f17" }],
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "name": "mod1",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": { "key_code": "c" },
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
                                 "to": [{ "key_code": "f18" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Change mod1+escape to sleep",
+                        "description": "Change hyper+escape to sleep",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "mod1",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": { "key_code": "escape" },
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
                                 "to_after_key_up": [{ "software_function": { "iokit_power_management_sleep_system": { "delay_milliseconds": 0 } } }],
                                 "type": "basic"
                             }
