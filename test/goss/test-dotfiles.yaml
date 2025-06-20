@@ -9,6 +9,15 @@ file:
   ~/.config/karabiner:
     exists: true
     filetype: symlink
+    linked-to: "{{ .Env.HOME }}/.local/share/chezmoi/sync/karabiner"
+  ~/Library/Application Support/Cursor/User/keybindings.json:
+    exists: true
+    filetype: symlink
+    linked-to: "{{ .Env.HOME }}/.local/share/chezmoi/sync/cursor/keybindings.json"
+  ~/Library/Application Support/Cursor/User/settings.json:
+    exists: true
+    filetype: symlink
+    linked-to: "{{ .Env.HOME }}/.local/share/chezmoi/sync/cursor/settings.json"
 
   ~/.zshenv:
     exists: true
@@ -20,8 +29,28 @@ file:
   ~/.config/zsh/.zshrc:
     exists: true
     filetype: file
+  ~/.config/zsh/functions/_op:
+    exists: true
+    filetype: file
+    contents:
+      - "_op()"
+  ~/.config/zsh/functions/_mise:
+    exists: true
+    filetype: file
+    contents:
+      - "_mise()"
+  ~/.config/zsh/functions/_sheldon:
+    exists: true
+    filetype: file
+    contents:
+      - "_sheldon()"
+  ~/.config/zsh/functions/_wezterm:
+    exists: true
+    filetype: file
+    contents:
+      - "_wezterm()"
   ~/.config/zsh/zshrc.defer.d/mise.zsh:
     exists: true
     filetype: file
     contents:
-      - "mise() {"
+      - "mise()"
