@@ -16,11 +16,6 @@ file:
   ~/.config/zsh/.zshrc:
     exists: true
     filetype: file
-  ~/.config/zsh/functions/_op:
-    exists: true
-    filetype: file
-    contents:
-      - "_op()"
   ~/.config/zsh/functions/_mise:
     exists: true
     filetype: file
@@ -31,11 +26,6 @@ file:
     filetype: file
     contents:
       - "_sheldon()"
-  ~/.config/zsh/functions/_wezterm:
-    exists: true
-    filetype: file
-    contents:
-      - "_wezterm()"
   ~/.config/zsh/zshrc.defer.d/mise.zsh:
     exists: true
     filetype: file
