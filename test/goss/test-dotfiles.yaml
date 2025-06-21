@@ -6,19 +6,6 @@ file:
       - "name = mono"
       - "email = mono@mono0x.net"
 
-  ~/.config/karabiner:
-    exists: true
-    filetype: symlink
-    linked-to: "{{ .Env.HOME }}/.local/share/chezmoi/sync/karabiner"
-  ~/Library/Application Support/Cursor/User/keybindings.json:
-    exists: true
-    filetype: symlink
-    linked-to: "{{ .Env.HOME }}/.local/share/chezmoi/sync/cursor/keybindings.json"
-  ~/Library/Application Support/Cursor/User/settings.json:
-    exists: true
-    filetype: symlink
-    linked-to: "{{ .Env.HOME }}/.local/share/chezmoi/sync/cursor/settings.json"
-
   ~/.zshenv:
     exists: true
     filetype: file
