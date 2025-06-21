@@ -4,7 +4,6 @@
     "editorconfig.editorconfig",
     "redhat.vscode-yaml",
     "sumneko.lua",
-    "tamasfe.even-better-toml",
-    "timonwong.shellcheck"
+    "tamasfe.even-better-toml"
   ]
 }
