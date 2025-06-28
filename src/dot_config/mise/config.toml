@@ -1,4 +1,5 @@
 [tools]
+go = "1.24"
 node = "22"
 "npm:@anthropic-ai/claude-code" = "latest"
 python = "latest"
