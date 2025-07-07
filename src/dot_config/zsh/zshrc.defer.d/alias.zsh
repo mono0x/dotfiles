@@ -1,6 +1,7 @@
 alias sudo="sudo "
 alias sudoe='sudo -e'
 alias vi='nvim'
+alias cc='sandbox-claude'
 alias cz='chezmoi'
 
 case "${OSTYPE}" in
