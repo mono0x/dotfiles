@@ -2,7 +2,7 @@ alias sudo="sudo "
 alias sudoe='sudo -e'
 alias vi='nvim'
 alias claude='sandbox-claude'
-alias claude-unsafe='claude'
+alias claude-unsafe='mise exec npm:@anthropic-ai/claude-code -- claude'
 alias cz='chezmoi'
 
 case "${OSTYPE}" in
