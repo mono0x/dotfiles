@@ -4,6 +4,3 @@
 [submodule "third_party/wezterm-types"]
 	path = third_party/wezterm-types
 	url = https://github.com/gonstoll/wezterm-types
-[submodule "third_party/sandbox-claude"]
-	path = third_party/sandbox-claude
-	url = https://github.com/nekketsuuu/config

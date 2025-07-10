@@ -1,8 +1,10 @@
 alias sudo="sudo "
 alias sudoe='sudo -e'
 alias vi='nvim'
-alias claude='sandbox-claude'
-alias claude-unsafe='mise exec npm:@anthropic-ai/claude-code -- claude'
+if (( $+commands[claude-sandbox] )); then
+  alias claude='claude-sandbox'
+  alias claude-unsafe='mise exec npm:@anthropic-ai/claude-code -- claude'
+fi
 alias cz='chezmoi'
 
 case "${OSTYPE}" in
