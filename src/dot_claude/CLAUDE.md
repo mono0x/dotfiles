@@ -1,1 +1,3 @@
-Please respond to the user in Japanese.
+- Please respond to the user in Japanese.
+- Only add comments when explaining particularly unclear parts - avoid basic comments.
+- Use concise and short variable names, especially for local variables.
