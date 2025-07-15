@@ -22,6 +22,7 @@ This is a dotfiles repository managed by chezmoi for setting up a development en
 ## Common Commands
 
 ### Development and Testing
+
 - `deno run -A install.ts` - Run the installation script
 - `deno run -A test/static.ts` - Run static analysis tests (shellcheck, zsh syntax)
 - `deno task watch` - Watch for changes and apply with chezmoi
@@ -29,12 +30,14 @@ This is a dotfiles repository managed by chezmoi for setting up a development en
 - `deno lint` - Lint Deno code
 
 ### chezmoi Operations
+
 - `chezmoi init --apply mono0x` - Initialize and apply dotfiles
 - `chezmoi apply --verbose` - Apply configuration changes
 - `chezmoi source-path` - Show source directory path
 - `chezmoi diff` - Show differences between source and target
 
 ### Testing
+
 - `./install.sh` - Test installation process
 - `goss validate --format documentation` - Run goss tests
 - CI runs tests on Ubuntu and macOS with idempotency checks
@@ -42,28 +45,33 @@ This is a dotfiles repository managed by chezmoi for setting up a development en
 ## Key Files and Directories
 
 ### Core Installation
+
 - `install.sh` - Shell script that bootstraps Deno and runs `install.ts`
 - `install.ts` - Main installation logic with OS detection and tool setup
 - `deno.jsonc` - Deno configuration with dependencies and tasks
 
 ### Configuration Management
+
 - `src/dot_config/zsh/` - Zsh configuration with functions and deferred loading
 - `src/dot_config/git/` - Git configuration with platform-specific templates
 - `src/dot_config/nvim/` - Neovim configuration
 - `src/dot_config/wezterm/` - WezTerm terminal configuration
 
 ### Testing
+
 - `test/static.ts` - Static analysis for shell scripts and Zsh files
 - `test/goss/test-dotfiles.yaml` - System state validation tests
 - `goss.yaml` - Goss configuration
 
 ### Synchronization
+
 - `sync/` - Files synchronized between systems (cursor, karabiner configs)
 - `third_party/` - External dependencies (neodev.nvim, wezterm-types)
 
 ## Template System
 
 Uses chezmoi templating for platform-specific configuration:
+
 - `.tmpl` files support Go templating syntax
 - Platform detection with `{{ .chezmoi.os }}`
 - Conditional configuration based on environment
@@ -71,12 +79,14 @@ Uses chezmoi templating for platform-specific configuration:
 ## Dependencies
 
 ### Runtime Dependencies
+
 - Deno for installation scripts
 - chezmoi for dotfiles management
 - Homebrew (installed automatically)
 - zsh shell
 
 ### Development Dependencies
+
 - shellcheck for shell script linting
 - goss for system testing
 - mise for tool version management

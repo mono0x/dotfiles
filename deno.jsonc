@@ -1,6 +1,7 @@
 {
   "fmt": {
-    "exclude": ["sync", "third_party"]
+    "exclude": ["sync", "third_party"],
+    "proseWrap": "preserve"
   },
   "imports": {
     "@david/dax": "jsr:@david/dax@^0.43.1",
