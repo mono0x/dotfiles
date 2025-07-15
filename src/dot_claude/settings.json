@@ -14,5 +14,11 @@
         ]
       }
     ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(rg:*)"
+    ],
+    "deny": []
   }
 }
