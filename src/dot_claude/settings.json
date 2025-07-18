@@ -19,6 +19,10 @@
     "allow": [
       "Bash(rg:*)"
     ],
-    "deny": []
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(sudo:*)",
+      "Read(.env.*)"
+    ]
   }
 }
