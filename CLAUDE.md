@@ -65,7 +65,7 @@ This is a dotfiles repository managed by chezmoi for setting up a development en
 
 ### Synchronization
 
-- `sync/` - Files synchronized between systems (cursor, karabiner configs)
+- `sync/` - Files synchronized between systems (karabiner configs)
 - `third_party/` - External dependencies (neodev.nvim, wezterm-types)
 
 ## Template System

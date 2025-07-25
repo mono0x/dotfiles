@@ -7,8 +7,5 @@ indent_size = 2
 indent_style = space
 trim_trailing_whitespace = true
 
-[sync/cursor/*.json]
-indent_size = 4
-
 [sync/karabiner/karabiner.json]
 indent_size = 4
