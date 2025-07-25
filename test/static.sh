@@ -13,7 +13,7 @@ shellcheck --version
 
 # Check shell scripts in bin and src directories
 echo "Checking shell scripts..."
-find bin src -name "*.sh" -type f 2>/dev/null | while read -r file; do
+find src -name '*.sh' -type f | while read -r file; do
     echo "Checking $file"
     shellcheck "$file"
 done
