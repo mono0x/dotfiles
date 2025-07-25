@@ -1,11 +1,6 @@
 {{ $refreshPeriod := "168h" -}}
 
-{{ $goss := "" -}}
-{{ if eq .chezmoi.os "darwin" -}}
-{{   $goss = "goss-darwin-amd64" -}}
-{{ else if eq .chezmoi.os "linux" -}}
-{{   $goss = "goss-linux-amd64" -}}
-{{ end -}}
+{{ $goss := "goss-darwin-amd64" -}}
 
 {{ if ne $goss "" -}}
 ["bin/goss"]

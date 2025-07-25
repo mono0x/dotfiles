@@ -2,13 +2,5 @@
   "fmt": {
     "exclude": ["sync", "third_party"],
     "proseWrap": "preserve"
-  },
-  "imports": {
-    "@david/dax": "jsr:@david/dax@^0.43.1",
-    "@std/fs": "jsr:@std/fs@^1.0.0",
-    "@std/path": "jsr:@std/path@^1.0.0"
-  },
-  "tasks": {
-    "watch": "sh -c 'fswatch -r -o -l 3 \"$(chezmoi source-path)\" | xargs -n1 -I{} chezmoi apply --verbose'"
   }
 }

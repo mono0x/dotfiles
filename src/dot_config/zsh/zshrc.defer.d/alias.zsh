@@ -8,15 +8,6 @@ fi
 alias cz='chezmoi'
 
 case "${OSTYPE}" in
-linux*)
-  alias ls="ls --color"
-
-  alias comm='LC_ALL=C comm'
-  alias grep='LC_ALL=C grep'
-  alias look='LC_ALL=C look'
-  alias sort='LC_ALL=C sort'
-  alias uniq='LC_ALL=C uniq'
-  ;;
 darwin*)
   alias ls="ls -G"
 
@@ -39,6 +30,7 @@ darwin*)
   alias wc='gwc'
   ;;
 esac
+
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -Al'

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a dotfiles repository managed by chezmoi for setting up a development environment across Linux (Ubuntu) and macOS. The main focus is on Zsh configuration, terminal tools, and development environment setup.
+This is a dotfiles repository managed by chezmoi for setting up a macOS development environment. The main focus is on Zsh configuration, terminal tools, and development environment setup.
 
 ## Architecture
 
@@ -13,7 +13,7 @@ This is a dotfiles repository managed by chezmoi for setting up a development en
   - `.tmpl` suffix for template files that use chezmoi's templating
   - `symlink_` prefix for symlinks
   - `private_` prefix for private files
-- **Installation**: Driven by Deno TypeScript script (`install.ts`) that handles OS-specific setup
+- **Installation**: Driven by shell script (`install.sh`) that handles package installation and chezmoi setup
 - **Configuration layers**:
   - Base shell configuration in `src/dot_zshenv` and `src/dot_zprofile`
   - Zsh config in `src/dot_config/zsh/` with modular loading
@@ -23,11 +23,8 @@ This is a dotfiles repository managed by chezmoi for setting up a development en
 
 ### Development and Testing
 
-- `deno run -A install.ts` - Run the installation script
-- `deno run -A test/static.ts` - Run static analysis tests (shellcheck, zsh syntax)
-- `deno task watch` - Watch for changes and apply with chezmoi
-- `deno fmt` - Format Deno code
-- `deno lint` - Lint Deno code
+- `./install.sh` - Run the installation script
+- `./test/static.sh` - Run static analysis tests (shellcheck, zsh syntax)
 
 ### chezmoi Operations
 
@@ -40,15 +37,14 @@ This is a dotfiles repository managed by chezmoi for setting up a development en
 
 - `./install.sh` - Test installation process
 - `goss validate --format documentation` - Run goss tests
-- CI runs tests on Ubuntu and macOS with idempotency checks
+- CI runs tests on macOS with idempotency checks
 
 ## Key Files and Directories
 
 ### Core Installation
 
-- `install.sh` - Shell script that bootstraps Deno and runs `install.ts`
-- `install.ts` - Main installation logic with OS detection and tool setup
-- `deno.jsonc` - Deno configuration with dependencies and tasks
+- `install.sh` - Main installation script that handles package installation and chezmoi setup
+- `deno.jsonc` - Deno configuration with dependencies and tasks (legacy)
 
 ### Configuration Management
 
@@ -59,7 +55,7 @@ This is a dotfiles repository managed by chezmoi for setting up a development en
 
 ### Testing
 
-- `test/static.ts` - Static analysis for shell scripts and Zsh files
+- `test/static.sh` - Static analysis for shell scripts and Zsh files
 - `test/goss/test-dotfiles.yaml` - System state validation tests
 - `goss.yaml` - Goss configuration
 
@@ -80,7 +76,7 @@ Uses chezmoi templating for platform-specific configuration:
 
 ### Runtime Dependencies
 
-- Deno for installation scripts
+- Shell script for installation
 - chezmoi for dotfiles management
 - Homebrew (installed automatically)
 - zsh shell
@@ -96,4 +92,4 @@ Uses chezmoi templating for platform-specific configuration:
 1. **Static Analysis**: Validate shell scripts and Zsh syntax
 2. **Integration Tests**: Run full installation and verify system state
 3. **Idempotency**: Ensure scripts can run multiple times safely
-4. **CI/CD**: Automated testing on Ubuntu and macOS
+4. **CI/CD**: Automated testing on macOS

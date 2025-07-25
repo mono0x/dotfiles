@@ -5,34 +5,6 @@ on:
       - "*"
 
 jobs:
-  test-linux:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, ubuntu-24.04]
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          submodules: recursive
-      - name: "Workaround: Prepare ~/.local/share/chezmoi"
-        run: |
-          mkdir -p "$HOME/.local/share"
-          ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
-      - uses: jdx/mise-action@5083fe46898c414b2475087cc79da59e7da859e8 # v2.1.11
-      - name: Install dependencies
-        run: |
-          sudo apt install -y zsh
-      - name: Install goss
-        run: |
-          sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss
-          sudo chmod +rx /usr/local/bin/goss
-      - name: Run test
-        run: |
-          ./install.sh
-          # Run script twice to test idempotency
-          ./install.sh
-          goss validate --format documentation
-
   test-macos:
     runs-on: macos-latest
     steps:
@@ -63,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: sudo apt install -y zsh
       - name: Run test
-        run: deno run -A ./test/static.ts
+        run: ./test/static.sh
 
   actionlint:
     runs-on: ubuntu-latest

@@ -1,6 +1,5 @@
-{{ if eq .chezmoi.os "darwin" -}}
-{{   includeTemplate "dot_config/git/conf.d/.platform.darwin.tmpl" . -}}
-{{ end -}}
-{{ if eq .chezmoi.os "linux" -}}
-{{   include "dot_config/git/conf.d/.platform.linux" -}}
-{{ end -}}
+[core]
+  editor = commit-message-editor
+
+[credential]
+  helper = {{ lookPath "git-credential-manager" }}

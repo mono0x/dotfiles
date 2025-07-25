@@ -1,9 +1,7 @@
 # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
 
 {{ $prefix := "" -}}
-{{ if stat "/home/linuxbrew/.linuxbrew/bin/brew" -}}
-{{ $prefix = "/home/linuxbrew/.linuxbrew" -}}
-{{ else if stat "/opt/homebrew/bin/brew" -}}
+{{ if stat "/opt/homebrew/bin/brew" -}}
 {{ $prefix = "/opt/homebrew" -}}
 {{ end -}}
 
