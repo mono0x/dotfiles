@@ -2,21 +2,9 @@
   "env": {
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true"
   },
-  "hooks": {
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "claude-hooks-stop-words"
-          }
-        ]
-      }
-    ]
-  },
   "permissions": {
     "allow": [
+      "Bash(grep:*)",
       "Bash(rg:*)"
     ],
     "deny": [
