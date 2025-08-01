@@ -5,9 +5,14 @@
   "permissions": {
     "defaultMode": "acceptEdits",
     "allow": [
-      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(fd:*)",
+      "Bash(find:*)",
       "Bash(grep:*)",
-      "Bash(rg:*)"
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(rg:*)",
+      "Bash(tail:*)"
     ],
     "deny": [
       "Bash(git push:*)",
