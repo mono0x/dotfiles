@@ -5,6 +5,7 @@
   "permissions": {
     "defaultMode": "acceptEdits",
     "allow": [
+      "Bash(ls:*)",
       "Bash(grep:*)",
       "Bash(rg:*)"
     ],
