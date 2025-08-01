@@ -3,6 +3,7 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true"
   },
   "permissions": {
+    "defaultMode": "acceptEdits",
     "allow": [
       "Bash(grep:*)",
       "Bash(rg:*)"
