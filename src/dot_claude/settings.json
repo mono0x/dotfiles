@@ -16,9 +16,7 @@
     ],
     "deny": [
       "Bash(git push:*)",
-      "Bash(sudo:*)",
-      "Read(.env)",
-      "Read(.env.*)"
+      "Bash(sudo:*)"
     ]
   }
 }
