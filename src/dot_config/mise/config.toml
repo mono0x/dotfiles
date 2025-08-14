@@ -2,6 +2,7 @@
 go = "1.25"
 node = "22"
 "npm:@anthropic-ai/claude-code" = "latest"
+"npm:@devcontainers/cli" = "latest"
 python = "latest"
 usage = "latest"
 uv = "latest"
