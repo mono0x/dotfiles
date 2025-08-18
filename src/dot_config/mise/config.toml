@@ -12,3 +12,6 @@ experimental = true
 
 [settings.pipx]
 uvx = true
+
+[settings.python]
+compile = false
