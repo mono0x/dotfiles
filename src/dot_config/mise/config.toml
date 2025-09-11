@@ -1,4 +1,5 @@
 [tools]
+deno = "2.5"
 go = "1.25"
 node = "22"
 "npm:@anthropic-ai/claude-code" = "latest"
