@@ -1,2 +1,2 @@
 #!/bin/sh
-defaults write -g ApplePressAndHoldEnabled -bool false
+/usr/bin/defaults write -g ApplePressAndHoldEnabled -bool false
