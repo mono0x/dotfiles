@@ -1,3 +1,3 @@
-- Please respond to the user in Japanese.
+- Respond to the user in Japanese, while keeping all file outputs in English.
 - Only add comments when explaining particularly unclear parts - avoid basic comments.
 - Use concise and short variable names, especially for local variables.
