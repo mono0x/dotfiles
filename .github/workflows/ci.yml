@@ -23,8 +23,10 @@ jobs:
           sudo chmod +rx /usr/local/bin/goss
       - name: Run test
         run: |
+          env | sort
           ./install.sh
           # Run script twice to test idempotency
+          env | sort
           ./install.sh
           GOSS_USE_ALPHA=1 goss validate --format documentation
 
