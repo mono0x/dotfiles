@@ -1,8 +1,5 @@
 [tools]
-bun = "1.2"
-deno = "2.5"
-go = "1.25"
-node = "22"
+node = "24"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@devcontainers/cli" = "latest"
 "npm:@openai/codex" = "latest"
