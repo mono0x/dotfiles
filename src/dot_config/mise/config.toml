@@ -9,6 +9,7 @@ uv = "latest"
 
 [settings]
 experimental = true
+disable_backends = ["asdf", "vfox"]
 
 [settings.pipx]
 uvx = true
