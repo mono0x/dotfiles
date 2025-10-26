@@ -18,5 +18,8 @@
       "Bash(git push:*)",
       "Bash(sudo:*)"
     ]
+  },
+  "sandbox": {
+    "enabled": true
   }
 }
