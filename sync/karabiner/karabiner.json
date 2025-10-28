@@ -4,6 +4,57 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Change button2-hold+button1 to button3, and button2-hold+wheel to horizontal-wheel",
+                        "manipulators": [
+                            {
+                                "from": { "pointing_button": "button2" },
+                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "rb_hold",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "pointing_button": "button2"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "set_variable": {
+                                            "name": "rb_hold",
+                                            "value": 1
+                                        }
+                                    },
+                                    {
+                                        "hold_down_milliseconds": 0,
+                                        "key_code": "left_shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "rb_hold",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "mandatory": ["shift"] },
+                                    "pointing_button": "button1"
+                                },
+                                "to": [{ "pointing_button": "button3" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change ¥ to Alt+¥",
                         "manipulators": [
                             {
