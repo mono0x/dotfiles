@@ -17,12 +17,7 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [
-                                    {
-                                        "halt": true,
-                                        "pointing_button": "button2"
-                                    }
-                                ],
+                                "to_if_alone": [{ "pointing_button": "button2" }],
                                 "to_if_held_down": [
                                     {
                                         "set_variable": {
