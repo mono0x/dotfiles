@@ -10,7 +10,7 @@ executable = true
 refreshPeriod = "{{ $refreshPeriod }}"
 {{ end -}}
 
-{{ $goss := "goss-darwin-amd64" -}}
+{{ $goss := "goss-darwin-arm64" -}}
 
 {{ if ne $goss "" -}}
 ["bin/goss"]
