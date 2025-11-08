@@ -9,6 +9,10 @@ uv = "latest"
 
 usage = "latest"
 
+[tools."github:mono0x/git-default-branch"]
+version = "latest"
+bin = "git-default-branch"
+
 [settings]
 experimental = true
 disable_backends = ["asdf", "vfox"]

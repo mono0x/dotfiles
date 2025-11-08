@@ -1,15 +1,5 @@
 {{ $refreshPeriod := "168h" -}}
 
-{{ $gitDefaultBranch := "git-default-branch-aarch64-apple-darwin" -}}
-
-{{ if ne $gitDefaultBranch "" -}}
-["bin/git-default-branch"]
-type = "file"
-url = "https://github.com/mono0x/git-default-branch/releases/latest/download/{{ $gitDefaultBranch }}"
-executable = true
-refreshPeriod = "{{ $refreshPeriod }}"
-{{ end -}}
-
 {{ $goss := "goss-darwin-arm64" -}}
 
 {{ if ne $goss "" -}}
