@@ -43,4 +43,5 @@ alias gl='git log'
 # https://zenn.dev/tatsugon/articles/default-git-checkout-main-or-master
 alias gm='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
 alias gs='git status'
+alias -g M='"$(git-default-branch)"'
 alias k='kubectl'
