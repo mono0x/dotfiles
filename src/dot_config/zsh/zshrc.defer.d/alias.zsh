@@ -1,7 +1,6 @@
 alias sudo="sudo "
 alias sudoe='sudo -e'
 alias vi='nvim'
-alias cz='chezmoi'
 
 case "${OSTYPE}" in
 darwin*)
