@@ -30,6 +30,9 @@ jobs:
           ./install.sh
           # Run script twice to test idempotency
           ./install.sh
+      - name: Validate with goss
+        run: |
+          cd "$HOME/.local/share/chezmoi"
           GOSS_USE_ALPHA=1 goss validate --format documentation
 
   test-static:
