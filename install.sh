@@ -24,7 +24,9 @@ fi
 
 echo "Installing and initializing chezmoi"
 
-"$(dirname "$0")/bin/run-clean-env" bash -c "
-  HOMEBREW_NO_AUTO_UPDATE=1 brew install chezmoi
-  chezmoi init --verbose --apply $account
-"
+env -i HOME="$HOME" GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" /bin/bash --noprofile --norc << EOF
+eval "\$(/usr/libexec/path_helper -s)"
+eval "\$("$brew" shellenv)"
+HOMEBREW_NO_AUTO_UPDATE=1 "$brew" install chezmoi
+chezmoi init --verbose --apply $account
+EOF
