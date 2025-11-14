@@ -36,18 +36,26 @@ This repository manages macOS dotfiles using chezmoi. Configuration files are st
 # Format check
 deno fmt --check
 
+# Format files
+deno fmt
+
 # Environment validation with Goss (run after chezmoi apply)
 GOSS_USE_ALPHA=1 goss validate --format documentation
 ```
 
-### Setup
+### Setup and Apply
 
 ```sh
-# Initial setup (runs install.sh)
+# Initial setup (installs Homebrew, chezmoi, and applies configuration)
 ./install.sh
 
-# Manual chezmoi apply
+# Apply chezmoi changes in clean environment
 ./bin/cz apply -v
+
+# Preview changes before applying
+./bin/cz diff
+
+# Note: CI tests run install.sh twice to verify idempotency
 ```
 
 ### Environment Tools
@@ -60,7 +68,11 @@ GOSS_USE_ALPHA=1 goss validate --format documentation
 
 ### Clean Environment Execution
 
-`bin/run-clean-env` resets environment variables to a minimal set, configuring only Homebrew and system paths. This allows running chezmoi and brew without interference from existing shell configurations.
+`bin/cz` is a wrapper script that runs chezmoi in a clean environment. It uses `env -i` to reset all environment variables and launches bash with `--noprofile --norc`, then configures only essential paths:
+- System paths via `/usr/libexec/path_helper`
+- Homebrew environment (`/opt/homebrew`)
+
+This prevents interference from existing shell configurations when applying dotfiles, ensuring consistent and reproducible deployments.
 
 ### Zsh Configuration Lazy Loading
 
