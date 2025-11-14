@@ -1,0 +1,11 @@
+#!/bin/bash
+exec env -i \
+  HOME="$HOME" \
+  GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
+  HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}" \
+  /bin/bash --noprofile --norc -c '
+    eval "$(/usr/libexec/path_helper -s)"
+    eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
+    exec "$@"
+  ' \
+  -- "$@"

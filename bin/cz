@@ -1,11 +1,2 @@
 #!/bin/bash
-set -eu
-
-homebrew_dir="/opt/homebrew"
-brew="$homebrew_dir/bin/brew"
-
-env -i HOME="$HOME" GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" /bin/bash --noprofile --norc << EOF
-eval "\$(/usr/libexec/path_helper -s)"
-eval "\$("$brew" shellenv)"
-chezmoi "$@"
-EOF
+exec "$(dirname "$0")/run-clean-env" chezmoi "$@"
