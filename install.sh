@@ -1,4 +1,6 @@
 #!/bin/bash
+# Since this script is downloaded from GitHub and executed directly,
+# it must not depend on other files in the repository until chezmoi is run.
 set -eu
 
 account="mono0x"

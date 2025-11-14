@@ -21,7 +21,11 @@ jobs:
         run: |
           sudo curl -L https://github.com/goss-org/goss/releases/latest/download/goss-darwin-amd64 -o /usr/local/bin/goss
           sudo chmod +rx /usr/local/bin/goss
+      - name: Copy install.sh to outside of the repository
+        run: |
+          cp ./install.sh /tmp/install.sh
       - name: Run test
+        working-directory: /tmp
         run: |
           ./install.sh
           # Run script twice to test idempotency
