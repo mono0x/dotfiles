@@ -1,4 +1,5 @@
 #!/bin/bash
+# Run chezmoi in a clean environment with Homebrew environment variables set up.
 set -eu
 
 brew="${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew"
