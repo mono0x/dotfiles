@@ -1,4 +1,6 @@
 #!/bin/sh
+# Run the commit message editor for core.editor of git.
+# It opens Visual Studio Code, Neovim, or Vim based on environment.
 set -eu
 
 if [ "${TERM_PROGRAM:-""}" = 'vscode' ] && [ -x "$(command -v code)" ]
