@@ -1,8 +1,7 @@
 #!/bin/bash
 set -eu
 
-homebrew_dir="/opt/homebrew"
-brew="$homebrew_dir/bin/brew"
+brew="${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew"
 
 env -i HOME="$HOME" GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" /bin/bash --noprofile --norc << EOF
 eval "\$(/usr/libexec/path_helper -s)"
