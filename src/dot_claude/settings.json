@@ -3,7 +3,6 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true"
   },
   "permissions": {
-    "defaultMode": "acceptEdits",
     "allow": [
       "Bash(cat:*)",
       "Bash(fd:*)",
@@ -17,10 +16,11 @@
     "deny": [
       "Bash(git push:*)",
       "Bash(sudo:*)"
-    ]
+    ],
+    "defaultMode": "acceptEdits"
   },
   "sandbox": {
     "enabled": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": false
 }
