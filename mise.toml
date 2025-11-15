@@ -1,2 +1,4 @@
 [tools]
 deno = "2.5"
+
+"github:goss-org/goss" = "latest"
