@@ -26,9 +26,15 @@ fi
 
 echo "Installing and initializing chezmoi"
 
-env -i HOME="$HOME" GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" /bin/bash --noprofile --norc << EOF
-eval "\$(/usr/libexec/path_helper -s)"
-eval "\$("$brew" shellenv)"
-HOMEBREW_NO_AUTO_UPDATE=1 "$brew" install chezmoi
-chezmoi init --verbose --apply $account
+env -i \
+  HOME="$HOME" \
+  HOMEBREW_NO_AUTO_UPDATE=1 \
+  HOMEBREW_PREFIX="${homebrew_dir}" \
+  GITHUB_ACCOUNT="$account" \
+  GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
+/bin/bash --noprofile --norc "$@" << 'EOF'
+eval "$(/usr/libexec/path_helper -s)"
+eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
+"$HOMEBREW_PREFIX/bin/brew" install chezmoi
+chezmoi init --verbose --apply "$GITHUB_ACCOUNT"
 EOF

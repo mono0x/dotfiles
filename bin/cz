@@ -2,10 +2,12 @@
 # Run chezmoi in a clean environment with Homebrew environment variables set up.
 set -eu
 
-brew="${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew"
-
-env -i HOME="$HOME" GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" /bin/bash --noprofile --norc << EOF
-eval "\$(/usr/libexec/path_helper -s)"
-eval "\$("$brew" shellenv)"
-chezmoi "$@"
+exec env -i \
+  HOME="$HOME" \
+  HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}" \
+  GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
+/bin/bash --noprofile --norc -s "$@" << 'EOF'
+eval "$(/usr/libexec/path_helper -s)"
+eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
+exec chezmoi "$@"
 EOF
