@@ -31,7 +31,7 @@ env -i \
   HOMEBREW_PREFIX="$HOMEBREW_PREFIX" \
   GITHUB_ACCOUNT="$account" \
   GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
-/bin/bash --noprofile --norc "$@" << 'EOF'
+/bin/bash --noprofile --norc << 'EOF'
 eval "$(/usr/libexec/path_helper -s)"
 eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
 "$HOMEBREW_PREFIX/bin/brew" install chezmoi
