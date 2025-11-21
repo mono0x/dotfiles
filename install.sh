@@ -15,12 +15,11 @@ if [ -z "${HOME:-}" ]; then
   exit 1
 fi
 
-homebrew_dir="/opt/homebrew"
-brew="$homebrew_dir/bin/brew"
+HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
 
 echo "Installing Homebrew"
 
-if [ ! -f "$brew" ]; then
+if [ ! -f "$HOMEBREW_PREFIX/bin/brew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
@@ -29,7 +28,7 @@ echo "Installing and initializing chezmoi"
 env -i \
   HOME="$HOME" \
   HOMEBREW_NO_AUTO_UPDATE=1 \
-  HOMEBREW_PREFIX="${homebrew_dir}" \
+  HOMEBREW_PREFIX="$HOMEBREW_PREFIX" \
   GITHUB_ACCOUNT="$account" \
   GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
 /bin/bash --noprofile --norc "$@" << 'EOF'
