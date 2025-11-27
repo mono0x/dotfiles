@@ -6,7 +6,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # https://zenn.dev/enchan1207/articles/7b9d7d397b7d0d
-if [ -x /usr/libexec/path_helper ]
+if [[ -x /usr/libexec/path_helper ]]
 then
   setopt no_global_rcs
   eval "$(/usr/libexec/path_helper -s)"
@@ -40,7 +40,7 @@ fpath=(
   $fpath
 )
 
-if [ ! -x "$EDITOR" ]; then
+if [[ ! -x "$EDITOR" ]]; then
   export EDITOR=vim
 fi
 
