@@ -1,3 +1,8 @@
+# Benchmarking: hyperfine -w 5 -r 50 'zsh -i -c exit'
+# Profiling: ZPROF=1 zsh -i -c exit
+
+if [[ "${ZPROF:-}" = "1" ]]; then zmodload zsh/zprof; fi
+
 # https://zenn.dev/enchan1207/articles/7b9d7d397b7d0d
 [[ -o no_global_rcs ]] && [ -r /etc/zshrc ] && . /etc/zshrc
 
@@ -8,3 +13,5 @@
 {{ if lookPath "sheldon" -}}
 {{ output "sheldon" "source" | trim }}
 {{ end -}}
+
+if [[ "${ZPROF:-}" = "1" ]]; then zprof; fi
