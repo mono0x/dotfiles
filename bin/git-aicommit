@@ -1,6 +1,13 @@
 #!/bin/sh
 set -eu
 
+if ! git diff --cached --quiet
+then
+  :
+else
+  exec git commit # no staged changes, show error message as usual
+fi
+
 # https://diary.hatenablog.jp/entry/2025/11/23/233725
 # Generate commit message using claude
 msg=$(claude -p "Generate ONLY a one-line Git commit message in English, using imperative mood, summarizing what was changed and why, based strictly on the contents of \`git diff --cached\`.
