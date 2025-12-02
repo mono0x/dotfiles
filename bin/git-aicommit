@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+# https://diary.hatenablog.jp/entry/2025/11/23/233725
+# Generate commit message using claude
+msg=$(claude -p "Generate ONLY a one-line Git commit message in English, using imperative mood, summarizing what was changed and why, based strictly on the contents of \`git diff --cached\`.
+
+Additional guidelines:
+- If CLAUDE.md exists in the repository and contains commit message conventions, follow them.
+- Check recent commit history with \`git log --oneline -20\` to detect if the project uses Conventional Commits (e.g., 'feat:', 'fix:', 'docs:', etc.) and follow that pattern if found.
+
+DO NOT add a body or additional lines. You MUST output the bare commit message line and nothing else.")
+
+# Commit with the generated message and open editor
+exec git commit -m "$msg" -e
