@@ -2,6 +2,7 @@
 node = "24"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@devcontainers/cli" = "latest"
+"npm:@dotenvx/dotenvx" = "latest"
 
 python = "3.13"
 uv = "latest"
