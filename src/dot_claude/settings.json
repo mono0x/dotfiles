@@ -14,13 +14,17 @@
       "Bash(tail:*)"
     ],
     "deny": [
+      "Bash(gh auth:*)",
       "Bash(git push:*)",
       "Bash(sudo:*)"
     ],
     "defaultMode": "acceptEdits"
   },
   "sandbox": {
-    "enabled": true
+    "enabled": true,
+    "excludedCommands": [
+      "gh"
+    ]
   },
   "alwaysThinkingEnabled": false
 }
