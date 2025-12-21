@@ -1,4 +1,5 @@
 theme = Selenized Light
 font-family = HackGen Console NF
+font-size = 14
 
 shell-integration = zsh
