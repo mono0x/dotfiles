@@ -3,10 +3,17 @@
 theme = Selenized Light
 font-family = HackGen Console NF
 font-size = 14
-
-macos-titlebar-style = native
+font-thicken = true
+font-thicken-strength = 1
 
 shell-integration = zsh
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+
+window-padding-balance = true
+macos-titlebar-style = native
 
 # https://github.com/ghostty-org/ghostty/discussions/8714#discussioncomment-14475853
 keybind = super+shift+bracket_right=unbind
