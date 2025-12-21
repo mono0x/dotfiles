@@ -27,6 +27,7 @@ path=(
   $HOME/google-cloud-sdk/bin(N-/)
   $HOME/.krew/bin(N-/)
   $HOME/bin(N-/)
+  /Applications/Ghostty.app/Contents/MacOS(N-/)
   /Applications/WezTerm.app/Contents/MacOS(N-/)
   "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"(N-/)
   "/Applications/Cursor.app/Contents/Resources/app/bin"(N-/)
