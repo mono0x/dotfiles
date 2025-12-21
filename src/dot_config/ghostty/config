@@ -5,3 +5,7 @@ font-family = HackGen Console NF
 font-size = 14
 
 shell-integration = zsh
+
+# https://github.com/ghostty-org/ghostty/discussions/8714#discussioncomment-14475853
+keybind = super+shift+bracket_right=unbind
+keybind = super+shift+[=previous_tab
