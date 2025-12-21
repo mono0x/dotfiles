@@ -9,7 +9,7 @@ This repository manages macOS dotfiles using chezmoi. Configuration files are st
 ## Directory Structure
 
 - `src/`: chezmoi source files (configuration templates)
-  - `src/dot_config/`: XDG-compliant configuration files (zsh, git, neovim, wezterm, etc.)
+  - `src/dot_config/`: XDG-compliant configuration files (zsh, git, neovim, ghostty, etc.)
   - `src/.chezmoiscripts/`: chezmoi execution scripts
     - `unix/`: Unix-compatible scripts
     - `darwin/`: macOS-specific scripts
@@ -69,6 +69,7 @@ GOSS_USE_ALPHA=1 goss validate --format documentation
 ### Clean Environment Execution
 
 `bin/cz` is a wrapper script that runs chezmoi in a clean environment. It uses `env -i` to reset all environment variables and launches bash with `--noprofile --norc`, then configures only essential paths:
+
 - System paths via `/usr/libexec/path_helper`
 - Homebrew environment (`/opt/homebrew`)
 
