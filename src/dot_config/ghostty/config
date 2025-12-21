@@ -4,6 +4,8 @@ theme = Selenized Light
 font-family = HackGen Console NF
 font-size = 14
 
+macos-titlebar-style = native
+
 shell-integration = zsh
 
 # https://github.com/ghostty-org/ghostty/discussions/8714#discussioncomment-14475853
