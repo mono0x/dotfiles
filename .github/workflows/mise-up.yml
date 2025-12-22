@@ -20,5 +20,4 @@ jobs:
     secrets:
       token: ${{ needs.create-token.outputs.token }}
     with:
-      tools: "npm:pnpm npm:wrangler"
       mise-version: "2025.11.8"
