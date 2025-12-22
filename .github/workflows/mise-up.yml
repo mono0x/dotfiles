@@ -4,20 +4,10 @@ on:
     - cron: "0 0 * * 1" # every week
   workflow_dispatch:
 jobs:
-  create-token:
-    runs-on: ubuntu-latest
-    outputs:
-      token: ${{ steps.app-token.outputs.token }}
-    steps:
-      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
-        id: app-token
-        with:
-          app-id: ${{ vars.GH_APP_ID }}
-          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
   mise-up:
-    needs: create-token
-    uses: mono0x/workflows/.github/workflows/mise-up.yml@e0b675c2f6b5c10346424a41948f667e45692cc1 # main
+    uses: mono0x/workflows/.github/workflows/mise-up.yml@53413f0995c2d51c71a00c7858132bd95162a2c5 # main
     secrets:
-      token: ${{ needs.create-token.outputs.token }}
+      app-private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
     with:
       mise-version: "2025.11.8"
+      app-id: ${{ vars.GH_APP_ID }}
