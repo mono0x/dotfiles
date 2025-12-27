@@ -29,7 +29,8 @@
   "sandbox": {
     "enabled": true,
     "excludedCommands": [
-      "gh"
+      "gh",
+      "pnpm"
     ]
   },
   "alwaysThinkingEnabled": false
