@@ -30,6 +30,7 @@ brew "socat"
 brew "tig"
 brew "vbindiff"
 brew "xz"
+brew "zoxide"
 brew "zsh"
 brew "zx"
 
