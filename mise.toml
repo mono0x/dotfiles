@@ -1,4 +1,4 @@
 [tools]
-deno = "2.6.4"
+deno = "2.6.5"
 
 "github:goss-org/goss" = "0.4.9"
