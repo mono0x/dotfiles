@@ -1,5 +1,6 @@
 [tools]
 node = "24"
+pnpm = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@devcontainers/cli" = "latest"
 
@@ -21,3 +22,6 @@ uvx = true
 
 [settings.python]
 compile = false
+
+[settings.npm]
+package_manager = "pnpm"
