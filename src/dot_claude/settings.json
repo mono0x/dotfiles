@@ -30,5 +30,10 @@
   "sandbox": {
     "enabled": false
   },
+  "statusLine": {
+    "type": "command",
+    "command": "ccstatusline",
+    "padding": 0
+  },
   "alwaysThinkingEnabled": false
 }

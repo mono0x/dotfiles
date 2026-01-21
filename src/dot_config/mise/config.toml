@@ -3,6 +3,7 @@ node = "24"
 pnpm = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@devcontainers/cli" = "latest"
+"npm:ccstatusline" = "latest"
 
 python = "3.13"
 uv = "latest"
