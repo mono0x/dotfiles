@@ -28,11 +28,7 @@
     "defaultMode": "acceptEdits"
   },
   "sandbox": {
-    "enabled": true,
-    "excludedCommands": [
-      "gh",
-      "pnpm"
-    ]
+    "enabled": false
   },
   "statusLine": {
     "type": "command",
