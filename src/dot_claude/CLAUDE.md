@@ -1,3 +1,2 @@
 - Only add comments when explaining particularly unclear parts - avoid basic comments.
 - Keep identifier names concise. However, do not use abbreviations for English words, unless they are widely used in the target programming language. Also, please respect the naming conventions from the original code.
-- The Bash tool runs in a sandbox, so file access or network connections may result in errors. In such situations, ask the user for instructions.
