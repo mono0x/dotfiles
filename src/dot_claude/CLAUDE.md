@@ -1,2 +1,3 @@
 - Only add comments when explaining particularly unclear parts - avoid basic comments.
 - Use concise and short variable names, especially for local variables.
+- The Bash tool runs in a sandbox, so file access or network connections may result in errors. In such situations, ask the user for instructions.
