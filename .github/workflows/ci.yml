@@ -5,7 +5,7 @@ on:
       - "*"
   pull_request:
 env:
-  MISE_VERSION: 2025.11.8
+  MISE_VERSION: 2026.1.8
 jobs:
   test-macos:
     runs-on: macos-latest

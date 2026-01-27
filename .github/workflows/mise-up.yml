@@ -9,5 +9,5 @@ jobs:
     secrets:
       app-private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
     with:
-      mise-version: "2025.11.8"
+      mise-version: "2026.1.8"
       app-id: ${{ vars.GH_APP_ID }}
