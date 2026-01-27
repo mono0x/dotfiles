@@ -1,7 +1,8 @@
 {
   "language": "japanese",
   "env": {
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true"
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
+    "DISABLE_INSTALLATION_CHECKS": "true"
   },
   "permissions": {
     "allow": [
