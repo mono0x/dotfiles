@@ -4,8 +4,6 @@ on:
     branches:
       - "*"
   pull_request:
-env:
-  MISE_VERSION: 2026.1.8
 jobs:
   test-macos:
     runs-on: macos-latest
@@ -13,9 +11,11 @@ jobs:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           submodules: recursive
+      - id: mise-version
+        run: echo "version=$(cat .mise-version)" >> "$GITHUB_ENV"
       - uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3.5.1
         with:
-          version: ${{ env.MISE_VERSION }}
+          version: ${{ steps.mise-version.outputs.version }}
       - name: "Workaround: Prepare ~/.local/share/chezmoi"
         run: |
           mkdir -p "$HOME/.local/share"

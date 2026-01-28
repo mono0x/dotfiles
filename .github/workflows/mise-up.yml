@@ -5,9 +5,8 @@ on:
   workflow_dispatch:
 jobs:
   mise-up:
-    uses: mono0x/workflows/.github/workflows/mise-up.yml@53413f0995c2d51c71a00c7858132bd95162a2c5 # main
+    uses: mono0x/workflows/.github/workflows/mise-up.yml@15956bbd02f02b8c385c0a177828f7a6f1e1163e # main
     secrets:
       app-private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
     with:
-      mise-version: "2026.1.8"
       app-id: ${{ vars.GH_APP_ID }}
