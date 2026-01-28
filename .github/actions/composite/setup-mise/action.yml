@@ -1,0 +1,11 @@
+name: Setup mise
+description: Setup mise based on the version in .mise-version
+runs:
+  using: composite
+  steps:
+    - id: mise-version
+      shell: bash
+      run: echo "version=$(cat .mise-version)" >> "$GITHUB_ENV"
+    - uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3.5.1
+      with:
+        version: ${{ steps.mise-version.outputs.version }}
