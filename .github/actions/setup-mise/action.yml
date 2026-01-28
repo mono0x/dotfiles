@@ -1,5 +1,5 @@
 name: Setup mise
-description: Setup mise based on the version in .mise-version
+description: Setup mise with version pinning
 runs:
   using: composite
   steps:
