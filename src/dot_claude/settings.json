@@ -4,6 +4,7 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
     "DISABLE_INSTALLATION_CHECKS": "true"
   },
+  "model": "opusplan",
   "permissions": {
     "allow": [
       "Bash(cat:*)",
@@ -28,6 +29,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
+  "plansDirectory": "./.claude/plans",
   "sandbox": {
     "enabled": false
   },
