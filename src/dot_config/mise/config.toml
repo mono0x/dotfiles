@@ -1,10 +1,6 @@
 [tools]
-node = "24"
-pnpm = "latest"
-"npm:@devcontainers/cli" = "latest"
 "npm:ccstatusline" = "latest"
 
-python = "3.13"
 uv = "latest"
 
 claude = "latest"
@@ -24,6 +20,3 @@ uvx = true
 
 [settings.python]
 compile = false
-
-[settings.npm]
-package_manager = "pnpm"
