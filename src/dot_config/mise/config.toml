@@ -13,7 +13,7 @@ bin = "git-default-branch"
 [settings]
 experimental = true
 disable_backends = ["asdf", "vfox"]
-install_before = "3d"
+install_before = "1d"
 
 [settings.pipx]
 uvx = true
