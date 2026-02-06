@@ -1,3 +1,0 @@
-# yaml-language-server: $schema=https://yarnpkg.com/configuration/yarnrc.json
-
-nmMode: hardlinks-global
