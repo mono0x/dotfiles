@@ -1,7 +1,8 @@
 ---
+name: code-review
 description: Review code changes from GitHub PR or local branch
 argument-hint: "[PR number or URL]"
-allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checkout:*), Bash(git diff:*), Bash(git log:*), Bash(git branch --show-current), Bash(git status:*), Bash(git-default-branch), Read(*)
+allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checkout:*), Bash(git diff:*), Bash(git log:*), Bash(git branch --show-current), Bash(git status:*), Bash(git symbolic-ref:*), Read(*)
 ---
 
 Review code changes based on the provided argument ($1):
@@ -28,7 +29,7 @@ Review code changes based on the provided argument ($1):
 
 #### 1. Determine Default Branch
 
-- Use `git-default-branch` to get the default branch name
+- Use `git symbolic-ref refs/remotes/origin/HEAD` to get the default branch name
 
 #### 2. Analyze Code Changes
 
