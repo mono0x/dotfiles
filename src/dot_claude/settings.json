@@ -31,7 +31,11 @@
   },
   "plansDirectory": "./.claude/plans",
   "sandbox": {
-    "enabled": false
+    "enabled": true,
+    "excludedCommands": [
+      "./gradlew",
+      "pnpm"
+    ]
   },
   "statusLine": {
     "type": "command",
