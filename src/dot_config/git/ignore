@@ -25,6 +25,7 @@ Desktop.ini
 #
 
 # Claude Code
+**/.claude/plans/*
 **/.claude/settings.local.json
 
 # Kotlin
