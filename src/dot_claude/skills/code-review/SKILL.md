@@ -2,7 +2,7 @@
 name: code-review
 description: Review code changes from GitHub PR or local branch
 argument-hint: "[PR number or URL]"
-allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checkout:*), Bash(git diff:*), Bash(git log:*), Bash(git branch --show-current), Bash(git status:*), Bash(git symbolic-ref:*), Read(*)
+allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(git diff:*), Bash(git log:*), Bash(git branch --show-current), Bash(git status:*), Bash(git symbolic-ref:*), Bash(git cat-file:*), Bash(git rev-parse:*), Bash(git ls-tree:*), Read(*)
 ---
 
 Review code changes based on the provided argument ($1):
@@ -23,7 +23,10 @@ Review code changes based on the provided argument ($1):
 #### 2. Analyze Code Changes
 
 - Use `gh pr diff <number>` to get the code changes
-- Check out the PR branch using `gh pr checkout <number>` if needed for deeper analysis
+- If you need to read specific files from the PR branch:
+  - Use `gh pr view <number> --json headRefOid` to get the head SHA
+  - Use `git cat-file -p <SHA>:<path>` to read files from the PR branch without checking out
+  - Use `git ls-tree -r <SHA>` to list files in the PR branch
 
 ### For Local Branch Review (when no PR specified)
 
@@ -35,6 +38,8 @@ Review code changes based on the provided argument ($1):
 
 - Use `git diff <default-branch>..HEAD` to get the code changes
 - Use `git log <default-branch>..HEAD` to get commit history
+- Use `git cat-file -p HEAD:<path>` to read specific files from the current branch
+- Use `git cat-file -p <default-branch>:<path>` to read files from the default branch
 
 ## Code Review Focus Areas
 
@@ -45,8 +50,13 @@ Review code changes based on the provided argument ($1):
 - Documentation updates (if needed)
 - Suggestions for improvement
 
+## Important Restrictions
+
+- **NEVER use `git checkout` or `gh pr checkout`** - these commands modify the working directory
+- **ALWAYS use `git cat-file` to read files** - this keeps the working directory clean
+- This prevents accidental modifications and avoids polluting the local environment
+
 ## Notes
 
-- For PR reviews: if checkout is needed, remember to return to the original branch after the review
 - For local branch reviews: ensure the current branch is ahead of the default branch
 - Format the review with clear sections and actionable feedback
