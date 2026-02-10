@@ -28,6 +28,7 @@ path=(
   $HOME/.krew/bin(N-/)
   $HOME/bin(N-/)
   /Applications/Ghostty.app/Contents/MacOS(N-/)
+  /Applications/Obsidian.app/Contents/MacOS(N-/)
   "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"(N-/)
   "/Applications/Cursor.app/Contents/Resources/app/bin"(N-/)
   "/Applications/CotEditor.app/Contents/SharedSupport/bin"(N-/)
