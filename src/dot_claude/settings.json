@@ -33,8 +33,8 @@
   "sandbox": {
     "enabled": true,
     "excludedCommands": [
-      "./gradlew",
-      "pnpm"
+      "./gradlew:*",
+      "pnpm:*"
     ]
   },
   "statusLine": {
