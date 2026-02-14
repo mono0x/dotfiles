@@ -14,7 +14,8 @@
       "Bash(head:*)",
       "Bash(ls:*)",
       "Bash(rg:*)",
-      "Bash(tail:*)"
+      "Bash(tail:*)",
+      "WebSearch(*)"
     ],
     "deny": [
       "Bash(gh api:*)",
