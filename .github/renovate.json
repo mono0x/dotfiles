@@ -1,14 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "schedule": ["monthly"],
+  "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "3 days",
   "packageRules": [
     {
-      "description": "Group GitHub Actions (minor and patch)",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "actions"
+      "groupName": "actions",
+      "schedule": ["before 9am on the first day of the month"]
+    },
+    {
+      "matchManagers": ["mise"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "mise",
+      "schedule": ["before 9am on Monday"]
     }
   ]
 }
