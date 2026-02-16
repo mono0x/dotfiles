@@ -2,7 +2,7 @@
 name: code-review
 description: Review code changes from GitHub PR or local branch
 argument-hint: "[PR number or URL]"
-allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(git diff:*), Bash(git log:*), Bash(git branch --show-current), Bash(git status:*), Bash(git symbolic-ref:*), Bash(git cat-file:*), Bash(git rev-parse:*), Bash(git ls-tree:*), Read(*)
+allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(git diff:*), Bash(git log:*), Bash(git branch --show-current), Bash(git status:*), Bash(git symbolic-ref:*), Bash(git cat-file:*), Bash(git rev-parse:*), Bash(git ls-tree:*), Bash(git grep:*), Read(*)
 ---
 
 Review code changes based on the provided argument ($1):
@@ -27,6 +27,7 @@ Review code changes based on the provided argument ($1):
   - Use `gh pr view <number> --json headRefOid` to get the head SHA
   - Use `git cat-file -p <SHA>:<path>` to read files from the PR branch without checking out
   - Use `git ls-tree -r <SHA>` to list files in the PR branch
+  - Use `git grep <pattern> <SHA>` to search for patterns in the PR branch
 
 ### For Local Branch Review (when no PR specified)
 
@@ -40,6 +41,8 @@ Review code changes based on the provided argument ($1):
 - Use `git log <default-branch>..HEAD` to get commit history
 - Use `git cat-file -p HEAD:<path>` to read specific files from the current branch
 - Use `git cat-file -p <default-branch>:<path>` to read files from the default branch
+- Use `git grep <pattern> HEAD` to search for patterns in the current branch
+- Use `git grep <pattern> <default-branch>` to search for patterns in the default branch
 
 ## Code Review Focus Areas
 
