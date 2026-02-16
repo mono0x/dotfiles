@@ -1,3 +1,4 @@
 - Only add comments when explaining particularly unclear parts - avoid basic comments.
 - Keep identifier names concise. However, do not use abbreviations for English words, unless they are widely used in the target programming language. Also, please respect the naming conventions from the original code.
 - Since the Bash tool is executed in a sandbox, file access or network connections may result in errors. In such cases, ask the user for instructions.
+- Always prefer simplicity over pathological corrections. YAGNI, KISS, DRY. No backward-compat shims or fallback paths unless they come free without adding cyclomatic complexity.
