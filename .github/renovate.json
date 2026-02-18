@@ -3,6 +3,7 @@
   "extends": ["config:recommended"],
   "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "3 days",
+  "osvVulnerabilityAlerts": true,
   "packageRules": [
     {
       "matchManagers": ["github-actions"],
