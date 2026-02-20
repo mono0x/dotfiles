@@ -99,4 +99,9 @@
 [include]
   path = conf.d/platform
   path = conf.d/local
+
+[includeIf "gitdir:~/.local/share/chezmoi"]
+  path = conf.d/github
+[includeIf "gitdir:~/src/github.com/"]
+  path = conf.d/github
 # }}}
