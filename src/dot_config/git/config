@@ -99,9 +99,18 @@
 [include]
   path = conf.d/platform
   path = conf.d/local
+# }}}
 
-[includeIf "gitdir:~/.local/share/chezmoi"]
-  path = conf.d/github
-[includeIf "gitdir:~/src/github.com/"]
-  path = conf.d/github
+# gpg signing {{{
+[user]
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH0hJJs0eXRPl701939vwjHNS7lDReSSCfBrWdE3/QKE
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
 # }}}
