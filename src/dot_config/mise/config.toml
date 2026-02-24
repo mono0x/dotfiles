@@ -1,4 +1,5 @@
 [tools]
+node = "24" # for npm
 "npm:ccstatusline" = "latest"
 
 uv = "latest"
