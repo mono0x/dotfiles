@@ -2,3 +2,6 @@
 deno = "2.6.6"
 
 "github:goss-org/goss" = "0.4.9"
+
+[shell_alias]
+cz = "cz-clean-env --source $MISE_PROJECT_ROOT"
