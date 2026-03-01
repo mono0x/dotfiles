@@ -4,7 +4,6 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
     "DISABLE_INSTALLATION_CHECKS": "true"
   },
-  "model": "opusplan",
   "permissions": {
     "allow": [
       "Bash(cat:*)",
@@ -53,5 +52,8 @@
     "command": "ccstatusline",
     "padding": 0
   },
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": false,
+  "enabledPlugins": {
+   "swift-lsp@claude-plugins-official": true
+  }
 }
