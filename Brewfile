@@ -1,7 +1,6 @@
 brew "bat"
 brew "chezmoi"
 brew "colordiff"
-brew "copilot-cli"
 brew "curl"
 brew "editorconfig"
 brew "exiftool"
