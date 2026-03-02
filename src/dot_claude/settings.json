@@ -52,8 +52,5 @@
     "command": "ccstatusline",
     "padding": 0
   },
-  "alwaysThinkingEnabled": false,
-  "enabledPlugins": {
-   "swift-lsp@claude-plugins-official": true
-  }
+  "alwaysThinkingEnabled": false
 }
