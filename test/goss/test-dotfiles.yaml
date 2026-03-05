@@ -16,18 +16,3 @@ file:
   ~/.config/zsh/.zshrc:
     exists: true
     filetype: file
-  ~/.config/zsh/functions/_mise:
-    exists: true
-    filetype: file
-    contents:
-      - "_mise()"
-  ~/.config/zsh/functions/_sheldon:
-    exists: true
-    filetype: file
-    contents:
-      - "_sheldon()"
-  ~/.config/zsh/zshrc.defer.d/mise.zsh:
-    exists: true
-    filetype: file
-    contents:
-      - "mise()"

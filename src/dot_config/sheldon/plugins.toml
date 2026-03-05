@@ -14,12 +14,16 @@ shell = "zsh"
 
 apply = ["defer"]
 
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 apply = ["source"]
 
-[templates]
-defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+[plugins.zsh-smartcache]
+github = "QuarticCat/zsh-smartcache"
+apply = ["source"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
@@ -35,6 +39,12 @@ github = "zdharma-continuum/fast-syntax-highlighting"
 
 [plugins.ni]
 github = "azu/ni.zsh"
+
+[plugins.zoxide]
+inline = "smartcache eval zoxide init zsh"
+
+[plugins.mise]
+inline = "MISE_TRUSTED_PATH=~/.local/share/chezmoi smartcache eval mise activate zsh"
 
 [plugins.zshrc-defer]
 local = "~/.config/zsh/zshrc.defer.d"
