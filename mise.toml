@@ -7,5 +7,12 @@ deno = "2.7.1"
 run = "cz-clean-env --source $MISE_PROJECT_ROOT"
 quiet = true
 
+[tasks.zsh-bench]
+run = "hyperfine -w 5 -r 50 'zsh -i -c exit'"
+
+[tasks.zsh-prof]
+run = "zsh -i -c exit"
+env.ZPROF = "1"
+
 [shell_alias]
 cz = "mise run cz"
