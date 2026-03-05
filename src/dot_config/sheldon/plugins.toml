@@ -40,12 +40,6 @@ github = "zdharma-continuum/fast-syntax-highlighting"
 [plugins.ni]
 github = "azu/ni.zsh"
 
-[plugins.zoxide]
-inline = "zsh-defer eval smartcache eval zoxide init zsh"
-
-[plugins.mise]
-inline = "MISE_TRUSTED_PATH=~/.local/share/chezmoi zsh-defer eval smartcache eval mise activate zsh"
-
 [plugins.zshrc-defer]
 local = "~/.config/zsh/zshrc.defer.d"
 
