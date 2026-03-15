@@ -1,7 +1,6 @@
 {
-  "deno.enable": true,
-  "deno.importMap": "deno.jsonc",
-  "deno.lint": true,
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
   "files.associations": {
     "**/src/dot_config/git/conf.d/*.*": "ini",
     "**/src/dot_config/git/config": "ini",
@@ -12,20 +11,13 @@
     "dot_zshenv": "shellscript",
     "dot_zshrc.tmpl": "shellscript"
   },
-  "[json][jsonc][markdown][typescript][yaml]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "denoland.vscode-deno"
-  },
   "yaml.schemas": {
     // https://github.com/github/vscode-github-actions/issues/195#issuecomment-1570218818
     "https://json.schemastore.org/github-workflow.json": [
       "*.github/workflows/*.yaml",
       "*.github/workflows/*.yml"
     ],
-    "https://json.schemastore.org/github-action.json": [
-      "action.yaml",
-      "action.yml"
-    ],
+    "https://json.schemastore.org/github-action.json": ["action.yaml", "action.yml"],
     // https://github.com/pqrs-org/Karabiner-Elements/issues/1918#issuecomment-1768131792
     "https://raw.githubusercontent.com/chrisgrieser/.config/refs/heads/main/karabiner/assets/complex_modifications/schema/karabiner-mod-schema.json": [
       "sync/karabiner/karabiner.json"

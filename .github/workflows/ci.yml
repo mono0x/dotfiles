@@ -35,6 +35,9 @@ jobs:
         run: sudo apt install -y zsh
       - name: Run test
         run: ./test/static.sh
+      - name: Check format
+        run: |
+          oxfmt --check
 
   actionlint:
     runs-on: ubuntu-latest

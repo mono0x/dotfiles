@@ -41,11 +41,7 @@
   "plansDirectory": "./.claude/plans",
   "sandbox": {
     "enabled": true,
-    "excludedCommands": [
-      "./gradlew:*",
-      "gh:*",
-      "pnpm:*"
-    ]
+    "excludedCommands": ["./gradlew:*", "gh:*", "pnpm:*"]
   },
   "statusLine": {
     "type": "command",
