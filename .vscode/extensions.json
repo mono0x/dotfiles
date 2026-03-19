@@ -1,7 +1,7 @@
 {
   "recommendations": [
+    "denoland.vscode-deno",
     "editorconfig.editorconfig",
-    "oxc.oxc-vscode",
     "redhat.vscode-yaml",
     "sumneko.lua",
     "tamasfe.even-better-toml"

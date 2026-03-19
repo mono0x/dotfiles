@@ -34,10 +34,10 @@ This repository manages macOS dotfiles using chezmoi. Configuration files are st
 ./test/static.sh
 
 # Format check
-oxfmt --check
+deno fmt --check
 
 # Format files
-oxfmt
+deno fmt
 
 # Environment validation with Goss (run after chezmoi apply)
 GOSS_USE_ALPHA=1 goss validate --format documentation
@@ -49,27 +49,19 @@ GOSS_USE_ALPHA=1 goss validate --format documentation
 # Initial setup (installs Homebrew, chezmoi, and applies configuration)
 ./install.sh
 
-# Apply chezmoi changes in clean environment (via mise shell alias)
-cz apply -v
+# Apply chezmoi changes in clean environment
+./bin/cz apply -v
 
 # Preview changes before applying
-cz diff
+./bin/cz diff
 
 # Note: CI tests run install.sh twice to verify idempotency
 ```
 
-### Zsh Performance
-
-```sh
-mise run zsh-bench  # benchmark: hyperfine -w 5 -r 50 'zsh -i -c exit'
-mise run zsh-prof   # profiling: ZPROF=1 zsh -i -c exit
-```
-
 ### Environment Tools
 
-- **mise**: runtime version management; defines `cz` shell alias and tasks in `mise.toml`
+- **mise**: runtime version management (deno, etc.)
 - **Homebrew**: package management (defined in Brewfile)
-- **oxfmt**: formatter for shell/TOML/JSON files (configured in `.oxfmtrc.json`; ignores `sync/`)
 - **goss**: environment validation
 
 ## Architecture
@@ -87,11 +79,9 @@ This prevents interference from existing shell configurations when applying dotf
 
 - `.zshenv`: environment variable configuration (especially ZDOTDIR)
 - `.zprofile`: login shell configuration
-- `dot_config/zsh/.zshrc.tmpl`: main zsh configuration — loads Homebrew env and runs `sheldon source`
-  - `zshrc.d/`: immediately loaded via sheldon
-  - `zshrc.defer.d/`: lazy-loaded via `zsh-defer` (mise, alias, fzf, zoxide, completions, etc.)
-
-**sheldon** manages zsh plugins (`dot_config/sheldon/plugins.toml`). All plugins except `zsh-defer`, `zsh-smartcache`, and `pure` are deferred using the custom `defer` template (`zsh-defer source`).
+- `dot_config/zsh/.zshrc`: main zsh configuration
+  - `zshrc.d/`: immediately loaded configurations
+  - `zshrc.defer.d/`: lazy-loaded configurations (mise, alias, fzf, etc.)
 
 ### Template System
 

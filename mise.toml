@@ -1,6 +1,5 @@
 [tools]
-node = "24.14.0"
-"npm:oxfmt" = "0.40.0"
+deno = "2.7.4"
 
 "github:goss-org/goss" = "0.4.9"
 
