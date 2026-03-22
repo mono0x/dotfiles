@@ -96,9 +96,6 @@
 # }}}
 
 # gpg signing {{{
-[user]
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH0hJJs0eXRPl701939vwjHNS7lDReSSCfBrWdE3/QKE
-
 [gpg]
   format = ssh
 
