@@ -3,3 +3,16 @@
 
 [credential]
   helper = {{ lookPath "git-credential-manager" }}
+
+# gpg signing
+[user]
+  signingkey = {{ onepasswordRead "op://Personal/rq5lbebpdqbc5onywwv334zgiq/public key" }}
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
