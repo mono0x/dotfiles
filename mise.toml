@@ -16,3 +16,6 @@ env.ZPROF = "1"
 
 [shell_alias]
 cz = "mise run cz"
+
+[settings]
+install_before = "1d"
