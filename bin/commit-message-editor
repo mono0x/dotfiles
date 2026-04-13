@@ -3,7 +3,7 @@
 # It opens Visual Studio Code, Neovim, or Vim based on environment.
 set -eu
 
-if [ -n "${CURSOR_TRACE_ID:-""}" ] && [ -x "$(command -v cursor)" ]
+if [ -n "${CURSOR_CLI_MODE:-""}" ] && [ -x "$(command -v cursor)" ]
 then
   exec cursor --wait "$@"
 elif [ "${TERM_PROGRAM:-""}" = 'vscode' ] && [ -x "$(command -v code)" ]
