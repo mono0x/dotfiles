@@ -1,12 +1,42 @@
-#!/bin/sh
+#!/bin/bash
 # Run the commit message editor for core.editor of git.
 # It opens Visual Studio Code, Neovim, or Vim based on environment.
 set -eu
 
-if [ -n "${CURSOR_CLI_MODE:-""}" ] && [ -x "$(command -v cursor)" ]
+detect_terminal_editor() {
+  local parent_pid="$PPID"
+  local depth=0
+  local command_line
+
+  while [ "${parent_pid}" -gt 1 ] 2>/dev/null && [ "${depth}" -lt 12 ]
+  do
+    command_line="$(ps -o command= -p "${parent_pid}" 2>/dev/null || true)"
+    case "${command_line}" in
+      *Cursor.app*|*cursor*)
+        printf '%s\n' cursor
+        return 0
+        ;;
+      *Code.app*|*code*)
+        printf '%s\n' code
+        return 0
+        ;;
+    esac
+
+    parent_pid="$(ps -o ppid= -p "${parent_pid}" 2>/dev/null || true)"
+    parent_pid="${parent_pid// /}"
+    [ -n "${parent_pid}" ] || break
+    depth=$((depth + 1))
+  done
+
+  return 1
+}
+
+editor="$(detect_terminal_editor || true)"
+
+if [ "${editor}" = 'cursor' ] && [ -x "$(command -v cursor)" ]
 then
   exec cursor --wait "$@"
-elif [ "${TERM_PROGRAM:-""}" = 'vscode' ] && [ -x "$(command -v code)" ]
+elif [ "${editor}" = 'code' ] && [ -x "$(command -v code)" ]
 then
   exec code --wait "$@"
 elif [ -x "$(command -v nvim)" ]
