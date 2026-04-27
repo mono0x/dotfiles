@@ -36,7 +36,7 @@
       "Bash(git push:*)",
       "Bash(sudo:*)"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "auto"
   },
   "plansDirectory": "./.claude/plans",
   "sandbox": {
