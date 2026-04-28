@@ -39,6 +39,7 @@
     ],
     "defaultMode": "auto"
   },
+  "skipAutoPermissionPrompt": true,
   "plansDirectory": "./.claude/plans",
   "sandbox": {
     "enabled": true,
