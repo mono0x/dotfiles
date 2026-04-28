@@ -4,6 +4,7 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
     "DISABLE_INSTALLATION_CHECKS": "true"
   },
+  "model": "opus",
   "permissions": {
     "allow": [
       "Bash(cat:*)",
@@ -51,6 +52,5 @@
     "type": "command",
     "command": "ccstatusline",
     "padding": 0
-  },
-  "alwaysThinkingEnabled": false
+  }
 }
