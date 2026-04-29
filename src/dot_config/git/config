@@ -83,6 +83,23 @@
   insteadof = "git://github.com/"
 # }}}
 
+# credential {{{
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+# }}}
+
+# lfs {{{
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+# }}}
+
 # external commands {{{
 [hub]
   protocol = https

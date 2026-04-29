@@ -52,5 +52,4 @@ if OS.mac?
   cask "1password-cli"
   cask "font-hackgen-nerd"
   cask "font-m-plus-1-code"
-  cask "git-credential-manager"
 end
