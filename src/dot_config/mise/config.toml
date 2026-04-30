@@ -2,6 +2,7 @@
 node = "24" # for npm
 pnpm = "11"
 "npm:ccstatusline" = "latest"
+"npm:difit" = "latest"
 
 uv = "latest"
 
