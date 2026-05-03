@@ -17,7 +17,7 @@ bin = "git-default-branch"
 [settings]
 experimental = true
 disable_backends = ["asdf", "vfox"]
-install_before = "1d"
+install_before = "2d"
 
 [settings.npm]
 package_manager = "pnpm"
