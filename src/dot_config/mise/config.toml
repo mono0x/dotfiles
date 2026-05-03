@@ -27,6 +27,3 @@ uvx = true
 
 [settings.python]
 compile = false
-
-[shell_alias]
-claude = "claude --enable-auto-mode"
