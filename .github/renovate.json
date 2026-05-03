@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "timezone": "Asia/Tokyo",
-  "minimumReleaseAge": "1 days",
+  "minimumReleaseAge": "2 days",
   "osvVulnerabilityAlerts": true,
   "packageRules": [
     {
