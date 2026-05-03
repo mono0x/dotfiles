@@ -42,6 +42,7 @@ alias gl='git log'
 alias gs='git status'
 alias -g M='"$(git-default-branch)"'
 alias k='kubectl'
+alias ci='claude -p "Please commit this change."'
 
 # https://yazi-rs.github.io/docs/quick-start/#shell-wrapper
 if (( $+commands[yazi] )); then
