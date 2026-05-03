@@ -57,3 +57,5 @@ fi
 export GOPATH=$HOME
 
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+# https://hk.jdx.dev/getting_started.html
+export HK_PKL_BACKEND=pklr

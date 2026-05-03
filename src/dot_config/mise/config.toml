@@ -29,5 +29,4 @@ uvx = true
 compile = false
 
 [shell_alias]
-hk = "HK_PKL_BACKEND=pklr hk" # https://hk.jdx.dev/getting_started.html
 claude = "claude --enable-auto-mode"
