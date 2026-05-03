@@ -1,21 +1,37 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "2 days",
   "osvVulnerabilityAlerts": true,
   "packageRules": [
     {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "groupName": "actions",
-      "schedule": ["on the first day of the month"]
+      "schedule": [
+        "on the first day of the month"
+      ]
     },
     {
-      "matchManagers": ["mise"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchManagers": [
+        "mise"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "groupName": "mise",
-      "schedule": ["on monday"]
+      "schedule": [
+        "on monday"
+      ]
     }
   ]
 }
