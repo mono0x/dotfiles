@@ -54,5 +54,18 @@
     "type": "command",
     "command": "ccstatusline",
     "padding": 0
+  },
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ccgate claude"
+          }
+        ]
+      }
+    ]
   }
 }
