@@ -14,15 +14,6 @@ fi
 
 typeset -U path cdpath fpath manpath
 
-case "${OSTYPE}" in
-darwin*)
-  # local
-  path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) $path)
-  # sbin
-  path=(/sbin(N-/) /usr/sbin(N-/) $path)
-  ;;
-esac
-
 path=(
   $HOME/google-cloud-sdk/bin(N-/)
   $HOME/.krew/bin(N-/)

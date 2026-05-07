@@ -11,6 +11,7 @@ local linters = new Mapping<String, Step> {
     glob = "**/*.{json,jsonc,md,yaml,yml}"
   }
   ["shellcheck"] = Builtins["shellcheck"]
+  ["shfmt"] = Builtins["shfmt"]
   ["bash"] {
     glob = List("**/*.sh")
     check = "bash -n {{ files }}"
