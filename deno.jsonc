@@ -1,6 +1,6 @@
 {
   "fmt": {
-    "exclude": ["sync", "third_party"],
+    "exclude": ["sync"],
     "proseWrap": "preserve"
   }
 }
