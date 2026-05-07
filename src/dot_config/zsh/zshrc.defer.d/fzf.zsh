@@ -1,7 +1,6 @@
-if (( $+commands[fzf] ))
-then
+if (($+commands[fzf])); then
   fzf-cd() {
-    local selected_dir=$((
+    local selected_dir=$( (
       ghq list --full-path
       cat <<EOS
 $HOME/.local/share/chezmoi

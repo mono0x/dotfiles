@@ -30,7 +30,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -Al'
 
-if (( $+commands[hub] )); then
+if (($+commands[hub])); then
   alias git='hub'
 fi
 alias g='git'
@@ -45,11 +45,11 @@ alias k='kubectl'
 alias ci='claude -p "Please commit this change."'
 
 # https://yazi-rs.github.io/docs/quick-start/#shell-wrapper
-if (( $+commands[yazi] )); then
+if (($+commands[yazi])); then
   function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     command yazi "$@" --cwd-file="$tmp"
-    IFS= read -r -d '' cwd < "$tmp"
+    IFS= read -r -d '' cwd <"$tmp"
     [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
     rm -f -- "$tmp"
   }

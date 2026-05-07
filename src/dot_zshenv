@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+# Dummy shebang for shfmt
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
@@ -6,8 +8,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # https://zenn.dev/enchan1207/articles/7b9d7d397b7d0d
-if [[ -x /usr/libexec/path_helper ]]
-then
+if [[ -x /usr/libexec/path_helper ]]; then
   setopt no_global_rcs
   eval "$(/usr/libexec/path_helper -s)"
 fi
