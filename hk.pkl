@@ -1,0 +1,26 @@
+amends "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Builtins.pkl"
+
+local linters = new Mapping<String, Step> {
+  ["deno-fmt"] {
+    glob = "**/*.{json,jsonc,md,yaml,yml}"
+    exclude = List("sync/**", "third_party/**")
+    check = "deno fmt --check {{ files }}"
+    fix = "deno fmt {{ files }}"
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps = linters
+  }
+  ["fix"] {
+    fix = true
+    steps = linters
+  }
+  ["check"] {
+    steps = linters
+  }
+}
