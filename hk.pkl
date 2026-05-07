@@ -2,6 +2,8 @@ amends "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Config.
 import "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Builtins.pkl"
 
 local linters = new Mapping<String, Step> {
+  ["shellcheck"] = Builtins["shellcheck"]
+
   ["deno-fmt"] {
     glob = "**/*.{json,jsonc,md,yaml,yml}"
     exclude = List("sync/**", "third_party/**")
