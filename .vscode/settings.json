@@ -1,7 +1,4 @@
 {
-  "deno.enable": true,
-  "deno.importMap": "deno.jsonc",
-  "deno.lint": true,
   "files.associations": {
     "src/dot_config/ghostty/config.ghostty": "ini",
     "src/dot_config/git/conf.d/*.*": "ini",
@@ -13,9 +10,9 @@
     "dot_zshenv": "shellscript",
     "dot_zshrc.tmpl": "shellscript"
   },
-  "[json][jsonc][markdown][typescript][yaml]": {
+  "[json][jsonc][markdown][yaml][toml]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "denoland.vscode-deno"
+    "editor.defaultFormatter": "dprint.dprint"
   },
   "yaml.schemas": {
     // https://github.com/github/vscode-github-actions/issues/195#issuecomment-1570218818

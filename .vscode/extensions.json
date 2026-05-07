@@ -1,9 +1,7 @@
 {
   "recommendations": [
-    "denoland.vscode-deno",
+    "dprint.dprint",
     "editorconfig.editorconfig",
-    "redhat.vscode-yaml",
-    "sumneko.lua",
-    "tamasfe.even-better-toml"
+    "sumneko.lua"
   ]
 }

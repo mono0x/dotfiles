@@ -4,8 +4,8 @@ import "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Builtin
 exclude = List("sync/**")
 
 local linters = new Mapping<String, Step> {
-  ["deno"] = (Builtins.deno) {
-    glob = "**/*.{json,jsonc,md,yaml,yml}"
+  ["dprint"] = (Builtins.dprint) {
+    glob = "**/*.{json,jsonc,md,yaml,yml,toml}"
   }
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) {

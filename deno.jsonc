@@ -1,6 +1,0 @@
-{
-  "fmt": {
-    "exclude": ["sync"],
-    "proseWrap": "preserve"
-  }
-}
