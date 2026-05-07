@@ -1,14 +1,23 @@
 amends "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Config.pkl"
 import "package://github.com/jdx/hk/releases/download/v1.44.3/hk@1.44.3#/Builtins.pkl"
 
-local linters = new Mapping<String, Step> {
-  ["shellcheck"] = Builtins["shellcheck"]
+exclude = List(
+  "sync/**",
+  "third_party/**"
+)
 
-  ["deno-fmt"] {
+local linters = new Mapping<String, Step> {
+  ["deno"] = (Builtins["deno"]) {
     glob = "**/*.{json,jsonc,md,yaml,yml}"
-    exclude = List("sync/**", "third_party/**")
-    check = "deno fmt --check {{ files }}"
-    fix = "deno fmt {{ files }}"
+  }
+  ["shellcheck"] = Builtins["shellcheck"]
+  ["bash"] {
+    glob = List("**/*.sh")
+    check = "bash -n {{ files }}"
+  }
+  ["zsh"] {
+    glob = List("**/*.zsh", "src/dot_zshenv")
+    check = "zsh -n {{ files }}"
   }
 }
 

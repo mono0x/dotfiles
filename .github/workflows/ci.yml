@@ -33,12 +33,8 @@ jobs:
       - uses: ./.github/actions/setup-mise
       - name: Install dependencies
         run: sudo apt install -y zsh
-      - name: Run test
-        run: ./test/static.sh
-      - run: hk validate
-        env:
-          HK_PKL_BACKEND: pklr
-      - run: hk check --all
+      - run: |
+          hk check --all
         env:
           HK_PKL_BACKEND: pklr
 

@@ -30,14 +30,11 @@ This repository manages macOS dotfiles using chezmoi. Configuration files are st
 ### Running Tests
 
 ```sh
-# Static analysis (shellcheck and zsh syntax check)
-./test/static.sh
+# Run all linters and format checks (deno fmt, shellcheck, bash -n, zsh -n)
+hk check --all
 
-# Format check
-deno fmt --check
-
-# Format files
-deno fmt
+# Auto-fix formatting and lint issues
+hk fix --all
 
 # Environment validation with Goss (run after chezmoi apply)
 GOSS_USE_ALPHA=1 goss validate --format documentation
@@ -60,8 +57,9 @@ GOSS_USE_ALPHA=1 goss validate --format documentation
 
 ### Environment Tools
 
-- **mise**: runtime version management (deno, etc.)
+- **mise**: runtime version management (deno, hk, shellcheck, etc.)
 - **Homebrew**: package management (defined in Brewfile)
+- **hk**: lint/format runner with pre-commit hook (config in `hk.pkl`)
 - **goss**: environment validation
 
 ## Architecture
