@@ -7,12 +7,12 @@ exclude = List(
 )
 
 local linters = new Mapping<String, Step> {
-  ["deno"] = (Builtins["deno"]) {
+  ["deno"] = (Builtins.deno) {
     glob = "**/*.{json,jsonc,md,yaml,yml}"
   }
-  ["shellcheck"] = Builtins["shellcheck"]
-  ["shfmt"] = (Builtins["shfmt"]) {
-    glob = Builtins["shfmt"].glob + List("src/dot_zshenv")
+  ["shellcheck"] = Builtins.shellcheck
+  ["shfmt"] = (Builtins.shfmt) {
+    glob = Builtins.shfmt.glob + List("src/dot_zshenv")
   }
   ["bash"] {
     glob = List("**/*.sh")
@@ -28,6 +28,10 @@ hooks {
   ["pre-commit"] {
     fix = true
     stash = "git"
+    steps = linters
+  }
+  ["post-tool-use"] {
+    fix = true
     steps = linters
   }
   ["fix"] {
