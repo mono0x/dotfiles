@@ -35,6 +35,7 @@ jobs:
         run: sudo apt install -y zsh
       - name: Run test
         run: ./test/static.sh
+      - run: hk check
 
   actionlint:
     runs-on: ubuntu-latest
