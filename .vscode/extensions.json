@@ -2,6 +2,7 @@
   "recommendations": [
     "dprint.dprint",
     "editorconfig.editorconfig",
-    "sumneko.lua"
+    "sumneko.lua",
+    "tamasfe.even-better-toml"
   ]
 }
