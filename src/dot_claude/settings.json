@@ -45,6 +45,7 @@
     "enabled": true,
     "excludedCommands": [
       "./gradlew:*",
+      "hk:*",
       "gh:*",
       "git:*",
       "pnpm:*"
