@@ -2,6 +2,7 @@
 deno = "2.7.14"
 hk = "1.44.3"
 shellcheck = "0.11.0"
+shfmt = "3.13.1"
 
 "github:goss-org/goss" = "0.4.9"
 
