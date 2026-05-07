@@ -1,6 +1,7 @@
 [tools]
 dprint = "0.54.0"
 hk = "1.44.3"
+pkl = "0.30.2"
 shellcheck = "0.11.0"
 shfmt = "3.13.1"
 
