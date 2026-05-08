@@ -46,7 +46,7 @@ if [[ -z "$LC_ALL" ]]; then
   export LC_ALL=en_US.UTF-8
 fi
 
-export GOPATH=$HOME
+export GOPATH="$HOME"
 
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 # https://hk.jdx.dev/getting_started.html

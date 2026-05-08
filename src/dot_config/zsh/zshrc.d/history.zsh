@@ -13,9 +13,9 @@ setopt interactive_comments
 setopt share_history
 
 # http://mollifier.hatenablog.com/entry/20090728/p1
-zshaddhistory() {
+_history_min_length() {
   local line=${1%%$'\n'}
-  local cmd=${line%% *}
-
   [[ ${#line} -ge 4 ]]
 }
+autoload -Uz add-zsh-hook
+add-zsh-hook zshaddhistory _history_min_length
