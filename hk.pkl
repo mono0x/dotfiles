@@ -19,6 +19,12 @@ local linters = new Mapping<String, Step> {
     glob = List("**/*.zsh", "src/dot_zshenv")
     check = "zsh -n {{ files }}"
   }
+  ["zshellcheck"] {
+    glob = List("**/*.zsh", "src/dot_zshenv")
+    check = "zshellcheck {{ files }}"
+    fix = "zshellcheck -fix {{ files }}"
+    batch = true
+  }
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format
 }

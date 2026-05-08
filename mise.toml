@@ -5,6 +5,7 @@ pkl = "0.30.2"
 shellcheck = "0.11.0"
 shfmt = "3.13.1"
 
+"github:afadesigns/zshellcheck" = "1.0.17"
 "github:goss-org/goss" = "0.4.9"
 
 [tasks.cz]
