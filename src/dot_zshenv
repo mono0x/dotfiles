@@ -32,7 +32,6 @@ path=(
   $path
 )
 
-# Prepend pattern; arr+=(...) only appends so the suggested fix changes semantics.
 # noka: ZC1071
 fpath=(
   $XDG_CONFIG_HOME/zsh/functions(N-/)

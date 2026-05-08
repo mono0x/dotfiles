@@ -10,7 +10,7 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt interactive_comments
-# Intentional: share history across sessions. hist_ignore_space (above) lets sensitive commands opt out.
+# hist_ignore_space (above) lets sensitive commands opt out.
 setopt share_history # noka: ZC1928
 
 # http://mollifier.hatenablog.com/entry/20090728/p1
