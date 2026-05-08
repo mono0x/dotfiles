@@ -6,7 +6,8 @@ if ((${+commands[fzf]})); then
       print -r -- "$HOME/.local/share/chezmoi"
     } | sort | fzf --query "$LBUFFER")
     if [[ -n "$selected_dir" ]]; then
-      BUFFER="cd ${selected_dir}"
+      # BUFFER is a special zle variable; making it local would prevent the line editor from picking up the change.
+      BUFFER="cd ${selected_dir}" # noka: ZC1043
       zle accept-line
     fi
     zle redisplay

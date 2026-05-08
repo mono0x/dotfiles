@@ -40,7 +40,8 @@ alias gf='git fetch --all'
 alias gg='git grep -H --heading -I --line-number --break --show-function'
 alias gl='git log'
 alias gs='git status'
-alias -g M='"$(git-default-branch)"'
+# Global alias by design: expands "M" to the default branch name in argument position (e.g. `git rebase M`).
+alias -g M='"$(git-default-branch)"' # noka: ZC1771
 alias k='kubectl'
 alias ci='claude -p "Please commit this change."'
 
@@ -50,8 +51,13 @@ if ((${+commands[yazi]})); then
     local cwd tmp
     tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
     command yazi "$@" --cwd-file="$tmp"
-    IFS= read -r -d '' cwd <"$tmp"
+    # IFS= here is a per-command env override, not a global assignment; `local IFS= read` would stop read from running.
+    IFS= read -r -d '' cwd <"$tmp" # noka: ZC1043
     [[ "$cwd" != "$PWD" ]] && [[ -d "$cwd" ]] && builtin cd -- "$cwd"
     rm -f -- "${tmp:?}"
   }
 fi
+
+# Aliases are the intended idiom in interactive zshrc (preserved in completion, history expansion,
+# argument transparency); the rule targets scripts.
+# noka: ZC1049

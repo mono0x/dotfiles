@@ -8,13 +8,17 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # https://zenn.dev/enchan1207/articles/7b9d7d397b7d0d
+# Skip /etc/zprofile so it does not re-run path_helper and clobber PATH order.
 if [[ -x /usr/libexec/path_helper ]]; then
-  setopt no_global_rcs
-  eval "$(/usr/libexec/path_helper -s)"
+  setopt no_global_rcs # noka: ZC1971
+  # path_helper outputs shell code; eval is the documented usage and contains no interpolated variables.
+  eval "$(/usr/libexec/path_helper -s)" # noka: ZC1046,ZC1098
 fi
 
 typeset -U path cdpath fpath manpath
 
+# Prepend pattern; arr+=(...) only appends so the suggested fix changes semantics.
+# noka: ZC1071
 path=(
   $HOME/google-cloud-sdk/bin(N-/)
   $HOME/.krew/bin(N-/)
@@ -28,6 +32,8 @@ path=(
   $path
 )
 
+# Prepend pattern; arr+=(...) only appends so the suggested fix changes semantics.
+# noka: ZC1071
 fpath=(
   $XDG_CONFIG_HOME/zsh/functions(N-/)
   $fpath
