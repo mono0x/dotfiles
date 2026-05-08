@@ -43,7 +43,7 @@ alias gs='git status'
 # Global alias by design: expands "M" to the default branch name in argument position (e.g. `git rebase M`).
 alias -g M='"$(git-default-branch)"' # noka: ZC1771
 alias k='kubectl'
-alias ci='claude -p "Please commit this change."'
+alias ci='claude -p "/commit-commands:commit"'
 
 # https://yazi-rs.github.io/docs/quick-start/#shell-wrapper
 if ((${+commands[yazi]})); then
