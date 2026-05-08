@@ -4,6 +4,7 @@ pnpm = "11"
 "aqua:tak848/ccgate" = "latest"
 "github:k1LoW/mo" = "latest"
 "npm:ccstatusline" = "latest"
+"npm:ctx7" = "latest"
 "npm:difit" = "latest"
 
 uv = "latest"
