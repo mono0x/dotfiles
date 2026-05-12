@@ -25,6 +25,7 @@ local linters = new Mapping<String, Step> {
     fix = "zshellcheck -fix {{ files }}"
     batch = true
   }
+  ["actionlint"] = Builtins.actionlint
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format
 }
