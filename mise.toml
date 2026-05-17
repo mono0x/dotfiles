@@ -1,5 +1,5 @@
 [tools]
-actionlint = "1.7.9"
+actionlint = "1.7.12"
 dprint = "0.54.0"
 hk = "1.45.0"
 pkl = "0.31.1"
