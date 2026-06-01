@@ -25,12 +25,17 @@ fi
 
 echo "Installing and initializing chezmoi"
 
+# Pass a GitHub token to mise to avoid API rate limits. When unset, leave it out
+# entirely so mise can fall back to the gh CLI's ~/.config/gh/hosts.yml.
+github_token="${MISE_GITHUB_TOKEN:-${GITHUB_TOKEN:-}}"
+
 env -i \
   HOME="$HOME" \
   HOMEBREW_NO_AUTO_UPDATE=1 \
   HOMEBREW_PREFIX="$HOMEBREW_PREFIX" \
   GITHUB_ACCOUNT="$account" \
   GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
+  ${github_token:+MISE_GITHUB_TOKEN="$github_token"} \
   /bin/bash --noprofile --norc <<'EOF'
 eval "$(/usr/libexec/path_helper -s)"
 eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
