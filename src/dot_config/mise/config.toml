@@ -24,6 +24,9 @@ experimental = true
 disable_backends = ["asdf", "vfox"]
 install_before = "2d"
 
+[settings.github]
+use_git_credentials = true
+
 [settings.npm]
 package_manager = "pnpm"
 
