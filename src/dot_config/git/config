@@ -125,19 +125,19 @@
 
 # hook {{{
 [hook "hk-commit-msg"]
-  command = test \"${HK:-1}\" = \"0\" || hk run commit-msg --from-hook \"$@\"
+  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run commit-msg --from-hook \"$@\"
   event = commit-msg
 [hook "hk-post-checkout"]
-  command = test \"${HK:-1}\" = \"0\" || hk run post-checkout --from-hook \"$@\"
+  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run post-checkout --from-hook \"$@\"
   event = post-checkout
 [hook "hk-post-commit"]
-  command = test \"${HK:-1}\" = \"0\" || hk run post-commit --from-hook \"$@\"
+  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run post-commit --from-hook \"$@\"
   event = post-commit
 [hook "hk-post-merge"]
-  command = test \"${HK:-1}\" = \"0\" || hk run post-merge --from-hook \"$@\"
+  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run post-merge --from-hook \"$@\"
   event = post-merge
 [hook "hk-post-rewrite"]
-  command = test \"${HK:-1}\" = \"0\" || hk run post-rewrite --from-hook \"$@\"
+  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run post-rewrite --from-hook \"$@\"
   event = post-rewrite
 [hook "hk-pre-commit"]
   command = test \"${HK:-1}\" = \"0\" || hk run pre-commit --from-hook \"$@\"
@@ -146,10 +146,10 @@
   command = test \"${HK:-1}\" = \"0\" || hk run pre-push --from-hook \"$@\"
   event = pre-push
 [hook "hk-pre-rebase"]
-  command = test \"${HK:-1}\" = \"0\" || hk run pre-rebase --from-hook \"$@\"
+  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run pre-rebase --from-hook \"$@\"
   event = pre-rebase
 [hook "hk-prepare-commit-msg"]
-  command = test \"${HK:-1}\" = \"0\" || hk run prepare-commit-msg --from-hook \"$@\"
+  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run prepare-commit-msg --from-hook \"$@\"
   event = prepare-commit-msg
 # }}}
 
