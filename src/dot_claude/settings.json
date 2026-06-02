@@ -56,19 +56,6 @@
     "command": "ccstatusline",
     "padding": 0
   },
-  "hooks": {
-    "PermissionRequest": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "ccgate claude"
-          }
-        ]
-      }
-    ]
-  },
   "enabledPlugins": {
     "commit-commands@claude-plugins-official": true
   }
