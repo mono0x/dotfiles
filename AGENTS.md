@@ -2,40 +2,18 @@
 
 ## Repository Overview
 
-This repository manages macOS dotfiles using chezmoi. Configuration files are stored in the `src/` directory, and chezmoi deploys them from `~/.local/share/chezmoi` to the appropriate locations in the home directory.
-
-## Directory Structure
-
-- `src/`: chezmoi source files (configuration templates)
-  - `src/dot_config/`: XDG-compliant configuration files (zsh, git, neovim, ghostty, etc.)
-  - `src/.chezmoiscripts/`: chezmoi execution scripts
-    - `unix/`: Unix-compatible scripts
-    - `darwin/`: macOS-specific scripts
-- `bin/`: utility scripts
-  - `cz`: wrapper to run chezmoi in a clean environment
-  - `run-clean-env`: executes commands with minimal environment variables
-- `test/`: test files
-  - `test/goss/`: Goss environment validation configuration
-
-## chezmoi Naming Conventions
-
-- `dot_` prefix: expands to files starting with `.`
-- `.tmpl` suffix: processed as templates
-- `run_before_`, `run_after_`, `run_onchange_`: control script execution timing
+This repository manages macOS dotfiles using chezmoi. Source files live under the `src/` directory (configured via `.chezmoiroot`), and chezmoi deploys them from `~/.local/share/chezmoi` to the appropriate locations in the home directory.
 
 ## Development Commands
 
 ### Running Tests
 
 ```sh
-# Run all linters and format checks (deno fmt, shellcheck, bash -n, zsh -n)
+# Run all linters and format checks
 hk check --all
 
 # Auto-fix formatting and lint issues
 hk fix --all
-
-# Environment validation with Goss (run after chezmoi apply)
-GOSS_USE_ALPHA=1 goss validate --format documentation
 ```
 
 ### Setup and Apply
@@ -45,40 +23,16 @@ GOSS_USE_ALPHA=1 goss validate --format documentation
 ./install.sh
 
 # Apply chezmoi changes in clean environment
-./bin/cz apply -v
+mise run cz apply -v   # or: ./bin/cz-clean-env apply -v
 
 # Preview changes before applying
-./bin/cz diff
+mise run cz diff
 
 # Note: CI tests run install.sh twice to verify idempotency
 ```
 
 ### Environment Tools
 
-- **mise**: runtime version management (deno, hk, shellcheck, etc.)
-- **Homebrew**: package management (defined in Brewfile)
+- **Homebrew**: package management (defined in `Brewfile`)
 - **hk**: lint/format runner with pre-commit hook (config in `hk.pkl`)
-- **goss**: environment validation
-
-## Architecture
-
-### Clean Environment Execution
-
-`bin/cz` is a wrapper script that runs chezmoi in a clean environment. It uses `env -i` to reset all environment variables and launches bash with `--noprofile --norc`, then configures only essential paths:
-
-- System paths via `/usr/libexec/path_helper`
-- Homebrew environment (`/opt/homebrew`)
-
-This prevents interference from existing shell configurations when applying dotfiles, ensuring consistent and reproducible deployments.
-
-### Zsh Configuration Lazy Loading
-
-- `.zshenv`: environment variable configuration (especially ZDOTDIR)
-- `.zprofile`: login shell configuration
-- `dot_config/zsh/.zshrc`: main zsh configuration
-  - `zshrc.d/`: immediately loaded configurations
-  - `zshrc.defer.d/`: lazy-loaded configurations (mise, alias, fzf, etc.)
-
-### Template System
-
-`.tmpl` files are processed by chezmoi's template engine. Platform-specific configurations (e.g., `conf.d/platform.tmpl`) and environment-dependent values like Homebrew paths are dynamically generated.
+- **mise**: runtime/tool version management (config in `mise.toml`; manages dprint, hk, shellcheck, etc.)
