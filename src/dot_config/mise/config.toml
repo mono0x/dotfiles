@@ -5,7 +5,6 @@ pnpm = "11"
 "github:k1LoW/mo" = "latest"
 "npm:cc-sdd" = "latest"
 "npm:ccstatusline" = "latest"
-"npm:ctx7" = "latest"
 "npm:difit" = "latest"
 
 uv = "latest"
