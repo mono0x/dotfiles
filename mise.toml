@@ -7,7 +7,7 @@ shellcheck = "0.11.0"
 shfmt = "3.13.1"
 zizmor = "1.25.2"
 
-"github:afadesigns/zshellcheck" = "1.0.17"
+"github:afadesigns/zshellcheck" = "1.2.2"
 "github:goss-org/goss" = "0.4.9"
 
 [tasks.cz]
