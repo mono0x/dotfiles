@@ -21,8 +21,8 @@ local linters = new Mapping<String, Step> {
   }
   ["zshellcheck"] {
     glob = List("**/*.zsh", "src/dot_zshenv")
-    check = "zshellcheck {{ files }}"
-    fix = "zshellcheck -fix {{ files }}"
+    check = "zshellcheck -no-banner {{ files }}"
+    fix = "zshellcheck -no-banner -fix {{ files }}"
     batch = true
   }
   ["actionlint"] = Builtins.actionlint
