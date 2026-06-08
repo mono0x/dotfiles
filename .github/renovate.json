@@ -32,6 +32,31 @@
       "schedule": [
         "on monday"
       ]
+    },
+    {
+      "matchPackageNames": [
+        "hk",
+        "jdx/hk"
+      ],
+      "groupName": "hk",
+      "schedule": [
+        "on monday"
+      ]
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^hk\\.pkl$/"
+      ],
+      "matchStrings": [
+        "releases/download/v(?<currentValue>\\d+\\.\\d+\\.\\d+)/",
+        "hk@(?<currentValue>\\d+\\.\\d+\\.\\d+)#"
+      ],
+      "depNameTemplate": "jdx/hk",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.+)$"
     }
   ]
 }
