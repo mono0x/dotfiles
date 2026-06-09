@@ -38,10 +38,7 @@
         "hk",
         "jdx/hk"
       ],
-      "groupName": "hk",
-      "schedule": [
-        "on monday"
-      ]
+      "groupName": "hk"
     }
   ],
   "customManagers": [
