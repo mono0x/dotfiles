@@ -36,7 +36,7 @@
     {
       "matchPackageNames": [
         "hk",
-        "jdx/hk"
+        "hk-pkl"
       ],
       "groupName": "hk"
     }
@@ -51,7 +51,8 @@
         "releases/download/v(?<currentValue>\\d+\\.\\d+\\.\\d+)/",
         "hk@(?<currentValue>\\d+\\.\\d+\\.\\d+)#"
       ],
-      "depNameTemplate": "jdx/hk",
+      "depNameTemplate": "hk-pkl",
+      "packageNameTemplate": "jdx/hk",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "^v(?<version>.+)$"
     }
