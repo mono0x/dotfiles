@@ -3,7 +3,7 @@
   "hooks": {
     "afterFileEdit": [
       {
-        "command": "jq -r '.file_path' | xargs -I{} hk run post-tool-use {} >&2 || exit 2"
+        "command": "jq -r '.file_path' | xargs -I{} mise exec -- hk run post-tool-use {} >&2 || exit 2"
       }
     ]
   }
