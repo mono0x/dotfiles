@@ -1,7 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "github>mono0x/renovate-config:hk-pkl"
   ],
   "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "2 days",
@@ -32,28 +33,6 @@
       "schedule": [
         "on monday"
       ]
-    },
-    {
-      "matchPackageNames": [
-        "jdx/hk"
-      ],
-      "groupName": "hk"
-    }
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^hk\\.pkl$/"
-      ],
-      "matchStrings": [
-        "releases/download/v(?<currentValue>\\d+\\.\\d+\\.\\d+)/",
-        "hk@(?<currentValue>\\d+\\.\\d+\\.\\d+)#"
-      ],
-      "depNameTemplate": "hk-pkl",
-      "packageNameTemplate": "jdx/hk",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^v(?<version>.+)$"
     }
   ]
 }
