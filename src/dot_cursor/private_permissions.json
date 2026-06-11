@@ -1,0 +1,3 @@
+{
+  "terminalAllowlist": ["git status", "git diff", "git log", "git add", "git commit"]
+}
