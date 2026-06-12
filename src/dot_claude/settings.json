@@ -48,7 +48,10 @@
       "hk:*",
       "gh:*",
       "git:*",
-      "pnpm:*"
+      "pnpm:*",
+      "rtk gh:*",
+      "rtk git:*",
+      "rtk pnpm:*"
     ]
   },
   "statusLine": {
