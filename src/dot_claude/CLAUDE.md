@@ -3,4 +3,4 @@
 - Since the Bash tool is executed in a sandbox, file access or network connections may result in errors. In such cases, ask the user for instructions.
 - Always prefer simplicity over pathological corrections. Follow YAGNI, KISS, and DRY. No backward-compat shims or fallback paths unless they come free without adding cyclomatic complexity.
 - Favor colocation: keep related code, tests, types, and assets close to where they are used rather than splitting them into distant shared layers prematurely.
-- Commands listed in `sandbox.excludedCommands` run outside the sandbox only when invoked on their own. Chaining them with `&&`, `||`, `;`, or pipes makes the whole command run inside the sandbox, so run each as a separate Bash call instead of combining them.
+- These commands run outside the sandbox only when invoked on their own: `./gradlew`, `hk`, `gh`, `git`, `pnpm` (the `sandbox.excludedCommands` list). Chaining them with `&&`, `||`, `;`, or pipes makes the whole command run inside the sandbox, so run each as a separate Bash call instead of combining them.
