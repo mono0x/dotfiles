@@ -2,6 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
+    "github>mono0x/renovate-config:dprint-plugins",
     "github>mono0x/renovate-config:hk-pkl"
   ],
   "timezone": "Asia/Tokyo",
