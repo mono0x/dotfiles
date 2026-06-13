@@ -10,7 +10,6 @@ pnpm = "11"
 uv = "latest"
 
 claude = "latest"
-usage = "latest"
 
 [tools."github:mono0x/git-default-branch"]
 version = "latest"
