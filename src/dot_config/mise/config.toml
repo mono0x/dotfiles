@@ -31,3 +31,17 @@ uvx = true
 
 [settings.python]
 compile = false
+
+[shell_alias]
+vi = "nvim"
+g = "git"
+ga = "git add"
+gd = "git di"
+gf = "git fetch --all"
+gg = "git grep -H --heading -I --line-number --break --show-function"
+gl = "git log"
+gs = "git status"
+ll = "ls -l"
+la = "ls -A"
+lla = "ls -Al"
+k = "kubectl"
