@@ -33,6 +33,8 @@ uvx = true
 compile = false
 
 [shell_alias]
+sudo = "sudo " # trailing space lets the following word expand as an alias too
+sudoe = "sudo -e"
 vi = "nvim"
 g = "git"
 ga = "git add"

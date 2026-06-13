@@ -1,6 +1,3 @@
-alias sudo="sudo "
-alias sudoe='sudo -e'
-
 if ((${+commands[hub]})); then
   alias git='hub'
 fi
