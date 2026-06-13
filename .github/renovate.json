@@ -25,7 +25,7 @@
       "matchManagers": [
         "mise"
       ],
-      "matchPackageNames": [
+      "matchDepNames": [
         "!hk"
       ],
       "matchUpdateTypes": [
