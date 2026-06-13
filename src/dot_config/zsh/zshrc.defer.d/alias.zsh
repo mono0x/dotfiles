@@ -1,6 +1,3 @@
-if ((${+commands[hub]})); then
-  alias git='hub'
-fi
 # Global alias by design: expands "M" to the default branch name in argument position (e.g. `git rebase M`).
 alias -g M='"$(git-default-branch)"' # noka: ZC1771
 

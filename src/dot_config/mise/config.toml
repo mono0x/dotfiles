@@ -36,6 +36,7 @@ compile = false
 sudo = "sudo " # trailing space lets the following word expand as an alias too
 sudoe = "sudo -e"
 vi = "nvim"
+git = "hub"
 g = "git"
 ga = "git add"
 gd = "git di"
