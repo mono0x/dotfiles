@@ -1,30 +1,6 @@
 alias sudo="sudo "
 alias sudoe='sudo -e'
 
-case "${OSTYPE}" in
-darwin*)
-  alias ls="ls -G"
-
-  alias base64='gbase64'
-  alias comm='LC_ALL=C gcomm'
-  alias date='gdate'
-  alias grep='LC_ALL=C ggrep'
-  alias look='LC_ALL=C look'
-  alias md5sum='gmd5sum'
-  alias sed='gsed'
-  alias sha1sum='gsha1sum'
-  alias sha224sum='gsha224sum'
-  alias sha256sum='gsha256sum'
-  alias sha384sum='gsha384sum'
-  alias sha512sum='gsha512sum'
-  alias shuf='gshuf'
-  alias sort='LC_ALL=C gsort'
-  alias tail='gtail'
-  alias uniq='LC_ALL=C guniq'
-  alias wc='gwc'
-  ;;
-esac
-
 if ((${+commands[hub]})); then
   alias git='hub'
 fi

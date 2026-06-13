@@ -7,5 +7,6 @@
 
 {{ if ne .chezmoi.os "darwin" -}}
 .chezmoiscripts/darwin/*
+.config/mise/conf.d/darwin.toml
 Library/*
 {{ end -}}
