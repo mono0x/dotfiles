@@ -31,7 +31,6 @@
       "Bash(gh auth:*)",
       "Bash(gh codespace:*)",
       "Bash(gh gpg-key:*)",
-      "Bash(git push:*)",
       "Bash(sudo:*)"
     ],
     "defaultMode": "auto"
