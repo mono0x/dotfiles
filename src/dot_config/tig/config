@@ -27,5 +27,12 @@ bind generic G move-last-line
 bind main v !@hub browse -- commit/%(commit)
 bind diff v !@hub browse -- commit/%(commit)
 
+# Copy diff/patch
+bind main D @sh -c "git show %(commit) | pbcopy"
+bind diff D @sh -c "git show %(commit) | pbcopy"
+# Copy commit hash
+bind main H @sh -c "echo -n %(commit) | pbcopy"
+bind diff H @sh -c "echo -n %(commit) | pbcopy"
+
 # Revert
 bind main ! ?git revert %(commit)
