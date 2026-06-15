@@ -31,9 +31,6 @@
       "Bash(gh auth:*)",
       "Bash(gh codespace:*)",
       "Bash(gh gpg-key:*)",
-      "Bash(gh pr comment:*)",
-      "Bash(gh pr create:*)",
-      "Bash(gh pr edit:*)",
       "Bash(git push:*)",
       "Bash(sudo:*)"
     ],
