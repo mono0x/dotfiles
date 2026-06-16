@@ -1,5 +1,12 @@
 {{ $refreshPeriod := "168h" -}}
 
+{{ $boucleFrameworkVersion := "4302a712aa28edc60e9cf12d05f679d85408ef94" -}}
+
+[".claude/hooks/git-safe.sh"]
+type = "file"
+url = "https://raw.githubusercontent.com/Bande-a-Bonnot/Boucle-framework/{{ $boucleFrameworkVersion }}/tools/git-safe/hook.sh"
+executable = true
+
 {{ $nvim := ".config/nvim" -}}
 
 ["{{ $nvim }}/pack/vendor/start/copilot.vim"]
