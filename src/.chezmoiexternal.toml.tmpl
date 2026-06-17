@@ -1,45 +1,48 @@
-{{ $refreshPeriod := "168h" -}}
-
-{{ $boucleFrameworkVersion := "4302a712aa28edc60e9cf12d05f679d85408ef94" -}}
+# Renovate's custom manager (.github/renovate.json) keeps each commit hash up to date.
+# Add the annotation comment right before a url, with currentValue set to the repository's
+# default branch; datasource and depName are derived from the url:
+#   # renovate: currentValue=<branch>
+#   url = "https://github.com/<owner>/<repo>/tree/<commit hash>"
 
 [".claude/hooks/git-safe.sh"]
 type = "file"
-url = "https://raw.githubusercontent.com/Bande-a-Bonnot/Boucle-framework/{{ $boucleFrameworkVersion }}/tools/git-safe/hook.sh"
+# renovate: currentValue=main
+url = "https://raw.githubusercontent.com/Bande-a-Bonnot/Boucle-framework/4302a712aa28edc60e9cf12d05f679d85408ef94/tools/git-safe/hook.sh"
 executable = true
 
 {{ $nvim := ".config/nvim" -}}
 
 ["{{ $nvim }}/pack/vendor/start/copilot.vim"]
 type = "git-repo"
-url = "https://github.com/github/copilot.vim"
-refreshPeriod = "{{ $refreshPeriod }}"
+# renovate: currentValue=release
+url = "https://github.com/github/copilot.vim/tree/a12fd5672110c8aa7e3c8419e28c96943ca179be"
 clone.args = ["--depth", "1"]
 pull.args = ["--ff-only"]
 
 ["{{ $nvim }}/pack/vendor/start/lualine.nvim"]
 type = "git-repo"
-url = "https://github.com/nvim-lualine/lualine.nvim"
-refreshPeriod = "{{ $refreshPeriod }}"
+# renovate: currentValue=master
+url = "https://github.com/nvim-lualine/lualine.nvim/tree/221ce6b2d999187044529f49da6554a92f740a96"
 clone.args = ["--depth", "1"]
 pull.args = ["--ff-only"]
 
 ["{{ $nvim }}/pack/vendor/start/solarized.nvim"]
 type = "git-repo"
-url = "https://github.com/shaunsingh/solarized.nvim"
-refreshPeriod = "{{ $refreshPeriod }}"
+# renovate: currentValue=master
+url = "https://github.com/shaunsingh/solarized.nvim/tree/fe02ed49cc017cc93657bd6306a2624394611c69"
 clone.args = ["--depth", "1"]
 pull.args = ["--ff-only"]
 
 ["{{ $nvim }}/pack/vendor/start/vim-fugitive"]
 type = "git-repo"
-url = "https://github.com/tpope/vim-fugitive"
-refreshPeriod = "{{ $refreshPeriod }}"
+# renovate: currentValue=master
+url = "https://github.com/tpope/vim-fugitive/tree/3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0"
 clone.args = ["--depth", "1"]
 pull.args = ["--ff-only"]
 
 ["{{ $nvim }}/pack/vendor/start/vim-surround"]
 type = "git-repo"
-url = "https://github.com/anyakichi/vim-surround"
-refreshPeriod = "{{ $refreshPeriod }}"
+# renovate: currentValue=master
+url = "https://github.com/anyakichi/vim-surround/tree/3d188ed2113431cf8dac77be61b842acb64433d9"
 clone.args = ["--depth", "1"]
 pull.args = ["--ff-only"]

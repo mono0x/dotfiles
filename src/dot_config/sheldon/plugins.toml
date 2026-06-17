@@ -14,37 +14,58 @@ shell = "zsh"
 
 apply = ["defer"]
 
+# Renovate's custom manager (.github/renovate.json) keeps each commit hash up to date.
+# Add the annotation comment right before a github line, with currentValue set to the
+# repository's default branch; datasource and depName are derived from the github line:
+#   # renovate: currentValue=<branch>
+#   github = "<owner>/<repo>"
+#   rev = "<commit hash>"
+
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
 [plugins.zsh-defer]
+# renovate: currentValue=master
 github = "romkatv/zsh-defer"
+rev = "53a26e287fbbe2dcebb3aa1801546c6de32416fa"
 apply = ["source"]
 
 [plugins.zsh-smartcache]
+# renovate: currentValue=main
 github = "QuarticCat/zsh-smartcache"
+rev = "54aba13a6824e212992fd754c598c9e9acd259a3"
 apply = ["source"]
 
 [plugins.zsh-autosuggestions]
+# renovate: currentValue=master
 github = "zsh-users/zsh-autosuggestions"
+rev = "85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5"
 
 [plugins.zsh-completions]
+# renovate: currentValue=master
 github = "zsh-users/zsh-completions"
+rev = "4b23ecd62a9ad79ddf2ac03c0bd8a7b43266508c"
 
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
 
 [plugins.fast-syntax-highlighting]
+# renovate: currentValue=master
 github = "zdharma-continuum/fast-syntax-highlighting"
+rev = "3d574ccf48804b10dca52625df13da5edae7f553"
 
 [plugins.ni]
+# renovate: currentValue=main
 github = "azu/ni.zsh"
+rev = "72ddee65fc1f6c6fa436ea01521896a083cd986a"
 
 [plugins.zshrc-defer]
 local = "~/.config/zsh/zshrc.defer.d"
 
 [plugins.pure]
+# renovate: currentValue=main
 github = "sindresorhus/pure"
+rev = "cc0759a0de620f191510e2e2f9748194a605b54d"
 use = ["async.zsh", "pure.zsh"]
 apply = ["source"]
 

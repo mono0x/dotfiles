@@ -8,7 +8,54 @@
   "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "2 days",
   "osvVulnerabilityAlerts": true,
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^src/\\.chezmoiexternal\\.toml\\.tmpl$/"
+      ],
+      "matchStrings": [
+        "# renovate: currentValue=(?<currentValue>\\S+)\\s+url = \"https://raw\\.githubusercontent\\.com/(?<depName>[^/]+/[^/]+)/(?<currentDigest>[0-9a-f]+)/",
+        "# renovate: currentValue=(?<currentValue>\\S+)\\s+url = \"https://github\\.com/(?<depName>[^/]+/[^/]+)/tree/(?<currentDigest>[0-9a-f]+)\""
+      ],
+      "datasourceTemplate": "github-digest"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^src/dot_config/sheldon/plugins\\.toml$/"
+      ],
+      "matchStrings": [
+        "# renovate: currentValue=(?<currentValue>\\S+)\\s+github = \"(?<depName>[^\"]+)\"\\s+rev = \"(?<currentDigest>[0-9a-f]+)\""
+      ],
+      "datasourceTemplate": "github-digest"
+    }
+  ],
   "packageRules": [
+    {
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchFileNames": [
+        "src/.chezmoiexternal.toml.tmpl"
+      ],
+      "groupName": "chezmoiexternal",
+      "schedule": [
+        "on monday"
+      ]
+    },
+    {
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchFileNames": [
+        "src/dot_config/sheldon/plugins.toml"
+      ],
+      "groupName": "sheldon",
+      "schedule": [
+        "on monday"
+      ]
+    },
     {
       "matchManagers": [
         "github-actions"
