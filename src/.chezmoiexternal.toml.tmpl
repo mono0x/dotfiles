@@ -10,33 +10,31 @@ type = "file"
 url = "https://raw.githubusercontent.com/Bande-a-Bonnot/Boucle-framework/4302a712aa28edc60e9cf12d05f679d85408ef94/tools/git-safe/hook.sh"
 executable = true
 
-{{ $nvim := ".config/nvim" -}}
-
-["{{ $nvim }}/pack/vendor/start/copilot.vim"]
+[".config/nvim/pack/vendor/start/copilot.vim"]
 type = "archive"
 # renovate: currentValue=release
 url = "https://github.com/github/copilot.vim/archive/a12fd5672110c8aa7e3c8419e28c96943ca179be.tar.gz"
 stripComponents = 1
 
-["{{ $nvim }}/pack/vendor/start/lualine.nvim"]
+[".config/nvim/pack/vendor/start/lualine.nvim"]
 type = "archive"
 # renovate: currentValue=master
 url = "https://github.com/nvim-lualine/lualine.nvim/archive/221ce6b2d999187044529f49da6554a92f740a96.tar.gz"
 stripComponents = 1
 
-["{{ $nvim }}/pack/vendor/start/solarized.nvim"]
+[".config/nvim/pack/vendor/start/solarized.nvim"]
 type = "archive"
 # renovate: currentValue=master
 url = "https://github.com/shaunsingh/solarized.nvim/archive/fe02ed49cc017cc93657bd6306a2624394611c69.tar.gz"
 stripComponents = 1
 
-["{{ $nvim }}/pack/vendor/start/vim-fugitive"]
+[".config/nvim/pack/vendor/start/vim-fugitive"]
 type = "archive"
 # renovate: currentValue=master
 url = "https://github.com/tpope/vim-fugitive/archive/3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0.tar.gz"
 stripComponents = 1
 
-["{{ $nvim }}/pack/vendor/start/vim-surround"]
+[".config/nvim/pack/vendor/start/vim-surround"]
 type = "archive"
 # renovate: currentValue=master
 url = "https://github.com/tpope/vim-surround/archive/3d188ed2113431cf8dac77be61b842acb64433d9.tar.gz"
