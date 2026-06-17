@@ -12,11 +12,8 @@
         "type": "separator"
       },
       {
-        "id": "57a1c9c3-8ff7-4a09-8207-f0d75fdb73ba",
-        "type": "context-bar",
-        "metadata": {
-          "display": "slider"
-        }
+        "id": "373e09c5-e849-41f7-aa55-fe5573149963",
+        "type": "context-percentage"
       },
       {
         "id": "ae83bbbb-e5fd-472c-a951-5539f7fe0bd6",
@@ -26,9 +23,7 @@
         "id": "11b178e5-a8bb-437c-847f-d5e01d27cf15",
         "type": "session-usage",
         "metadata": {
-          "display": "slider",
-          "cursor": "false",
-          "invert": "false"
+          "display": "time"
         }
       },
       {
