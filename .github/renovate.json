@@ -16,7 +16,7 @@
       ],
       "matchStrings": [
         "# renovate: currentValue=(?<currentValue>\\S+)\\s+url = \"https://raw\\.githubusercontent\\.com/(?<depName>[^/]+/[^/]+)/(?<currentDigest>[0-9a-f]+)/",
-        "# renovate: currentValue=(?<currentValue>\\S+)\\s+url = \"https://github\\.com/(?<depName>[^/]+/[^/]+)/tree/(?<currentDigest>[0-9a-f]+)\""
+        "# renovate: currentValue=(?<currentValue>\\S+)\\s+url = \"https://github\\.com/(?<depName>[^/]+/[^/]+)/archive/(?<currentDigest>[0-9a-f]+)\\.tar\\.gz\""
       ],
       "datasourceTemplate": "github-digest"
     },
