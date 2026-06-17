@@ -25,6 +25,14 @@
         "color": "magenta"
       },
       {
+        "id": "637dfb53-cc2b-4268-8c25-b7e1dd1db6bd",
+        "type": "separator"
+      },
+      {
+        "id": "c42700df-9a7b-4839-b1e7-f9033d0ba0e5",
+        "type": "git-ahead-behind"
+      },
+      {
         "id": "6",
         "type": "separator"
       },
@@ -32,20 +40,14 @@
         "id": "7",
         "type": "git-changes",
         "color": "yellow"
-      },
-      {
-        "id": "1643ee9b-982a-4ef9-9142-6ab9ba9e13a6",
-        "type": "flex-separator"
-      },
-      {
-        "id": "11b178e5-a8bb-437c-847f-d5e01d27cf15",
-        "type": "session-usage",
-        "metadata": {
-          "display": "time"
-        }
       }
     ],
-    [],
+    [
+      {
+        "id": "7dbd0968-9da6-4661-bb26-7efee1de970a",
+        "type": "session-usage"
+      }
+    ],
     []
   ],
   "flexMode": "full-minus-40",
