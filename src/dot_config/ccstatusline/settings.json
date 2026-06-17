@@ -20,17 +20,6 @@
         "type": "separator"
       },
       {
-        "id": "11b178e5-a8bb-437c-847f-d5e01d27cf15",
-        "type": "session-usage",
-        "metadata": {
-          "display": "time"
-        }
-      },
-      {
-        "id": "4",
-        "type": "separator"
-      },
-      {
         "id": "5",
         "type": "git-branch",
         "color": "magenta"
@@ -43,6 +32,17 @@
         "id": "7",
         "type": "git-changes",
         "color": "yellow"
+      },
+      {
+        "id": "1643ee9b-982a-4ef9-9142-6ab9ba9e13a6",
+        "type": "flex-separator"
+      },
+      {
+        "id": "11b178e5-a8bb-437c-847f-d5e01d27cf15",
+        "type": "session-usage",
+        "metadata": {
+          "display": "time"
+        }
       }
     ],
     [],
