@@ -14,7 +14,7 @@ bin = "git-default-branch"
 [settings]
 experimental = true
 disable_backends = ["asdf", "vfox"]
-install_before = "2d"
+minimum_release_age = "2d"
 
 [settings.github]
 use_git_credentials = true
