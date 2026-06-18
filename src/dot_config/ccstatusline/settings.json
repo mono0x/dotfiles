@@ -42,12 +42,6 @@
         "color": "yellow"
       }
     ],
-    [
-      {
-        "id": "7dbd0968-9da6-4661-bb26-7efee1de970a",
-        "type": "session-usage"
-      }
-    ],
     []
   ],
   "flexMode": "full-minus-40",
