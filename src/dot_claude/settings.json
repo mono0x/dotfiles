@@ -57,7 +57,16 @@
     "padding": 0
   },
   "enabledPlugins": {
+    "codex@openai-codex": true,
     "commit-commands@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
   },
   "hooks": {
     "PreToolUse": [
