@@ -9,18 +9,18 @@ local linters = new Mapping<String, Step> {
   }
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) {
-    glob = Builtins.shfmt.glob + List("src/dot_zshenv")
+    glob = Builtins.shfmt.glob + List("src/dot_zshenv", "src/dot_zprofile")
   }
   ["bash"] {
     glob = List("**/*.sh")
     check = "bash -n {{ files }}"
   }
   ["zsh"] {
-    glob = List("**/*.zsh", "src/dot_zshenv")
+    glob = List("**/*.zsh", "src/dot_zshenv", "src/dot_zprofile")
     check = "zsh -n {{ files }}"
   }
   ["zshellcheck"] {
-    glob = List("**/*.zsh", "src/dot_zshenv")
+    glob = List("**/*.zsh", "src/dot_zshenv", "src/dot_zprofile")
     check = "zshellcheck -no-banner {{ files }}"
     fix = "zshellcheck -no-banner -fix {{ files }}"
     batch = true
