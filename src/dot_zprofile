@@ -1,7 +1,15 @@
-# https://mise.jdx.dev/ide-integration.html
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+#!/usr/bin/env zsh
+# Dummy shebang for shfmt
 
-# Load drop-in extensions. N glob qualifier skips a missing dir.
+# https://mise.jdx.dev/ide-integration.html
+# Prepend pattern; arr+=(...) only appends so the suggested fix changes semantics.
+# noka: ZC1071
+path=(
+  $HOME/.local/share/mise/shims(N-/)
+  $path
+)
+
+# Load drop-in extensions. (N) skips a missing dir.
 for f in "$ZDOTDIR"/zprofile.d/*.zsh(N); do
   source "$f"
 done
