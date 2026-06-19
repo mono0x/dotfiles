@@ -1,2 +1,7 @@
 # https://mise.jdx.dev/ide-integration.html
 export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# Load drop-in extensions. N glob qualifier skips a missing dir.
+for f in "$ZDOTDIR"/zprofile.d/*.zsh(N); do
+  source "$f"
+done
