@@ -16,7 +16,7 @@ setopt share_history # noka: ZC1928
 # http://mollifier.hatenablog.com/entry/20090728/p1
 _history_min_length() {
   local line=${1%%$'\n'}
-  [[ ${#line} -ge 4 ]]
+  ((${#line} >= 4))
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook zshaddhistory _history_min_length
