@@ -9,7 +9,7 @@
   "minimumReleaseAge": "2 days",
   "osvVulnerabilityAlerts": true,
   "group": {
-    "commitMessageTopic": "{{#if upgrades.1}}{{{groupName}}}{{else}}{{{depName}}}{{/if}}"
+    "commitMessageTopic": "{{#if upgrades.[1]}}{{{groupName}}}{{else}}{{{depName}}}{{/if}}"
   },
   "customManagers": [
     {
