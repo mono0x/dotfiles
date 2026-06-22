@@ -8,6 +8,9 @@
   "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "2 days",
   "osvVulnerabilityAlerts": true,
+  "group": {
+    "commitMessageTopic": "{{#if upgrades.1}}{{{groupName}}}{{else}}{{{depName}}}{{/if}}"
+  },
   "customManagers": [
     {
       "customType": "regex",
@@ -39,7 +42,7 @@
       "matchFileNames": [
         "src/.chezmoiexternal.toml.tmpl"
       ],
-      "groupName": "chezmoiexternal",
+      "groupName": "chezmoi externals",
       "schedule": [
         "on monday"
       ]
@@ -51,7 +54,7 @@
       "matchFileNames": [
         "src/dot_config/sheldon/plugins.toml"
       ],
-      "groupName": "sheldon",
+      "groupName": "sheldon plugins",
       "schedule": [
         "on monday"
       ]
@@ -64,7 +67,7 @@
         "minor",
         "patch"
       ],
-      "groupName": "actions",
+      "groupName": "GitHub Actions",
       "schedule": [
         "on the first day of the month"
       ]
@@ -77,7 +80,7 @@
         "minor",
         "patch"
       ],
-      "groupName": "mise",
+      "groupName": "mise tools",
       "schedule": [
         "on monday"
       ]
@@ -90,7 +93,7 @@
         "minor",
         "patch"
       ],
-      "groupName": "mise",
+      "groupName": "mise tools",
       "schedule": [
         "on monday"
       ]
