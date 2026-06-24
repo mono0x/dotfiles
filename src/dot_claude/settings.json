@@ -4,7 +4,7 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
     "DISABLE_INSTALLATION_CHECKS": "true"
   },
-  "model": "opus",
+  "model": "claude-opus-4-7",
   "permissions": {
     "allow": [
       "Bash(cat:*)",
