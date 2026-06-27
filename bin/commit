@@ -33,6 +33,14 @@ $(rtk git log --oneline -10 2>/dev/null || true)
 Output ONLY the commit message. Do not include any preamble, explanation, code fences, or trailing commentary.
 Do not add any attribution lines such as 'Co-Authored-By: ...', 'Generated with ...', or '🤖' markers."
 
+if [ "$#" -gt 0 ]; then
+  prompt="$prompt
+
+## Additional instructions
+
+$*"
+fi
+
 message="$(printf '%s' "$prompt" | claude -p --model haiku)"
 
 tmpfile="$(mktemp -t COMMIT_EDITMSG.XXXXXX)"
