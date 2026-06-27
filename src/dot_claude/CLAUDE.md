@@ -3,3 +3,4 @@
 - Since the Bash tool is executed in a sandbox, file access or network connections may result in errors. In such cases, ask the user for instructions.
 - Always prefer simplicity over pathological corrections. Follow YAGNI, KISS, and DRY. No backward-compat shims or fallback paths unless they come free without adding cyclomatic complexity.
 - Favor colocation: keep related code, tests, types, and assets close to where they are used rather than splitting them into distant shared layers prematurely.
+- Do not over-emphasize in deliverables that you have followed the user's correction instructions. Reflect the corrections in the output naturally, without unnecessary self-references or commentary about having applied the feedback.
