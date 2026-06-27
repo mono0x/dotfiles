@@ -1,6 +1,12 @@
 #!/bin/bash
-# Generate a commit message with claude and open the editor pre-filled.
+# Generate a commit message with claude and commit.
 set -eu
+
+edit=
+if [ "${1:-}" = '-e' ]; then
+  edit=1
+  shift
+fi
 
 if git diff --cached --quiet; then
   echo 'commit: no staged changes' >&2
@@ -33,4 +39,8 @@ tmpfile="$(mktemp -t COMMIT_EDITMSG.XXXXXX)"
 trap 'rm -f "$tmpfile"' EXIT
 printf '%s\n' "$message" >"$tmpfile"
 
-git commit --edit --file "$tmpfile"
+if [ -n "$edit" ]; then
+  git commit --edit --file "$tmpfile"
+else
+  git commit --file "$tmpfile"
+fi
