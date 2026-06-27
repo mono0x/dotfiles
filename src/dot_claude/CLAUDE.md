@@ -1,6 +1,6 @@
-- Only add comments when explaining particularly unclear parts - avoid basic comments.
-- Keep identifier names concise. However, do not use abbreviations for English words, unless they are widely used in the target programming language. Also, please respect the naming conventions from the original code.
-- Since the Bash tool is executed in a sandbox, file access or network connections may result in errors. In such cases, ask the user for instructions.
 - Always prefer simplicity over pathological corrections. Follow YAGNI, KISS, and DRY. No backward-compat shims or fallback paths unless they come free without adding cyclomatic complexity.
 - Favor colocation: keep related code, tests, types, and assets close to where they are used rather than splitting them into distant shared layers prematurely.
-- Do not over-emphasize in deliverables that you have followed the user's correction instructions. Reflect the corrections in the output naturally, without unnecessary self-references or commentary about having applied the feedback.
+- Only add comments to explain particularly unclear parts.
+- Keep identifier names concise, but do not abbreviate English words unless the abbreviation is conventional in the target language. Respect the naming conventions of the original code.
+- Since the Bash tool is executed in a sandbox, file access or network connections may result in errors. In such cases, ask the user for instructions.
+- Reflect user corrections naturally in deliverables, without commentary about having applied them.
