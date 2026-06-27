@@ -1,0 +1,36 @@
+#!/bin/bash
+# Generate a commit message with claude and open the editor pre-filled.
+set -eu
+
+if git diff --cached --quiet; then
+  echo 'commit: no staged changes' >&2
+  exit 1
+fi
+
+prompt="Based on the following context, generate a single git commit message.
+
+## Context
+
+- Current git status:
+$(rtk git status)
+
+- Current git diff (staged changes):
+$(rtk git diff --cached)
+
+- Current branch: $(rtk git branch --show-current)
+
+- Recent commits:
+$(rtk git log --oneline -10 2>/dev/null || true)
+
+## Instructions
+
+Output ONLY the commit message. Do not include any preamble, explanation, code fences, or trailing commentary.
+Do not add any attribution lines such as 'Co-Authored-By: ...', 'Generated with ...', or '🤖' markers."
+
+message="$(printf '%s' "$prompt" | claude -p --model haiku)"
+
+tmpfile="$(mktemp -t COMMIT_EDITMSG.XXXXXX)"
+trap 'rm -f "$tmpfile"' EXIT
+printf '%s\n' "$message" >"$tmpfile"
+
+git commit --edit --file "$tmpfile"
