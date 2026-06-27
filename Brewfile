@@ -53,7 +53,6 @@ if OS.mac?
   brew "wget"
 
   cask "1password-cli"
-  cask "cursor-cli"
   cask "font-hackgen-nerd"
   cask "font-m-plus-1-code"
 end

@@ -1,6 +1,5 @@
 #!/bin/bash
 # Run the commit message editor for core.editor of git.
-# It opens Visual Studio Code, Neovim, or Vim based on environment.
 set -eu
 
 detect_terminal_editor() {
@@ -12,10 +11,6 @@ detect_terminal_editor() {
   do
     command_line="$(ps -o command= -p "${parent_pid}" 2>/dev/null || true)"
     case "${command_line}" in
-      *Cursor.app*|*cursor*)
-        printf '%s\n' cursor
-        return 0
-        ;;
       *Code.app*|*code*)
         printf '%s\n' code
         return 0
@@ -33,10 +28,7 @@ detect_terminal_editor() {
 
 editor="$(detect_terminal_editor || true)"
 
-if [ "${editor}" = 'cursor' ] && [ -x "$(command -v cursor)" ]
-then
-  exec cursor --wait "$@"
-elif [ "${editor}" = 'code' ] && [ -x "$(command -v code)" ]
+if [ "${editor}" = 'code' ] && [ -x "$(command -v code)" ]
 then
   exec code --wait "$@"
 elif [ -x "$(command -v nvim)" ]
