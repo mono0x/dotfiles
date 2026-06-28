@@ -1,5 +1,5 @@
 [tools]
-"github:afadesigns/zshellcheck" = "1.7.0"
+"github:afadesigns/zshellcheck" = "1.7.1"
 "github:goss-org/goss" = "0.4.9"
 actionlint = "1.7.12"
 dprint = "0.54.0"
@@ -7,7 +7,7 @@ hk = "1.48.0"
 pkl = "0.31.1"
 shellcheck = "0.11.0"
 shfmt = "3.13.1"
-zizmor = "1.25.2"
+zizmor = "1.26.1"
 
 [tasks.cz]
 run = "cz-clean-env --source $MISE_PROJECT_ROOT"
