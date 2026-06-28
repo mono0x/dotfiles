@@ -44,7 +44,7 @@ if [ "$#" -gt 0 ]; then
 $*"
 fi
 
-message="$(printf '%s' "$prompt" | claude -p --model haiku)"
+message="$(printf '%s' "$prompt" | claude -p --model sonnet)"
 
 tmpfile="$(mktemp -t COMMIT_EDITMSG.XXXXXX)"
 trap 'rm -f "$tmpfile"' EXIT
