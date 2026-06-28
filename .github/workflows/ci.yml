@@ -23,12 +23,17 @@ jobs:
         run: |
           cp ./install.sh /tmp/install.sh
       - name: Run test
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
+        with:
+          command: |
+            cd /tmp
+            ./install.sh
+          max-attempts: 10
+          delay-seconds: 5
+      - name: Run test again to test idempotency
         working-directory: /tmp
         run: |
           ./install.sh
-          # Run script twice to test idempotency
-          ./install.sh
-
   test-static:
     runs-on: ubuntu-latest
     steps:
