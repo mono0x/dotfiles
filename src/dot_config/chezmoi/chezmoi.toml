@@ -1,1 +1,4 @@
-verbose = false
+verbose = true
+
+[diff]
+exclude = ["scripts"]
