@@ -6,5 +6,5 @@ if command -v brew >/dev/null 2>&1; then
   if [ "${GITHUB_ACTIONS:-""}" = "true" ]; then
     export HOMEBREW_BUNDLE_CASK_SKIP=1
   fi
-  HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --no-upgrade
+  HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --quiet --no-upgrade
 fi
