@@ -28,8 +28,9 @@ jobs:
           command: |
             cd /tmp
             ./install.sh
-          max_attempts: 10
+          max_attempts: 5
           retry_wait_seconds: 5
+          timeout_minutes: 5
       - name: Run test again to test idempotency
         working-directory: /tmp
         run: |
