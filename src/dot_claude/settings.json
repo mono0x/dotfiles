@@ -35,6 +35,7 @@
     ],
     "defaultMode": "auto"
   },
+  "respondToBashCommands": false,
   "skipAutoPermissionPrompt": true,
   "plansDirectory": "./.claude/plans",
   "sandbox": {
