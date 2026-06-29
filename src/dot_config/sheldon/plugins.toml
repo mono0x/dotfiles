@@ -36,10 +36,20 @@ github = "QuarticCat/zsh-smartcache"
 rev = "54aba13a6824e212992fd754c598c9e9acd259a3"
 apply = ["source"]
 
+[plugins.zsh-abbr]
+# renovate: currentValue=main
+github = "olets/zsh-abbr"
+rev = "889f4772c12b9dbe4965bbd56f2572af0a28fa3b"
+
 [plugins.zsh-autosuggestions]
 # renovate: currentValue=master
 github = "zsh-users/zsh-autosuggestions"
 rev = "85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5"
+
+[plugins.zsh-autosuggestions-abbreviations-strategy]
+# renovate: currentValue=main
+github = "olets/zsh-autosuggestions-abbreviations-strategy"
+rev = "3ce24713e4a49f9a5060d9016d35f3cd048d1c74"
 
 [plugins.zsh-completions]
 # renovate: currentValue=master
@@ -53,6 +63,11 @@ inline = "autoload -Uz compinit && zsh-defer compinit"
 # renovate: currentValue=master
 github = "zdharma-continuum/fast-syntax-highlighting"
 rev = "3d574ccf48804b10dca52625df13da5edae7f553"
+
+[plugins.fast-abbr-highlighting]
+# renovate: currentValue=main
+github = "5A6F65/fast-abbr-highlighting"
+rev = "5160a2decb9851768cc746b55d82769424580988"
 
 [plugins.ni]
 # renovate: currentValue=main

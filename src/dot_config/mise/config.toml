@@ -33,19 +33,7 @@ uvx = true
 compile = false
 
 [shell_alias]
-ci = "commit"
-g = "git"
-ga = "git add"
-gd = "git di"
-gf = "git fetch --all"
-gg = "git grep -H --heading -I --line-number --break --show-function"
 git = "hub"
-gl = "git log"
-gs = "git status"
-k = "kubectl"
-la = "ls -A"
-ll = "ls -l"
-lla = "ls -Al"
 sudo = "sudo " # trailing space lets the following word expand as an alias too
 sudoe = "sudo -e"
 vi = "nvim"
