@@ -15,6 +15,8 @@ abbr la="ls -A"
 abbr ll="ls -l"
 abbr lla="ls -Al"
 
+abbr import-git-aliases --prefix "git "
+
 ZSH_AUTOSUGGEST_STRATEGY=(abbreviations $ZSH_AUTOSUGGEST_STRATEGY)
 
 # Workaround for fast-abbr-highlighting (FAH) v0.1.5.
