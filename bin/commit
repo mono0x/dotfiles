@@ -16,24 +16,30 @@ if git diff --cached --quiet; then
   fi
 fi
 
-prompt="Based on the following context, generate a single git commit message.
+prompt="Generate a single git commit message for the currently staged changes.
 
-## Context
+## Starting context
 
 - Current git status:
 $(rtk git status)
 
-- Current git diff (staged changes):
-$(rtk git diff --cached)
-
 - Current branch: $(rtk git branch --show-current)
 
-- Recent commits:
+- Recent commits (for tone/style reference):
 $(rtk git log --oneline -10 2>/dev/null || true)
 
-## Instructions
+## Investigation
 
-Output ONLY the commit message. Do not include any preamble, explanation, code fences, or trailing commentary.
+The staged diff is not pre-loaded — fetch it yourself, and dig deeper whenever the diff alone is not enough to write a precise message. Suggested moves:
+- Run \`git diff --cached\` (or \`git diff --cached -- <path>\` per file) to see the actual changes.
+- Read source files for surrounding code, types, comments, or related callers when the diff is ambiguous.
+- Use \`git log\`, \`git show\`, or \`git blame\` to recover prior intent.
+
+Do not modify the repository or working tree. Keep tool usage proportionate to the change size.
+
+## Output
+
+Output ONLY the commit message text. Do not include any preamble, explanation, code fences, or trailing commentary.
 Do not add any attribution lines such as 'Co-Authored-By: ...', 'Generated with ...', or '🤖' markers."
 
 if [ "$#" -gt 0 ]; then
@@ -44,7 +50,18 @@ if [ "$#" -gt 0 ]; then
 $*"
 fi
 
-message="$(printf '%s' "$prompt" | claude -p --model sonnet)"
+message="$(
+  printf '%s' "$prompt" | claude -p --model sonnet \
+    --permission-mode auto \
+    --tools Read Glob Grep Bash \
+    --allowed-tools \
+      Read Glob Grep \
+      'Bash(git diff:*)' 'Bash(git status:*)' 'Bash(git log:*)' \
+      'Bash(git show:*)' 'Bash(git branch:*)' \
+      'Bash(rtk git diff:*)' 'Bash(rtk git status:*)' 'Bash(rtk git log:*)' \
+      'Bash(rtk git show:*)' 'Bash(rtk git branch:*)' \
+      'Bash(git blame:*)' 'Bash(git ls-files:*)' 'Bash(git rev-parse:*)'
+)"
 
 tmpfile="$(mktemp -t COMMIT_EDITMSG.XXXXXX)"
 trap 'rm -f "$tmpfile"' EXIT
