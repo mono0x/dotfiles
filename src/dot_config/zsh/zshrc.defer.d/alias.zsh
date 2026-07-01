@@ -1,22 +1,6 @@
 # Global alias by design: expands "M" to the default branch name in argument position (e.g. `git rebase M`).
 alias -g M='"$(git-default-branch)"' # noka: ZC1771
 
-abbr ci="commit"
-abbr cl="claude"
-abbr g="git"
-abbr ga="git add"
-abbr gd="git diff --ignore-space-change"
-abbr gf="git fetch --all"
-abbr gg="git grep -H --heading -I --line-number --break --show-function"
-abbr gl="git log"
-abbr gs="git status"
-abbr k="kubectl"
-abbr la="ls -A"
-abbr ll="ls -l"
-abbr lla="ls -Al"
-
-abbr import-git-aliases --prefix "git "
-
 ZSH_AUTOSUGGEST_STRATEGY=(abbreviations $ZSH_AUTOSUGGEST_STRATEGY)
 
 # Workaround for fast-abbr-highlighting (FAH) v0.1.5.
