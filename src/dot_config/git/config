@@ -17,7 +17,6 @@
   br = branch
   ci = commit
   co = checkout
-  di = diff --ignore-space-change
   pl = pull
   pr = pull --rebase
   push-f = push --force-with-lease
