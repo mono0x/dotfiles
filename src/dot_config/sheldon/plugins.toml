@@ -36,10 +36,23 @@ github = "QuarticCat/zsh-smartcache"
 rev = "54aba13a6824e212992fd754c598c9e9acd259a3"
 apply = ["source"]
 
+# Load order within this group matters:
+#   zsh-abbr, fast-syntax-highlighting  ->  zsh-autosuggestions  ->  fast-abbr-highlighting
+# - fast-abbr-highlighting needs zsh-abbr ($ABBR_SOURCE_PATH) and fast-syntax-highlighting
+#   ($FAST_HIGHLIGHT) loaded first.
+# - fast-syntax-highlighting must precede zsh-autosuggestions, or autosuggestions
+#   double-wraps ZLE widgets, doubling `_zsh_highlight` calls per keystroke and making
+#   abbr highlights flash red before settling. Matches FSH's recommended order:
+#   https://github.com/zdharma-continuum/fast-syntax-highlighting#zinit
 [plugins.zsh-abbr]
 # renovate: currentValue=main
 github = "olets/zsh-abbr"
 rev = "889f4772c12b9dbe4965bbd56f2572af0a28fa3b"
+
+[plugins.fast-syntax-highlighting]
+# renovate: currentValue=master
+github = "zdharma-continuum/fast-syntax-highlighting"
+rev = "3d574ccf48804b10dca52625df13da5edae7f553"
 
 [plugins.zsh-autosuggestions]
 # renovate: currentValue=master
@@ -58,11 +71,6 @@ rev = "03bae0bf3f9c4ab894f1f11a31ffe7a1e1029879"
 
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
-
-[plugins.fast-syntax-highlighting]
-# renovate: currentValue=master
-github = "zdharma-continuum/fast-syntax-highlighting"
-rev = "3d574ccf48804b10dca52625df13da5edae7f553"
 
 [plugins.fast-abbr-highlighting]
 # renovate: currentValue=main
