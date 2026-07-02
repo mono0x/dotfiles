@@ -25,6 +25,7 @@ Desktop.ini
 #
 
 # Claude Code
+**/.claude/.cc-writes/
 **/.claude/plans/*
 **/.claude/worktrees/*
 **/.claude/settings.local.json
