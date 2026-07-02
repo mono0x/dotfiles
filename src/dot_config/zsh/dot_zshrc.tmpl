@@ -11,7 +11,7 @@ if [[ "${ZPROF:-}" = "1" ]]; then zmodload zsh/zprof; fi
 
 # Sheldon
 {{ if lookPath "sheldon" -}}
-{{ output "sheldon" "source" | trim }}
+{{ output "sheldon" "source" "--relock" | trim }}
 {{ end -}}
 
 if [[ "${ZPROF:-}" = "1" ]]; then zprof; fi
