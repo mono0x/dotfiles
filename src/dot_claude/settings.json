@@ -1,10 +1,8 @@
 {
-  "language": "japanese",
   "env": {
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
     "DISABLE_INSTALLATION_CHECKS": "true"
   },
-  "model": "claude-opus-4-7",
   "permissions": {
     "allow": [
       "Bash(cat:*)",
@@ -35,23 +33,24 @@
     ],
     "defaultMode": "auto"
   },
-  "respondToBashCommands": false,
-  "skipAutoPermissionPrompt": true,
-  "plansDirectory": "./.claude/plans",
-  "sandbox": {
-    "enabled": true,
-    "excludedCommands": [
-      "./gradlew:*",
-      "ctx7:*",
-      "hk:*",
-      "gh:*",
-      "git:*",
-      "pnpm:*",
-      "rtk gh:*",
-      "rtk git:*",
-      "rtk pnpm:*"
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/git-safe.sh"
+          }
+        ]
+      }
     ]
   },
+  "respondToBashCommands": false,
   "statusLine": {
     "type": "command",
     "command": "ccstatusline",
@@ -69,15 +68,21 @@
       }
     }
   },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          { "type": "command", "command": "rtk hook claude" },
-          { "type": "command", "command": "$HOME/.claude/hooks/git-safe.sh" }
-        ]
-      }
+  "language": "japanese",
+  "sandbox": {
+    "enabled": true,
+    "excludedCommands": [
+      "./gradlew:*",
+      "ctx7:*",
+      "hk:*",
+      "gh:*",
+      "git:*",
+      "pnpm:*",
+      "rtk gh:*",
+      "rtk git:*",
+      "rtk pnpm:*"
     ]
-  }
+  },
+  "plansDirectory": "./.claude/plans",
+  "skipAutoPermissionPrompt": true
 }
