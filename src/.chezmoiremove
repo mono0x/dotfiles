@@ -4,5 +4,6 @@
 .config/mise/settings.toml
 .config/zsh/functions
 .config/zsh/zshrc.defer.d/ni.zsh
+.config/zsh/zshrc.defer.d/pipenv.zsh
 .cursor
 .gitconfig
