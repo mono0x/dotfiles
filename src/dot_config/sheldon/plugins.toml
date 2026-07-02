@@ -37,17 +37,29 @@ rev = "54aba13a6824e212992fd754c598c9e9acd259a3"
 apply = ["source"]
 
 # Load order within this group matters:
-#   zsh-abbr, fast-syntax-highlighting  ->  zsh-autosuggestions  ->  fast-abbr-highlighting
-# - fast-abbr-highlighting needs zsh-abbr ($ABBR_SOURCE_PATH) and fast-syntax-highlighting
-#   ($FAST_HIGHLIGHT) loaded first.
+#   zsh-abbr, zsh-completions, compinit  ->  fast-syntax-highlighting  ->  zsh-autosuggestions  ->  fast-abbr-highlighting
+# - compinit must precede fast-syntax-highlighting (FSH): compinit unconditionally
+#   re-registers completion widgets (e.g. expand-or-complete), clobbering any wrapper
+#   FSH already put on them. FSH only wraps widgets once, at load time, so if it loads
+#   first its wrap of those widgets is silently discarded and never reinstated.
 # - fast-syntax-highlighting must precede zsh-autosuggestions, or autosuggestions
 #   double-wraps ZLE widgets, doubling `_zsh_highlight` calls per keystroke and making
-#   abbr highlights flash red before settling. Matches FSH's recommended order:
-#   https://github.com/zdharma-continuum/fast-syntax-highlighting#zinit
+#   abbr highlights flash red before settling.
+# - fast-abbr-highlighting needs zsh-abbr ($ABBR_SOURCE_PATH) and fast-syntax-highlighting
+#   ($FAST_HIGHLIGHT) loaded first.
+# - zsh-autosuggestions-abbreviations-strategy is order-independent.
 [plugins.zsh-abbr]
 # renovate: currentValue=main
 github = "olets/zsh-abbr"
 rev = "889f4772c12b9dbe4965bbd56f2572af0a28fa3b"
+
+[plugins.zsh-completions]
+# renovate: currentValue=master
+github = "zsh-users/zsh-completions"
+rev = "03bae0bf3f9c4ab894f1f11a31ffe7a1e1029879"
+
+[plugins.compinit]
+inline = "autoload -Uz compinit && zsh-defer compinit"
 
 [plugins.fast-syntax-highlighting]
 # renovate: currentValue=master
@@ -63,14 +75,6 @@ rev = "85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5"
 # renovate: currentValue=main
 github = "olets/zsh-autosuggestions-abbreviations-strategy"
 rev = "3ce24713e4a49f9a5060d9016d35f3cd048d1c74"
-
-[plugins.zsh-completions]
-# renovate: currentValue=master
-github = "zsh-users/zsh-completions"
-rev = "03bae0bf3f9c4ab894f1f11a31ffe7a1e1029879"
-
-[plugins.compinit]
-inline = "autoload -Uz compinit && zsh-defer compinit"
 
 [plugins.fast-abbr-highlighting]
 # renovate: currentValue=main
