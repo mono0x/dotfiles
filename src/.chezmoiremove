@@ -3,5 +3,6 @@
 .config/git/conf.d/hk
 .config/mise/settings.toml
 .config/zsh/functions
+.config/zsh/zshrc.defer.d/ni.zsh
 .cursor
 .gitconfig
