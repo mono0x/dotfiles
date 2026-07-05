@@ -39,7 +39,6 @@ Do not modify the repository or working tree. Keep tool usage proportionate to t
 
 ## Output
 
-Output ONLY the commit message text. Do not include any preamble, explanation, code fences, or trailing commentary.
 Do not add any attribution lines such as 'Co-Authored-By: ...', 'Generated with ...', or '🤖' markers."
 
 if [ "$#" -gt 0 ]; then
@@ -50,8 +49,12 @@ if [ "$#" -gt 0 ]; then
 $*"
 fi
 
-message="$(
+schema='{"type":"object","properties":{"message":{"type":"string","description":"The full git commit message, ready to use as-is: no markdown code fences, no preamble, no trailing commentary."}},"required":["message"]}'
+
+response="$(
   printf '%s' "$prompt" | claude -p --model sonnet \
+    --output-format json \
+    --json-schema "$schema" \
     --permission-mode auto \
     --tools Read Glob Grep Bash \
     --allowed-tools \
@@ -62,6 +65,14 @@ message="$(
       'Bash(rtk git show:*)' 'Bash(rtk git branch:*)' \
       'Bash(git blame:*)' 'Bash(git ls-files:*)' 'Bash(git rev-parse:*)'
 )"
+
+if [ "$(printf '%s' "$response" | jq -r '.is_error')" = 'true' ]; then
+  echo 'commit: claude failed to generate a commit message' >&2
+  printf '%s\n' "$response" >&2
+  exit 1
+fi
+
+message="$(printf '%s' "$response" | jq -r '.structured_output.message')"
 
 tmpfile="$(mktemp -t COMMIT_EDITMSG.XXXXXX)"
 trap 'rm -f "$tmpfile"' EXIT
