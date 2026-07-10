@@ -1,6 +1,7 @@
 brew "bat"
 brew "chezmoi"
 brew "colordiff"
+brew "crit"
 brew "curl"
 brew "editorconfig"
 brew "exiftool"
