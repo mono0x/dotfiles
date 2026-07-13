@@ -56,7 +56,7 @@ rev = "889f4772c12b9dbe4965bbd56f2572af0a28fa3b"
 [plugins.zsh-completions]
 # renovate: currentValue=master
 github = "zsh-users/zsh-completions"
-rev = "03bae0bf3f9c4ab894f1f11a31ffe7a1e1029879"
+rev = "9903bae60284072de3fa0e3e20965f22368c5694"
 
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
@@ -84,7 +84,7 @@ rev = "5160a2decb9851768cc746b55d82769424580988"
 [plugins.ni]
 # renovate: currentValue=main
 github = "azu/ni.zsh"
-rev = "72ddee65fc1f6c6fa436ea01521896a083cd986a"
+rev = "a063d9f3da4ee3899115c1c83ef031acfb521cad"
 
 [plugins.zshrc-defer]
 local = "~/.config/zsh/zshrc.defer.d"
