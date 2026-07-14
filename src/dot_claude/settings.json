@@ -91,5 +91,6 @@
     ]
   },
   "plansDirectory": "./.claude/plans",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "model": "opus"
 }
