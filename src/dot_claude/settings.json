@@ -92,5 +92,5 @@
   },
   "plansDirectory": "./.claude/plans",
   "skipAutoPermissionPrompt": true,
-  "model": "opus"
+  "model": "claude-opus-4-7"
 }
