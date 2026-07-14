@@ -20,5 +20,14 @@
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark",
+  },
+  "preferred_line_length": 112,
+  "languages": {
+    "Markdown": {
+      "soft_wrap": "bounded"
+    },
+    "AsciiDoc": {
+      "soft_wrap": "bounded"
+    }
   }
 }
