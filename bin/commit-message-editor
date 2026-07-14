@@ -15,10 +15,6 @@ detect_terminal_editor() {
         printf '%s\n' code
         return 0
         ;;
-      *Zed.app*|*zed*)
-        printf '%s\n' zed
-        return 0
-        ;;
     esac
 
     parent_pid="$(ps -o ppid= -p "${parent_pid}" 2>/dev/null || true)"
@@ -35,9 +31,6 @@ editor="$(detect_terminal_editor || true)"
 if [ "${editor}" = 'code' ] && [ -x "$(command -v code)" ]
 then
   exec code --wait "$@"
-elif [ "${editor}" = 'zed' ] && [ -x /Applications/Zed.app/Contents/MacOS/cli ]
-then
-  exec /Applications/Zed.app/Contents/MacOS/cli --wait "$@"
 elif [ -x "$(command -v nvim)" ]
 then
   exec nvim "$@"
