@@ -37,4 +37,4 @@ git = "hub"
 sudo = "sudo " # trailing space lets the following word expand as an alias too
 sudoe = "sudo -e"
 vi = "nvim"
-zed = "/Applications/Zed.app/Contents/MacOS/cli"
+zed = "/Applications/Zed.app/Contents/MacOS/cli --classic" # https://github.com/zed-industries/zed/pull/59415
