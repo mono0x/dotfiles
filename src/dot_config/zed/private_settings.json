@@ -15,6 +15,8 @@
   },
   "vim_mode": true,
   "ui_font_size": 15,
+  "buffer_font_family": "HackGen Console NF",
+  "buffer_line_height": "standard",
   "buffer_font_size": 14,
   "auto_install_extensions": {
     "asciidoc": true,
