@@ -18,4 +18,11 @@
       // "j k": "vim::NormalBefore"
     },
   },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space g b": "git::Blame",
+      "space g h": "editor::OpenPermalinkToLine"
+    }
+  }
 ]
