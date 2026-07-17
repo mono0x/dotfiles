@@ -1,5 +1,20 @@
-[bootstrap.macos.defaults]
-NSGlobalDomain = { KeyRepeat = 2, InitialKeyRepeat = 15, ApplePressAndHoldEnabled = false }
+[bootstrap.packages]
+"brew:zsh" = "latest"
+
+[bootstrap.macos.dock]
+autohide = true
+show_recents = false
+
+[bootstrap.macos.keyboard]
+key_repeat = 2
+initial_key_repeat = 15
+press_and_hold = false
+
+[bootstrap.macos.trackpad]
+tap_to_click = true
+
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/zsh"
 
 [tools]
 "github:afadesigns/zshellcheck" = "1.7.1"
