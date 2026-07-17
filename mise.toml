@@ -1,3 +1,6 @@
+[bootstrap.macos.defaults]
+NSGlobalDomain = { KeyRepeat = 2, InitialKeyRepeat = 15, ApplePressAndHoldEnabled = false }
+
 [tools]
 "github:afadesigns/zshellcheck" = "1.7.1"
 "github:goss-org/goss" = "0.4.9"
