@@ -1,12 +1,15 @@
 # dotfiles
 
-![test](https://github.com/mono0x/dotfiles/workflows/test/badge.svg)
+![CI](https://github.com/mono0x/dotfiles/actions/workflows/ci.yml/badge.svg)
 
 ## Setup
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mono0x/dotfiles/main/install.sh)"
+# Setup Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-sudo vi /etc/shells # Append /opt/homebrew/bin/zsh
-chsh -s /opt/homebrew/bin/zsh
+git clone https://github.com/mono0x/dotfiles ~/.local/share/chezmoi
+brew install mise
+mise -C ~/.local/share/chezmoi trust
+mise -C ~/.local/share/chezmoi bootstrap
 ```

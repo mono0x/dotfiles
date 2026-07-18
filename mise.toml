@@ -1,4 +1,5 @@
 [bootstrap.packages]
+"brew:sheldon" = "latest"
 "brew:zsh" = "latest"
 
 [bootstrap.macos.dock]
@@ -16,10 +17,14 @@ tap_to_click = true
 [bootstrap.user]
 login_shell = "/opt/homebrew/bin/zsh"
 
+[env]
+_.path = ["/opt/homebrew/bin", "/opt/homebrew/sbin", "./bin"]
+
 [tools]
 "github:afadesigns/zshellcheck" = "1.7.1"
 "github:goss-org/goss" = "0.4.9"
 actionlint = "1.7.12"
+chezmoi = "2.71.0"
 dprint = "0.55.1"
 hk = "1.50.0"
 pkl = "0.32.0"
@@ -27,9 +32,10 @@ shellcheck = "0.11.0"
 shfmt = "3.13.1"
 zizmor = "1.26.1"
 
-[tasks.cz]
-run = "cz-clean-env --source $MISE_PROJECT_ROOT"
-quiet = true
+[tasks.bootstrap]
+run = [
+  "chezmoi apply",
+]
 
 [tasks.zsh-bench]
 run = "hyperfine -w 5 -r 50 'zsh -i -c exit'"
@@ -39,4 +45,4 @@ run = "zsh -i -c exit"
 env.ZPROF = "1"
 
 [shell_alias]
-cz = "mise run cz"
+cz = "chezmoi"

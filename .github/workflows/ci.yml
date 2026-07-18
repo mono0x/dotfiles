@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - "*"
+      - "main"
   pull_request:
 permissions:
   contents: read
@@ -19,22 +19,22 @@ jobs:
         run: |
           mkdir -p "$HOME/.local/share"
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
-      - name: Copy install.sh to outside of the repository
+          echo "CHEZMOI_SOURCE_DIR=$HOME/.local/share/chezmoi" >> "$GITHUB_ENV"
+      - name: "Workaround: Resolve Homebrew/mise link conflict"
         run: |
-          cp ./install.sh /tmp/install.sh
-      - name: Run test
-        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
-        with:
-          command: |
-            cd /tmp
-            ./install.sh
-          max_attempts: 5
-          retry_wait_seconds: 5
-          timeout_minutes: 5
-      - name: Run test again to test idempotency
-        working-directory: /tmp
+          brew unlink ca-certificates || true
+      - name: Trust
+        working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
         run: |
-          ./install.sh
+          mise trust
+      - name: Run bootstrap
+        working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
+        run: |
+          mise bootstrap --skip user
+      - name: Run bootstrap again to test idempotency
+        working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
+        run: |
+          mise bootstrap --skip user
   test-static:
     runs-on: ubuntu-latest
     steps:
