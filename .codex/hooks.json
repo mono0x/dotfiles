@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command' | sed -nE 's/^\\*\\*\\* (Add|Update) File: (.*)$/\\2/p; s/^\\*\\*\\* Move to: (.*)$/\\1/p' | while IFS= read -r file; do mise exec -- hk run post-tool-use \"$file\" >&2 || exit 2; done",
+            "statusMessage": "Formatting edited files"
+          }
+        ]
+      }
+    ]
+  }
+}
