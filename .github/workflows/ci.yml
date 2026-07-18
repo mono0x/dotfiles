@@ -20,6 +20,9 @@ jobs:
           mkdir -p "$HOME/.local/share"
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
           echo "CHEZMOI_SOURCE_DIR=$HOME/.local/share/chezmoi" >> "$GITHUB_ENV"
+      - name: "Workaround: Resolve Homebrew/mise link conflict"
+        run: |
+          brew unlink ca-certificates || true
       - name: Trust
         working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
         run: |
