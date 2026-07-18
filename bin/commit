@@ -1,5 +1,5 @@
 #!/bin/bash
-# Generate a commit message with claude and commit.
+# Generate a commit message with Codex and commit.
 set -eu
 
 edit=
@@ -49,33 +49,26 @@ if [ "$#" -gt 0 ]; then
 $*"
 fi
 
-schema='{"type":"object","properties":{"message":{"type":"string","description":"The full git commit message, ready to use as-is: no markdown code fences, no preamble, no trailing commentary."}},"required":["message"]}'
+schema='{"type":"object","properties":{"message":{"type":"string","description":"The full git commit message, ready to use as-is: no markdown code fences, no preamble, no trailing commentary."}},"required":["message"],"additionalProperties":false}'
 
-response="$(
-  printf '%s' "$prompt" | claude -p --model sonnet \
-    --output-format json \
-    --json-schema "$schema" \
-    --permission-mode auto \
-    --tools Read Glob Grep Bash \
-    --allowed-tools \
-      Read Glob Grep \
-      'Bash(git diff:*)' 'Bash(git status:*)' 'Bash(git log:*)' \
-      'Bash(git show:*)' 'Bash(git branch:*)' \
-      'Bash(rtk git diff:*)' 'Bash(rtk git status:*)' 'Bash(rtk git log:*)' \
-      'Bash(rtk git show:*)' 'Bash(rtk git branch:*)' \
-      'Bash(git blame:*)' 'Bash(git ls-files:*)' 'Bash(git rev-parse:*)'
-)"
+schemafile="$(mktemp -t commit-schema.XXXXXX)"
+responsefile="$(mktemp -t commit-response.XXXXXX)"
+tmpfile="$(mktemp -t COMMIT_EDITMSG.XXXXXX)"
+trap 'rm -f "$schemafile" "$responsefile" "$tmpfile"' EXIT
+printf '%s\n' "$schema" >"$schemafile"
 
-if [ "$(printf '%s' "$response" | jq -r '.is_error')" = 'true' ]; then
-  echo 'commit: claude failed to generate a commit message' >&2
-  printf '%s\n' "$response" >&2
+if ! printf '%s' "$prompt" | codex exec \
+  --sandbox read-only \
+  --ephemeral \
+  --output-schema "$schemafile" \
+  --output-last-message "$responsefile" \
+  -; then
+  echo 'commit: codex failed to generate a commit message' >&2
   exit 1
 fi
 
-message="$(printf '%s' "$response" | jq -r '.structured_output.message')"
+message="$(jq -r '.message' "$responsefile")"
 
-tmpfile="$(mktemp -t COMMIT_EDITMSG.XXXXXX)"
-trap 'rm -f "$tmpfile"' EXIT
 printf '%s\n' "$message" >"$tmpfile"
 
 if [ -n "$edit" ]; then
