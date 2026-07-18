@@ -10,8 +10,6 @@ if [[ "${ZPROF:-}" = "1" ]]; then zmodload zsh/zprof; fi
 {{ includeTemplate "dot_config/zsh/.homebrew.zsh.tmpl" . }}
 
 # Sheldon
-{{ if lookPath "sheldon" -}}
-{{ output "sheldon" "--quiet" "source" "--relock" | trim }}
-{{ end -}}
+source ~/.config/zsh/sheldon.zsh
 
 if [[ "${ZPROF:-}" = "1" ]]; then zprof; fi
