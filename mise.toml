@@ -34,12 +34,8 @@ zizmor = "1.26.1"
 
 [tasks.bootstrap]
 run = [
-  "mise run cz apply",
+  "chezmoi apply",
 ]
-
-[tasks.cz]
-run = "cz-clean-env --source $MISE_PROJECT_ROOT"
-quiet = true
 
 [tasks.zsh-bench]
 run = "hyperfine -w 5 -r 50 'zsh -i -c exit'"
@@ -49,4 +45,4 @@ run = "zsh -i -c exit"
 env.ZPROF = "1"
 
 [shell_alias]
-cz = "mise run cz"
+cz = "chezmoi"
