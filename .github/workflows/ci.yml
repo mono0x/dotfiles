@@ -19,22 +19,18 @@ jobs:
         run: |
           mkdir -p "$HOME/.local/share"
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
-      - name: Copy install.sh to outside of the repository
+      - name: Trust
+        working-directory: ~/.local/share/chezmoi
         run: |
-          cp ./install.sh /tmp/install.sh
-      - name: Run test
-        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
-        with:
-          command: |
-            cd /tmp
-            ./install.sh
-          max_attempts: 5
-          retry_wait_seconds: 5
-          timeout_minutes: 5
-      - name: Run test again to test idempotency
-        working-directory: /tmp
+          mise trust
+      - name: Run bootstrap
+        working-directory: ~/.local/share/chezmoi
         run: |
-          ./install.sh
+          mise bootstrap
+      - name: Run bootstrap again to test idempotency
+        working-directory: ~/.local/share/chezmoi
+        run: |
+          mise bootstrap
   test-static:
     runs-on: ubuntu-latest
     steps:
