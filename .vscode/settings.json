@@ -1,4 +1,5 @@
 {
+  "dprint.path": "~/.local/share/mise/shims/dprint",
   "files.associations": {
     "src/dot_config/ghostty/config.ghostty": "ini",
     "src/dot_config/git/conf.d/*.*": "ini",
