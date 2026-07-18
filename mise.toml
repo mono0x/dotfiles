@@ -18,7 +18,7 @@ tap_to_click = true
 login_shell = "/opt/homebrew/bin/zsh"
 
 [env]
-_.path = ["/opt/homebrew/bin", "/opt/homebrew/sbin"]
+_.path = ["/opt/homebrew/bin", "/opt/homebrew/sbin", "$MISE_PROJECT_ROOT/bin"]
 
 [tools]
 "github:afadesigns/zshellcheck" = "1.7.1"
