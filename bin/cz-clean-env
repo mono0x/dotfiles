@@ -8,5 +8,5 @@ exec env -i \
   GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
 /bin/bash --noprofile --norc -s -- "$@" << 'EOF'
 eval "$(/usr/libexec/path_helper -s)"
-exec mise exec -- chezmoi "$@"
+exec "$HOMEBREW_PREFIX/bin/mise" exec -- chezmoi "$@"
 EOF
