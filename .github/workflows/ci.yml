@@ -19,16 +19,17 @@ jobs:
         run: |
           mkdir -p "$HOME/.local/share"
           ln -s "$(pwd)" "$HOME/.local/share/chezmoi"
+          echo "CHEZMOI_SOURCE_DIR=$HOME/.local/share/chezmoi" >> "$GITHUB_ENV"
       - name: Trust
-        working-directory: ~/.local/share/chezmoi
+        working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
         run: |
           mise trust
       - name: Run bootstrap
-        working-directory: ~/.local/share/chezmoi
+        working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
         run: |
           mise bootstrap
       - name: Run bootstrap again to test idempotency
-        working-directory: ~/.local/share/chezmoi
+        working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
         run: |
           mise bootstrap
   test-static:
