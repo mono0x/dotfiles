@@ -1,6 +1,7 @@
 .claude/skills/code-review
 .config/ghostty/config
 .config/git/conf.d/hk
+.config/git/conf.d/platform
 .config/mise/settings.toml
 .config/zsh/functions
 .config/zsh/zshrc.defer.d/ni.zsh
