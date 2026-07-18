@@ -29,11 +29,11 @@ jobs:
       - name: Run bootstrap
         working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
         run: |
-          mise bootstrap
+          mise bootstrap --skip user
       - name: Run bootstrap again to test idempotency
         working-directory: ${{ env.CHEZMOI_SOURCE_DIR }}
         run: |
-          mise bootstrap
+          mise bootstrap --skip user
   test-static:
     runs-on: ubuntu-latest
     steps:
