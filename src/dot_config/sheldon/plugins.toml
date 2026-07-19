@@ -92,7 +92,7 @@ local = "~/.config/zsh/zshrc.defer.d"
 [plugins.pure]
 # renovate: currentValue=main
 github = "sindresorhus/pure"
-rev = "d0f35c270bad6d3df57f8da3f8d02e5465fb9b3d"
+rev = "89c9e30a38d3d35457bcc58b43ea6c28ae56934b"
 use = ["async.zsh", "pure.zsh"]
 apply = ["source"]
 
