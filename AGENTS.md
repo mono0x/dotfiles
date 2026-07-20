@@ -1,38 +1,31 @@
-# Agent Guideline
+# Agent Guidelines
 
 ## Repository Overview
 
-This repository manages macOS dotfiles using chezmoi. Source files live under the `src/` directory (configured via `.chezmoiroot`), and chezmoi deploys them from `~/.local/share/chezmoi` to the appropriate locations in the home directory.
+This repository manages macOS dotfiles with chezmoi. `.chezmoiroot` sets `src/` as the chezmoi source directory, while repository-level files configure development tooling and CI.
 
-## Development Commands
+Follow chezmoi's source-state conventions when changing files under `src/`. Use the existing nearby files as the guide for naming and organization.
 
-### Running Tests
+## Sources of Truth
 
-```sh
-# Run all linters and format checks
-hk check --all
+- `README.md`: setup instructions
+- `mise.toml`: tools, bootstrap configuration, and project tasks
+- `hk.pkl`: linting, formatting, and git hooks
+- `Brewfile`: Homebrew dependencies
+- `.github/`: CI workflows and automation
+- `goss.yaml` and `test/goss/`: applied-system validation
+- `src/.chezmoiscripts/`: scripts run by chezmoi
+- `src/.chezmoiexternal.toml.tmpl`: external files managed by chezmoi
+- `src/.chezmoiignore`: deployment exclusions
 
-# Auto-fix formatting and lint issues
-hk fix --all
-```
+Consult these files instead of copying version numbers, tool lists, or workflow details into documentation.
 
-### Setup and Apply
+## Development Workflow
 
-```sh
-# Initial setup (installs Homebrew, chezmoi, and applies configuration)
-./install.sh
+Use the commands defined by the current project configuration:
 
-# Apply chezmoi changes in clean environment
-mise run cz apply -v   # or: ./bin/cz-clean-env apply -v
+- Use `mise` for tools, tasks, and bootstrap operations.
+- Use `hk` for repository checks and automatic fixes.
+- Use `chezmoi diff` to review deployment changes before applying them.
 
-# Preview changes before applying
-mise run cz diff
-
-# Note: CI tests run install.sh twice to verify idempotency
-```
-
-### Environment Tools
-
-- **Homebrew**: package management (defined in `Brewfile`)
-- **hk**: lint/format runner with pre-commit hook (config in `hk.pkl`)
-- **mise**: runtime/tool version management (config in `mise.toml`; manages dprint, hk, shellcheck, etc.)
+Run the checks configured in `hk.pkl` after making changes. When behavior changes, update the closest relevant validation alongside it.
