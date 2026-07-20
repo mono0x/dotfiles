@@ -32,11 +32,14 @@ zizmor = "1.27.0"
 [tasks.bootstrap]
 run = [
   '''
-  /bin/zsh --no-rcs -s -c '
-  (( ${path[(Ie)$HOMEBREW_PREFIX/bin]} )) || path=("$HOMEBREW_PREFIX/bin"(N-/) $path)
-  (( ${path[(Ie)$HOMEBREW_PREFIX/sbin]} )) || path=("$HOMEBREW_PREFIX/sbin"(N-/) $path)
-  chezmoi apply
-  '
+  env -i \
+    HOME="$HOME" \
+    HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}" \
+    GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
+  /bin/zsh --no-rcs -s -- "$@" << 'EOF'
+  eval "$(/usr/libexec/path_helper -s)"
+  path=("$HOMEBREW_PREFIX/bin"(N-/) "$HOMEBREW_PREFIX/sbin"(N-/) $path)
+  mise exec -- chezmoi apply
   ''',
 ]
 
