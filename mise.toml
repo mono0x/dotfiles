@@ -39,7 +39,7 @@ run = [
   /bin/zsh --no-rcs -s -- "$@" << 'EOF'
   eval "$(/usr/libexec/path_helper -s)"
   path=("$HOMEBREW_PREFIX/bin"(N-/) "$HOMEBREW_PREFIX/sbin"(N-/) $path)
-  chezmoi apply --verbose
+  mise exec -- chezmoi apply
   ''',
 ]
 
