@@ -10,7 +10,11 @@ local linters = new Mapping<String, Step> {
   }
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) {
-    glob = Builtins.shfmt.glob + List("src/dot_zshenv", "src/dot_zprofile")
+    match_any =
+      Builtins.shfmt.match_any
+        + List(new FileSelector {
+          glob = List("src/dot_zshenv", "src/dot_zprofile")
+        })
   }
   ["bash"] {
     glob = List("**/*.sh")
