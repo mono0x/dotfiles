@@ -12,4 +12,6 @@ git clone https://github.com/mono0x/dotfiles ~/.local/share/chezmoi
 brew install mise
 mise -C ~/.local/share/chezmoi trust
 mise -C ~/.local/share/chezmoi bootstrap
+
+killall Dock; killall Finder; killall SystemUIServer
 ```
