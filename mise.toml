@@ -36,10 +36,11 @@ run = [
     HOME="$HOME" \
     HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}" \
     GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
-  /bin/zsh --no-rcs -s -- "$@" << 'EOF'
+  /bin/zsh --no-rcs -c '
   eval "$(/usr/libexec/path_helper -s)"
-  path=("$HOMEBREW_PREFIX/bin"(N-/) "$HOMEBREW_PREFIX/sbin"(N-/) $path)
-  mise exec -- chezmoi apply
+  path=(~/.local/share/mise/shims(N-/) "$HOMEBREW_PREFIX/bin"(N-/) "$HOMEBREW_PREFIX/sbin"(N-/) $path)
+  chezmoi apply
+  '
   ''',
 ]
 
