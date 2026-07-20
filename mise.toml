@@ -17,9 +17,6 @@ tap_to_click = true
 [bootstrap.user]
 login_shell = "/opt/homebrew/bin/zsh"
 
-[env]
-_.path = ["/opt/homebrew/bin", "/opt/homebrew/sbin", "./bin"]
-
 [tools]
 "github:afadesigns/zshellcheck" = "1.7.1"
 "github:goss-org/goss" = "0.4.9"
@@ -34,7 +31,16 @@ zizmor = "1.26.1"
 
 [tasks.bootstrap]
 run = [
-  "chezmoi apply",
+  '''
+  env -i \
+    HOME="$HOME" \
+    HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}" \
+    GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
+  /bin/zsh --no-rcs -s -- "$@" << 'EOF'
+  eval "$(/usr/libexec/path_helper -s)"
+  path=("$HOMEBREW_PREFIX/bin"(N-/) "$HOMEBREW_PREFIX/sbin"(N-/) $path)
+  chezmoi apply --verbose
+  ''',
 ]
 
 [tasks.zsh-bench]
