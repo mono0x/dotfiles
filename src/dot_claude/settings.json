@@ -80,6 +80,7 @@
     "enabled": true,
     "excludedCommands": [
       "./gradlew:*",
+      "crit:*",
       "ctx7:*",
       "hk:*",
       "gh:*",
