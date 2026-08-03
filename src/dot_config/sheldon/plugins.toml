@@ -15,9 +15,12 @@ shell = "zsh"
 apply = ["defer"]
 
 # Renovate's custom manager (.github/renovate.json) keeps each commit hash up to date.
-# Add the annotation comment right before a github line, with currentValue set to the
-# repository's default branch; datasource and depName are derived from the github line:
-#   # renovate: currentValue=<branch>
+# Add the annotation comment right before a github line; depName is derived from the
+# github line. Track a release tag where the upstream keeps tagging, and the default
+# branch otherwise -- only tags carry a release timestamp, so `minimumReleaseAge` can
+# be enforced for them:
+#   # renovate: datasource=github-tags currentValue=<tag>
+#   # renovate: datasource=github-digest currentValue=<branch>
 #   github = "<owner>/<repo>"
 #   rev = "<commit hash>"
 
@@ -25,13 +28,13 @@ apply = ["defer"]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
 [plugins.zsh-defer]
-# renovate: currentValue=master
+# renovate: datasource=github-digest currentValue=master
 github = "romkatv/zsh-defer"
 rev = "53a26e287fbbe2dcebb3aa1801546c6de32416fa"
 apply = ["source"]
 
 [plugins.zsh-smartcache]
-# renovate: currentValue=main
+# renovate: datasource=github-digest currentValue=main
 github = "QuarticCat/zsh-smartcache"
 rev = "54aba13a6824e212992fd754c598c9e9acd259a3"
 apply = ["source"]
@@ -49,12 +52,12 @@ apply = ["source"]
 #   ($FAST_HIGHLIGHT) loaded first.
 # - zsh-autosuggestions-abbreviations-strategy is order-independent.
 [plugins.zsh-abbr]
-# renovate: currentValue=main
+# renovate: datasource=github-tags currentValue=v6.5.2
 github = "olets/zsh-abbr"
-rev = "889f4772c12b9dbe4965bbd56f2572af0a28fa3b"
+rev = "4facba32711875fb2049720a0f6d6d5c3b56b986"
 
 [plugins.zsh-completions]
-# renovate: currentValue=master
+# renovate: datasource=github-digest currentValue=master
 github = "zsh-users/zsh-completions"
 rev = "bf2c5393295fe82d74e3b4585baa483722653ab8"
 
@@ -62,27 +65,27 @@ rev = "bf2c5393295fe82d74e3b4585baa483722653ab8"
 inline = "autoload -Uz compinit && zsh-defer compinit"
 
 [plugins.fast-syntax-highlighting]
-# renovate: currentValue=master
+# renovate: datasource=github-tags currentValue=v1.56
 github = "zdharma-continuum/fast-syntax-highlighting"
-rev = "3d574ccf48804b10dca52625df13da5edae7f553"
+rev = "5ecd353c81214f82bdeca5483fab6ccc5a2d5494"
 
 [plugins.zsh-autosuggestions]
-# renovate: currentValue=master
+# renovate: datasource=github-digest currentValue=master
 github = "zsh-users/zsh-autosuggestions"
 rev = "85919cd1ffa7d2d5412f6d3fe437ebdbeeec4fc5"
 
 [plugins.zsh-autosuggestions-abbreviations-strategy]
-# renovate: currentValue=main
+# renovate: datasource=github-tags currentValue=v1.1.2
 github = "olets/zsh-autosuggestions-abbreviations-strategy"
 rev = "3ce24713e4a49f9a5060d9016d35f3cd048d1c74"
 
 [plugins.fast-abbr-highlighting]
-# renovate: currentValue=main
+# renovate: datasource=github-digest currentValue=main
 github = "5A6F65/fast-abbr-highlighting"
 rev = "5160a2decb9851768cc746b55d82769424580988"
 
 [plugins.ni]
-# renovate: currentValue=main
+# renovate: datasource=github-tags currentValue=v1.11.0
 github = "azu/ni.zsh"
 rev = "a063d9f3da4ee3899115c1c83ef031acfb521cad"
 
@@ -90,7 +93,7 @@ rev = "a063d9f3da4ee3899115c1c83ef031acfb521cad"
 local = "~/.config/zsh/zshrc.defer.d"
 
 [plugins.pure]
-# renovate: currentValue=main
+# renovate: datasource=github-tags currentValue=v1.28.3
 github = "sindresorhus/pure"
 rev = "89c9e30a38d3d35457bcc58b43ea6c28ae56934b"
 use = ["async.zsh", "pure.zsh"]
