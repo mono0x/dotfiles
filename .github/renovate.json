@@ -19,10 +19,9 @@
         "/^src/\\.chezmoiexternal\\.toml\\.tmpl$/"
       ],
       "matchStrings": [
-        "# renovate: currentValue=(?<currentValue>\\S+)\\s+url = \"https://raw\\.githubusercontent\\.com/(?<depName>[^/]+/[^/]+)/(?<currentDigest>[0-9a-f]+)/",
-        "# renovate: currentValue=(?<currentValue>\\S+)\\s+url = \"https://github\\.com/(?<depName>[^/]+/[^/]+)/archive/(?<currentDigest>[0-9a-f]+)\\.tar\\.gz\""
-      ],
-      "datasourceTemplate": "github-digest"
+        "# renovate: datasource=(?<datasource>\\S+) currentValue=(?<currentValue>\\S+)\\s+url = \"https://raw\\.githubusercontent\\.com/(?<depName>[^/]+/[^/]+)/(?<currentDigest>[0-9a-f]+)/",
+        "# renovate: datasource=(?<datasource>\\S+) currentValue=(?<currentValue>\\S+)\\s+url = \"https://github\\.com/(?<depName>[^/]+/[^/]+)/archive/(?<currentDigest>[0-9a-f]+)\\.tar\\.gz\""
+      ]
     },
     {
       "customType": "regex",

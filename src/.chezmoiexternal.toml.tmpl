@@ -1,66 +1,68 @@
 # Renovate's custom manager (.github/renovate.json) keeps each commit hash up to date.
-# Add the annotation comment right before a url, with currentValue set to the repository's
-# default branch; datasource and depName are derived from the url:
-#   # renovate: currentValue=<branch>
+# Add the annotation comment right before a url; depName is derived from the url. Track a
+# release tag where the upstream keeps tagging, and the default branch otherwise -- only
+# tags carry a release timestamp, so `minimumReleaseAge` can be enforced for them:
+#   # renovate: datasource=github-tags currentValue=<tag>
+#   # renovate: datasource=github-digest currentValue=<branch>
 #   url = "https://github.com/<owner>/<repo>/archive/<commit hash>.tar.gz"
 
 [".claude/hooks/git-safe.sh"]
 type = "file"
-# renovate: currentValue=main
-url = "https://raw.githubusercontent.com/Bande-a-Bonnot/Boucle-framework/538e59af24758823623093e2fc1b9c8357efc9c0/tools/git-safe/hook.sh"
+# renovate: datasource=github-tags currentValue=v0.13.0
+url = "https://raw.githubusercontent.com/Bande-a-Bonnot/Boucle-framework/4c2dc556aa6794c0747d9dc3ba1c6b045c1ad761/tools/git-safe/hook.sh"
 executable = true
 
 [".claude/skills/grill-me/SKILL.md"]
 type = "file"
-# renovate: currentValue=main
-url = "https://raw.githubusercontent.com/mattpocock/skills/2ab958093e83e0ec752e6c1c5932da465bf23e0c/skills/productivity/grill-me/SKILL.md"
+# renovate: datasource=github-tags currentValue=v1.1.0
+url = "https://raw.githubusercontent.com/mattpocock/skills/d574778f94cf620fcc8ce741584093bc650a61d3/skills/productivity/grill-me/SKILL.md"
 
 [".claude/skills/grilling/SKILL.md"]
 type = "file"
-# renovate: currentValue=main
-url = "https://raw.githubusercontent.com/mattpocock/skills/2ab958093e83e0ec752e6c1c5932da465bf23e0c/skills/productivity/grilling/SKILL.md"
+# renovate: datasource=github-tags currentValue=v1.1.0
+url = "https://raw.githubusercontent.com/mattpocock/skills/d574778f94cf620fcc8ce741584093bc650a61d3/skills/productivity/grilling/SKILL.md"
 
 [".codex/skills/commit/SKILL.md"]
 type = "file"
-# renovate: currentValue=main
+# renovate: datasource=github-tags currentValue=v2.1.220
 url = "https://raw.githubusercontent.com/anthropics/claude-code/7ef6eec9d9ba84ea6f233f26c45f1df5c5991843/plugins/commit-commands/commands/commit.md"
 
 [".codex/skills/grill-me/SKILL.md"]
 type = "file"
-# renovate: currentValue=main
-url = "https://raw.githubusercontent.com/mattpocock/skills/2ab958093e83e0ec752e6c1c5932da465bf23e0c/skills/productivity/grill-me/SKILL.md"
+# renovate: datasource=github-tags currentValue=v1.1.0
+url = "https://raw.githubusercontent.com/mattpocock/skills/d574778f94cf620fcc8ce741584093bc650a61d3/skills/productivity/grill-me/SKILL.md"
 
 [".codex/skills/grilling/SKILL.md"]
 type = "file"
-# renovate: currentValue=main
-url = "https://raw.githubusercontent.com/mattpocock/skills/2ab958093e83e0ec752e6c1c5932da465bf23e0c/skills/productivity/grilling/SKILL.md"
+# renovate: datasource=github-tags currentValue=v1.1.0
+url = "https://raw.githubusercontent.com/mattpocock/skills/d574778f94cf620fcc8ce741584093bc650a61d3/skills/productivity/grilling/SKILL.md"
 
 [".config/nvim/pack/vendor/start/copilot.vim"]
 type = "archive"
-# renovate: currentValue=release
+# renovate: datasource=github-tags currentValue=v1.59.0
 url = "https://github.com/github/copilot.vim/archive/a12fd5672110c8aa7e3c8419e28c96943ca179be.tar.gz"
 stripComponents = 1
 
 [".config/nvim/pack/vendor/start/lualine.nvim"]
 type = "archive"
-# renovate: currentValue=master
+# renovate: datasource=github-digest currentValue=master
 url = "https://github.com/nvim-lualine/lualine.nvim/archive/221ce6b2d999187044529f49da6554a92f740a96.tar.gz"
 stripComponents = 1
 
 [".config/nvim/pack/vendor/start/solarized.nvim"]
 type = "archive"
-# renovate: currentValue=master
+# renovate: datasource=github-digest currentValue=master
 url = "https://github.com/shaunsingh/solarized.nvim/archive/fe02ed49cc017cc93657bd6306a2624394611c69.tar.gz"
 stripComponents = 1
 
 [".config/nvim/pack/vendor/start/vim-fugitive"]
 type = "archive"
-# renovate: currentValue=master
+# renovate: datasource=github-digest currentValue=master
 url = "https://github.com/tpope/vim-fugitive/archive/3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0.tar.gz"
 stripComponents = 1
 
 [".config/nvim/pack/vendor/start/vim-surround"]
 type = "archive"
-# renovate: currentValue=master
+# renovate: datasource=github-digest currentValue=master
 url = "https://github.com/tpope/vim-surround/archive/3d188ed2113431cf8dac77be61b842acb64433d9.tar.gz"
 stripComponents = 1
