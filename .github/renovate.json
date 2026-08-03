@@ -30,12 +30,18 @@
         "/^src/dot_config/sheldon/plugins\\.toml$/"
       ],
       "matchStrings": [
-        "# renovate: currentValue=(?<currentValue>\\S+)\\s+github = \"(?<depName>[^\"]+)\"\\s+rev = \"(?<currentDigest>[0-9a-f]+)\""
-      ],
-      "datasourceTemplate": "github-digest"
+        "# renovate: datasource=(?<datasource>\\S+) currentValue=(?<currentValue>\\S+)\\s+github = \"(?<depName>[^\"]+)\"\\s+rev = \"(?<currentDigest>[0-9a-f]+)\""
+      ]
     }
   ],
   "packageRules": [
+    {
+      "description": "Branch-tracking digests have no release timestamp, so minimumReleaseAge cannot be enforced for them",
+      "matchDatasources": [
+        "github-digest"
+      ],
+      "minimumReleaseAgeBehaviour": "timestamp-optional"
+    },
     {
       "matchManagers": [
         "custom.regex"
