@@ -64,6 +64,7 @@
 [pull]
   ff = only
 [push]
+  autoSetupRemote = true
   default = simple
 [rebase]
   autoSquash = true
