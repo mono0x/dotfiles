@@ -26,6 +26,7 @@
 "brew:htop" = "latest"
 "brew:hub" = "latest"
 "brew:hyperfine" = "latest"
+"brew:jj" = "latest"
 "brew:jq" = "latest"
 "brew:mise" = "latest"
 "brew:moreutils" = "latest"
