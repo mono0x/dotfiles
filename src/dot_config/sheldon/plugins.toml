@@ -27,6 +27,19 @@ apply = ["defer"]
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
+# The prompt, split in two because sheldon sorts each entry's `use` list:
+# instant-prompt.zsh has to be sourced before anything else -- it swallows init output
+# until impure's first precmd -- while async.zsh and impure.zsh load last. Both entries
+# resolve to one clone, so a rev mismatch would silently serve one to the other.
+# Canonical repo is https://tangled.org/dunkirk.sh/impure; the GitHub mirror is what the
+# annotation above can track.
+[plugins.impure-instant-prompt]
+# renovate: datasource=github-digest currentValue=main
+github = "taciturnaxolotl/impure"
+rev = "3b4fc87975104631be168eb7e2fa8535a6f6ad8b"
+use = ["instant-prompt.zsh"]
+apply = ["source"]
+
 [plugins.zsh-defer]
 # renovate: datasource=github-digest currentValue=master
 github = "romkatv/zsh-defer"
@@ -92,11 +105,12 @@ rev = "a063d9f3da4ee3899115c1c83ef031acfb521cad"
 [plugins.zshrc-defer]
 local = "~/.config/zsh/zshrc.defer.d"
 
-[plugins.pure]
-# renovate: datasource=github-tags currentValue=v1.28.3
-github = "sindresorhus/pure"
-rev = "89c9e30a38d3d35457bcc58b43ea6c28ae56934b"
-use = ["async.zsh", "pure.zsh"]
+# Second half of the prompt; see impure-instant-prompt above.
+[plugins.impure]
+# renovate: datasource=github-digest currentValue=main
+github = "taciturnaxolotl/impure"
+rev = "3b4fc87975104631be168eb7e2fa8535a6f6ad8b"
+use = ["async.zsh", "impure.zsh"]
 apply = ["source"]
 
 [plugins.zshrc]

@@ -8,4 +8,7 @@ setopt pushd_ignore_dups
 
 export WORDCHARS="*?_-.[]~&;!#$%^(){}<>"
 
-stty stop undef
+# Unbind ^S (flow-control XOFF) at the tty driver so it never freezes output and stays
+# available to bindkey; noflowcontrol above covers ZLE only, not foreground commands.
+# Read the tty explicitly: stdin is /dev/null while an instant prompt is active.
+stty stop undef <$TTY
