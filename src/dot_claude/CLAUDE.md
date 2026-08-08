@@ -1,6 +1,4 @@
-- Always prefer simplicity over pathological corrections. Follow YAGNI, KISS, and DRY. No backward-compat shims or fallback paths unless they come free without adding cyclomatic complexity.
+- Prefer simplicity and follow YAGNI, KISS, and DRY. Do not add backward-compatibility shims or fallback paths unless required by the task or project.
 - Favor colocation: keep related code, tests, types, and assets close to where they are used rather than splitting them into distant shared layers prematurely.
-- Only add comments to explain particularly unclear parts.
+- Add comments only when they explain non-obvious behavior, constraints, or rationale.
 - Keep identifier names concise, but do not abbreviate English words unless the abbreviation is conventional in the target language. Respect the naming conventions of the original code.
-- Since the Bash tool is executed in a sandbox, file access or network connections may result in errors. In such cases, ask the user for instructions.
-- Reflect user corrections naturally in deliverables, without commentary about having applied them.
