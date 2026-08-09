@@ -59,7 +59,7 @@ rev = "4facba32711875fb2049720a0f6d6d5c3b56b986"
 [plugins.zsh-completions]
 # renovate: datasource=github-digest currentValue=master
 github = "zsh-users/zsh-completions"
-rev = "6ea4709fbc64f813ffa013fdd062fa0f0d9a0dab"
+rev = "334c14d1b49ec8393292b16b2a972f20570361ac"
 
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
