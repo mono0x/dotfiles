@@ -50,7 +50,7 @@
       ],
       "groupName": "chezmoi externals",
       "schedule": [
-        "on monday"
+        "* * * * 1"
       ]
     },
     {
@@ -62,7 +62,7 @@
       ],
       "groupName": "sheldon plugins",
       "schedule": [
-        "on monday"
+        "* * * * 1"
       ]
     },
     {
@@ -75,7 +75,7 @@
       ],
       "groupName": "GitHub Actions",
       "schedule": [
-        "on the first day of the month"
+        "* * 1 * *"
       ]
     },
     {
@@ -88,7 +88,7 @@
       ],
       "groupName": "mise tools",
       "schedule": [
-        "on monday"
+        "* * * * 1"
       ]
     },
     {
@@ -101,7 +101,7 @@
       ],
       "groupName": "mise tools",
       "schedule": [
-        "on monday"
+        "* * * * 1"
       ]
     }
   ]
