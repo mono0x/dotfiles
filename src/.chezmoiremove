@@ -1,3 +1,4 @@
+.claude/hooks/git-safe.sh
 .claude/skills/code-review
 .config/ghostty/config
 .config/git/conf.d/hk

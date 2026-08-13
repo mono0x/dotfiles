@@ -25,13 +25,20 @@
       "WebSearch(*)"
     ],
     "deny": [
-      "Bash(gh api:*)",
       "Bash(gh auth:*)",
       "Bash(gh codespace:*)",
       "Bash(gh gpg-key:*)",
       "Bash(sudo:*)"
     ],
     "defaultMode": "auto"
+  },
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "gh commands that mutate GitHub state: merging, closing, or reopening PRs and issues; deleting repos, releases, tags, secrets, or workflow runs; gh api with a write method (-X or --method POST, PATCH, PUT, DELETE). Read-only gh api GET calls are not covered by this rule.",
+      "git commands that discard uncommitted work or rewrite existing history: force push, git commit --amend, rebase that rewrites already-pushed commits, filter-branch, reflog expire, deleting remote branches or tags.",
+      "publishing to a shared repository: gh pr create, gh pr comment, gh pr review, gh issue create, gh issue comment. Finishing a task is not on its own a request to open a PR."
+    ]
   },
   "hooks": {
     "PreToolUse": [
@@ -41,10 +48,6 @@
           {
             "type": "command",
             "command": "rtk hook claude"
-          },
-          {
-            "type": "command",
-            "command": "$HOME/.claude/hooks/git-safe.sh"
           }
         ]
       }
