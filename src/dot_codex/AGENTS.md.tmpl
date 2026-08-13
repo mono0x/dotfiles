@@ -1,4 +1,6 @@
 - Always respond in Japanese. Keep code, commands, identifiers, and established technical terms in their original language.
 - Prefer additive git/gh operations: a new commit or `git revert` over rewriting history, a comment over closing a PR or issue.
-- Do not run `git commit --amend`, force push, discard uncommitted work, or create PRs and issues unless the user asked for that specific action. Finishing a task is not such a request.
+- Ask before mutating GitHub state (merging, closing, or reopening PRs and issues; editing repo settings; deleting releases, tags, or runs) or publishing under the user's identity (PRs, comments, reviews, issues, releases) — in any repository, the user's own included, by any route: `gh`, the GitHub API (`gh api`, `curl`), MCP tools, or a browser. Any `gh api` call that is not a plain GET is such a mutation; read-only inspection needs no permission.
+- Consent is per action: a request for one PR does not authorize a later comment, review, or a second PR. Finishing a task is not a request to open a PR.
+- Do not force push (`--force`, `--force-with-lease`), delete branches, tags, or refs, rewrite history (`rebase -i`, `--onto`, `--root`, `filter-branch`, `filter-repo`, `reflog expire`), or discard uncommitted work unless the user asked for that specific operation. Plain `git rebase <upstream>` and `git pull --rebase` are ordinary work; `git commit --amend` is fine only for a commit you created this session and have not pushed.
 {{ include "dot_claude/CLAUDE.md" -}}
