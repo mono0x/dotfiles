@@ -1,4 +1,5 @@
 [tools]
+"github:k1LoW/mo" = "latest"
 "npm:ccstatusline" = "latest"
 claude = "latest"
 codex = "latest"
