@@ -21,6 +21,7 @@
   pr = pull --rebase
   push-f = push --force-with-lease
   st = status
+  sw = switch
 # }}}
 
 # settings {{{
