@@ -84,6 +84,11 @@ rev = "3ce24713e4a49f9a5060d9016d35f3cd048d1c74"
 github = "5A6F65/fast-abbr-highlighting"
 rev = "5160a2decb9851768cc746b55d82769424580988"
 
+[plugins.fzf-git]
+# renovate: datasource=github-digest currentValue=main
+github = "junegunn/fzf-git.sh"
+rev = "d5b0a5dcd1e073b8bfca45338d5dfad3e5642471"
+
 [plugins.ni]
 # renovate: datasource=github-tags currentValue=v1.11.0
 github = "azu/ni.zsh"
