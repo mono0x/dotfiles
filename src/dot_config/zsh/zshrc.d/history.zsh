@@ -14,9 +14,11 @@ setopt interactive_comments
 setopt share_history # noka: ZC1928
 
 # http://mollifier.hatenablog.com/entry/20090728/p1
-_history_min_length() {
+# Return 2 keeps the line in the session history (reusable with ^p) but out of HISTFILE.
+_history_no_save() {
   local line=${1%%$'\n'}
-  ((${#line} >= 4))
+  ((${#line} >= 4)) || return 2
+  [[ $line != (cd|ls)(|' '*) ]] || return 2
 }
 autoload -Uz add-zsh-hook
-add-zsh-hook zshaddhistory _history_min_length
+add-zsh-hook zshaddhistory _history_no_save
