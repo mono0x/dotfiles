@@ -15,4 +15,5 @@ setopt share_history # noka: ZC1928
 
 # Applied when lines are written to HISTFILE, so matches stay in the session
 # history (reusable with ^p) but out of the file.
+# ?(#c,3): up to 3 characters. (cd|ls)(| *): cd/ls alone or with arguments.
 HISTORY_IGNORE='(?(#c,3)|(cd|ls)(| *))'
