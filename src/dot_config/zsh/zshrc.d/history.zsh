@@ -13,12 +13,6 @@ setopt interactive_comments
 # hist_ignore_space (above) lets sensitive commands opt out.
 setopt share_history # noka: ZC1928
 
-# http://mollifier.hatenablog.com/entry/20090728/p1
-# Return 2 keeps the line in the session history (reusable with ^p) but out of HISTFILE.
-_history_no_save() {
-  local line=${1%%$'\n'}
-  ((${#line} >= 4)) || return 2
-  [[ $line != (cd|ls)(|' '*) ]] || return 2
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook zshaddhistory _history_no_save
+# Applied when lines are written to HISTFILE, so matches stay in the session
+# history (reusable with ^p) but out of the file.
+HISTORY_IGNORE='(?(#c,3)|(cd|ls)(| *))'
