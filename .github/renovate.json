@@ -67,6 +67,18 @@
     },
     {
       "matchManagers": [
+        "custom.regex"
+      ],
+      "matchFileNames": [
+        "dprint.json"
+      ],
+      "groupName": "dprint plugins",
+      "schedule": [
+        "* * * * 1"
+      ]
+    },
+    {
+      "matchManagers": [
         "github-actions"
       ],
       "matchUpdateTypes": [
