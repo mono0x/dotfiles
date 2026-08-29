@@ -28,9 +28,6 @@ minimum_release_age_excludes = [
 [settings.github]
 use_git_credentials = true
 
-[settings.npm]
-package_manager = "pnpm"
-
 [settings.pipx]
 uvx = true
 
