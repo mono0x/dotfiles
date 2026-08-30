@@ -6,9 +6,6 @@ if [[ "${ZPROF:-}" = "1" ]]; then zmodload zsh/zprof; fi
 # https://zenn.dev/enchan1207/articles/7b9d7d397b7d0d
 [[ -o no_global_rcs ]] && [ -r /etc/zshrc ] && . /etc/zshrc
 
-# Homebrew
-{{ includeTemplate "dot_config/zsh/.homebrew.zsh.tmpl" . }}
-
 # Sheldon
 source ~/.config/zsh/sheldon.zsh
 

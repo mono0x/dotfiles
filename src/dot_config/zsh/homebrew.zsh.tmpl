@@ -1,0 +1,21 @@
+# Sourced by Sheldon right after zsh-smartcache, so it lands before every plugin
+# that expects Homebrew on PATH.
+
+{{ $prefix := "" -}}
+{{ if stat "/opt/homebrew/bin/brew" -}}
+{{ $prefix = "/opt/homebrew" -}}
+{{ end -}}
+
+{{ if ne $prefix "" -}}
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# `brew shellenv` costs ~9ms per startup, so smartcache replays a zcompiled copy and
+# refreshes it in the background. It bails out printing nothing once PATH already
+# starts with Homebrew's bin:sbin, which is exactly the state the refresh runs in, so
+# pin PATH to keep the output independent of when it is captured.
+smartcache eval env PATH=/usr/bin:/bin {{ $prefix }}/bin/brew shellenv zsh
+
+# Not covered by shellenv.
+path+=($HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight(N-/))
+{{ end -}}

@@ -16,3 +16,11 @@ file:
   ~/.config/zsh/.zshrc:
     exists: true
     filetype: file
+
+command:
+  # Covers the whole Homebrew chain: Sheldon loads homebrew.zsh, which replays
+  # `brew shellenv` through zsh-smartcache.
+  zsh -ic 'command -v brew':
+    exit-status: 0
+    stdout:
+      - /opt/homebrew/bin/brew
