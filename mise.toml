@@ -22,6 +22,7 @@
 "brew:gnupg" = "latest"
 "brew:grep" = "latest"
 "brew:gzip" = "latest"
+"brew:herdr" = "latest"
 "brew:hk" = "latest"
 "brew:htop" = "latest"
 "brew:hub" = "latest"
