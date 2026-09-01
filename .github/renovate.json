@@ -9,6 +9,7 @@
   "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "2 days",
   "osvVulnerabilityAlerts": true,
+  "automergeStrategy": "squash",
   "group": {
     "commitMessageTopic": "{{#if upgrades.[1]}}{{{groupName}}}{{else}}{{{depName}}}{{/if}}",
     "commitMessageExtra": "{{#unless upgrades.[1]}}to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewMajor}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}{{/unless}}"
@@ -49,7 +50,8 @@
       "matchFileNames": [
         "src/.chezmoiexternal.toml.tmpl"
       ],
-      "groupName": "chezmoi externals"
+      "groupName": "chezmoi externals",
+      "automerge": true
     },
     {
       "matchManagers": [
@@ -58,7 +60,8 @@
       "matchFileNames": [
         "src/dot_config/sheldon/plugins.toml"
       ],
-      "groupName": "sheldon plugins"
+      "groupName": "sheldon plugins",
+      "automerge": true
     },
     {
       "matchManagers": [
@@ -67,7 +70,8 @@
       "matchFileNames": [
         "dprint.json"
       ],
-      "groupName": "dprint plugins"
+      "groupName": "dprint plugins",
+      "automerge": true
     },
     {
       "matchManagers": [
@@ -77,7 +81,8 @@
         "minor",
         "patch"
       ],
-      "groupName": "GitHub Actions"
+      "groupName": "GitHub Actions",
+      "automerge": true
     },
     {
       "matchManagers": [
@@ -87,7 +92,8 @@
         "minor",
         "patch"
       ],
-      "groupName": "mise tools"
+      "groupName": "mise tools",
+      "automerge": true
     },
     {
       "matchDepNames": [
@@ -97,7 +103,8 @@
         "minor",
         "patch"
       ],
-      "groupName": "mise tools"
+      "groupName": "mise tools",
+      "automerge": true
     }
   ]
 }
