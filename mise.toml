@@ -64,7 +64,6 @@ login_shell = "/opt/homebrew/bin/zsh"
 [tools]
 "github:afadesigns/zshellcheck" = "1.7.3"
 "github:goss-org/goss" = "0.4.10"
-actionlint = "1.7.12"
 chezmoi = "2.72.1"
 dprint = "0.57.0"
 hk = "1.57.0"

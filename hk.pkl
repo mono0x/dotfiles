@@ -30,7 +30,6 @@ local linters = new Mapping<String, Step> {
     fix = "zshellcheck -no-banner -fix {{ files }}"
     batch = true
   }
-  ["actionlint"] = Builtins.actionlint
   ["zizmor"] = (Builtins.zizmor) {
     glob = ".github/{actions,workflows}/**/*.{yaml,yml}"
   }
