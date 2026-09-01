@@ -9,6 +9,7 @@
   "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "2 days",
   "osvVulnerabilityAlerts": true,
+  "platformAutomerge": false,
   "automergeStrategy": "squash",
   "group": {
     "commitMessageTopic": "{{#if upgrades.[1]}}{{{groupName}}}{{else}}{{{depName}}}{{/if}}",
