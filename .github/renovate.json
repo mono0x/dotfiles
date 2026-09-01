@@ -45,14 +45,24 @@
       "minimumReleaseAgeBehaviour": "timestamp-optional"
     },
     {
+      "description": "Automerge everything except major updates",
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest",
+        "pin",
+        "pinDigest"
+      ],
+      "automerge": true
+    },
+    {
       "matchManagers": [
         "custom.regex"
       ],
       "matchFileNames": [
         "src/.chezmoiexternal.toml.tmpl"
       ],
-      "groupName": "chezmoi externals",
-      "automerge": true
+      "groupName": "chezmoi externals"
     },
     {
       "matchManagers": [
@@ -61,8 +71,7 @@
       "matchFileNames": [
         "src/dot_config/sheldon/plugins.toml"
       ],
-      "groupName": "sheldon plugins",
-      "automerge": true
+      "groupName": "sheldon plugins"
     },
     {
       "matchManagers": [
@@ -71,8 +80,7 @@
       "matchFileNames": [
         "dprint.json"
       ],
-      "groupName": "dprint plugins",
-      "automerge": true
+      "groupName": "dprint plugins"
     },
     {
       "matchManagers": [
@@ -82,8 +90,7 @@
         "minor",
         "patch"
       ],
-      "groupName": "GitHub Actions",
-      "automerge": true
+      "groupName": "GitHub Actions"
     },
     {
       "matchManagers": [
@@ -93,8 +100,7 @@
         "minor",
         "patch"
       ],
-      "groupName": "mise tools",
-      "automerge": true
+      "groupName": "mise tools"
     },
     {
       "matchDepNames": [
@@ -104,8 +110,7 @@
         "minor",
         "patch"
       ],
-      "groupName": "mise tools",
-      "automerge": true
+      "groupName": "mise tools"
     }
   ]
 }
