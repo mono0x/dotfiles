@@ -5,7 +5,6 @@
     "github>mono0x/renovate-config:dprint-plugins",
     "github>mono0x/renovate-config:hk-pkl"
   ],
-  "schedule": ["* * 1 * *"],
   "timezone": "Asia/Tokyo",
   "minimumReleaseAge": "2 days",
   "osvVulnerabilityAlerts": true,
@@ -45,7 +44,7 @@
       "minimumReleaseAgeBehaviour": "timestamp-optional"
     },
     {
-      "description": "Automerge everything except major updates",
+      "description": "Automerge everything except major updates, in a monthly batch",
       "matchUpdateTypes": [
         "minor",
         "patch",
@@ -53,6 +52,7 @@
         "pin",
         "pinDigest"
       ],
+      "schedule": ["* * 1 * *"],
       "automerge": true
     },
     {
