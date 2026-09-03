@@ -10,10 +10,6 @@
   "osvVulnerabilityAlerts": true,
   "platformAutomerge": false,
   "automergeStrategy": "squash",
-  "group": {
-    "commitMessageTopic": "{{#if upgrades.[1]}}{{{groupName}}}{{else}}{{{depName}}}{{/if}}",
-    "commitMessageExtra": "{{#unless upgrades.[1]}}to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewMajor}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}{{/unless}}"
-  },
   "customManagers": [
     {
       "customType": "regex",
