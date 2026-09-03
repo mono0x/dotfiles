@@ -96,9 +96,9 @@ github = "junegunn/fzf-git.sh"
 rev = "d5b0a5dcd1e073b8bfca45338d5dfad3e5642471"
 
 [plugins.ni]
-# renovate: datasource=github-tags currentValue=v1.11.1
+# renovate: datasource=github-tags currentValue=v1.12.0
 github = "azu/ni.zsh"
-rev = "03b51474b9d08b6f59cf94233875ac57ee7168c3"
+rev = "9dd33217877d4d5d0ed982609ec50977f6f756b7"
 
 [plugins.zshrc-defer]
 local = "~/.config/zsh/zshrc.defer.d"
