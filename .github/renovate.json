@@ -40,7 +40,7 @@
       "minimumReleaseAgeBehaviour": "timestamp-optional"
     },
     {
-      "description": "Automerge everything except major updates, in a monthly batch",
+      "description": "Automerge everything except major updates",
       "matchUpdateTypes": [
         "minor",
         "patch",
