@@ -1,15 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
-    "github>mono0x/renovate-config:dprint-plugins",
-    "github>mono0x/renovate-config:hk-pkl"
+    "github>mono0x/renovate-config:maintenance"
   ],
-  "timezone": "Asia/Tokyo",
-  "minimumReleaseAge": "2 days",
-  "osvVulnerabilityAlerts": true,
-  "platformAutomerge": false,
-  "automergeStrategy": "squash",
   "customManagers": [
     {
       "customType": "regex",
@@ -40,18 +33,6 @@
       "minimumReleaseAgeBehaviour": "timestamp-optional"
     },
     {
-      "description": "Automerge everything except major updates",
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "digest",
-        "pin",
-        "pinDigest"
-      ],
-      "schedule": ["* * 1 * *"],
-      "automerge": true
-    },
-    {
       "matchManagers": [
         "custom.regex"
       ],
@@ -68,45 +49,6 @@
         "src/dot_config/sheldon/plugins.toml"
       ],
       "groupName": "sheldon plugins"
-    },
-    {
-      "matchManagers": [
-        "custom.regex"
-      ],
-      "matchFileNames": [
-        "dprint.json"
-      ],
-      "groupName": "dprint plugins"
-    },
-    {
-      "matchManagers": [
-        "github-actions"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "groupName": "GitHub Actions"
-    },
-    {
-      "matchManagers": [
-        "mise"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "groupName": "mise tools"
-    },
-    {
-      "matchDepNames": [
-        "hk-pkl"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "groupName": "mise tools"
     }
   ]
 }
