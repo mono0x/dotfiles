@@ -5,11 +5,13 @@
     "src/dot_config/git/conf.d/*.*": "ini",
     "src/dot_config/git/config": "ini",
     "src/dot_config/git/ignore": "ignore",
+    "modify_*": "plaintext",
     "*.toml.tmpl": "toml",
     "*.zsh.tmpl": "shellscript",
     "dot_zprofile": "shellscript",
     "dot_zshenv": "shellscript",
-    "dot_zshrc.tmpl": "shellscript"
+    "dot_zshrc.tmpl": "shellscript",
+    "dprint.json": "jsonc"
   },
   "[json][jsonc][markdown][yaml][toml]": {
     "editor.formatOnSave": true,

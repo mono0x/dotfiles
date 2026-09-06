@@ -1,10 +1,11 @@
 {
-  "excludes": ["sync"],
+  // modify_ scripts are Go templates, so they do not parse as TOML
+  "excludes": ["sync", "src/dot_codex/modify_private_config.toml"],
   "markdown": {
     "textWrap": "maintain"
   },
   "toml": {
-    // `#:schema` ディレクティブが `# :schema` に崩されるのを防ぐ
+    // Keeps the `#:schema` directive from being mangled into `# :schema`
     "comment.forceLeadingSpace": false
   },
   "plugins": [

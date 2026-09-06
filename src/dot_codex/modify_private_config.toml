@@ -1,0 +1,24 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Codex itself writes [projects.*], [hooks.state] and friends, so only the
+       marked range is managed here. TOML requires top-level keys to precede the
+       first table, hence the block goes to the top when the markers are absent. */ -}}
+{{- $block := `# BEGIN dotfiles
+approvals_reviewer = "auto_review"
+model = "gpt-6-astra"
+model_reasoning_effort = "medium"
+personality = "pragmatic"
+
+[agents]
+enabled = true
+default_subagent_model = "gpt-5.6-luna"
+default_subagent_reasoning_effort = "max"
+max_concurrent_threads_per_session = 2
+# END dotfiles
+` -}}
+{{- $re := `(?s)# BEGIN dotfiles\n.*?# END dotfiles\n?` -}}
+{{- if regexMatch $re .chezmoi.stdin -}}
+{{ regexReplaceAllLiteral $re .chezmoi.stdin $block }}
+{{- else -}}
+{{ $block }}
+{{ .chezmoi.stdin }}
+{{- end -}}

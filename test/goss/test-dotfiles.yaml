@@ -17,6 +17,16 @@ file:
     exists: true
     filetype: file
 
+  # The modify_ script manages only the marked range; entries Codex writes
+  # itself, such as [projects.*], are left untouched.
+  ~/.codex/config.toml:
+    exists: true
+    filetype: file
+    contents:
+      - "# BEGIN dotfiles"
+      - 'model = "gpt-6-astra"'
+      - "# END dotfiles"
+
 command:
   # Covers the whole Homebrew chain: Sheldon loads homebrew.zsh, which replays
   # `brew shellenv` through zsh-smartcache.
