@@ -1,6 +1,7 @@
 {
   "env": {
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "true",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
     "DISABLE_INSTALLATION_CHECKS": "true"
   },
   "permissions": {
