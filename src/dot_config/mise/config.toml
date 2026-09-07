@@ -1,6 +1,6 @@
 [tools]
 "github:k1LoW/mo" = "latest"
-"mr-boxington" = { version = "1.8.1", postinstall = "mbx setup --yes" }
+"mr-boxington" = "1.8.1"
 "npm:ccstatusline" = "latest"
 claude = "latest"
 codex = "latest"
@@ -43,3 +43,9 @@ zed = "/Applications/Zed.app/Contents/MacOS/cli --classic" # https://github.com/
 
 [env._]
 path = ["~/Library/Application Support/mbx/bin"]
+
+# Declared here rather than through `mbx setup --yes`, which would write this
+# entry into this chezmoi-managed file and break `chezmoi apply`
+[wrappers.cargo]
+command = "mbx"
+env = { MBX_CARGO_SHIM_MODE = "1" }
