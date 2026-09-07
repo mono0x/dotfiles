@@ -40,6 +40,22 @@
         "id": "7",
         "type": "git-changes",
         "color": "yellow"
+      },
+      {
+        "id": "4673cbf5-b2d3-4e1b-8ab6-6df28913c9a6",
+        "type": "separator"
+      },
+      {
+        "id": "9fe8031a-6873-478f-a8f4-95810fddb5b0",
+        "type": "session-usage"
+      },
+      {
+        "id": "84b14154-4a16-40fb-b215-542fe5bff76b",
+        "type": "separator"
+      },
+      {
+        "id": "f58e2597-8d2f-49ca-b9d0-b4be8eab7a41",
+        "type": "weekly-usage"
       }
     ],
     []
@@ -47,6 +63,7 @@
   "flexMode": "full-minus-40",
   "compactThreshold": 60,
   "colorLevel": 2,
+  "defaultPaddingSide": "both",
   "inheritSeparatorColors": false,
   "globalBold": false,
   "gitCacheTtlSeconds": 5,
