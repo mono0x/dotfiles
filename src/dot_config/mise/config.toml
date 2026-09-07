@@ -1,6 +1,6 @@
 [tools]
 "github:k1LoW/mo" = "latest"
-"mr-boxington" = { version = "1.1.0", postinstall = "mbx setup --yes" }
+"mr-boxington" = { version = "1.8.1", postinstall = "mbx setup --yes" }
 "npm:ccstatusline" = "latest"
 claude = "latest"
 codex = "latest"
@@ -43,3 +43,10 @@ zed = "/Applications/Zed.app/Contents/MacOS/cli --classic" # https://github.com/
 
 [env._]
 path = ["~/Library/Application Support/mbx/bin"]
+
+# Declared here so the postinstall `mbx setup --yes` finds it already configured
+# and leaves this chezmoi-managed file untouched; without it setup writes the
+# entry itself, which makes the next `chezmoi apply` prompt about the change
+[wrappers.cargo]
+command = "mbx"
+env = { MBX_CARGO_SHIM_MODE = "1" }
