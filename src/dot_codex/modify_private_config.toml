@@ -2,6 +2,7 @@
 {{- /* Codex itself writes [projects.*], [hooks.state] and friends, so only the
        marked range is managed here. TOML requires top-level keys to precede the
        first table, hence the block goes to the top when the markers are absent. */ -}}
+{{- $schema := `#:schema https://developers.openai.com/codex/config-schema.json` -}}
 {{- $block := `# BEGIN dotfiles
 approvals_reviewer = "auto_review"
 model = "gpt-6-astra"
@@ -16,9 +17,13 @@ max_concurrent_threads_per_session = 2
 # END dotfiles
 ` -}}
 {{- $re := `(?s)# BEGIN dotfiles\n.*?# END dotfiles\n?` -}}
+{{- $out := "" -}}
 {{- if regexMatch $re .chezmoi.stdin -}}
-{{ regexReplaceAllLiteral $re .chezmoi.stdin $block }}
+{{-   $out = regexReplaceAllLiteral $re .chezmoi.stdin $block -}}
 {{- else -}}
-{{ $block }}
-{{ .chezmoi.stdin }}
+{{-   $out = printf "%s\n%s" $block .chezmoi.stdin -}}
 {{- end -}}
+{{- if not (hasPrefix $schema $out) -}}
+{{-   $out = printf "%s\n%s" $schema $out -}}
+{{- end -}}
+{{- $out -}}
