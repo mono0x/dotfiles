@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "lines": [
     [
       {
@@ -13,7 +13,14 @@
       },
       {
         "id": "373e09c5-e849-41f7-aa55-fe5573149963",
-        "type": "context-percentage"
+        "type": "context-percentage",
+        "metadata": {
+          "inverse": "true",
+          "display": "slider"
+        },
+        "numberFormat": {
+          "style": "compact"
+        }
       },
       {
         "id": "ae83bbbb-e5fd-472c-a951-5539f7fe0bd6",
@@ -40,25 +47,37 @@
         "id": "7",
         "type": "git-changes",
         "color": "yellow"
-      },
-      {
-        "id": "4673cbf5-b2d3-4e1b-8ab6-6df28913c9a6",
-        "type": "separator"
-      },
-      {
-        "id": "9fe8031a-6873-478f-a8f4-95810fddb5b0",
-        "type": "session-usage"
-      },
-      {
-        "id": "84b14154-4a16-40fb-b215-542fe5bff76b",
-        "type": "separator"
-      },
-      {
-        "id": "f58e2597-8d2f-49ca-b9d0-b4be8eab7a41",
-        "type": "weekly-usage"
       }
     ],
-    []
+    [
+      {
+        "id": "bbd43f3b-62c2-45a3-9a18-f8c95d755f5e",
+        "type": "session-usage",
+        "metadata": {
+          "display": "slider",
+          "cursor": "false",
+          "invert": "true"
+        },
+        "numberFormat": {
+          "style": "compact"
+        }
+      },
+      {
+        "id": "985b6c86-8ea6-4599-a701-7320dcb36d9a",
+        "type": "separator"
+      },
+      {
+        "id": "09b8ee25-0dbd-4d3d-ade8-ee91640f5a56",
+        "type": "weekly-usage",
+        "metadata": {
+          "display": "slider",
+          "invert": "true"
+        },
+        "numberFormat": {
+          "style": "compact"
+        }
+      }
+    ]
   ],
   "flexMode": "full-minus-40",
   "compactThreshold": 60,
