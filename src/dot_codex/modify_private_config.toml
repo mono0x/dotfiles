@@ -5,7 +5,7 @@
 {{- $schema := `#:schema https://developers.openai.com/codex/config-schema.json` -}}
 {{- $block := `# BEGIN dotfiles
 approvals_reviewer = "auto_review"
-model = "gpt-6-astra"
+model = "gpt-5.6-sol"
 model_reasoning_effort = "medium"
 personality = "pragmatic"
 
