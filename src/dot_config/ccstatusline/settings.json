@@ -14,12 +14,12 @@
       {
         "id": "373e09c5-e849-41f7-aa55-fe5573149963",
         "type": "context-percentage",
+        "numberFormat": {
+          "style": "compact"
+        },
         "metadata": {
           "inverse": "true",
           "display": "slider"
-        },
-        "numberFormat": {
-          "style": "compact"
         }
       },
       {
@@ -47,39 +47,35 @@
         "id": "7",
         "type": "git-changes",
         "color": "yellow"
-      }
-    ],
-    [
-      {
-        "id": "bbd43f3b-62c2-45a3-9a18-f8c95d755f5e",
-        "type": "session-usage",
-        "metadata": {
-          "display": "slider",
-          "cursor": "false",
-          "invert": "true"
-        },
-        "numberFormat": {
-          "style": "compact"
-        }
       },
       {
-        "id": "985b6c86-8ea6-4599-a701-7320dcb36d9a",
+        "id": "c1161a57-854b-4715-bc40-e067ce19af22",
         "type": "separator"
       },
       {
-        "id": "09b8ee25-0dbd-4d3d-ade8-ee91640f5a56",
+        "id": "c480944a-5282-479f-b434-e89b98351171",
+        "type": "session-usage",
+        "metadata": {
+          "invert": "true",
+          "display": "slider"
+        }
+      },
+      {
+        "id": "002a0aae-2d08-49c1-a9e8-77332ebc5280",
+        "type": "separator"
+      },
+      {
+        "id": "f0d786fc-5758-444d-b993-f6f57787c905",
         "type": "weekly-usage",
         "metadata": {
-          "display": "slider",
-          "invert": "true"
-        },
-        "numberFormat": {
-          "style": "compact"
+          "invert": "true",
+          "display": "slider"
         }
       }
-    ]
+    ],
+    []
   ],
-  "flexMode": "full-minus-40",
+  "flexMode": "full",
   "compactThreshold": 60,
   "colorLevel": 2,
   "defaultPaddingSide": "both",
