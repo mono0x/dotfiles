@@ -1,0 +1,8 @@
+#!/bin/bash
+# List repository directories to jump to, one absolute path per line.
+set -eu
+
+{
+  ghq list --full-path
+  printf '%s\n' "$HOME/.local/share/chezmoi"
+} | sort

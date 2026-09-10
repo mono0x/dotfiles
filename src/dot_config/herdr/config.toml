@@ -136,6 +136,13 @@ onboarding = false
 # width = "80%"
 # height = "80%"
 
+[[keys.command]]
+key = "prefix+ctrl+g"
+type = "popup"
+width = "80%"
+height = "80%"
+command = 'dir="$(repo-list | fzf)" && herdr-ensure-workspace "$dir"'
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]

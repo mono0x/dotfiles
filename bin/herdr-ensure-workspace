@@ -1,0 +1,24 @@
+#!/bin/bash
+# Focus the Herdr workspace for a directory, or create it when missing.
+set -eu
+
+if [ "$#" -ne 1 ]; then
+  echo 'usage: herdr-ensure-workspace <directory>' >&2
+  exit 1
+fi
+
+if ! dir="$(cd -- "$1" 2>/dev/null && pwd -P)"; then
+  echo "herdr-ensure-workspace: not a directory: $1" >&2
+  exit 1
+fi
+
+# A workspace has no cwd of its own, so match it through its panes.
+workspace_id="$(herdr api snapshot | jq -r --arg dir "$dir" '
+  [.result.snapshot.panes[] | select(.cwd == $dir) | .workspace_id] | first // empty
+')"
+
+if [ -n "$workspace_id" ]; then
+  herdr workspace focus "$workspace_id" >/dev/null
+else
+  herdr workspace create --cwd "$dir" --focus >/dev/null
+fi
