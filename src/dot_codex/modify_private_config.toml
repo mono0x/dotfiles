@@ -16,7 +16,7 @@ default_subagent_reasoning_effort = "max"
 max_concurrent_threads_per_session = 2
 
 [tui]
-status_line = ["model-with-reasoning", "current-dir", "git-branch", "pull-request-number", "branch-changes", "weekly-limit"]
+status_line = ["model-with-reasoning", "current-dir", "git-branch", "pull-request-number", "branch-changes", "weekly-limit", "context-remaining"]
 status_line_use_colors = true
 # END dotfiles
 ` -}}
