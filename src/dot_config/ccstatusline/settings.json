@@ -59,18 +59,6 @@
           "invert": "true",
           "display": "slider"
         }
-      },
-      {
-        "id": "002a0aae-2d08-49c1-a9e8-77332ebc5280",
-        "type": "separator"
-      },
-      {
-        "id": "f0d786fc-5758-444d-b993-f6f57787c905",
-        "type": "weekly-usage",
-        "metadata": {
-          "invert": "true",
-          "display": "slider"
-        }
       }
     ],
     []
