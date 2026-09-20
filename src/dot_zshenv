@@ -51,5 +51,3 @@ if [[ -z "$LC_ALL" ]]; then
 fi
 
 export GOPATH="$HOME"
-
-export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
