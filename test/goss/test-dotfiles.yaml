@@ -24,7 +24,7 @@ file:
     filetype: file
     contents:
       - "# BEGIN dotfiles"
-      - 'model = "gpt-6-astra"'
+      - 'approvals_reviewer = "auto_review"'
       - "# END dotfiles"
 
 command:
