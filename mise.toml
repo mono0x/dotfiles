@@ -62,7 +62,7 @@ tap_to_click = true
 login_shell = "/opt/homebrew/bin/zsh"
 
 [tools]
-"github:afadesigns/zshellcheck" = "1.7.3"
+"github:afadesigns/zshellcheck" = "1.8.0"
 "github:goss-org/goss" = "0.4.10"
 chezmoi = "2.72.2"
 dprint = "0.57.4"
