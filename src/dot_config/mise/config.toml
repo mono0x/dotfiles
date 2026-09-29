@@ -7,7 +7,8 @@ codex = "latest"
 node = "24" # for npm
 pnpm = "12"
 uv = "latest"
-worktrunk = "latest"
+# Pin because worktrunk@latest can fail mise's 2d minimum_release_age filter.
+worktrunk = "0.79.0"
 
 [tools."github:mono0x/git-default-branch"]
 version = "latest"
