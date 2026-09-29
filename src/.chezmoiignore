@@ -10,3 +10,7 @@
 .config/mise/conf.d/darwin.toml
 Library/*
 {{ end -}}
+
+{{ if not (lookPath "herdr") -}}
+.chezmoiscripts/unix/herdr.sh
+{{ end -}}
