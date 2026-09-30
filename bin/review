@@ -1,0 +1,26 @@
+#!/bin/bash
+# Review a branch or PR with Codex in a temporary worktree.
+set -eu
+
+if [ "$#" -lt 1 ]; then
+  echo 'usage: review <branch|pr:N|mr:N|PR-URL> [prompt...]' >&2
+  exit 1
+fi
+
+target="$1"
+shift
+prompt="${*:-/review}"
+
+status=0
+wt switch "${target}" -x codex -- --model gpt-6-astra "${prompt}" || status=$?
+
+case "${status}" in
+# Treat Ctrl+C (130) as an intentional exit when reviewing.
+0 | 130)
+  wt remove --force
+  ;;
+*)
+  echo "review: codex exited with status ${status}; keeping worktree for inspection" >&2
+  exit "${status}"
+  ;;
+esac
