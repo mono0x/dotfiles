@@ -1,23 +1,30 @@
 #!/bin/bash
 # Review a branch or PR with Codex in a temporary worktree.
-set -eu
+set -euo pipefail
 
 if [ "$#" -lt 1 ]; then
-  echo 'usage: review <branch|pr:N|mr:N|PR-URL> [prompt...]' >&2
+  echo 'usage: review <branch|pr:N|mr:N|PR-URL>' >&2
   exit 1
 fi
 
 target="$1"
-shift
-prompt="${*:-/review}"
+if [ "$#" -ne 1 ]; then
+  echo 'review: extra prompts are not supported with codex review --base' >&2
+  exit 1
+fi
+
+# Shell integration does not apply here, so track the worktree path explicitly.
+path="$(wt switch "${target}" --no-cd --format json | jq -r .path)"
+
+base="$(wt -C "${path}" list --format json | jq -er .repo.default_branch)"
 
 status=0
-wt switch "${target}" -x codex -- --model gpt-6-astra "${prompt}" || status=$?
+(cd "${path}" && codex review -c model=gpt-6-astra --base "${base}" && codex resume --last --include-non-interactive --model gpt-6-astra) || status=$?
 
 case "${status}" in
 # Treat Ctrl+C (130) as an intentional exit when reviewing.
 0 | 130)
-  wt remove --force
+  wt remove --force "${path}"
   ;;
 *)
   echo "review: codex exited with status ${status}; keeping worktree for inspection" >&2
