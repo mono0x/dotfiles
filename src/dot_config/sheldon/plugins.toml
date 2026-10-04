@@ -93,7 +93,7 @@ rev = "5160a2decb9851768cc746b55d82769424580988"
 [plugins.fzf-git]
 # renovate: datasource=github-digest currentValue=main
 github = "junegunn/fzf-git.sh"
-rev = "d5b0a5dcd1e073b8bfca45338d5dfad3e5642471"
+rev = "110c0a10b744131b90861aa1d1fff6fbe0794f9d"
 
 [plugins.ni]
 # renovate: datasource=github-tags currentValue=v1.12.0
