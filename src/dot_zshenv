@@ -51,3 +51,6 @@ if [[ -z "$LC_ALL" ]]; then
 fi
 
 export GOPATH="$HOME"
+
+# hk's libgit2 backend does not support Git's reftable ref format.
+export HK_LIBGIT2=0
