@@ -5,6 +5,7 @@ file:
     contents:
       - "name = mono"
       - "email = mono@mono0x.net"
+      - "defaultRefFormat = reftable"
 
   ~/.zshenv:
     exists: true
