@@ -1,12 +1,12 @@
 [tools]
-"github:k1LoW/mo" = "latest"
+"github:k1LoW/mo" = { version = "latest", auto_update = true }
 "mr-boxington" = { version = "1.19.0", postinstall = "mbx setup --yes" }
-"npm:ccstatusline" = "latest"
-claude = "latest"
-codex = "latest"
+"npm:ccstatusline" = { version = "latest", auto_update = true }
+claude = { version = "latest", auto_update = true }
+codex = { version = "latest", auto_update = true }
 node = "24" # for npm
 pnpm = "12"
-uv = "latest"
+uv = { version = "latest", auto_update = true }
 # Pin because worktrunk@latest can fail mise's 2d minimum_release_age filter.
 worktrunk = "0.80.0"
 
