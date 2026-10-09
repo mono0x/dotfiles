@@ -10,10 +10,6 @@ uv = "latest"
 # Pin because worktrunk@latest can fail mise's 2d minimum_release_age filter.
 worktrunk = "0.80.0"
 
-[tools."github:mono0x/git-default-branch"]
-version = "latest"
-bin = "git-default-branch"
-
 [settings]
 experimental = true
 disable_backends = ["asdf", "vfox"]

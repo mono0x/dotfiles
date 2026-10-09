@@ -1,0 +1,20 @@
+#!/bin/bash
+# Print the default branch name of the current repository.
+# Use git CLI instead of mono0x/git-default-branch: gix can't read the reftable ref backend yet,
+# while git CLI resolves refs regardless of the backend.
+set -eu
+
+# Avoid --short: it yields "remotes/origin/<name>" when "origin/<name>" is ambiguous.
+if ref=$(git symbolic-ref --quiet refs/remotes/origin/HEAD 2>/dev/null) ||
+  { git remote set-head origin --auto >/dev/null 2>&1 &&
+    ref=$(git symbolic-ref --quiet refs/remotes/origin/HEAD 2>/dev/null); }; then
+  printf '%s\n' "${ref#refs/remotes/origin/}"
+  exit
+fi
+for b in main master trunk develop; do
+  if git show-ref --quiet --verify "refs/heads/$b"; then
+    printf '%s\n' "$b"
+    exit
+  fi
+done
+exit 1
