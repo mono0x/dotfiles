@@ -31,10 +31,12 @@ local linters = new Mapping<String, Step> {
     batch = true
   }
   ["jactionlint"] {
-    glob = List(".github/workflows/*.{yaml,yml}", "**/action.{yaml,yml}")
+    glob = List(".github/workflows/*.yml", ".github/workflows/*.yaml", "**/action.{yaml,yml}")
     batch = true
     diagnostic_format = "sarif"
     check = "jactionlint --format sarif {{ files }}"
+    check_diff = "hk util sarif-diff -- jactionlint --format sarif {{ files }}"
+    fix = "jactionlint --fix {{ files }}"
   }
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format
