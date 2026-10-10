@@ -15,3 +15,9 @@ mise -C ~/.local/share/chezmoi bootstrap
 
 killall Dock; killall Finder; killall SystemUIServer
 ```
+
+## Checks
+
+Run `mise install` and `mise exec -- hk check --all` to run the same checks as CI.
+The jactionlint hook checks workflow YAML and action metadata with its default security checks and shellcheck integration.
+Its version is pinned in `mise.toml`; run `mise exec -- jactionlint` to check all workflows and composite actions directly.

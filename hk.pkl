@@ -30,8 +30,11 @@ local linters = new Mapping<String, Step> {
     fix = "zshellcheck -no-banner -fix {{ files }}"
     batch = true
   }
-  ["zizmor"] = (Builtins.zizmor) {
-    glob = ".github/{actions,workflows}/**/*.{yaml,yml}"
+  ["jactionlint"] {
+    glob = List(".github/workflows/*.{yaml,yml}", "**/action.{yaml,yml}")
+    batch = true
+    diagnostic_format = "sarif"
+    check = "jactionlint --format sarif {{ files }}"
   }
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format

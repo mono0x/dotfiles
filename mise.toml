@@ -64,13 +64,13 @@ login_shell = "/opt/homebrew/bin/zsh"
 [tools]
 "github:afadesigns/zshellcheck" = "1.8.0"
 "github:goss-org/goss" = "0.4.10"
+"github:jdx/jactionlint" = "2.0.2"
 chezmoi = "2.72.2"
 dprint = "0.57.4"
 hk = "2.4.0"
 pkl = "0.32.1"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
-zizmor = "1.30.1"
 
 [tasks.bootstrap]
 run = [
