@@ -1,13 +1,3 @@
 # The chezmoi-prune-remove skill prunes entries 30 days after their adding commit; "# keep: reason" protects the immediately following entry.
-.claude/hooks/git-safe.sh
-.claude/skills/code-review
-.config/ghostty/config
-.config/git/conf.d/hk
-.config/git/conf.d/platform
-.config/mise/settings.toml
-.config/zsh/functions
-.config/zsh/zshrc.defer.d/ni.zsh
-.config/zsh/zshrc.defer.d/pipenv.zsh
-.cursor
 # keep: Prevent Git from using an unintended ~/.gitconfig.
 .gitconfig
