@@ -6,6 +6,8 @@ This repository manages macOS dotfiles with chezmoi. `.chezmoiroot` sets `src/` 
 
 Follow chezmoi's source-state conventions when changing files under `src/`. Use the existing nearby files as the guide for naming and organization.
 
+When removing a file that has already been deployed, add its destination path to `src/.chezmoiremove` so chezmoi also removes the deployed file.
+
 ## Sources of Truth
 
 - `README.md`: setup instructions
