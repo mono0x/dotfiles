@@ -1,3 +1,4 @@
+- When creating or revising Japanese prose, use the `natural-japanese` skill.
 - Prefer simplicity and follow YAGNI, KISS, and DRY. Do not add backward-compatibility shims or fallback paths unless required by the task or project.
 - Favor colocation: keep related code, tests, types, and assets close to where they are used rather than splitting them into distant shared layers prematurely.
 - Add comments only when they explain non-obvious behavior, constraints, or rationale.

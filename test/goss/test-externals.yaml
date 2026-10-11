@@ -1,0 +1,23 @@
+file:
+  ~/.claude/skills/grill-me/SKILL.md:
+    exists: true
+  ~/.claude/skills/grilling/SKILL.md:
+    exists: true
+  ~/.claude/skills/natural-japanese/SKILL.md:
+    exists: true
+  ~/.codex/skills/commit/SKILL.md:
+    exists: true
+  ~/.codex/skills/grill-me/SKILL.md:
+    exists: true
+  ~/.codex/skills/grilling/SKILL.md:
+    exists: true
+  ~/.config/nvim/pack/vendor/start/copilot.vim/plugin/copilot.vim:
+    exists: true
+  ~/.config/nvim/pack/vendor/start/lualine.nvim/lua/lualine.lua:
+    exists: true
+  ~/.config/nvim/pack/vendor/start/solarized.nvim/lua/solarized/init.lua:
+    exists: true
+  ~/.config/nvim/pack/vendor/start/vim-fugitive/plugin/fugitive.vim:
+    exists: true
+  ~/.config/nvim/pack/vendor/start/vim-surround/plugin/surround.vim:
+    exists: true

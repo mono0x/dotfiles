@@ -14,9 +14,6 @@ file:
       - export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
   ~/.zshrc:
     exists: false
-  ~/.config/zsh/.zshrc:
-    exists: true
-    filetype: file
 
   # The modify_ script manages only the marked range; entries Codex writes
   # itself, such as [projects.*], are left untouched.

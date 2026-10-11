@@ -29,3 +29,5 @@ Use the commands defined by the current project configuration:
 - Use `chezmoi diff` to review deployment changes before applying them.
 
 Run the checks configured in `hk.pkl` after making changes. When behavior changes, update the closest relevant validation alongside it.
+
+Keep goss validation focused on behavior rather than simple file placement. For each `.chezmoiexternal` entry, check only one primary file to confirm deployment.
