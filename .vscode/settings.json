@@ -1,18 +1,19 @@
 {
   "dprint.path": "~/.local/share/mise/shims/dprint",
   "files.associations": {
-    "src/.chezmoiremove": "ignore",
-    "src/dot_config/ghostty/config.ghostty": "ini",
-    "src/dot_config/git/conf.d/*.*": "ini",
-    "src/dot_config/git/config": "ini",
-    "src/dot_config/git/ignore": "ignore",
-    "modify_*": "plaintext",
+    "**/src/.chezmoiremove": "ignore",
+    "**/src/dot_codex/modify_private_config.toml.tmpl": "shellscript",
+    "**/src/dot_config/ghostty/config.ghostty": "ini",
+    "**/src/dot_config/git/conf.d/*.*": "ini",
+    "**/src/dot_config/git/config": "ini",
+    "**/src/dot_config/git/ignore": "ignore",
     "*.toml.tmpl": "toml",
     "*.zsh.tmpl": "shellscript",
     "dot_zprofile": "shellscript",
     "dot_zshenv": "shellscript",
     "dot_zshrc.tmpl": "shellscript",
-    "dprint.json": "jsonc"
+    "dprint.json": "jsonc",
+    "modify_*": "plaintext"
   },
   "[json][jsonc][markdown][yaml][toml]": {
     "editor.formatOnSave": true,
