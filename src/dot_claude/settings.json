@@ -94,6 +94,12 @@
   "language": "japanese",
   "sandbox": {
     "enabled": true,
+    "filesystem": {
+      "allowWrite": [
+        "~/.cache/uv",
+        "~/.gradle"
+      ]
+    },
     "excludedCommands": [
       "./gradlew:*",
       "crit:*",
