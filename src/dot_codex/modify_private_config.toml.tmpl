@@ -1,0 +1,24 @@
+#!/bin/bash
+set -euo pipefail
+
+printf '%s\n' '#:schema https://developers.openai.com/codex/config-schema.json'
+# TODO: Remove the BEGIN/END dotfiles cleanup once all machines have migrated.
+# shellcheck disable=SC2016
+sed \
+  -e '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' \
+  -e '/^# BEGIN dotfiles$/d' \
+  -e '/^# END dotfiles$/d' |
+  mise --cd "{{ .chezmoi.sourceDir }}" exec -- tomlq -T \
+    --arg cache "$HOME/.cache/uv" '
+      .approvals_reviewer = "auto_review"
+      | .model = "gpt-6.1-sol"
+      | .model_reasoning_effort = "medium"
+      | .personality = "pragmatic"
+      | .sandbox_workspace_write.writable_roots = [$cache]
+      | .agents.enabled = true
+      | .agents.default_subagent_model = "gpt-6-luna"
+      | .agents.default_subagent_reasoning_effort = "max"
+      | .agents.max_concurrent_threads_per_session = 2
+      | .tui.status_line = ["model-with-reasoning", "context-remaining", "current-dir", "git-branch", "pull-request-number", "branch-changes", "weekly-limit"]
+      | .tui.status_line_use_colors = true
+    '

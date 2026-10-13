@@ -15,15 +15,13 @@ file:
   ~/.zshrc:
     exists: false
 
-  # The modify_ script manages only the marked range; entries Codex writes
-  # itself, such as [projects.*], are left untouched.
+  # The modify_ script updates managed keys while preserving Codex's own state.
   ~/.codex/config.toml:
     exists: true
     filetype: file
     contents:
-      - "# BEGIN dotfiles"
       - 'approvals_reviewer = "auto_review"'
-      - "# END dotfiles"
+      - '/writable_roots = \[".*[.]cache\/uv"\]/'
 
 command:
   # Covers the whole Homebrew chain: Sheldon loads homebrew.zsh, which replays
