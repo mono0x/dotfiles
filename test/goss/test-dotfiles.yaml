@@ -21,7 +21,7 @@ file:
     filetype: file
     contents:
       - 'approvals_reviewer = "auto_review"'
-      - '/writable_roots = \[".*[.]cache\/uv"\]/'
+      - '/writable_roots = \[".*[.]cache\/uv", ".*[.]gradle"\]/'
 
 command:
   # Covers the whole Homebrew chain: Sheldon loads homebrew.zsh, which replays

@@ -9,12 +9,13 @@ sed \
   -e '/^# BEGIN dotfiles$/d' \
   -e '/^# END dotfiles$/d' |
   mise --cd "{{ .chezmoi.sourceDir }}" exec -- tomlq -T \
-    --arg cache "$HOME/.cache/uv" '
+    --arg uv "$HOME/.cache/uv" \
+    --arg gradle "$HOME/.gradle" '
       .approvals_reviewer = "auto_review"
       | .model = "gpt-6.1-sol"
       | .model_reasoning_effort = "medium"
       | .personality = "pragmatic"
-      | .sandbox_workspace_write.writable_roots = [$cache]
+      | .sandbox_workspace_write.writable_roots = [$uv, $gradle]
       | .agents.enabled = true
       | .agents.default_subagent_model = "gpt-6-luna"
       | .agents.default_subagent_reasoning_effort = "max"
