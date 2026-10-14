@@ -2,12 +2,8 @@
 set -euo pipefail
 
 printf '%s\n' '#:schema https://developers.openai.com/codex/config-schema.json'
-# TODO: Remove the BEGIN/END dotfiles cleanup once all machines have migrated.
 # shellcheck disable=SC2016
-sed \
-  -e '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' \
-  -e '/^# BEGIN dotfiles$/d' \
-  -e '/^# END dotfiles$/d' |
+sed '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' |
   mise --cd "{{ .chezmoi.sourceDir }}" exec -- tomlq -T \
     --arg uv "$HOME/.cache/uv" \
     --arg gradle "$HOME/.gradle" '
