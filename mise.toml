@@ -46,6 +46,16 @@
 "brew:zoxide" = "latest"
 "brew:zsh" = "latest"
 
+[bootstrap.hooks]
+# mise installs `brew:` formulae itself, but the Brewfile and `brew shellenv` need the real Homebrew.
+# The installer runs sudo non-interactively, so authenticate up front.
+pre-packages = '''
+if [ ! -x /opt/homebrew/bin/brew ]; then
+  sudo -v
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+'''
+
 [bootstrap.macos.dock]
 autohide = true
 show_recents = false

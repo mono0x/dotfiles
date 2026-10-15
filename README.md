@@ -5,13 +5,10 @@
 ## Setup
 
 ```sh
-# Setup Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 git clone https://github.com/mono0x/dotfiles ~/.local/share/chezmoi
-brew install mise
-mise -C ~/.local/share/chezmoi trust
-mise -C ~/.local/share/chezmoi bootstrap
+
+cd ~/.local/share/chezmoi
+./mise bootstrap
 
 killall Dock; killall Finder; killall SystemUIServer
 ```
