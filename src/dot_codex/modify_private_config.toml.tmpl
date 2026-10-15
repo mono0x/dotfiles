@@ -6,12 +6,13 @@ printf '%s\n' '#:schema https://developers.openai.com/codex/config-schema.json'
 sed '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' |
   mise --cd "{{ .chezmoi.sourceDir }}" exec -- tomlq -T \
     --arg uv "$HOME/.cache/uv" \
-    --arg gradle "$HOME/.gradle" '
+    --arg gradle "$HOME/.gradle" \
+    --arg dprint "$HOME/Library/Caches/dprint" '
       .approvals_reviewer = "auto_review"
       | .model = "gpt-6.1-sol"
       | .model_reasoning_effort = "medium"
       | .personality = "pragmatic"
-      | .sandbox_workspace_write.writable_roots = [$uv, $gradle]
+      | .sandbox_workspace_write.writable_roots = [$uv, $gradle, $dprint]
       | .agents.enabled = true
       | .agents.default_subagent_model = "gpt-6-luna"
       | .agents.default_subagent_reasoning_effort = "max"

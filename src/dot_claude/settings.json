@@ -97,7 +97,8 @@
     "filesystem": {
       "allowWrite": [
         "~/.cache/uv",
-        "~/.gradle"
+        "~/.gradle",
+        "~/Library/Caches/dprint"
       ]
     },
     "excludedCommands": [
