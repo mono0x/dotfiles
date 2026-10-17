@@ -1,3 +1,5 @@
+# These aliases apply only to interactive shells. Coding agents are intentionally
+# left with the stock BSD commands they expect on macOS.
 [shell_alias]
 ls = "ls -G"
 base64 = "gbase64"
