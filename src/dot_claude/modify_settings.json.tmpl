@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euo pipefail
+
+# Other repositories may add their own sandbox entries, so arrays under
+# .sandbox are unioned and sorted instead of replaced.
+# shellcheck disable=SC2016
+mise --cd "{{ .chezmoi.sourceDir }}" exec -- jq -s \
+  --slurpfile base "{{ .chezmoi.sourceDir }}/.chezmoitemplates/claude-settings.json" '
+    def union($current; $base):
+      if ($current | type) == "object" and ($base | type) == "object" then
+        reduce ($base | keys_unsorted[]) as $key ($current; .[$key] = union($current[$key]; $base[$key]))
+      elif ($current | type) == "array" and ($base | type) == "array" then
+        $base + $current | unique
+      else
+        $base
+      end;
+    (.[0] // {}) as $current
+    | $base[0] as $base
+    | $current * $base
+    | .sandbox = union($current.sandbox // {}; $base.sandbox)
+  '
