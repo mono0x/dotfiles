@@ -104,9 +104,9 @@ rev = "9dd33217877d4d5d0ed982609ec50977f6f756b7"
 local = "~/.config/zsh/zshrc.defer.d"
 
 [plugins.pure]
-# renovate: datasource=github-tags currentValue=v1.28.3
+# renovate: datasource=github-tags currentValue=v1.28.4
 github = "sindresorhus/pure"
-rev = "89c9e30a38d3d35457bcc58b43ea6c28ae56934b"
+rev = "cac55d0b531a0db72294c9bba9453dfa6374c59d"
 use = ["async.zsh", "pure.zsh"]
 apply = ["source"]
 
