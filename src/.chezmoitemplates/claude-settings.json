@@ -114,6 +114,7 @@
     "excludedCommands": [
       "./gradlew:*",
       "crit:*",
+      "ctx7:*",
       "git:*",
       "hk:*",
       "pnpm:*",
