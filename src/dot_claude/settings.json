@@ -108,15 +108,18 @@
         "com.apple.trustd.agent"
       ],
       "allowedDomains": [
-        "api.github.com"
+        "api.github.com",
+        "golang.flatt.tech",
+        "npm.flatt.tech",
+        "registry.npmjs.org"
       ]
     },
     "excludedCommands": [
       "./gradlew:*",
       "crit:*",
       "ctx7:*",
-      "hk:*",
       "git:*",
+      "hk:*",
       "pnpm:*",
       "rtk git:*",
       "rtk pnpm:*"
