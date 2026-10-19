@@ -1,0 +1,8 @@
+prefix_rule(pattern = ["./gradlew"], decision = "allow")
+prefix_rule(pattern = ["crit"], decision = "allow")
+prefix_rule(pattern = ["ctx7"], decision = "allow")
+prefix_rule(pattern = ["git"], decision = "allow")
+prefix_rule(pattern = ["hk"], decision = "allow")
+prefix_rule(pattern = ["pnpm"], decision = "allow")
+prefix_rule(pattern = ["rtk", "git"], decision = "allow")
+prefix_rule(pattern = ["rtk", "pnpm"], decision = "allow")

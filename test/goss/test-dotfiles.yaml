@@ -22,8 +22,19 @@ file:
     contents:
       - 'approvals_reviewer = "auto_review"'
       - '/writable_roots = \[".*[.]cache\/uv", ".*[.]gradle", ".*Library\/Caches\/dprint"\]/'
+      - "network_access = true"
+      - "[features.network_proxy]"
+      - '"api.github.com" = "allow"'
+      - '"golang.flatt.tech" = "allow"'
+      - '"npm.flatt.tech" = "allow"'
+      - '"registry.npmjs.org" = "allow"'
 
 command:
+  codex execpolicy check --pretty --rules ~/.codex/rules/default.rules -- rtk git status:
+    exit-status: 0
+    stdout:
+      - '"decision": "allow"'
+
   # Covers the whole Homebrew chain: Sheldon loads homebrew.zsh, which replays
   # `brew shellenv` through zsh-smartcache.
   zsh -ic 'command -v brew':

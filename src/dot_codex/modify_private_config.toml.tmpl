@@ -12,7 +12,15 @@ sed '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' |
       | .model = "gpt-6.1-sol"
       | .model_reasoning_effort = "medium"
       | .personality = "pragmatic"
+      | .sandbox_workspace_write.network_access = true
       | .sandbox_workspace_write.writable_roots = [$uv, $gradle, $dprint]
+      | .features.network_proxy.enabled = true
+      | .features.network_proxy.domains = {
+          "api.github.com": "allow",
+          "golang.flatt.tech": "allow",
+          "npm.flatt.tech": "allow",
+          "registry.npmjs.org": "allow"
+        }
       | .agents.enabled = true
       | .agents.default_subagent_model = "gpt-6-luna"
       | .agents.default_subagent_reasoning_effort = "max"
