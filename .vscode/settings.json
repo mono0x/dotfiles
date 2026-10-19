@@ -2,7 +2,6 @@
   "dprint.path": "~/.local/share/mise/shims/dprint",
   "files.associations": {
     "**/src/.chezmoiremove": "ignore",
-    "**/src/dot_claude/modify_settings.json.tmpl": "shellscript",
     "**/src/dot_codex/modify_private_config.toml.tmpl": "shellscript",
     "**/src/dot_config/ghostty/config.ghostty": "ini",
     "**/src/dot_config/git/conf.d/*.*": "ini",

@@ -115,8 +115,8 @@
       "./gradlew:*",
       "crit:*",
       "ctx7:*",
-      "git:*",
       "hk:*",
+      "git:*",
       "pnpm:*",
       "rtk git:*",
       "rtk pnpm:*"

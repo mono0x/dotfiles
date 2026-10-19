@@ -23,15 +23,6 @@ file:
       - 'approvals_reviewer = "auto_review"'
       - '/writable_roots = \[".*[.]cache\/uv", ".*[.]gradle", ".*Library\/Caches\/dprint"\]/'
 
-  # The modify_ script merges managed keys while preserving sandbox entries
-  # added by other repositories.
-  ~/.claude/settings.json:
-    exists: true
-    filetype: file
-    contents:
-      - '"defaultMode": "auto"'
-      - '"~/Library/Caches/dprint"'
-
 command:
   # Covers the whole Homebrew chain: Sheldon loads homebrew.zsh, which replays
   # `brew shellenv` through zsh-smartcache.
