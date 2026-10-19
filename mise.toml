@@ -77,7 +77,7 @@ login_shell = "/opt/homebrew/bin/zsh"
 "github:jdx/jactionlint" = "2.2.0"
 "pipx:yq" = "4.4.5"
 chezmoi = "2.73.1"
-dprint = "0.62.0"
+dprint = "0.63.0"
 hk = "2.5.0"
 pkl = "0.32.1"
 # With uv, pipx tools are installed with this Python instead of the runner image's interpreter.
