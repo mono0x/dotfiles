@@ -7,6 +7,10 @@ file:
     exists: true
   ~/.codex/skills/commit/SKILL.md:
     exists: true
+  ~/.codex/skills/crit/SKILL.md:
+    exists: true
+  ~/.codex/skills/crit-cli/SKILL.md:
+    exists: true
   ~/.codex/skills/grill-me/SKILL.md:
     exists: true
   ~/.codex/skills/grilling/SKILL.md:
