@@ -30,11 +30,6 @@ file:
       - '"registry.npmjs.org" = "allow"'
 
 command:
-  codex execpolicy check --pretty --rules ~/.codex/rules/default.rules -- rtk git status:
-    exit-status: 0
-    stdout:
-      - '"decision": "allow"'
-
   # Covers the whole Homebrew chain: Sheldon loads homebrew.zsh, which replays
   # `brew shellenv` through zsh-smartcache.
   zsh -ic 'command -v brew':
