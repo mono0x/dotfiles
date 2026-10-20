@@ -1,5 +1,6 @@
 abbr "ci"="commit"
 abbr "cl"="claude"
+abbr "cx"="codex"
 abbr "g"="git"
 abbr "ga"="git add"
 abbr "gd"="git diff --ignore-space-change"
