@@ -1,3 +1,4 @@
+# chezmoi:template:left-delimiter=<% right-delimiter=%>
 # # User Configuration
 #
 # Create with `wt config create`. Values shown are defaults unless noted otherwise.
@@ -411,3 +412,7 @@
 # ## User hooks
 #
 # See `wt hook` (https://worktrunk.dev/hook/) for hook types, execution order, template variables, and examples. User hooks apply to all projects; project hooks (https://worktrunk.dev/config/#project-hooks) apply only to that repository.
+<% range (get . "github_enterprise_hosts" | default list) %>
+[projects.<% printf "%s/*" . | quote %>]
+forge.platform = "github"
+<% end -%>
