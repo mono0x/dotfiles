@@ -13,8 +13,33 @@ if [ "$#" -ne 1 ]; then
   exit 1
 fi
 
+if [ "${HERDR_ENV:-}" = 1 ]; then
+  if [ "${REVIEW_HERDR_TAB:-}" = 1 ]; then
+    unset REVIEW_HERDR_TAB
+    trap 'herdr tab close "$HERDR_TAB_ID" >/dev/null' EXIT
+  else
+    tab="$(herdr tab create --workspace "$HERDR_WORKSPACE_ID" --cwd "$PWD" --focus)"
+    tab_id="$(jq -er '.result.root_pane.tab_id' <<<"$tab")"
+    pane_id="$(jq -er '.result.root_pane.pane_id' <<<"$tab")"
+    printf -v command 'exec env REVIEW_HERDR_TAB=1 %q %q' "$(realpath "$0")" "$target"
+    if herdr pane run "$pane_id" "$command" >/dev/null; then
+      exit 0
+    else
+      status=$?
+      herdr tab close "$tab_id" >/dev/null
+      exit "$status"
+    fi
+  fi
+fi
+
 # Shell integration does not apply here, so track the worktree path explicitly.
 path="$(wt switch "${target}" --no-cd --format json | jq -r .path)"
+
+if [ "${HERDR_ENV:-}" = 1 ]; then
+  number="$(herdr tab get "$HERDR_TAB_ID" | jq -er '.result.tab.number')"
+  branch="$(git -C "$path" branch --show-current)"
+  herdr tab rename "$HERDR_TAB_ID" "$number ${branch:-${path##*/}}" >/dev/null
+fi
 
 base="$(wt -C "${path}" list --format json | jq -er .repo.default_branch)"
 
