@@ -33,5 +33,11 @@ Desktop.ini
 # Kotlin
 .kotlin/
 
+# mise
+mise.local.toml
+
 # Visual Studio Code
 *.code-workspace
+
+# Worktrunk
+**/.config/wt.toml
