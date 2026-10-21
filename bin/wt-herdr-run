@@ -1,0 +1,107 @@
+#!/bin/bash
+# Run a command in a worktree, using a new Herdr tab when available.
+set -euo pipefail
+
+usage() {
+  printf '%s\n' 'usage: wt-herdr-run [--create] <branch|pr:N|mr:N|PR-URL> -- <command> [arg ...]' >&2
+  return 2
+}
+
+require() {
+  command -v "$1" >/dev/null 2>&1 || {
+    printf '%s\n' "wt-herdr-run: required command not found: $1" >&2
+    return 127
+  }
+}
+
+worker() {
+  local repo=$1 worktree=$2 owned=$3 tab_id=$4
+  shift 4
+  [[ ${1:-} == -- ]] || usage
+  shift
+  (($# > 0)) || usage
+
+  cd -- "$worktree" || return
+  local exit_code=0
+  "$@" || exit_code=$?
+  if ((exit_code != 0)); then
+    printf '%s\n' "wt-herdr-run: command exited with status $exit_code; keeping worktree: $worktree" >&2
+    return "$exit_code"
+  fi
+
+  cd -- "$repo" || return
+  if [[ $owned == true ]]; then
+    # Only remove worktrees created by this invocation, keeping branches and changes.
+    if ! wt -C "$repo" remove --foreground --yes --no-delete-branch "$worktree"; then
+      printf '%s\n' "wt-herdr-run: cleanup failed; keeping worktree and tab: $worktree" >&2
+      return 1
+    fi
+  fi
+
+  # Closing the tab terminates its shell, so do this last.
+  if [[ -n $tab_id ]]; then
+    herdr tab close "$tab_id" >/dev/null
+  fi
+}
+
+require wt
+require jq
+
+if [[ ${1:-} == --worker ]]; then
+  shift
+  (($# >= 6)) || usage
+  worker "$@"
+  exit $?
+fi
+
+switch_args=(--no-cd --format json)
+if [[ ${1:-} == --create ]]; then
+  switch_args+=(--create)
+  shift
+fi
+(($# >= 3)) || usage
+target=$1
+shift
+[[ $1 == -- && -n $target && $target != --* ]] || usage
+shift
+require "$1"
+require git
+
+if [[ ${HERDR_ENV:-} == 1 ]]; then
+  require herdr
+  : "${HERDR_WORKSPACE_ID:?wt-herdr-run: missing Herdr workspace ID}"
+fi
+
+repo=$(git rev-parse --show-toplevel)
+# switch reports whether it created or reused the worktree, including PR/MR targets.
+selection=$(wt -C "$repo" switch "${switch_args[@]}" "$target")
+worktree=$(jq -er '.path | select(type == "string" and length > 0)' <<<"$selection")
+owned=$(jq -er '.action |
+  if . == "created" then "true"
+  elif . == "existing" or . == "already_at" then "false"
+  else error("unknown switch action") end' <<<"$selection")
+[[ -d $worktree ]] || {
+  printf '%s\n' "wt-herdr-run: worktree directory not found: $worktree" >&2
+  exit 1
+}
+
+if [[ ${HERDR_ENV:-} != 1 ]]; then
+  worker "$repo" "$worktree" "$owned" '' -- "$@"
+  exit $?
+fi
+
+if ! created=$(herdr tab create --workspace "$HERDR_WORKSPACE_ID" --cwd "$worktree" --focus); then
+  printf '%s\n' "wt-herdr-run: tab creation failed; keeping worktree: $worktree" >&2
+  exit 1
+fi
+tab_id=$(jq -er '.result.tab.tab_id | select(type == "string" and length > 0)' <<<"$created")
+pane_id=$(jq -er '.result.root_pane.pane_id | select(type == "string" and length > 0)' <<<"$created")
+
+# Quote each argument for the pane's interactive zsh, including empty arguments.
+self=$(cd -- "$(dirname -- "$0")" && pwd -P)/${0##*/}
+printf -v command_line '%q ' /bin/bash "$self" --worker "$repo" "$worktree" "$owned" "$tab_id" -- "$@"
+if ! herdr pane run "$pane_id" "$command_line" >/dev/null; then
+  printf '%s\n' "wt-herdr-run: launch failed; keeping tab $tab_id and worktree: $worktree" >&2
+  exit 1
+fi
+printf '%s\n' "Started in herdr tab $tab_id: $worktree"
