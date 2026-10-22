@@ -21,7 +21,7 @@ file:
     filetype: file
     contents:
       - 'approvals_reviewer = "auto_review"'
-      - '/writable_roots = \[".*[.]cache\/uv", ".*[.]gradle", ".*Library\/Caches\/dprint"\]/'
+      - '/writable_roots = \[.*".*[.]cache\/mise"/'
       - "network_access = true"
       - "[features.network_proxy]"
       - '"api.github.com" = "allow"'

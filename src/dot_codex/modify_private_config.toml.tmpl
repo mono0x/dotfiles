@@ -5,15 +5,18 @@ printf '%s\n' '#:schema https://developers.openai.com/codex/config-schema.json'
 # shellcheck disable=SC2016
 sed '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' |
   mise --cd "{{ .chezmoi.sourceDir }}" exec -- tomlq -T \
+    --arg mise_cache "$HOME/.cache/mise" \
     --arg uv "$HOME/.cache/uv" \
     --arg gradle "$HOME/.gradle" \
-    --arg dprint "$HOME/Library/Caches/dprint" '
+    --arg mise_data "$HOME/.local/share/mise" \
+    --arg dprint "$HOME/Library/Caches/dprint" \
+    '
       .approvals_reviewer = "auto_review"
       | .model = "gpt-6.1-sol"
       | .model_reasoning_effort = "medium"
       | .personality = "pragmatic"
       | .sandbox_workspace_write.network_access = true
-      | .sandbox_workspace_write.writable_roots = [$uv, $gradle, $dprint]
+      | .sandbox_workspace_write.writable_roots = [$mise_cache, $uv, $gradle, $mise_data, $dprint]
       | .features.network_proxy.enabled = true
       | .features.network_proxy.domains = {
           "api.github.com": "allow",
