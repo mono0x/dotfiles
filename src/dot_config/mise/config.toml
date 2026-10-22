@@ -4,7 +4,7 @@
 "npm:ccstatusline" = { version = "latest", auto_update = true }
 claude = { version = "latest", auto_update = true }
 codex = { version = "latest", auto_update = true }
-node = "24" # for npm
+node = "24.22.1" # for npm
 pnpm = "12"
 uv = { version = "latest", auto_update = true }
 # Pin because worktrunk@latest can fail mise's 2d minimum_release_age filter.
