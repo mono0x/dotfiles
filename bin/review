@@ -13,5 +13,5 @@ if [[ $1 != --worker ]]; then
 fi
 
 base=$(wt list --format json | jq -er '.repo.default_branch')
-codex review -c model=gpt-6-astra --base "$base"
-codex resume --last --include-non-interactive --model gpt-6-astra
+codex review -c model=gpt-6.1-sol -c model_reasoning_effort=high --base "$base"
+codex resume --last --include-non-interactive --model gpt-6.1-sol -c model_reasoning_effort=high
