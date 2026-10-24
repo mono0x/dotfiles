@@ -15,6 +15,8 @@ file:
     exists: true
   ~/.agents/skills/crit-cli/SKILL.md:
     exists: true
+  ~/.agents/skills/crit-story/SKILL.md:
+    exists: true
   ~/.agents/skills/diataxis/SKILL.md:
     exists: true
   ~/.agents/skills/doc-coauthoring/SKILL.md:
