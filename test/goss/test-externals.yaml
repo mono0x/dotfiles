@@ -23,6 +23,8 @@ file:
     exists: true
   ~/.agents/skills/grilling/SKILL.md:
     exists: true
+  ~/.agents/skills/natural-japanese/SKILL.md:
+    exists: true
   ~/.config/nvim/pack/vendor/start/copilot.vim/plugin/copilot.vim:
     exists: true
   ~/.config/nvim/pack/vendor/start/lualine.nvim/lua/lualine.lua:
