@@ -1,4 +1,6 @@
 file:
+  ~/.claude/skills/diataxis/SKILL.md:
+    exists: true
   ~/.claude/skills/doc-coauthoring/SKILL.md:
     exists: true
   ~/.claude/skills/grill-me/SKILL.md:
@@ -12,6 +14,8 @@ file:
   ~/.codex/skills/crit/SKILL.md:
     exists: true
   ~/.codex/skills/crit-cli/SKILL.md:
+    exists: true
+  ~/.codex/skills/diataxis/SKILL.md:
     exists: true
   ~/.codex/skills/doc-coauthoring/SKILL.md:
     exists: true
