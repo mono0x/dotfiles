@@ -36,3 +36,18 @@ command:
     exit-status: 0
     stdout:
       - /opt/homebrew/bin/brew
+
+  herdr integration status:
+    exit-status: 0
+    stdout:
+      - "claude: current"
+      - "codex: current"
+
+  jq -e '[.hooks.PreToolUse[] | select(.matcher == "Bash") | .hooks[] | select(.command == "rtk hook claude")] | length == 1' ~/.claude/settings.json:
+    exit-status: 0
+
+  jq -e '[.hooks.PreToolUse[] | select(.matcher == "Bash") | .hooks[] | select(.command == "rtk hook codex")] | length == 1' ~/.codex/hooks.json:
+    exit-status: 0
+
+  chezmoi verify ~/.codex/hooks.json:
+    exit-status: 0

@@ -55,11 +55,11 @@
     ],
     "SessionStart": [
       {
-        "matcher": "*",
+        "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
+            "command": {{ printf "bash '%s/.claude/hooks/herdr-agent-state.sh' session" .chezmoi.homeDir | toJson }},
             "timeout": 10
           }
         ]

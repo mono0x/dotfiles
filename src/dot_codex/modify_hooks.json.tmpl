@@ -1,0 +1,14 @@
+#!/bin/bash
+set -euo pipefail
+
+jq --slurp --sort-keys --join-output '
+def rtk_hook($agent):
+  ("rtk hook " + $agent) as $command
+  | .hooks.PreToolUse = (
+      [(.hooks.PreToolUse // [])[]
+        | .hooks |= map(select(.command != $command))
+        | select(.hooks | length > 0)]
+      + [{matcher: "Bash", hooks: [{type: "command", command: $command}]}]
+    );
+  (.[0] // {}) | rtk_hook("codex")
+'

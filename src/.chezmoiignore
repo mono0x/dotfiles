@@ -12,5 +12,5 @@ Library/*
 {{ end -}}
 
 {{ if not (lookPath "herdr") -}}
-.chezmoiscripts/unix/herdr.sh
+.chezmoiscripts/unix/00_herdr.sh
 {{ end -}}
