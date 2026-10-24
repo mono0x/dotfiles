@@ -3,13 +3,26 @@
 set -euo pipefail
 
 if (($# != 1)); then
-  printf '%s\n' 'usage: review <branch|pr:N|mr:N|PR-URL>' >&2
+  printf '%s\n' 'usage: review <branch|N|pr:N|mr:N|PR-URL>' >&2
   exit 2
 fi
 
 if [[ $1 != --worker ]]; then
   self=$(cd -- "$(dirname -- "$0")" && pwd -P)/${0##*/}
-  exec wt-herdr-run "$1" -- "$self" --worker
+  target=$1
+  if [[ $target =~ ^https?://([^/]+)/([^/]+)/([^/]+)/pull/([0-9]+)([/#?].*)?$ ]]; then
+    repository=${BASH_REMATCH[1]}/${BASH_REMATCH[2]}/${BASH_REMATCH[3]}
+    target=pr:${BASH_REMATCH[4]}
+    repo=$(ghq list --exact --full-path "$repository")
+    if [[ -z $repo || $repo == *$'\n'* ]]; then
+      printf '%s\n' "review: expected one ghq repository for $repository" >&2
+      exit 1
+    fi
+    cd -- "$repo"
+  elif [[ $target =~ ^[0-9]+$ ]]; then
+    target=pr:$target
+  fi
+  exec wt-herdr-run --workspace review "$target" -- "$self" --worker
 fi
 
 base=$(wt list --format json | jq -er '.repo.default_branch')

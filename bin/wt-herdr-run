@@ -3,7 +3,7 @@
 set -euo pipefail
 
 usage() {
-  printf '%s\n' 'usage: wt-herdr-run [--create] <branch|pr:N|mr:N|PR-URL> -- <command> [arg ...]' >&2
+  printf '%s\n' 'usage: wt-herdr-run [--create] [--workspace NAME] <branch|pr:N|mr:N|PR-URL> -- <command> [arg ...]' >&2
   return 2
 }
 
@@ -55,10 +55,21 @@ if [[ ${1:-} == --worker ]]; then
 fi
 
 switch_args=(--no-cd --format json)
-if [[ ${1:-} == --create ]]; then
-  switch_args+=(--create)
-  shift
-fi
+workspace_label=''
+while (($# > 0)); do
+  case $1 in
+  --create)
+    switch_args+=(--create)
+    shift
+    ;;
+  --workspace)
+    (($# >= 2)) && [[ -n $2 ]] || usage
+    workspace_label=$2
+    shift 2
+    ;;
+  *) break ;;
+  esac
+done
 (($# >= 3)) || usage
 target=$1
 shift
@@ -69,7 +80,9 @@ require git
 
 if [[ ${HERDR_ENV:-} == 1 ]]; then
   require herdr
-  : "${HERDR_WORKSPACE_ID:?wt-herdr-run: missing Herdr workspace ID}"
+  if [[ -z $workspace_label ]]; then
+    : "${HERDR_WORKSPACE_ID:?wt-herdr-run: missing Herdr workspace ID}"
+  fi
 fi
 
 repo=$(git rev-parse --show-toplevel)
@@ -90,7 +103,19 @@ if [[ ${HERDR_ENV:-} != 1 ]]; then
   exit $?
 fi
 
-if ! created=$(herdr tab create --workspace "$HERDR_WORKSPACE_ID" --cwd "$worktree" --focus); then
+workspace_id=${HERDR_WORKSPACE_ID:-}
+if [[ -n $workspace_label ]]; then
+  workspace_id=$(herdr workspace list | jq -r --arg label "$workspace_label" '
+    [.result.workspaces[] | select(.label == $label) | .workspace_id] | first // empty
+  ')
+fi
+
+if [[ -n $workspace_id ]]; then
+  create_args=(tab create --workspace "$workspace_id")
+else
+  create_args=(workspace create --label "$workspace_label")
+fi
+if ! created=$(herdr "${create_args[@]}" --cwd "$worktree" --focus); then
   printf '%s\n' "wt-herdr-run: tab creation failed; keeping worktree: $worktree" >&2
   exit 1
 fi
