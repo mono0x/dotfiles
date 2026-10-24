@@ -9,19 +9,19 @@ file:
     exists: true
   ~/.claude/skills/natural-japanese/SKILL.md:
     exists: true
-  ~/.codex/skills/commit/SKILL.md:
+  ~/.agents/skills/commit/SKILL.md:
     exists: true
-  ~/.codex/skills/crit/SKILL.md:
+  ~/.agents/skills/crit/SKILL.md:
     exists: true
-  ~/.codex/skills/crit-cli/SKILL.md:
+  ~/.agents/skills/crit-cli/SKILL.md:
     exists: true
-  ~/.codex/skills/diataxis/SKILL.md:
+  ~/.agents/skills/diataxis/SKILL.md:
     exists: true
-  ~/.codex/skills/doc-coauthoring/SKILL.md:
+  ~/.agents/skills/doc-coauthoring/SKILL.md:
     exists: true
-  ~/.codex/skills/grill-me/SKILL.md:
+  ~/.agents/skills/grill-me/SKILL.md:
     exists: true
-  ~/.codex/skills/grilling/SKILL.md:
+  ~/.agents/skills/grilling/SKILL.md:
     exists: true
   ~/.config/nvim/pack/vendor/start/copilot.vim/plugin/copilot.vim:
     exists: true

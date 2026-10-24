@@ -1,3 +1,10 @@
 # The chezmoi-prune-remove skill prunes entries 30 days after their adding commit; "# keep: reason" protects the immediately following entry.
 # keep: Prevent Git from using an unintended ~/.gitconfig.
 .gitconfig
+.codex/skills/commit
+.codex/skills/crit
+.codex/skills/crit-cli
+.codex/skills/diataxis
+.codex/skills/doc-coauthoring
+.codex/skills/grill-me
+.codex/skills/grilling
