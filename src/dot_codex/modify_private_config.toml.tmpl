@@ -17,6 +17,7 @@ sed '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' |
       | .personality = "pragmatic"
       | .sandbox_workspace_write.network_access = true
       | .sandbox_workspace_write.writable_roots = [$mise_cache, $uv, $gradle, $mise_data, $dprint]
+      | .features.hooks = true
       | .features.network_proxy.enabled = true
       | .features.network_proxy.domains = {
           "api.github.com": "allow",

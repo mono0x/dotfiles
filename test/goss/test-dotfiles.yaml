@@ -23,6 +23,7 @@ file:
       - 'approvals_reviewer = "auto_review"'
       - '/writable_roots = \[.*".*[.]cache\/mise"/'
       - "network_access = true"
+      - "hooks = true"
       - "[features.network_proxy]"
       - '"api.github.com" = "allow"'
       - '"golang.flatt.tech" = "allow"'
@@ -49,5 +50,5 @@ command:
   jq -e '[.hooks.PreToolUse[] | select(.matcher == "Bash") | .hooks[] | select(.command == "rtk hook codex")] | length == 1' ~/.codex/hooks.json:
     exit-status: 0
 
-  chezmoi verify ~/.codex/hooks.json:
+  chezmoi verify ~/.codex/hooks.json ~/.codex/config.toml:
     exit-status: 0
