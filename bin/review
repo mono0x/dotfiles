@@ -22,7 +22,7 @@ if [[ $1 != --worker ]]; then
   elif [[ $target =~ ^[0-9]+$ ]]; then
     target=pr:$target
   fi
-  exec wt-herdr-run --workspace review "$target" -- "$self" --worker
+  exec wt-herdr-run --workspace "review $target" "$target" -- "$self" --worker
 fi
 
 base=$(wt list --format json | jq -er '.repo.default_branch')
