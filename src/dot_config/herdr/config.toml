@@ -168,7 +168,7 @@ command = "worktrunk.open-with-remotes"
 description = "Worktree: switch / create from local or remote branches"
 
 [[keys.command]]
-key = "prefix+shift+d"
+key = "prefix+shift+e"
 type = "plugin_action"
 command = "worktrunk.remove"
 description = "Worktree: remove"
