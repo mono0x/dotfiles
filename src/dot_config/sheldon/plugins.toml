@@ -65,7 +65,7 @@ rev = "4facba32711875fb2049720a0f6d6d5c3b56b986"
 [plugins.zsh-completions]
 # renovate: datasource=github-digest currentValue=master
 github = "zsh-users/zsh-completions"
-rev = "b5e8e0a22deb05a807bb8655aef809a29f3cffed"
+rev = "989b23277ab33e8d5e82df6aed936e846db9d8b8"
 
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
@@ -93,7 +93,7 @@ rev = "5160a2decb9851768cc746b55d82769424580988"
 [plugins.fzf-git]
 # renovate: datasource=github-digest currentValue=main
 github = "junegunn/fzf-git.sh"
-rev = "110c0a10b744131b90861aa1d1fff6fbe0794f9d"
+rev = "57ef995e245923ae05721e876c42100a1896ad6c"
 
 [plugins.ni]
 # renovate: datasource=github-tags currentValue=v1.12.0
