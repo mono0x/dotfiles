@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eux
+set -eu
 
 chronic herdr plugin install devashish2203/herdr-worktrunk --yes
 

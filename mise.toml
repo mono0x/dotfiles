@@ -91,6 +91,7 @@ run = [
   '''
   env -i \
     HOME="$HOME" \
+    TMPDIR="$TMPDIR" \
     HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}" \
     GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
   /bin/zsh --no-rcs -c '
