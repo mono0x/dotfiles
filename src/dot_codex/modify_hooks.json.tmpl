@@ -1,7 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-jq --slurp --sort-keys --join-output '
+# TODO: After allowing time for all machines to migrate, remove the legacy_herdr
+# argument and the SessionStart cleanup below.
+jq --slurp --sort-keys --join-output \
+  --arg legacy_herdr 'bash "$HOME/.codex/herdr-agent-state.sh" session' '
 def rtk_hook($agent):
   ("rtk hook " + $agent) as $command
   | .hooks.PreToolUse = (
@@ -11,4 +14,10 @@ def rtk_hook($agent):
       + [{matcher: "Bash", hooks: [{type: "command", command: $command}]}]
     );
   (.[0] // {}) | rtk_hook("codex")
+  | if .hooks.SessionStart then
+      .hooks.SessionStart |= [
+        .[] | .hooks |= map(select(.command != $legacy_herdr))
+        | select(.hooks | length > 0)
+      ]
+    else . end
 '
