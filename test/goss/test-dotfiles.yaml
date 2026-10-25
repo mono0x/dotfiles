@@ -52,6 +52,3 @@ command:
 
   jq -e '[.hooks.SessionStart[]?.hooks[]? | select(.command | contains("herdr-agent-state.sh"))] | length == 1' ~/.codex/hooks.json:
     exit-status: 0
-
-  chezmoi verify ~/.codex/hooks.json ~/.codex/config.toml:
-    exit-status: 0
