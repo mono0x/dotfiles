@@ -78,7 +78,7 @@ login_shell = "/opt/homebrew/bin/zsh"
 "pipx:yq" = "4.4.5"
 chezmoi = "2.73.2"
 dprint = "0.64.0"
-hk = "2.7.0"
+hk = "2.7.1"
 pkl = "0.32.1"
 # With uv, pipx tools are installed with this Python instead of the runner image's interpreter.
 python = "3.15.0"
