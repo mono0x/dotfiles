@@ -13,4 +13,6 @@ Library/*
 
 {{ if not (lookPath "herdr") -}}
 .chezmoiscripts/unix/00_herdr.sh
+.agents/skills/herdr
+.claude/skills/herdr
 {{ end -}}
