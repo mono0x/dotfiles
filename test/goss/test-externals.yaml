@@ -27,6 +27,8 @@ file:
     exists: true
   ~/.agents/skills/natural-japanese/SKILL.md:
     exists: true
+  ~/.agents/skills/review-pr/upstream/commands/review-pr.md:
+    exists: true
   ~/.config/nvim/pack/vendor/start/copilot.vim/plugin/copilot.vim:
     exists: true
   ~/.config/nvim/pack/vendor/start/lualine.nvim/lua/lualine.lua:

@@ -84,6 +84,17 @@ url = "https://github.com/coji/natural-japanese/archive/a88b8e92d38cf5b339950752
 stripComponents = 3
 include = ["*/skills/natural-japanese/**"]
 
+[".agents/skills/review-pr/upstream"]
+type = "archive"
+# renovate: datasource=github-digest currentValue=main
+url = "https://github.com/anthropics/claude-plugins-official/archive/f8c5e7a1dcb71b10cb74586224b5401f3de5db28.tar.gz"
+stripComponents = 3
+include = [
+  "*/plugins/pr-review-toolkit/commands/**",
+  "*/plugins/pr-review-toolkit/agents/**",
+  "*/plugins/pr-review-toolkit/LICENSE",
+]
+
 [".config/nvim/pack/vendor/start/copilot.vim"]
 type = "archive"
 # renovate: datasource=github-tags currentValue=v1.59.0
