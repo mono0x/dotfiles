@@ -81,7 +81,7 @@ dprint = "0.64.3"
 hk = "2.7.1"
 pkl = "0.32.2"
 # With uv, pipx tools are installed with this Python instead of the runner image's interpreter.
-python = "3.15.1"
+python = "3.15.2"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
 uv = "0.13.5"
