@@ -15,8 +15,8 @@ require() {
 }
 
 worker() {
-  local repo=$1 worktree=$2 owned=$3 workspace_id=$4
-  shift 4
+  local repo=$1 worktree=$2 owned=$3
+  shift 3
   [[ ${1:-} == -- ]] || usage
   shift
   (($# > 0)) || usage
@@ -33,14 +33,9 @@ worker() {
   if [[ $owned == true ]]; then
     # Only remove worktrees created by this invocation, keeping branches and changes.
     if ! wt -C "$repo" remove --foreground --yes --no-delete-branch "$worktree"; then
-      printf '%s\n' "wt-herdr-run: cleanup failed; keeping worktree and workspace: $worktree" >&2
+      printf '%s\n' "wt-herdr-run: cleanup failed; keeping worktree: $worktree" >&2
       return 1
     fi
-  fi
-
-  # Closing the workspace terminates its shell, so do this last.
-  if [[ -n $workspace_id ]]; then
-    herdr workspace close "$workspace_id" >/dev/null
   fi
 }
 
@@ -49,7 +44,7 @@ require jq
 
 if [[ ${1:-} == --worker ]]; then
   shift
-  (($# >= 6)) || usage
+  (($# >= 5)) || usage
   worker "$@"
   exit $?
 fi
@@ -95,23 +90,7 @@ owned=$(jq -er '.action |
   exit 1
 }
 
-if [[ ${HERDR_ENV:-} != 1 ]]; then
-  worker "$repo" "$worktree" "$owned" '' -- "$@"
-  exit $?
-fi
-
-if ! created=$(herdr workspace create --label "${workspace_label:-$target}" --cwd "$worktree" --focus); then
-  printf '%s\n' "wt-herdr-run: workspace creation failed; keeping worktree: $worktree" >&2
-  exit 1
-fi
-workspace_id=$(jq -er '.result.workspace.workspace_id | select(type == "string" and length > 0)' <<<"$created")
-pane_id=$(jq -er '.result.root_pane.pane_id | select(type == "string" and length > 0)' <<<"$created")
-
-# Quote each argument for the pane's interactive zsh, including empty arguments.
 self=$(cd -- "$(dirname -- "$0")" && pwd -P)/${0##*/}
-printf -v command_line '%q ' /bin/bash "$self" --worker "$repo" "$worktree" "$owned" "$workspace_id" -- "$@"
-if ! herdr pane run "$pane_id" "$command_line" >/dev/null; then
-  printf '%s\n' "wt-herdr-run: launch failed; keeping workspace $workspace_id and worktree: $worktree" >&2
-  exit 1
-fi
-printf '%s\n' "Started in herdr workspace $workspace_id: $worktree"
+cd -- "$worktree"
+exec "${self%/*}/herdr-run" --workspace "${workspace_label:-$target}" -- \
+  /bin/bash "$self" --worker "$repo" "$worktree" "$owned" -- "$@"

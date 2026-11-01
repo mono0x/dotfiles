@@ -1,0 +1,71 @@
+#!/bin/bash
+# Run a command in a temporary Herdr workspace when available.
+set -euo pipefail
+
+usage() {
+  printf '%s\n' 'usage: herdr-run [--workspace NAME] -- <command> [arg ...]' >&2
+  return 2
+}
+
+require() {
+  command -v "$1" >/dev/null 2>&1 || {
+    printf '%s\n' "herdr-run: required command not found: $1" >&2
+    return 127
+  }
+}
+
+if [[ ${1:-} == --worker ]]; then
+  shift
+  (($# >= 3)) || usage
+  workspace_id=$1
+  shift
+  [[ $1 == -- ]] || usage
+  shift
+  exit_code=0
+  "$@" || exit_code=$?
+  if ((exit_code != 0)); then
+    printf '%s\n' "herdr-run: command exited with status $exit_code; keeping workspace: $workspace_id" >&2
+    exit "$exit_code"
+  fi
+  # Closing the workspace terminates its shell, so do this last.
+  herdr workspace close "$workspace_id" >/dev/null
+  exit $?
+fi
+
+workspace_label=''
+while (($# > 0)); do
+  case $1 in
+  --workspace)
+    (($# >= 2)) && [[ -n $2 ]] || usage
+    workspace_label=$2
+    shift 2
+    ;;
+  *) break ;;
+  esac
+done
+(($# >= 2)) && [[ $1 == -- ]] || usage
+shift
+require "$1"
+
+if [[ ${HERDR_ENV:-} != 1 ]]; then
+  exec "$@"
+fi
+require herdr
+require jq
+
+cwd=$(pwd -P)
+if ! created=$(herdr workspace create --label "${workspace_label:-${cwd##*/}}" --cwd "$cwd" --focus); then
+  printf '%s\n' "herdr-run: workspace creation failed: $cwd" >&2
+  exit 1
+fi
+workspace_id=$(jq -er '.result.workspace.workspace_id | select(type == "string" and length > 0)' <<<"$created")
+pane_id=$(jq -er '.result.root_pane.pane_id | select(type == "string" and length > 0)' <<<"$created")
+
+# Quote each argument for the pane's interactive zsh, including empty arguments.
+self=$(cd -- "$(dirname -- "$0")" && pwd -P)/${0##*/}
+printf -v command_line '%q ' /bin/bash "$self" --worker "$workspace_id" -- "$@"
+if ! herdr pane run "$pane_id" "$command_line" >/dev/null; then
+  printf '%s\n' "herdr-run: launch failed; keeping workspace: $workspace_id" >&2
+  exit 1
+fi
+printf '%s\n' "Started in herdr workspace $workspace_id: $cwd"

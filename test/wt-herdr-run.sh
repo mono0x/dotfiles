@@ -16,7 +16,7 @@ SH
 cat >"$test_dir/bin/wt" <<'SH'
 #!/bin/bash
 case $3 in
-switch) jq -n --arg path "$TEST_WORKTREE" '{path: $path, action: "created"}' ;;
+switch) jq -n --arg path "$TEST_WORKTREE" '{path: $path, action: env.TEST_ACTION // "created"}' ;;
 remove)
   printf '%s\n' remove >>"$TEST_LOG"
   exit "${TEST_REMOVE_STATUS:-0}"
@@ -33,6 +33,7 @@ case "$1 $2" in
   ;;
 'pane run')
   [[ $3 == new:p1 && $4 == *' --worker '* && $4 == *' new -- '* ]] || exit 1
+  /bin/zsh -f -c "$4"
   ;;
 'workspace close')
   [[ $3 == new ]] || exit 1
@@ -46,27 +47,27 @@ chmod +x "$test_dir/bin/"*
 # Repeated reviews must each create a workspace, even with the same label.
 "$runner" --workspace 'review pr:123' pr:123 -- /usr/bin/true
 "$runner" --workspace 'review pr:123' pr:123 -- /usr/bin/true
-[[ $(wc -l <"$TEST_LOG") -eq 2 ]]
+[[ $(wc -l <"$TEST_LOG") -eq 6 ]]
+[[ $(tail -n 2 "$TEST_LOG") == $'remove\nclose' ]]
 [[ $(head -n 1 "$TEST_LOG") == "workspace create --label review pr:123 --cwd $TEST_WORKTREE --focus" ]]
 
 : >"$TEST_LOG"
-"$runner" --worker "$TEST_REPO" "$TEST_WORKTREE" true new -- /usr/bin/true
-[[ $(cat "$TEST_LOG") == $'remove\nclose' ]]
+TEST_ACTION=existing "$runner" pr:123 -- /usr/bin/true
+[[ $(tail -n 1 "$TEST_LOG") == close ]]
+[[ $(wc -l <"$TEST_LOG") -eq 2 ]]
 
 : >"$TEST_LOG"
-"$runner" --worker "$TEST_REPO" "$TEST_WORKTREE" false new -- /usr/bin/true
-[[ $(cat "$TEST_LOG") == close ]]
+if "$runner" pr:123 -- /usr/bin/false; then
+  exit 1
+fi
+[[ $(wc -l <"$TEST_LOG") -eq 1 ]]
 
 : >"$TEST_LOG"
-if "$runner" --worker "$TEST_REPO" "$TEST_WORKTREE" true new -- /usr/bin/false; then
+if TEST_REMOVE_STATUS=1 "$runner" pr:123 -- /usr/bin/true; then
   exit 1
 fi
-[[ ! -s $TEST_LOG ]]
-
-if TEST_REMOVE_STATUS=1 "$runner" --worker "$TEST_REPO" "$TEST_WORKTREE" true new -- /usr/bin/true; then
-  exit 1
-fi
-[[ $(cat "$TEST_LOG") == remove ]]
+[[ $(tail -n 1 "$TEST_LOG") == remove ]]
+[[ $(wc -l <"$TEST_LOG") -eq 2 ]]
 
 : >"$TEST_LOG"
 HERDR_ENV=0 "$runner" pr:123 -- /usr/bin/true
