@@ -1,6 +1,6 @@
 [tools]
 "github:k1LoW/mo" = { version = "latest", auto_update = true }
-"mr-boxington" = { version = "1.25.0", postinstall = "mbx setup --yes" }
+"mr-boxington" = { version = "1.27.0", postinstall = "mbx setup --yes" }
 "npm:ccstatusline" = { version = "latest", auto_update = true }
 claude = { version = "latest", auto_update = true }
 codex = { version = "latest", auto_update = true }
