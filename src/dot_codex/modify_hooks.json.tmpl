@@ -7,13 +7,11 @@ set -euo pipefail
 jq --slurp --sort-keys --join-output \
   --arg legacy_herdr 'bash "$HOME/.codex/herdr-agent-state.sh" session' \
   --arg local_instructions 'bash "$HOME/.agents/hooks/local-instructions.sh" codex' '
+# Keep existing entries in place because herdr also appends its own hook.
 def hook($event; $matcher; $command):
-  .hooks[$event] = (
-    [(.hooks[$event] // [])[]
-      | .hooks |= map(select(.command != $command))
-      | select(.hooks | length > 0)]
-    + [{hooks: [{type: "command", command: $command}]} + $matcher]
-  );
+  if any(.hooks[$event][]?.hooks[]?; .command == $command) then .
+  else .hooks[$event] += [{hooks: [{type: "command", command: $command}]} + $matcher]
+  end;
   (.[0] // {})
   | if .hooks.SessionStart then
       .hooks.SessionStart |= [
