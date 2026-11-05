@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# https://github.com/suzuki-shunsuke/ghtkn#wrapping-commands
+set -eu
+
+# If GH_TOKEN or GITHUB_TOKEN is set, use it.
+if [ -n "${GH_TOKEN:-}" ] || [ -n "${GITHUB_TOKEN:-}" ]; then
+  # echo "[WARN] skip ghtkn because GH_TOKEN or GITHUB_TOKEN is set" >&2
+  exec /opt/homebrew/bin/gh "$@" # Specify the absolute path to avoid infinite loop
+fi
+
+exec ghtkn exec -e GH_TOKEN -- /opt/homebrew/bin/gh "$@"
