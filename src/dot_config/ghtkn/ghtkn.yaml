@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/suzuki-shunsuke/ghtkn/main/json-schema/ghtkn.json
+apps:
+  - name: mono0x-gh
+    client_id: Iv23liMWnNZiOqH37Aa5
+    git_owners:
+      - mono0x
+
+open_browser:
+  enable: true
+
+clipboard:
+  enable: true
+
+backend:
+  type: agent

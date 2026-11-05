@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+
+# plist hash: {{ include "Library/private_LaunchAgents/com.github.suzuki-shunsuke.ghtkn.agent.plist.tmpl" | sha256sum }}
+label=com.github.suzuki-shunsuke.ghtkn.agent
+domain="gui/$(id -u)"
+
+launchctl bootout "$domain/$label" 2>/dev/null || true
+launchctl bootstrap "$domain" "$HOME/Library/LaunchAgents/$label.plist"
