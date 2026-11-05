@@ -3,21 +3,24 @@ set -euo pipefail
 
 # TODO: After allowing time for all machines to migrate, remove the legacy_herdr
 # argument and the SessionStart cleanup below.
+# shellcheck disable=SC2016
 jq --slurp --sort-keys --join-output \
-  --arg legacy_herdr 'bash "$HOME/.codex/herdr-agent-state.sh" session' '
-def rtk_hook($agent):
-  ("rtk hook " + $agent) as $command
-  | .hooks.PreToolUse = (
-      [(.hooks.PreToolUse // [])[]
-        | .hooks |= map(select(.command != $command))
-        | select(.hooks | length > 0)]
-      + [{matcher: "Bash", hooks: [{type: "command", command: $command}]}]
-    );
-  (.[0] // {}) | rtk_hook("codex")
+  --arg legacy_herdr 'bash "$HOME/.codex/herdr-agent-state.sh" session' \
+  --arg local_instructions 'bash "$HOME/.agents/hooks/local-instructions.sh" codex' '
+def hook($event; $matcher; $command):
+  .hooks[$event] = (
+    [(.hooks[$event] // [])[]
+      | .hooks |= map(select(.command != $command))
+      | select(.hooks | length > 0)]
+    + [{hooks: [{type: "command", command: $command}]} + $matcher]
+  );
+  (.[0] // {})
   | if .hooks.SessionStart then
       .hooks.SessionStart |= [
         .[] | .hooks |= map(select(.command != $legacy_herdr))
         | select(.hooks | length > 0)
       ]
     else . end
+  | hook("PreToolUse"; {matcher: "Bash"}; "rtk hook codex")
+  | hook("SessionStart"; {}; $local_instructions)
 '

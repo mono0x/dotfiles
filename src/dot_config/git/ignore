@@ -24,6 +24,10 @@ Desktop.ini
 # General
 #
 
+# AI agents
+AGENTS.local.md
+CLAUDE.local.md
+
 # Claude Code
 **/.claude/.cc-writes/
 **/.claude/plans/*

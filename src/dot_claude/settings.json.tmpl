@@ -63,6 +63,15 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": {{ printf "bash '%s/.agents/hooks/local-instructions.sh' claude" .chezmoi.homeDir | toJson }},
+            "timeout": 10
+          }
+        ]
       }
     ]
   },
