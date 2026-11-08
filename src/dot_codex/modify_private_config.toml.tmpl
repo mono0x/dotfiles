@@ -6,6 +6,7 @@ printf '%s\n' '#:schema https://developers.openai.com/codex/config-schema.json'
 sed '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' |
   mise --cd "{{ .chezmoi.sourceDir }}" exec -- tomlq -T \
     --arg mise_cache "$HOME/.cache/mise" \
+    --arg mise_library_cache "$HOME/Library/Caches/mise" \
     --arg uv "$HOME/.cache/uv" \
     --arg gradle "$HOME/.gradle" \
     --arg mise_data "$HOME/.local/share/mise" \
@@ -16,7 +17,7 @@ sed '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' |
       | .model_reasoning_effort = "medium"
       | .personality = "pragmatic"
       | .sandbox_workspace_write.network_access = true
-      | .sandbox_workspace_write.writable_roots = [$mise_cache, $uv, $gradle, $mise_data, $dprint]
+      | .sandbox_workspace_write.writable_roots = [$mise_cache, $mise_library_cache, $uv, $gradle, $mise_data, $dprint]
       | .features.hooks = true
       | .features.network_proxy.enabled = true
       | .features.network_proxy.domains = {
