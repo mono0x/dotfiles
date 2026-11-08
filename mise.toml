@@ -21,6 +21,7 @@
 "brew:gnu-tar" = "latest"
 "brew:gnupg" = "latest"
 "brew:grep" = "latest"
+"brew:gum" = "latest"
 "brew:gzip" = "latest"
 "brew:herdr" = "latest"
 "brew:hk" = "latest"
