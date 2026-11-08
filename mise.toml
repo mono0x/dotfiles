@@ -85,7 +85,7 @@ pkl = "0.32.2"
 python = "3.15.2"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
-uv = "0.13.5"
+uv = "0.13.6"
 
 [tasks.bootstrap]
 run = [
