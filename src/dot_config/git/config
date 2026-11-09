@@ -129,32 +129,35 @@
 # }}}
 
 # hook {{{
+# Run hk through mise exec to use the version configured for the project.
+# pre-commit and pre-push require hk; other hooks skip execution if hk is unavailable.
+# mise which hk only finds mise-managed hk, so also check PATH with command -v hk.
 [hook "hk-commit-msg"]
-  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run commit-msg --from-hook \"$@\"
+  command = mise which hk >/dev/null 2>&1 || command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || mise exec -- hk run commit-msg --from-hook \"$@\"
   event = commit-msg
 [hook "hk-post-checkout"]
-  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run post-checkout --from-hook \"$@\"
+  command = mise which hk >/dev/null 2>&1 || command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || mise exec -- hk run post-checkout --from-hook \"$@\"
   event = post-checkout
 [hook "hk-post-commit"]
-  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run post-commit --from-hook \"$@\"
+  command = mise which hk >/dev/null 2>&1 || command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || mise exec -- hk run post-commit --from-hook \"$@\"
   event = post-commit
 [hook "hk-post-merge"]
-  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run post-merge --from-hook \"$@\"
+  command = mise which hk >/dev/null 2>&1 || command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || mise exec -- hk run post-merge --from-hook \"$@\"
   event = post-merge
 [hook "hk-post-rewrite"]
-  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run post-rewrite --from-hook \"$@\"
+  command = mise which hk >/dev/null 2>&1 || command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || mise exec -- hk run post-rewrite --from-hook \"$@\"
   event = post-rewrite
 [hook "hk-pre-commit"]
-  command = test \"${HK:-1}\" = \"0\" || hk run pre-commit --from-hook \"$@\"
+  command = test \"${HK:-1}\" = \"0\" || mise exec -- hk run pre-commit --from-hook \"$@\"
   event = pre-commit
 [hook "hk-pre-push"]
-  command = test \"${HK:-1}\" = \"0\" || hk run pre-push --from-hook \"$@\"
+  command = test \"${HK:-1}\" = \"0\" || mise exec -- hk run pre-push --from-hook \"$@\"
   event = pre-push
 [hook "hk-pre-rebase"]
-  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run pre-rebase --from-hook \"$@\"
+  command = mise which hk >/dev/null 2>&1 || command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || mise exec -- hk run pre-rebase --from-hook \"$@\"
   event = pre-rebase
 [hook "hk-prepare-commit-msg"]
-  command = command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || hk run prepare-commit-msg --from-hook \"$@\"
+  command = mise which hk >/dev/null 2>&1 || command -v hk >/dev/null 2>&1 || exit 0 && test \"${HK:-1}\" = \"0\" || mise exec -- hk run prepare-commit-msg --from-hook \"$@\"
   event = prepare-commit-msg
 # }}}
 
