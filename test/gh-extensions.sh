@@ -34,20 +34,23 @@ MOCK
 chmod +x "$test_dir/bin/"*
 
 install='extension install github/gh-actions-lock --pin v0.4.1'
+install_infra='extension install babarot/gh-infra --pin v0.20.0'
 replace=$(printf '%s\n%s' 'extension remove gh-actions-lock' "$install")
 
 : >"$TEST_EXTENSIONS"
 : >"$TEST_LOG"
 sh "$script"
-[[ $(cat "$TEST_LOG") == "$install" ]]
+[[ $(cat "$TEST_LOG") == "$(printf '%s\n%s' "$install" "$install_infra")" ]]
 
 printf 'gh other\towner/gh-other\tv1.0.0\n' >"$TEST_EXTENSIONS"
+printf 'gh infra\tbabarot/gh-infra\tv0.20.0\n' >>"$TEST_EXTENSIONS"
 : >"$TEST_LOG"
 sh "$script"
 [[ $(cat "$TEST_LOG") == "$install" ]]
 
 for version in v0.4.1 v0.4.0 v0.5.0; do
   printf 'gh actions-lock\tgithub/gh-actions-lock\t%s\n' "$version" >"$TEST_EXTENSIONS"
+  printf 'gh infra\tbabarot/gh-infra\tv0.20.0\n' >>"$TEST_EXTENSIONS"
   : >"$TEST_LOG"
   sh "$script"
   if [[ $version == v0.4.1 ]]; then
@@ -57,6 +60,12 @@ for version in v0.4.1 v0.4.0 v0.5.0; do
   fi
 done
 
+printf 'gh actions-lock\tgithub/gh-actions-lock\tv0.4.1\n' >"$TEST_EXTENSIONS"
+printf 'gh infra\tbabarot/gh-infra\tv0.19.0\n' >>"$TEST_EXTENSIONS"
+: >"$TEST_LOG"
+sh "$script"
+[[ $(cat "$TEST_LOG") == "$(printf '%s\n%s' 'extension remove gh-infra' "$install_infra")" ]]
+
 : >"$TEST_LOG"
 status=0
 TEST_LIST_STATUS=4 sh "$script" || status=$?
@@ -65,7 +74,7 @@ TEST_LIST_STATUS=4 sh "$script" || status=$?
 : >"$TEST_LOG"
 status=0
 TEST_REMOVE_STATUS=1 sh "$script" || status=$?
-[[ $status == 1 && $(cat "$TEST_LOG") == 'extension remove gh-actions-lock' ]]
+[[ $status == 1 && $(cat "$TEST_LOG") == 'extension remove gh-infra' ]]
 
 : >"$TEST_EXTENSIONS"
 : >"$TEST_LOG"

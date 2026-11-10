@@ -18,3 +18,4 @@ install_extension() (
 )
 
 install_extension github/gh-actions-lock v0.4.1
+install_extension babarot/gh-infra v0.20.0
