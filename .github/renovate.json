@@ -7,6 +7,16 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/^src/\\.chezmoiscripts/unix/run_after_01_gh_extensions\\.sh$/"
+      ],
+      "matchStrings": [
+        "install_extension (?<depName>[^\\s/]+/[^\\s/]+) (?<currentValue>\\S+)"
+      ],
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/^src/\\.chezmoiexternal\\.toml\\.tmpl$/"
       ],
       "matchStrings": [
