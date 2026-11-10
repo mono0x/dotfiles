@@ -95,6 +95,7 @@ run = [
     TMPDIR="$TMPDIR" \
     HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}" \
     GITHUB_ACTIONS="${GITHUB_ACTIONS:-}" \
+    GH_TOKEN="${GH_TOKEN:-}" \
   /bin/zsh --no-rcs -c '
   eval "$(/usr/libexec/path_helper -s)"
   path=(~/.local/share/mise/shims(N-/) "$HOMEBREW_PREFIX/bin"(N-/) "$HOMEBREW_PREFIX/sbin"(N-/) $path)
