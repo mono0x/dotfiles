@@ -21,7 +21,6 @@ file:
     filetype: file
     contents:
       - 'approvals_reviewer = "auto_review"'
-      - '/writable_roots = \[.*".*[.]cache\/mise"/'
       - "network_access = true"
       - "hooks = true"
       - "[features.network_proxy]"
@@ -31,6 +30,9 @@ file:
       - '"registry.npmjs.org" = "allow"'
 
 command:
+  tomlq -e '.sandbox_workspace_write.writable_roots | index(env.HOME + "/.cache/mise") != null' ~/.codex/config.toml:
+    exit-status: 0
+
   # Covers the whole Homebrew chain: Sheldon loads homebrew.zsh, which replays
   # `brew shellenv` through zsh-smartcache.
   zsh -ic 'command -v brew':
