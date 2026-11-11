@@ -42,6 +42,7 @@
 "brew:tig" = "latest"
 "brew:unzip" = "latest"
 "brew:wget" = "latest"
+"brew:worktrunk" = "latest"
 "brew:xz" = "latest"
 "brew:yazi" = "latest"
 "brew:zoxide" = "latest"
