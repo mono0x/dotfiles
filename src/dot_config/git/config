@@ -118,14 +118,21 @@
 # }}}
 
 # gpg signing {{{
+# The signing key lives in the Secure Enclave. See README.md for setup.
+[user]
+  signingkey = ~/.ssh/id_ecdsa_sk_rk_git-sign
+
 [gpg]
   format = ssh
 
 [gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+  program = ~/.config/git/ssh-sign
 
 [commit]
   gpgsign = true
+
+[tag]
+  gpgSign = true
 # }}}
 
 # hook {{{

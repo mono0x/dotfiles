@@ -1,0 +1,4 @@
+#!/bin/sh
+# ssh-keygen -Y sign ignores ~/.ssh/config, so pass the Secure Enclave provider via the environment.
+export SSH_SK_PROVIDER=/usr/lib/ssh-keychain.dylib
+exec /usr/bin/ssh-keygen "$@"

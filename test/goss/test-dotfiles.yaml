@@ -30,6 +30,9 @@ file:
       - '"registry.npmjs.org" = "allow"'
 
 command:
+  test -x "$(git config --path --get gpg.ssh.program)":
+    exit-status: 0
+
   tomlq -e '.sandbox_workspace_write.writable_roots | index(env.HOME + "/.cache/mise") != null' ~/.codex/config.toml:
     exit-status: 0
 
