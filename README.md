@@ -57,8 +57,20 @@ Git signs commits and tags with an SSH key stored in the Secure Enclave, so sign
 ```sh
 # Create a non-exportable P-256 key that requires no user presence
 sc_auth create-ctk-identity -l git-sign -k p-256-ne -t none
-# Write the key handle and public key as id_ecdsa_sk_rk_git-sign{,.pub}, named after the label
+# Write the key handle and public key to ~/.ssh
 (cd ~/.ssh && ssh-keygen -w /usr/lib/ssh-keychain.dylib -K -N "")
+```
+
+If `ssh-keygen` prompts for a PIN, leave it empty and press Enter. `ssh-keychain.dylib` does not use it.
+
+Depending on the macOS version, the files may be saved without the key label as `id_ecdsa_sk_rk` and `id_ecdsa_sk_rk.pub` (confirmed on macOS 15). If so, rename them to match Git's signing key configuration:
+
+```sh
+mv ~/.ssh/id_ecdsa_sk_rk ~/.ssh/id_ecdsa_sk_rk_git-sign
+mv ~/.ssh/id_ecdsa_sk_rk.pub ~/.ssh/id_ecdsa_sk_rk_git-sign.pub
+```
+
+```sh
 # Copy the public key, then add it as a signing key at https://github.com/settings/ssh/new
 pbcopy < ~/.ssh/id_ecdsa_sk_rk_git-sign.pub
 ```
