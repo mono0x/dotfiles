@@ -11,6 +11,10 @@
 Library/*
 {{ end -}}
 
+{{ if eq (env "GITHUB_ACTIONS") "true" -}}
+.chezmoiscripts/darwin/git_signing_key.sh
+{{ end -}}
+
 {{ if not (lookPath "herdr") -}}
 .chezmoiscripts/unix/00_herdr.sh
 .agents/skills/herdr
