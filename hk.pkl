@@ -40,4 +40,8 @@ steps {
   }
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format
+  ["secretlint"] {
+    glob = "**/*"
+    check = "mise exec -- secretlint --no-glob {{ files }}"
+  }
 }
