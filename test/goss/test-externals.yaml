@@ -9,8 +9,6 @@ file:
     exists: true
   ~/.claude/skills/natural-japanese/SKILL.md:
     exists: true
-  ~/.agents/skills/commit/SKILL.md:
-    exists: true
   ~/.agents/skills/crit/SKILL.md:
     exists: true
   ~/.agents/skills/crit-cli/SKILL.md:

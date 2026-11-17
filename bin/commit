@@ -25,8 +25,14 @@ $(rtk git status)
 
 - Current branch: $(rtk git branch --show-current)
 
-- Recent commits (for tone/style reference):
-$(rtk git log --oneline -10 2>/dev/null || true)
+- Recent commits (subjects and bodies for convention reference):
+$(git log -10 --format='%s%n%b%n---' 2>/dev/null || true)
+
+## Repository conventions
+
+Before drafting the message, find and read the repository's commit-message rules in AGENTS.md, CLAUDE.md, CONTRIBUTING files, README files, and any linked contribution or commit guides. Check commitlint or commit-template configuration when present.
+
+Follow explicit repository rules first. Where they leave details unspecified, infer the language, subject format, prefixes/scopes, capitalization, length, and body style from recent commits. Inspect history for the affected paths if the overall history is mixed. Do not impose Conventional Commits or another generic style unless the repository calls for it. Before returning the message, check it against the rules and examples you found.
 
 ## Investigation
 

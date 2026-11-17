@@ -1,4 +1,12 @@
 file:
+  ~/.claude/skills/commit/SKILL.md:
+    exists: true
+    filetype: file
+
+  ~/.agents/skills/commit/SKILL.md:
+    exists: true
+    filetype: file
+
   ~/.config/git/config:
     exists: true
     filetype: file
