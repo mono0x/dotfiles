@@ -1,0 +1,15 @@
+{
+  "programs": {
+    "codex": {
+      "run": [
+        "/Users/mono/.local/share/mise/shims/codex",
+        "--no-daemon"
+      ]
+    },
+    "claude": {
+      "run": [
+        "/Users/mono/.local/share/mise/shims/claude"
+      ]
+    }
+  }
+}

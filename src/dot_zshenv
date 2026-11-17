@@ -21,8 +21,8 @@ typeset -U path cdpath fpath manpath
 # noka: ZC1071
 path=(
   $HOME/google-cloud-sdk/bin(N-/)
-  $HOME/.krew/bin(N-/)
   $HOME/bin(N-/)
+  $HOME/.local/bin(N-/)
   /Applications/Ghostty.app/Contents/MacOS(N-/)
   /Applications/Obsidian.app/Contents/MacOS(N-/)
   "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"(N-/)

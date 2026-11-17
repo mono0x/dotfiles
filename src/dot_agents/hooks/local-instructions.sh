@@ -29,3 +29,10 @@ codex)
   ;;
 *) exit 2 ;;
 esac
+
+if [[ -n ${HC_TERMINAL_ID:-} ]]; then
+  cat <<'EOF'
+You are running inside herdr-core; HC_TERMINAL_ID is your terminal address.
+Use `hc` for persistent programs and agent coordination. Before using it, read `hc --skill` for current instructions.
+EOF
+fi
