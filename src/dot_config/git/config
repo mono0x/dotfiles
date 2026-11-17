@@ -118,7 +118,7 @@
 # }}}
 
 # gpg signing {{{
-# The signing key lives in the Secure Enclave. See README.md for setup.
+# The signing key lives in the Secure Enclave and requires no Touch ID. See README.md for setup.
 [user]
   signingkey = ~/.ssh/id_ecdsa_sk_rk_git-sign
 
