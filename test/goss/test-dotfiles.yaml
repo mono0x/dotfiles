@@ -57,6 +57,9 @@ command:
       - "claude: current"
       - "codex: current"
 
+  jq -e '([.background, .foreground, .selection] + .ansi | all(test("^#[0-9a-fA-F]{6}$"))) and (.ansi | length == 16)' ~/.config/herdr-app/themes/one-light.json:
+    exit-status: 0
+
   jq -e '[.hooks.PreToolUse[] | select(.matcher == "Bash") | .hooks[] | select(.command == "rtk hook claude")] | length == 1' ~/.claude/settings.json:
     exit-status: 0
 
