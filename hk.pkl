@@ -13,7 +13,7 @@ steps {
     match_any =
       Builtins.shfmt.match_any
         + List(new FileSelector {
-          glob = List("src/dot_zshenv", "src/dot_zprofile")
+          glob = List("src/dot_zshenv", "src/dot_config/zsh/dot_zprofile")
         })
   }
   ["bash"] {
@@ -21,11 +21,11 @@ steps {
     check = "bash -n {{ files }}"
   }
   ["zsh"] {
-    glob = List("**/*.zsh", "src/dot_zshenv", "src/dot_zprofile")
+    glob = List("**/*.zsh", "src/dot_zshenv", "src/dot_config/zsh/dot_zprofile")
     check = "zsh -n {{ files }}"
   }
   ["zshellcheck"] {
-    glob = List("**/*.zsh", "src/dot_zshenv", "src/dot_zprofile")
+    glob = List("**/*.zsh", "src/dot_zshenv", "src/dot_config/zsh/dot_zprofile")
     check = "zshellcheck -no-banner {{ files }}"
     fix = "zshellcheck -no-banner -fix {{ files }}"
     batch = true

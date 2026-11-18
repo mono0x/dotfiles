@@ -4,7 +4,7 @@ for file in \
   "$HOME"/.config/zsh/.zshrc \
   "$HOME"/.config/zsh/zshrc.d/* \
   "$HOME"/.config/zsh/zshrc.defer.d/* \
-  "$HOME"/.zprofile \
+  "$HOME"/.config/zsh/.zprofile \
   "$HOME"/.zshenv; do
   # `zsh --no-exec` only accepts single file
   zsh --no-exec "$file"

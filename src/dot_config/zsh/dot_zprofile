@@ -1,10 +1,16 @@
 #!/usr/bin/env zsh
 # Dummy shebang for shfmt
 
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+# Login shells also start non-interactive environments such as hc core, so tools
+# they need belong here instead of zshrc.
 # https://mise.jdx.dev/ide-integration.html
 # Prepend pattern; arr+=(...) only appends so the suggested fix changes semantics.
 # noka: ZC1071
 path=(
+  $HOME/.local/share/chezmoi/bin(N-/) # dotfiles
   $HOME/.local/share/mise/shims(N-/)
   $path
 )
