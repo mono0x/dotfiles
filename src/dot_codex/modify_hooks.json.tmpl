@@ -1,11 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
-# TODO: After allowing time for all machines to migrate, remove the legacy_herdr
-# argument and the SessionStart cleanup below.
+# TODO: After allowing time for all machines to migrate, remove the legacy
+# arguments and the SessionStart cleanup below.
 # shellcheck disable=SC2016
 jq --slurp --sort-keys --join-output \
   --arg legacy_herdr 'bash "$HOME/.codex/herdr-agent-state.sh" session' \
+  --arg legacy_local_instructions 'bash "$HOME/.agents/hooks/local-instructions.sh" "$HOME/.codex/AGENTS.local.md" AGENTS.local.md' \
   --arg local_instructions 'bash "$HOME/.agents/hooks/local-instructions.sh" codex' '
 # Keep existing entries in place because herdr also appends its own hook.
 def hook($event; $matcher; $command):
@@ -15,7 +16,7 @@ def hook($event; $matcher; $command):
   (.[0] // {})
   | if .hooks.SessionStart then
       .hooks.SessionStart |= [
-        .[] | .hooks |= map(select(.command != $legacy_herdr))
+        .[] | .hooks |= map(select(.command != $legacy_herdr and .command != $legacy_local_instructions))
         | select(.hooks | length > 0)
       ]
     else . end
