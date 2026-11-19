@@ -3,8 +3,7 @@
 
 # user {{{
 [user]
-  name = mono
-  email = mono@mono0x.net
+  useConfigOnly = true
 # }}}
 
 # init {{{
@@ -169,6 +168,10 @@
 # }}}
 
 # include {{{
+[includeIf "gitdir:~/src/github.com/"]
+  path = conf.d/github
+[includeIf "gitdir:~/.local/share/chezmoi/"]
+  path = conf.d/github
 [include]
   path = conf.d/local
 # }}}
