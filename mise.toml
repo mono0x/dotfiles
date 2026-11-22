@@ -79,7 +79,7 @@ login_shell = "/opt/homebrew/bin/zsh"
 "github:jdx/jactionlint" = "2.5.0"
 "github:secretlint/secretlint" = { version = "14.0.0", bin = "secretlint" }
 "pipx:yq" = "4.4.5"
-chezmoi = "2.74.0"
+chezmoi = "2.74.1"
 dprint = "0.64.3"
 hk = "2.11.1"
 pkl = "0.33.0"
@@ -87,7 +87,7 @@ pkl = "0.33.0"
 python = "3.15.2"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
-uv = "0.13.7"
+uv = "0.13.8"
 
 [tasks.bootstrap]
 run = [
