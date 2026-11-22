@@ -3,6 +3,7 @@
 - Favor colocation: keep related code, tests, types, and assets close to where they are used rather than splitting them into distant shared layers prematurely.
 - Add comments only when they explain non-obvious behavior, constraints, or rationale.
 - Keep identifier names concise, but do not abbreviate English words unless the abbreviation is conventional in the target language. Respect the naming conventions of the original code.
+- When creating a worktree, identify the default branch and its corresponding remote; do not assume the remote is named `origin`. If that remote exists, fetch it and use the updated remote-tracking default branch as the base. If no remote exists, use the local default branch. Use a different base only when the user specifies one; if fetching fails, report the failure instead of using a stale base.
 
 ## Cross-repository work under herdr-core
 
@@ -13,7 +14,7 @@ Under herdr-core, decide whether to handle work in another repository yourself o
 
 When delegating:
 
-- Create the worktree yourself, so the Codex sandbox covers it: `hc run --cwd <repo> wt switch --create <branch> --base ^ --no-cd --format json`. `^` is the default branch; pass another base only when the user names one.
+- Create the worktree yourself, so the Codex sandbox covers it: `hc run --cwd <repo> wt switch --create <branch> --base <base> --no-cd --format json`. Resolve `<base>` using the worktree rule above: the freshly fetched remote-tracking default branch when a remote exists, or `^` for the local default branch when none exists, unless the user specifies another base.
 - Start Codex in that worktree: `hc run --bg --name <name> --cwd <worktree> codex --no-daemon "<task>"`. State the exact scope, require it to follow the repository's `AGENTS.md`, forbid starting other agents, and ask it to report the branch and results with `hc send`.
 - Ask Codex to push or open a PR only when the user explicitly requested it.
 - Review the actual diff before reporting. Once accepted, run `hc kill` and `hc rm` on the terminal, but leave the worktree for the user.
