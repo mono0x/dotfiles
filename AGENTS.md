@@ -22,6 +22,10 @@ When removing a file that has already been deployed, add its destination path to
 
 Consult these files instead of copying version numbers, tool lists, or workflow details into documentation.
 
+## Global Skills
+
+When adding a global skill, support both Claude Code and Codex by default. For skills maintained in this repository, keep the shared definition in `src/dot_agents/skills/<name>/SKILL.md` and include it from `src/dot_claude/skills/<name>/SKILL.md.tmpl`. If a skill depends on a feature specific to one client, document that dependency.
+
 ## Development Workflow
 
 Use the commands defined by the current project configuration:
