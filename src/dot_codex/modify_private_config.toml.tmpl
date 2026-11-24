@@ -13,7 +13,6 @@ sed '/^#:schema https:\/\/developers.openai.com\/codex\/config-schema.json$/d' |
     --arg dprint "$HOME/Library/Caches/dprint" \
     '
       .approvals_reviewer = "auto_review"
-      | .model = "gpt-6.1-sol"
       | .model_reasoning_effort = "medium"
       | .personality = "pragmatic"
       | .sandbox_workspace_write.network_access = true
