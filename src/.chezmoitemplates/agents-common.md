@@ -1,7 +1,6 @@
 - Use the `natural-japanese` skill when creating or revising Japanese deliverables, including documents, articles, and source code comments. Do not use it for ordinary conversation, answers to questions, progress updates, or completion reports unless the user explicitly requests it.
 - Prefer simplicity and follow YAGNI, KISS, and DRY. Do not add backward-compatibility shims or fallback paths unless required by the task or project.
 - Favor colocation: keep related code, tests, types, and assets close to where they are used rather than splitting them into distant shared layers prematurely.
-- Add comments only when they explain non-obvious behavior, constraints, or rationale.
 - Keep identifier names concise, but do not abbreviate English words unless the abbreviation is conventional in the target language. Respect the naming conventions of the original code.
 - When creating a worktree, identify the default branch and its corresponding remote; do not assume the remote is named `origin`. If that remote exists, fetch it and use the updated remote-tracking default branch as the base. If no remote exists, use the local default branch. Use a different base only when the user specifies one; if fetching fails, report the failure instead of using a stale base.
 
