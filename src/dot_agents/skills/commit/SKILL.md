@@ -14,6 +14,6 @@ description: Create a git commit following the repository's documented conventio
 
 ## Create the commit
 
-Stage only the changes intended for this commit, preserving unrelated work. Write a message that accurately describes the staged changes and check it against the rules and examples you found before committing.
+Stage only the changes intended for this commit, preserving unrelated work. When the body needs to explain why, draft it with the `write-rationale` skill. Write a message that accurately describes the staged changes and check it against the rules and examples you found before committing.
 
 Create the requested commit and report the result. If a hook fails, address the failure without bypassing the hook, then retry.
