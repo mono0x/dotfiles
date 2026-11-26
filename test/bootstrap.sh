@@ -11,17 +11,20 @@ cat >"$test_dir/.local/share/mise/shims/chezmoi" <<'MOCK'
 #!/bin/sh
 set -eu
 [ "$#" -eq 1 ] && [ "$1" = apply ]
-printf '%s\n' "${GH_TOKEN:-}"
+[ "$(command -v gh)" = "$PWD/bin/gh" ]
+printf '%s\n' "${GH_TOKEN:-}${GITHUB_TOKEN:-}"
 MOCK
 chmod +x "$test_dir/.local/share/mise/shims/chezmoi"
+
+unset GH_TOKEN GITHUB_TOKEN
 
 output=$(HOME="$test_dir" TMPDIR="${TMPDIR:-/tmp}" GH_TOKEN=bootstrap-test-token /bin/sh -c "$run")
 [[ $output == bootstrap-test-token ]]
 
-output=$(
-  unset GH_TOKEN
-  HOME="$test_dir" TMPDIR="${TMPDIR:-/tmp}" /bin/sh -c "$run"
-)
+output=$(HOME="$test_dir" TMPDIR="${TMPDIR:-/tmp}" GITHUB_TOKEN=bootstrap-test-token /bin/sh -c "$run")
+[[ $output == bootstrap-test-token ]]
+
+output=$(HOME="$test_dir" TMPDIR="${TMPDIR:-/tmp}" /bin/sh -c "$run")
 [[ -z $output ]]
 
 printf '%s\n' 'bootstrap environment checks passed'

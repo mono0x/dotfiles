@@ -12,7 +12,12 @@ cat >"$test_dir/bin/gh" <<'MOCK'
 #!/bin/sh
 set -eu
 case "$1 $2" in
+  'auth token')
+    [ "${TEST_AUTHENTICATED:-}" = true ] || exit 1
+    printf '%s\n' 'gh-extensions-test-token'
+    ;;
   'extension list')
+    [ "${GH_TOKEN:-${GITHUB_TOKEN:-}}" = gh-extensions-test-token ]
     cat "$TEST_EXTENSIONS"
     exit "${TEST_LIST_STATUS:-0}"
     ;;
@@ -39,6 +44,15 @@ replace=$(printf '%s\n%s' 'extension remove gh-actions-lock' "$install")
 
 : >"$TEST_EXTENSIONS"
 : >"$TEST_LOG"
+unset GH_TOKEN GITHUB_TOKEN TEST_AUTHENTICATED
+output=$(sh "$script" 2>&1)
+[[ $output == 'Skipping gh extensions'* && ! -s $TEST_LOG ]]
+
+GITHUB_TOKEN=gh-extensions-test-token sh "$script"
+[[ $(cat "$TEST_LOG") == "$(printf '%s\n%s' "$install" "$install_infra")" ]]
+
+: >"$TEST_LOG"
+export TEST_AUTHENTICATED=true
 sh "$script"
 [[ $(cat "$TEST_LOG") == "$(printf '%s\n%s' "$install" "$install_infra")" ]]
 

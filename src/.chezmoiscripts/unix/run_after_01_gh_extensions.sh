@@ -1,6 +1,14 @@
 #!/bin/sh
 set -eu
 
+if [ -z "${GH_TOKEN:-}" ] && [ -z "${GITHUB_TOKEN:-}" ]; then
+  if ! GH_TOKEN=$(gh auth token --hostname github.com); then
+    printf '%s\n' 'Skipping gh extensions until GitHub authentication is available. Rerun chezmoi apply after authenticating.' >&2
+    exit 0
+  fi
+  export GH_TOKEN
+fi
+
 install_extension() (
   repository=$1
   version=$2
