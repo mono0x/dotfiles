@@ -12,7 +12,6 @@ file:
     filetype: file
     contents:
       - "useConfigOnly = true"
-      - "defaultRefFormat = reftable"
 
   ~/.zshenv:
     exists: true

@@ -9,7 +9,6 @@
 # init {{{
 [init]
   defaultBranch = main
-  defaultRefFormat = reftable
 # }}}
 
 # aliases {{{
